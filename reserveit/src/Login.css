@@ -25,7 +25,7 @@
 .frame:hover { border-width: 10px; }
 
 .details{
-  padding: 80px;
+  padding: 50px;
   padding-right: 2px;
 }
 .padding{
@@ -53,12 +53,16 @@
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1149699704901345280/key_1.png);
 }
 .button{
-  padding: 50px;
+  padding: 15px;
   margin: auto;
 }
+
 .tweek-button{
-  width: 50%;
-  padding: 5px;
-  font-size: xx-large;
+  width: 15%;
+  height: 25px;
+  padding-bottom: 10px; 
+  font-size: large;
 }
+
+
 
