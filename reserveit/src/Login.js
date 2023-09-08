@@ -3,21 +3,31 @@ function Login() {
     return (
         <div className='outer'>
             <div className='inner'>
-                <div className='row'>
-                    <div className='column left'>
+                <iframe title="frame" align="left" className="frame">  
+                    </iframe> 
+                <div className="details">
+                    <div>
+                        <iframe title="frame" className="up">  
+                        </iframe> 
                     </div>
-                    <div className='column right'>
-                        <h1>Sign In</h1>
+                    <div className="padding">
+                        <div className="edit-label">
+                            <label>Username or Email</label>
+                            </div>
                         <div>
-                            <label>Username</label>
-                            <input></input>
+                            <input className="edit-input"></input>
                         </div>
-                        <div>
+                        <div className="edit_label">
                             <label>Password</label>
-                            <input></input>
+                            </div>
+                        <div>
+                            <input className="edit-input"></input>
                         </div>
                     </div>
-                </div>
+                    <div className="button">
+                        <button className="tweek-button"></button>         
+                    </div>
+                </div> 
             </div>
         </div>
     );

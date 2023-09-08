@@ -1,33 +1,44 @@
 import './Login.css';
 function Register(){
     return(
-        <div>
-            <div className='coloum1'>
-            <img src='https://www.flaticon.com/free-icon/add-friend_1208635' alt=""></img>
+        <div className='outer'>
+            <div className='inner'>
+                <iframe title="frame" align="left" className="frame">   
+                    </iframe> 
+                <div className="details">
+                        <div className="up">Sign Up</div>
+                        <div className="edit">
+                            <label>Name</label>
+                            </div>
+                        <div>
+                            <input></input>
+                        </div>
+                        <div className="edit">
+                            <label>Username</label>
+                            </div>
+                        <div>
+                            <input></input>
+                        </div>
+                        <div className="edit">
+                            <label>Email</label>
+                            </div>
+                        <div>
+                            <input></input>
+                        </div>
+                        <div className="edit">
+                            <label>Password</label>
+                            </div>
+                        <div>
+                            <input></input>
+                        </div>
+                        <div className="edit">
+                            <label>Confirm Password</label>
+                            </div>
+                        <div>
+                            <input></input>
+                        </div>
+                    </div> 
             </div>
-            <div className='coloum2'>
-            <h1>Sign Up</h1>
-            <div>
-            <label>Full Name</label>
-            <input></input>
-            </div>
-            <div>
-            <label>Username</label>
-            <input></input>
-            </div>
-            <div>
-            <label>Email</label>
-            <input></input>
-            </div>
-            <div>
-            <label>Password</label>
-            <input></input>
-            </div>
-            <div>
-            <label>Confirm Password</label>
-            <input></input>
-            </div>
-            </div> 
         </div>
     );
 }
