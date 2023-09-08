@@ -6,38 +6,43 @@ function Register(){
                 <iframe title="frame" align="left" className="frame">   
                     </iframe> 
                 <div className="details">
-                        <div className="up">Sign Up</div>
-                        <div className="edit">
+                        <div>
+                            <iframe title="frame" className="up">  
+                            </iframe> 
+                        </div>
+                        <div className="edit_label">
+                        <div className="">
                             <label>Name</label>
                             </div>
                         <div>
                             <input></input>
                         </div>
-                        <div className="edit">
+                        <div className="edit_label">
                             <label>Username</label>
                             </div>
                         <div>
                             <input></input>
                         </div>
-                        <div className="edit">
+                        <div className="edit_label">
                             <label>Email</label>
                             </div>
                         <div>
                             <input></input>
                         </div>
-                        <div className="edit">
+                        <div className="edit_label">
                             <label>Password</label>
                             </div>
                         <div>
                             <input></input>
                         </div>
-                        <div className="edit">
+                        <div className="edit-label">
                             <label>Confirm Password</label>
                             </div>
                         <div>
                             <input></input>
                         </div>
                     </div> 
+                </div>
             </div>
         </div>
     );
