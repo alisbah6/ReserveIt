@@ -34,6 +34,12 @@ function Login() {
                         <div className='button'>
                         <button className="tweek-button">Login</button>
                         </div>
+                        <div className='towardsleft' align="right" style={{paddingRight:"17%"}}>
+                            <a href=''>Register</a>
+                        </div>
+                        <div className='towardsleft' >
+                        <a href=''>Forget Password?</a>
+                        </div>
                     </div>
                     </form>
                 </div> 

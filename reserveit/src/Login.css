@@ -53,15 +53,21 @@
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1149699704901345280/key_1.png);
 }
 .button{
-  padding: 15px;
+  padding-top: 20px;
   margin: auto;
+  padding-right: 200px;
 }
 
 .tweek-button{
-  width: 15%;
+  width: 5%;
   height: 25px;
-  padding-bottom: 10px; 
-  font-size: large;
+  padding-bottom: 30px;
+  padding-right: 90px; 
+  font-size: x-large;
+}
+.towardsleft{
+  right: 0;
+  padding-left: 55%;
 }
 
 
