@@ -53,21 +53,42 @@
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1149699704901345280/key_1.png);
 }
 .button{
-  padding-top: 20px;
-  margin: auto;
-  padding-right: 200px;
+  padding-left: 365px;
+  padding-top: 60px;
 }
-.tweek-button{
-  width: 5%;
-  height: 25px;
-  padding-bottom: 30px;
-  padding-right: 90px; 
-  font-size: x-large;
+
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+  position: static;
+  width: 50%;
 }
-.towardsleft{
-  right: 0;
-  padding-left: 55%;
+
+/* Make the image responsive */
+.container img {
+  width: 100%;
+  height: auto;
 }
+
+/* Style the button and place it in the middle of the container/image */
+.container .btn {
+  position: absolute;
+  top: 65%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .btn:hover {
+  background-color: black;
+}
+
 
 
 
