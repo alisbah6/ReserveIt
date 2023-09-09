@@ -8,6 +8,13 @@
   width: 100%;
   padding: 80px 180px;
 }
+.outer1 {
+  position: fixed;
+  background-image: url(https://cdn.discordapp.com/attachments/947184208491733032/1149393431328735323/Untitled_design_5.png);
+  height: 100%;
+  width: 100%;
+  padding: 60px 180px;
+}
 .inner{
   width: 100%;
   height: 100%;
@@ -28,10 +35,21 @@
   padding: 50px;
   padding-right: 2px;
 }
+.details1{
+  padding: 20px;
+  padding-right: 2px;
+  
+}
 .padding{
   padding: 30px;
   padding-right: 2px;
 }
+
+.padding1{
+  padding: 20px;
+  padding-right: 2px;
+}
+
 .edit-label{
   padding: 10px;
   padding-right: 100px;
@@ -41,6 +59,11 @@
   padding: 10px;
   padding-right: 170px;
   font-size:large;
+}
+.edit__label{
+  padding: 10px;
+  padding-right: 205px;
+  font-size: large;
 }
 .edit-input{
   font-size: x-large;
@@ -52,9 +75,20 @@
   border: 0;
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1149699704901345280/key_1.png);
 }
+.upup{
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1150113358830383144/key_2.png);
+}
 .button{
-  padding-left: 365px;
+  padding-left: 362px;
   padding-top: 60px;
+}
+.button1{
+  padding-left: 400px;
+  padding-top: 50px;
 }
 
 /* Container needed to position the button. Adjust the width as needed */
@@ -84,8 +118,26 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .container .btn:hover {
+  background-color: black;
+}
+
+.container .btnn {
+  position: absolute;
+  top: 81%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container .btnn:hover {
   background-color: black;
 }
 
