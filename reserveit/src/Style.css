@@ -83,8 +83,7 @@
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1150113358830383144/key_2.png);
 }
 .button{
-  padding-left: 362px;
-  padding-top: 60px;
+  padding-left: 355px;
 }
 .button1{
   padding-left: 400px;
@@ -93,21 +92,13 @@
 
 /* Container needed to position the button. Adjust the width as needed */
 .container {
-  position: static;
-  width: 50%;
-}
-
-/* Make the image responsive */
-.container img {
-  width: 100%;
-  height: auto;
+  padding-left: 440px;
+  padding-top: 50px;
+  
 }
 
 /* Style the button and place it in the middle of the container/image */
 .container .btn {
-  position: absolute;
-  top: 65%;
-  left: 65%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
@@ -123,9 +114,6 @@
 }
 
 .container .btnn {
-  position: absolute;
-  top: 81%;
-  left: 65%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;

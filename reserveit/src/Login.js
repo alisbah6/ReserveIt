@@ -8,46 +8,45 @@ function Login() {
         console.log('Name : ${name} , Password : ${password}');
     }
     return (
-        <div className='outer'>
-            <div className='inner'>
-                <iframe title="frame" align="left" className="frame">  
+            <div className='outer'>
+                <div className='inner'>
+                    <iframe title="frame" align="left" className="frame">  
                     </iframe> 
-                <div className="details">
-                    <form action='' onSubmit={e=>handleSubmit(e)}>
-                    <div>
+                    <div className="details">
+                        <form action='' onSubmit={e=>handleSubmit(e)}>
+                        <div>
                         <iframe title="frame" className="up">  
                         </iframe> 
-                    </div>
-                    <div className="padding">
+                        </div>
+                        <div className="padding">
                         <div className="edit-label">
-                            <label htmlFor='uname'>Username or Email</label>
-                            </div>
+                        <label htmlFor='uname'>Username or Email</label>
+                        </div>
                         <div>
-                            <input className="edit-input" type='text' name='uname' id='uname' onChange={e=>setName(e.target.value)}></input>
+                        <input className="edit-input" type='text' name='uname' id='uname' onChange={e=>setName(e.target.value)}></input>
                         </div>
                         <div className="edit_label">
-                            <label htmlFor='password'>Password</label>
-                            </div>
+                        <label htmlFor='password'>Password</label>
+                        </div>
                         <div>
-                            <input className="edit-input" type='password' name='password' id='password' onChange={e=>setPassword(e.target.value)}></input>
+                        <input className="edit-input" type='password' name='password' id='password' onChange={e=>setPassword(e.target.value)}></input>
                         </div>
-                        <div className='container'>
-                            <img src="img_snow.jpg" alt=""></img>
+                        <div className="container">                       
                             <button className="btn">Login</button>
-                            </div>
-                        <div className='button'>     
-                            <div className='edit-button'>
-                                <a href='/#'>Register?</a>
-                            </div>
-                            <div className='edit-button' >
-                                <a href='/#'>Forget Password?</a>
-                            </div>
                         </div>
-                    </div>
-                    </form>
-                </div> 
+                        <div className='button'>     
+                        <div className='edit-button'>
+                        <a href='/#'>Register?</a>
+                        </div>
+                        <div className='edit-button' >
+                        <a href='/#'>Forget Password?</a>
+                        </div>
+                        </div>
+                        </div>
+                        </form>
+                    </div> 
+                </div>
             </div>
-        </div>
     );
 }
 export default Login;
