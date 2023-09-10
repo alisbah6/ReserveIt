@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import './Login.css';
+import './Style.css';
 function Login() {
     const [name,setName]=useState("");
     const [password,setPassword]=useState("");
     const handleSubmit=(e)=>{
         e.preventDefault();
-        console.log('Name:${name},Password:${password}');
+        console.log('Name : ${name} , Password : ${password}');
     }
     return (
         <div className='outer'>
@@ -31,14 +31,17 @@ function Login() {
                         <div>
                             <input className="edit-input" type='password' name='password' id='password' onChange={e=>setPassword(e.target.value)}></input>
                         </div>
-                        <div className='button'>
-                        <button className="tweek-button">Login</button>
-                        </div>
-                        <div className='towardsleft' align="right" style={{paddingRight:"17%"}}>
-                            <a href=''>Register</a>
-                        </div>
-                        <div className='towardsleft' >
-                        <a href=''>Forget Password?</a>
+                        <div className='container'>
+                            <img src="img_snow.jpg" alt=""></img>
+                            <button className="btn">Login</button>
+                            </div>
+                        <div className='button'>     
+                            <div className='edit-button'>
+                                <a href='/#'>Register?</a>
+                            </div>
+                            <div className='edit-button' >
+                                <a href='/#'>Forget Password?</a>
+                            </div>
                         </div>
                     </div>
                     </form>
