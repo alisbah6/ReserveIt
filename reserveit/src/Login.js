@@ -32,7 +32,7 @@ function Login() {
                         <input className="edit-input" type='password' name='password' id='password' onChange={e=>setPassword(e.target.value)}></input>
                         </div>
                         <div className="container">                       
-                            <button className="btn">Login</button>
+                        <button className="btn">Login</button>
                         </div>
                         <div className='button'>     
                         <div className='edit-button'>

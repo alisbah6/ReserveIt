@@ -41,7 +41,7 @@ function Register(){
                         <div>
                         <input className="edit-input"></input>
                         </div>
-                        <div className='container'>
+                        <div className='container1'>
                         <button className="btnn">Register</button>
                         </div>
                         <div className='button1'>     

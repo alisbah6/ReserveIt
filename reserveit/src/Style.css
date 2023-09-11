@@ -32,7 +32,7 @@
 .frame:hover { border-width: 10px; }
 
 .details{
-  padding: 50px;
+  padding: 70px;
   padding-right: 2px;
 }
 .details1{
@@ -87,13 +87,19 @@
 }
 .button1{
   padding-left: 400px;
-  padding-top: 50px;
+
 }
 
 /* Container needed to position the button. Adjust the width as needed */
 .container {
   padding-left: 440px;
   padding-top: 50px;
+  
+}
+
+.container1 {
+  padding-left: 500px;
+  padding-top: 40px;
   
 }
 
@@ -113,7 +119,7 @@
   background-color: black;
 }
 
-.container .btnn {
+.container1 .btnn {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
@@ -125,7 +131,7 @@
   border-radius: 5px;
 }
 
-.container .btnn:hover {
+.container1 .btnn:hover {
   background-color: black;
 }
 
