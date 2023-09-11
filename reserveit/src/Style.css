@@ -32,7 +32,7 @@
 .frame:hover { border-width: 10px; }
 
 .details{
-  padding: 50px;
+  padding: 70px;
   padding-right: 2px;
 }
 .details1{
@@ -83,31 +83,28 @@
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1150113358830383144/key_2.png);
 }
 .button{
-  padding-left: 362px;
-  padding-top: 60px;
+  padding-left: 355px;
 }
 .button1{
   padding-left: 400px;
-  padding-top: 50px;
+
 }
 
 /* Container needed to position the button. Adjust the width as needed */
 .container {
-  position: static;
-  width: 50%;
+  padding-left: 440px;
+  padding-top: 50px;
+  
 }
 
-/* Make the image responsive */
-.container img {
-  width: 100%;
-  height: auto;
+.container1 {
+  padding-left: 500px;
+  padding-top: 40px;
+  
 }
 
 /* Style the button and place it in the middle of the container/image */
 .container .btn {
-  position: absolute;
-  top: 65%;
-  left: 65%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
@@ -122,10 +119,7 @@
   background-color: black;
 }
 
-.container .btnn {
-  position: absolute;
-  top: 81%;
-  left: 65%;
+.container1 .btnn {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #555;
@@ -137,7 +131,7 @@
   border-radius: 5px;
 }
 
-.container .btnn:hover {
+.container1 .btnn:hover {
   background-color: black;
 }
 
