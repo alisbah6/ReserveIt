@@ -7,6 +7,7 @@
   height: 100%;
   width: 100%;
   padding: 80px 180px;
+  aspect-ratio: 16 / 9;
 }
 .outer1 {
   position: fixed;
@@ -14,11 +15,13 @@
   height: 100%;
   width: 100%;
   padding: 60px 180px;
+  aspect-ratio: 16 / 9;
 }
 .inner{
   width: 100%;
   height: 100%;
   background-color:white;
+  aspect-ratio: 16 / 9;
 }
 
 .frame{
@@ -27,6 +30,7 @@
   height: 100%;
   position: left;
   width: 40%;
+  aspect-ratio: 16 / 9;
   background-image: url(https://cdn.discordapp.com/attachments/947184208491733032/1149393455030751232/Untitled_design_6.png);
 }
 .frame:hover { border-width: 10px; }
@@ -41,8 +45,7 @@
   
 }
 .padding{
-  padding: 30px;
-  padding-right: 2px;
+  display: grid;
 }
 
 .padding1{
@@ -82,21 +85,15 @@
   border: 0;
   background-image: url(https://cdn.discordapp.com/attachments/1143205844058656780/1150113358830383144/key_2.png);
 }
-.button{
-  padding-left: 355px;
-}
 .button1{
   padding-left: 400px;
 
 }
 
 /* Container needed to position the button. Adjust the width as needed */
-.container {
-  padding-left: 440px;
-  padding-top: 50px;
-  
+.container{
+  padding: 10px;
 }
-
 .container1 {
   padding-left: 500px;
   padding-top: 40px;
@@ -105,8 +102,6 @@
 
 /* Style the button and place it in the middle of the container/image */
 .container .btn {
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   background-color: #555;
   color: white;
   font-size: 16px;
