@@ -1,0 +1,47 @@
+.Navbar-items{
+    display: flex;
+    justify-content: space-around;
+    align-items: center ;
+    padding: 10px; ;
+    box-shadow: 0 5px 15px 0;
+    height: 80px;
+}
+.navbar-logo{
+    color: blue;
+    font-size: 3rem;
+    cursor: pointer;
+    font-style: italic;
+}
+.nav-menu{
+    display: grid;
+    grid-template-columns: repeat(7,auto);
+    grid-gap: 15px;
+    list-style: none;
+    align-items: center;
+}
+.nav-links{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+}
+.nav-links:hover,.log:hover{
+    color: blue;
+    transition: all 0.2s ease-in-out;
+}
+.log{
+    font-size: large;
+    cursor: pointer;
+}
+input{
+    border-radius: 1.5rem;
+    padding: 5px;
+    width: 100%;
+}
+.btn{
+    font-size: larger;
+    border-radius: 15px;
+}
+img{
+    width: 20px;
+    height: 25px;
+}

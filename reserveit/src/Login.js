@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter,Router,Route } from 'react-router-dom';
 import './Style.css';
 function Login() {
     const [name,setName]=useState("");
@@ -36,7 +37,7 @@ function Login() {
                             </div>
                             <div className='button'>     
                             <div className='edit-button'>
-                            <a href='/#'>Register?</a>
+                            <a href=''>Register?</a>
                             </div>
                             <div className='edit-button' >
                             <a href='/#'>Forget Password?</a>
