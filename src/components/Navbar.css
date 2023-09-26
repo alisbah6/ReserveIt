@@ -55,6 +55,7 @@
     letter-spacing: 2px;
     outline: none;
     border-radius: 25px;
+    cursor: pointer;
     transition: all .5s ease-in-out;
     background-color:transparent;
     padding-right: 40px;

@@ -17,8 +17,8 @@ class Navbar extends Component{
                     </div>
                     <div className="get-in">
                         <a href="/#"className="log"><i class="fa-solid fa-user"></i>SignIn</a>
-                        <li className="log">/</li>
-                        <a href="/#" className="log"><i class="fa-solid fa-user-plus"></i>SignUp</a>
+                        <li className="log">|</li>
+                        <a href="/#" className="log">SignUp</a>
                     </div>
                 </ul>
             </nav>
