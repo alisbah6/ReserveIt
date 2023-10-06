@@ -48,3 +48,9 @@ p{
     height: 30%;
     margin: 0px 0px 20px 25px;
 }
+footer{
+    text-align: center;
+    background-color: beige;
+    height: 10rem;
+    width: 100%;
+}
