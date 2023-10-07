@@ -52,7 +52,21 @@ class Home extends Component {
                     </p>                
                     </section>
                     <footer>
-                            
+                        <row className="foot">
+                           <i></i>
+                           <i></i>
+                           <i></i>
+                           <i></i>
+                        </row>
+                        <row className="foot">
+                            <ul>
+                                <li>Home</li>
+                                <li>About</li>
+                                <li>Services</li>
+                                <li>Team</li>
+                                <li>Policy</li>
+                            </ul>
+                        </row>
                     </footer>
             </div>
         );
