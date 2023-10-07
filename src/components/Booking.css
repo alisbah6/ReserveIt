@@ -9,11 +9,13 @@
 	text-align: center;
     font-size: 300%;
 	font-family: cursive;
-	color: #00589b;
+	color: pink;
+	padding: 25px;
 }
 .hero-container {
-	margin: auto;
 	display: flex;
+	margin-left: 3.5rem;
+    margin-right: auto; 
 }
 .main-container {
 	width: 270px;
@@ -36,7 +38,7 @@
 }
 
 .ticket-container {
-	background: #fff;
+	background: #fff6df;
 	width: 270px;
 	height: 520px;
 	display: flex;
