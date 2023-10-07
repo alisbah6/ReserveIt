@@ -15,7 +15,7 @@ function Booking() {
             </div>
             <div class="ticket-container">
               <div class="ticket__content">
-                <h4 class="ticket__movie-title">Blade Runner 2049</h4>
+                <h4 class="ticket__movie-title">Sagar Ratna</h4>
                 <p class="ticket__movie-slogan">
                   More human than human is our motto.
                 </p>
