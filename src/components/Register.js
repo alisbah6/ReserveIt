@@ -20,7 +20,7 @@ function Register(){
                         <input className="input" type="password" placeholder="confirm password" id="confirm password"></input>
                         <button className="button-reg">Register</button>
                     <div class="extra-reg">
-                        <Link to="/Login"><a className="log">Already have a account?</a></Link>
+                        <Link to="/Login" className="log">Already have a account?</Link>
                     </div>
                 </div>
             </div>
