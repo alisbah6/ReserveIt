@@ -16,6 +16,8 @@ function Login() {
                     <div class="extra">
                         <Link to="/Register" className="log">Register?</Link>
                         <Link className="log">Forget Password?</Link>
+                        <a href='/#' className="log">Register?</a>
+                        <a href='/#' className="log">Forget Password?</a>
                     </div>
                 </div>
             </div>

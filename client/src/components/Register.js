@@ -21,6 +21,7 @@ function Register(){
                         <button className="button-reg">Register</button>
                     <div class="extra-reg">
                         <Link to="/Login" className="log">Already have a account?</Link>
+                        <a href='/#' className="log">Already have a account?</a>
                     </div>
                 </div>
             </div>
