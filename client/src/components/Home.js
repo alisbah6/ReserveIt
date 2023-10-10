@@ -3,17 +3,12 @@ import Footer from "./Footer";
 import Navbar from './Navbar';
 import videoBg from '../assets/foodvideo.mp4';
 import './Home.css';
-import Navbar from './Navbar';
-import videoBg from '../assets/foodvideo.mp4';
-import './Home.css';
-import Footer from "./Footer";
 
 class Home extends Component {
     render() {
         return (
             <div>
                 <Navbar />
-                <Navbar/>
                 <video className="vd" src={videoBg} autoPlay muted loop></video>
                 <h2>#No more waiting,neither for table nor for food</h2>
                 <h3>Book your seat now at Delhi's Busiest Restraunts</h3>
@@ -58,7 +53,6 @@ class Home extends Component {
                     </p>                
                     </section>
                 <Footer />                   
-                    <Footer/>                   
             </div>
         );
     }
