@@ -1,0 +1,22 @@
+footer{
+    background-color: white;
+    height: 8rem;
+    width: 100%;
+    text-align: center;
+}
+.icon{
+ font-size:xx-large;
+}
+.help{
+    padding-top: 5px;
+    padding-right: 40px;
+}
+table{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+.desc{
+    margin-top: 2%;
+    font-size: 15px;
+}
