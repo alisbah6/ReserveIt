@@ -1,8 +1,10 @@
 import React from 'react'
-import Footer from './Footer';
 import Navbar from './Navbar';
+import Footer from './Footer';
+import './Hotelpage.css';
+//import {Link} from 'react-router-dom';
 
-function Contact() {
+function Hotelpage() {
   return (
     <div>
         <Navbar/>
@@ -11,4 +13,4 @@ function Contact() {
     </div>
   );
 }
-export default Contact;
+export default Hotelpage;

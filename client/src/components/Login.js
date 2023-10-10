@@ -1,4 +1,5 @@
 //import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Style.css';
 function Login() {
     return (
@@ -13,6 +14,8 @@ function Login() {
                         <input className="input" type="password" placeholder="Password" id="password"></input>
                         <button className="button">Log In</button>
                     <div class="extra">
+                        <Link to="/Register" className="log">Register?</Link>
+                        <Link className="log">Forget Password?</Link>
                         <a href='/#' className="log">Register?</a>
                         <a href='/#' className="log">Forget Password?</a>
                     </div>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Style.css';
 function Register(){
     return(
@@ -19,6 +20,7 @@ function Register(){
                         <input className="input" type="password" placeholder="confirm password" id="confirm password"></input>
                         <button className="button-reg">Register</button>
                     <div class="extra-reg">
+                        <Link to="/Login" className="log">Already have a account?</Link>
                         <a href='/#' className="log">Already have a account?</a>
                     </div>
                 </div>
