@@ -33,7 +33,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Sandoz Cafe, is a culinary haven offering a delightful fusion of Indian and Mughlai cuisines
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
