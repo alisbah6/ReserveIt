@@ -28,3 +28,17 @@
     border-radius: 10px;
     box-shadow: 0px 0px 40px rgba(8, 7, 16, 0.6);
 }
+.branch{
+    padding: 25px;
+}
+li{
+    list-style: none;
+    padding: 15px;
+}
+li:hover{
+    border-radius: 2rem;
+    background-color: blue;
+}
+h1{
+    padding: 10px;
+}

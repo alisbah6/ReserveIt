@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Restrauts } from './Restraunts';
+import { Sagar } from './Restraunts';
 import './Hotelpage.css';
 
 function Hotelpage() {
@@ -9,19 +9,27 @@ function Hotelpage() {
     <div>
         <Navbar/>
         <br></br>
-        {Restrauts.map((item,index)=>
+        {Sagar.map((item,index)=>
         {
           return(
-            <p key={index}>{item.name}</p>
+            <div className='container'key={index}>
+            <div className="branch-container">
+              <div className='branch'>
+                <p>Branches</p>
+              <ul>
+                <li>{item.b1}</li>
+                <li>{item.b2}</li>
+                <li>{item.b3}</li>
+                <li>{item.b4}</li>
+                <li>{item.b5}</li>
+              </ul>
+              </div>
+            </div>
+            <div className="details-container">
+            </div>
+        </div>
           )
         })}
-        <div className='container'>
-                <div className="branch-container">
-                </div>
-                <div className="details-container">
-                </div>
-            </div>
-
         <Footer/>
     </div>
   );
