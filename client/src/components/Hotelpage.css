@@ -42,3 +42,8 @@ li:hover{
 h1{
     padding: 10px;
 }
+.desc{
+    padding-left:15px;
+    font-size: larger;
+    padding-right: 10px;
+}

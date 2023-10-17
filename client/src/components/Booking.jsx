@@ -19,7 +19,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Most preferred destination for South Indian cuisines across the country
               </p>
-              <Link to="/Hotelpage"><button class="booking__buy-btn">Book now</button></Link>
+              <Link to="/Hotelpage/1"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Sandoz Cafe, is a culinary haven offering a delightful fusion of Indian and Mughlai cuisines
               </p>
-              <Link to="/Hotelpage"><button class="booking__buy-btn">Book now</button></Link>
+              <Link to="/Hotelpage/2"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Legendary place with a history of serving selected food of the north west Frontier province
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage/3"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Traditional dhaba cuisine gets a makeover at this modern dining venue with funky wall art.
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage/4"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Busting Mughlai joint popular during Ramadan, with wide-ranging non-veg options & no-frills seating.
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage/5"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 This place is a hidden gem that makes the best Mughlai and Biryani dishes. The dishes are really spicy and full of butter.
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage/6"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Varq is one the most cherished outlets for Indian fine dining in the capital.
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage/7"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ function Booking() {
               <p class="booking__hotel-details">
               Gulati has been serving 'Buffet Lunch' since early 2000.Buffet changes every day and offers a new experience to the taste buds on a daily basis 
               </p>
-              <button class="booking__buy-btn">Book now</button>
+              <Link to="/Hotelpage/8"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
