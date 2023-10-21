@@ -5,7 +5,7 @@ import { data,tableset } from './Restraunts';
 import './Hotelpage.css';
 import { Link, useParams } from 'react-router-dom';
 
-function Hotelpage() {
+function Bukhara() {
   const params = useParams();
   const id = params.id;
   const resturant = data.filter(res => res.id === id);
@@ -22,11 +22,7 @@ function Hotelpage() {
               <div className='branch'>
                 <p>Branches</p>
                 <ul>
-                  <Link to="/HotelPage/1/DefenceColony"><li>{item.b1}</li></Link>
-                  <Link to="/HotelPage/1/PreetVihar"><li>{item.b2}</li></Link>
-                  <Link to="/HotelPage/1/MasjidMoth"><li>{item.b3}</li></Link>
-                  <Link to="/HotelPage/1/NarainaVihar"><li>{item.b4}</li></Link>
-                  <Link to="/HotelPage/1/PaschimVihar"><li>{item.b5}</li></Link>
+                  <Link to="/Bukhara/3/ITCMaurya"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>
@@ -42,7 +38,6 @@ function Hotelpage() {
                     <br/>
                     Contact:{item.ph}
                     </p>
-                    yaha image lagani h 
                   </div>
                 )
               })}
@@ -54,4 +49,4 @@ function Hotelpage() {
     </div>
   );
 }
-export default Hotelpage;
+export default Bukhara;
