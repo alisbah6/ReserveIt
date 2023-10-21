@@ -106,7 +106,7 @@ function Booking() {
               <p class="booking__hotel-details">
                 Varq is one the most cherished outlets for Indian fine dining in the capital.
               </p>
-              <Link to="/Varq/7/ITCMaurya"><button class="booking__buy-btn">Book now</button></Link>
+              <Link to="/Varq/7/TajMahal"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ function Booking() {
               <p class="booking__hotel-details">
               Gulati has been serving 'Buffet Lunch' since early 2000.Buffet changes every day and offers a new experience to the taste buds on a daily basis 
               </p>
-              <Link to="/Gulati/8/ITCMaurya"><button class="booking__buy-btn">Book now</button></Link>
+              <Link to="/Gulati/8/Pandara"><button class="booking__buy-btn">Book now</button></Link>
             </div>
           </div>
         </div>

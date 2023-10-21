@@ -1,0 +1,17 @@
+h1{
+    align-items: center;
+    text-align: center;
+    color: brown;
+    font-size: 300%;
+	font-family: cursive;
+    padding: 25px;
+}
+h3{
+    align-items: end;
+}
+.menu-container{
+    height: 100px;
+}
+.menu-content{
+    display: flex;
+}

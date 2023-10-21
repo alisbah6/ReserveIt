@@ -22,7 +22,7 @@ function Gulati() {
               <div className='branch'>
                 <p>Branches</p>
                 <ul>
-                  <Link to="/Gulati/8/ITCMaurya"><li>{item.b1}</li></Link>
+                  <Link to="/Gulati/8/Pandara"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>

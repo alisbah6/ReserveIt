@@ -38,7 +38,6 @@ function Bukhara() {
                     <br/>
                     Contact:{item.ph}
                     </p>
-                    yaha image lagani h 
                   </div>
                 )
               })}

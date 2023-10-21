@@ -22,7 +22,7 @@ function Varq() {
               <div className='branch'>
                 <p>Branches</p>
                 <ul>
-                  <Link to="/Varq/7/ITCMaurya"><li>{item.b1}</li></Link>
+                  <Link to="/Varq/7/TajMahal"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>
@@ -38,7 +38,6 @@ function Varq() {
                     <br/>
                     Contact:{item.ph}
                     </p>
-                    yaha image lagani h 
                   </div>
                 )
               })}

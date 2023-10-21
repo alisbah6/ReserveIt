@@ -42,7 +42,6 @@ function Sandoz() {
                     <br/>
                     Contact:{item.ph}
                     </p>
-                    yaha image lagani h 
                   </div>
                 )
               })}

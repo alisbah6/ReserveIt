@@ -44,21 +44,13 @@ export const data=[{
 },
 {
     id:"7",
-    name:"Sandoz",
-    b1:"Connaught Place",
-    b2:"Karol Bagh",
-    b3:"Lajpat Nagar",
-    b4:"Rajouri Garden",
-    b5:"Jasola",
+    name:"Varq",
+    b1:"Taj Mahal Hotel",
 },
 {
     id:"8",
-    name:"Sandoz",
-    b1:"Connaught Place",
-    b2:"Karol Bagh",
-    b3:"Lajpat Nagar",
-    b4:"Rajouri Garden",
-    b5:"Jasola",
+    name:"Gulati",
+    b1:"Pandara Road",
 },
 ];
 export const tableset=[
@@ -179,16 +171,17 @@ export const tableset=[
 },
 //varq
 {
-    bname:"",
-    loc:"",
-    ph:"",
-    hr:""
+    bname:"TajMahal",
+    loc:" The Taj Mahal Hotel, No.1, Near, Maan Singh Rd, Khan Market, India Gate, New Delhi, Delhi 110011",
+    ph:" 011 6656 6162",
+    hr:"12:30-2:45 pm,7-11:45pm"
 },
+//gulati
 {
-    bname:"",
-    loc:"",
-    ph:"",
-    hr:""
+    bname:"Pandara",
+    loc:"Shop No. 6, Shri Barda Ukil Marg Near Pandara Road Post Office, New Delhi 110003 India",
+    ph:"+91 11 2338 8836",
+    hr:"12:00 PM - 11:45 PM"
 },
 {
     bname:"",
