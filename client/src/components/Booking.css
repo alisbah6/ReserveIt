@@ -10,14 +10,16 @@
     font-size: 300%;
 	font-family: cursive;
 	color: brown;
-	padding: 25px;
+	padding-top: 100px ;
+	padding-bottom: 25px;
 }
 .hotel-container {
 	display: flex;
-	margin-left: 3.5rem;
-    margin-right: auto; 
+	justify-content: center;
+	align-items: center;
 }
 .main-container {
+	display: flex;
 	width: 270px;
 	height: 540px;
 	position: relative;
@@ -25,23 +27,25 @@
 }
 
 .poster-container {
+	display: flex;
 	width: 230px;
 	position: absolute;
 	top: 0;
 	left: 20px;
-	z-index: 9999;
+	z-index: 1;
 }
 
 .poster {
+	display: flex;
 	width: 100%;
 	box-shadow: 0 5px 20px 3px rgba(0, 0, 0, 0.6);
 }
 
 .booking-container {
+	display: flex;
 	background: #fff6df;
 	width: 270px;
 	height: 520px;
-	display: flex;
 	flex-direction: column;
 	align-items: center;
 	border-radius: 5px;
@@ -52,6 +56,7 @@
 }
 
 .main-container:hover .booking-container {
+	display: flex;
 	opacity: 1;
 	animation: bounceIn 0.6s linear;
 }
@@ -95,17 +100,6 @@
 	}
 }
 
-/* @keyframes bounce {
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-} */
 
 .booking__content {
 	width: 100%;
