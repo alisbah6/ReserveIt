@@ -1,22 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
 footer{
-    background-color: white;
-    height: 8rem;
+    display: grid;
     width: 100%;
     text-align: center;
+	justify-content: center;
+	align-items: center;
+    
 }
 .icon{
- font-size:xx-large;
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+    font-size:xx-large;
+    padding: 10px;
 }
 .help{
-    padding-top: 5px;
-    padding-right: 40px;
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+    font-size:large;
+    padding-left: 10px;
 }
-table{
-    width: 20%;
-    margin-left: auto;
-    margin-right: auto; 
-}
+
 .desc{
-    margin-top: 2%;
-    font-size: 15px;
+    display: inline-flex;
+	justify-content: center;
+	align-items: center;
+    font-size:xx-large;
 }

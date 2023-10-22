@@ -12,6 +12,7 @@ import Karim from './components/Karim';
 import AslamChicken from './components/AslamChicken';
 import Varq from './components/Varq'
 import Gulati from './components/Gulati';
+import Sandoz from './components/Sandoz';
 import { Route,Routes } from 'react-router-dom';
 //import Tablesetting from './components/Tablesetting';
 function App() {

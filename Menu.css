@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
     scroll-behavior: smooth;
+    box-sizing: border-box;
+
 }
 
 .nav-hotel {
@@ -9,13 +11,10 @@
     width: 100%;
     margin-top: auto;
     padding: 0px 15px;
-    padding-top: 60px;
     box-shadow: 0px 0px 20px black;
-    background-color:white;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    z-index: 100;
+    z-index: 999;
 
 }
 
@@ -38,29 +37,9 @@
 .hotel .tag:hover {
     color: white;
     background:blue;
-}
-.container-menu-top{
-    margin: 20px auto;
-    max-width: 90%;
-    height: 80vh;
-    border-radius: 10px;
-    background: whitesmoke;
-    box-shadow: 0px 0px 20px black;
-}
-.menu-text{
-    text-align: center;
-    font-size: 100px;
-    margin-top: 150px;
+    ;
 }
 
-.container-menu{
-    margin: 20px auto;
-    max-width: 90%;
-    height: 80vh;
-    border-radius: 10px;
-    background: whitesmoke;
-    box-shadow: 0px 0px 20px black;
-}
 
 #Aslamchicken {
     height: 80vh;
@@ -69,6 +48,7 @@
 }
 
 #Bukhara {
+    width: 100%;
     height: 80vh;
     background-color:aqua;
 }
