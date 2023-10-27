@@ -12,13 +12,13 @@ class Home extends Component {
                 <video className="vd" src={videoBg} autoPlay muted loop></video>
                 <h2>#No more waiting,neither for table nor for food</h2>
                 <h3>Book your seat now at Delhi's Busiest Restraunts</h3>
-                <section>
+                <section className="sec">
                     <h3>Sagar Ratna</h3>
                     <br></br>
                     <p>
                     <img className="pic" src="https://s3-ap-southeast-1.amazonaws.com/assets.limetray.com/assets/user_images/content_images/original/about-us-sagar-ratnawedrawa.jpg" alt=""></img>
                     Sagar Ratna started its first branch in the Defence Colony Market in 1986. The authentic South Indian delicacies, cooked fresh many times a day, worked well to increase the popularity of Sagar Ratna immensely. Within a short span it spread its wings far and wide. Today Sagar Ratna has established its presence in the National Capital Region.Having won numerous awards in the Hospitality industry in various categories over the years, Sagar Ratna continues to delight its customers with its authentic South Indian food cooked fresh many times a day.</p>                                 </section>
-                    <section>
+                    <section className="sec">
                     <h3>Bukhara</h3>
                     <br></br>
                     <p>
@@ -26,7 +26,7 @@ class Home extends Component {
                     Bukhara proves to be, without a doubt, the mother of all authentic Indian food experiences. The signature (and massive) hot naans and malai kebabs join the slow-cooked dal bukhara in taking your palate on a journey that will delight it. You’re also encouraged to eat with your hands within the earthy and rustic interiors. Be sure to make a reservation.</p>                
                     </section>
                     <br></br>
-                    <section>
+                    <section className="sec">
                     <h3>Rajinder Da Dhaba</h3>
                     <br></br>
                     <p>
@@ -35,7 +35,7 @@ class Home extends Component {
                     </p>                
                     </section>
                     <br></br>
-                    <section>
+                    <section className="sec">
                     <h3>Karim's</h3>
                     <br></br>
                     <p>
@@ -44,7 +44,7 @@ class Home extends Component {
                     </p>                
                     </section>
                     <br></br>
-                    <section>
+                    <section className="sec">
                     <h3>Sandoz</h3>
                     <br></br>
                     <p>
