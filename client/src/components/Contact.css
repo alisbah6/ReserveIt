@@ -1,0 +1,68 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+}
+.heading-contact{
+    padding-top: 120px;
+    font-size: xx-large;
+    text-align: center;
+}
+.container-content{
+    margin: 0px auto;
+    max-width: 100%;
+    background: white;
+}
+.contact-deatils{
+    margin: 0px auto;
+    max-width: 80%;
+}
+.contactInfo{
+    margin: 0px auto;
+    max-width: 60%;
+    float: left;
+    padding: 60px;
+}
+.box-one
+{   height: 100px;
+    width: 400px;
+    background-color: rgb(255, 255, 255);
+    top: 70%;
+    left: 70%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    
+}
+.box-two
+{   height: 350px;
+    width: 400px;
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    right: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 5px 10px 0px;
+    text-align: center;
+    border-color: black;
+}
+.feedInfo{
+    margin: 0px auto;
+    max-width: 60%;
+    float: right;
+    padding: 40px;
+    height: 20vh;
+}
+.feed{
+    height: 10%;
+    width: 80%;
+    margin: 10px;
+}
+.info{
+    height: 30%;
+    width: 80%;
+    margin-top: 10px;
+}
+.send{
+    margin-top: 10px;
+    font-size: large;
+    border-radius: 2rem;
+    padding: 7px;   
+}
