@@ -7,7 +7,6 @@ function Menu() {
   return (
     <body>
       <Navbar />
-      <br/>
       <div className="nav-hotel">
             <div className="hotel"><a className="tag" href="#Aslamchicken">Aslam chicken</a></div>
             <div className="hotel"><a className="tag" href="#Bukhara">Bukhara</a></div>
@@ -18,7 +17,6 @@ function Menu() {
             <div className="hotel"><a className="tag" href="#Sandoz">Sandoz</a></div>
             <div className="hotel"><a className="tag" href="#Varq ">Varq</a></div>
         </div>
-        <div className='menu-text'>Menu</div>
       <section id='Aslamchicken' className='main'>
       <div className="container-menu-top">
             

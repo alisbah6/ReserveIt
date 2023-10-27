@@ -39,19 +39,6 @@
     color: white;
     background:blue;
 }
-.container-menu-top{
-    margin: 20px auto;
-    max-width: 90%;
-    height: 80vh;
-    border-radius: 10px;
-    background: whitesmoke;
-    box-shadow: 0px 0px 20px black;
-}
-.menu-text{
-    text-align: center;
-    font-size: 100px;
-    margin-top: 150px;
-}
 
 .container-menu{
     margin: 20px auto;
@@ -68,37 +55,9 @@
 
 }
 
-#Bukhara {
-    height: 80vh;
-    background-color:aqua;
-}
-
-#Gulati {
-    height: 80vh;
-    background-color:aliceblue;
-}
 
 #Karim {
     height: 80vh;
     background-color:antiquewhite;
 }
 
-#Rajindedadhaba {
-    height: 80vh;
-    background-color:bisque;
-}
-
-#Sagarratna {
-    height: 80vh;
-    background-color:black;
-}
-
-#Sandoz {
-    height: 80vh;
-    background-color:blueviolet;
-}
-
-#Varq {
-    height: 80vh;
-    background-color:blue;
-}
