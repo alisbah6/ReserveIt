@@ -3,9 +3,19 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import './Menu.css';
 
+document.querySelectorAll('nav a')
+  .forEach(e => e.addEventListener('click', _ => change(e.dataset.id)))
+
+
+function change(n) {
+  let panels = document.querySelectorAll('main div')
+  panels.forEach(p => p.classList.remove('active'))
+  panels[n - 1].classList.add('active')
+}
+
 function Menu() {
   return (
-    <body>
+    <div>
       <Navbar />
       <div className="nav-hotel">
         <div className="hotel"><a className="tag" href="#Aslamchicken">Aslam chicken</a></div>
@@ -164,7 +174,7 @@ function Menu() {
         </div>
       </section>
       <Footer />
-    </body>
+    </div>
   )
 }
 

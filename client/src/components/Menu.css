@@ -35,10 +35,11 @@
     text-decoration: none;
     font-weight: bold;
 }
-.hotel .tag:hover {
+.hotel .tag:hover{
     color: white;
-    background:blue;
+    background-color:blue;
 }
+
 
 .main{
     padding-top: 150px;
