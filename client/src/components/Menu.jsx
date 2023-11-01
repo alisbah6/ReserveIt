@@ -93,8 +93,6 @@ function Menu() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className='main-main-menu'>
             <h1 className='menu-head'>MEAL COMBO</h1>
               <div className='main-menu-1'>
                 <div className='Breakfast_Combos'>
@@ -160,12 +158,10 @@ function Menu() {
               </div>
             </div>
           </div>
-
         </div>
       </section>
       <section id='Sandoz' className='main'>
         <div className="container-menu">
-
         </div>
       </section>
       <section id='Varq' className='main'>
