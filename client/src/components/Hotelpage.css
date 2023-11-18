@@ -56,4 +56,10 @@ h1{
 .tablesetting{
     height: 77vh;
     width: 100%;
+    cursor: pointer;
+}
+.tablesetting-bukhara{
+    height: 75vh;
+    width: 100%;
+    cursor: pointer;
 }

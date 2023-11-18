@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { data,tableset } from './Restraunts';
 import './Hotelpage.css';
+import Table from '../assets/Table1.png';
 import { Link, useParams } from 'react-router-dom';
 
 function Gulati() {
@@ -28,6 +29,11 @@ function Gulati() {
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
+              <div>
+                <button className='tablesetting-bukhara'>
+                <img src={Table} className='tablesetting-bukhara'/>
+                </button>
+              </div>
               {branches.map((item, index) => {
                 return (
                   <div className='container-desc' key={index}>
@@ -37,8 +43,7 @@ function Gulati() {
                     Hours:{item.hr}
                     <br/>
                     Contact:{item.ph}
-                    </p>
-                    yaha image lagani h 
+                    </p> 
                   </div>
                 )
               })}
