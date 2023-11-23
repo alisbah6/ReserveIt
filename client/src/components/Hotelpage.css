@@ -53,3 +53,13 @@ h1{
     margin-left: 15px;
     font-size: 20px;
 }
+.tablesetting{
+    height: 77vh;
+    width: 100%;
+    cursor: pointer;
+}
+.tablesetting-bukhara{
+    height: 75vh;
+    width: 100%;
+    cursor: pointer;
+}
