@@ -6,7 +6,7 @@ async function connetDb(){
 
     try {
         
-        await mongoose.connect(URL);
+        await mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true});
         console.log("connected to database");
 
     } catch (error) {
