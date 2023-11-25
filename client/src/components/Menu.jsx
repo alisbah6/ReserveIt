@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import './Menu.css';
+import { useParams } from 'react-router-dom';
 
 document.querySelectorAll('nav a')
   .forEach(e => e.addEventListener('click', _ => change(e.dataset.id)))
@@ -14,6 +15,9 @@ function change(n) {
 }
 
 function Menu() {
+  const params=useParams();
+  const seats=params.seats;
+  console.log(seats);
   return (
     <div>
       <Navbar />

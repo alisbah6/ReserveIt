@@ -22,7 +22,6 @@ function Bukhara() {
     person=prompt(" ");
     let result=window.confirm ("Do You Confirm "+person+" seats");
     if(result===true){
-      navigate('/Menu');
       totalno=totalseats-person;
     }
     totalseats=totalno;
