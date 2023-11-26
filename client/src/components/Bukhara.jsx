@@ -51,7 +51,7 @@ function Bukhara() {
               <h2>{item.name}</h2>
               <div>
                 <button className='tablesetting-bukhara' onClick={seatno}>
-                <img src={Table} className='tablesetting-bukhara'/>
+                <img src={Table} alt='' className='tablesetting-bukhara'/>
                 </button>
                 <p className='loc'> Total No. Of Seats Available {totalseats}</p>
               </div>

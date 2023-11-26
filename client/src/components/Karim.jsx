@@ -55,7 +55,7 @@ function Karim() {
               <h2>{item.name}</h2>
               <div>
                 <button className='tablesetting'>
-                <img src={Table} className='tablesetting' onClick={seatno}/>
+                <img src={Table} alt='' className='tablesetting' onClick={seatno}/>
                 </button>
                 <p className='loc'> Total No. Of Seats Available {totalseats}</p>
               </div>

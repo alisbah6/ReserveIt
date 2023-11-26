@@ -2,7 +2,6 @@ import React from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import './Menu.css';
-import { useParams } from 'react-router-dom';
 
 document.querySelectorAll('nav a')
   .forEach(e => e.addEventListener('click', _ => change(e.dataset.id)))
@@ -15,9 +14,6 @@ function change(n) {
 }
 
 function Menu() {
-  const params = useParams();
-  const seats = params.seats;
-  console.log(seats);
   return (
     <div>
       <Navbar />
@@ -29,12 +25,12 @@ function Menu() {
         <div className="hotel"><a className="tag" href="#Rajinderdadhaba">Rajinder Da Dhaba</a></div>
         <div className="hotel"><a className="tag" href="#Sagarratna">Sagar Ratna</a></div>
         <div className="hotel"><a className="tag" href="#Sandoz">Sandoz</a></div>
-        <div className="hotel"><a className="tag" href="#Varq ">Varq</a></div>
+        <div className="hotel"><a className="tag" href="#Varq">Varq</a></div>
       </div>
       <section id='Aslamchicken' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
-            <div className='main-main-menu'>
+          <div className='main-main-menu'>
               <h1 className='menu-head'>TANDOORI</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
@@ -220,7 +216,7 @@ function Menu() {
               </div>
             </div>
           </div>
-        </div>
+        </div>  
       </section>
       <section id='Bukhara' className='main'>
         <div className="container-menu">
