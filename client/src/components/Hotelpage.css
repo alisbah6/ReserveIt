@@ -20,13 +20,11 @@
 
 .branch-container {
     width: 30vh;
-    height: 100vh;
     border-radius: 10px;
     box-shadow: -10px 0px 40px rgba(8, 7, 16, 0.6);
 }
 .details-container {
     width: 145vh;
-    height: 100vh;
     border-radius: 10px;
     box-shadow: 10px 0px 40px rgba(8, 7, 16, 0.6);
 }

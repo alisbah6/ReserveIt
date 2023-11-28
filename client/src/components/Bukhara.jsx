@@ -22,7 +22,6 @@ function Bukhara() {
     person=prompt(" ");
     let result=window.confirm ("Do You Confirm "+person+" seats");
     if(result===true){
-      navigate('/Menu');
       totalno=totalseats-person;
     }
     totalseats=totalno;
@@ -52,7 +51,7 @@ function Bukhara() {
               <h2>{item.name}</h2>
               <div>
                 <button className='tablesetting-bukhara' onClick={seatno}>
-                <img src={Table} className='tablesetting-bukhara'/>
+                <img src={Table} alt='' className='tablesetting-bukhara'/>
                 </button>
                 <p className='loc'> Total No. Of Seats Available {totalseats}</p>
               </div>
