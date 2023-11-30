@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { data,tableset } from './Restraunts';
+import { data, tableset } from './Restraunts';
 import './Hotelpage.css';
 import Table from '../assets/Table1.png';
-import { Link, useParams,useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
-var person;
-var totalseats=52;
+var totalseats = 52;
 var totalno;
 function Sandoz() {
   const params = useParams();
@@ -15,21 +14,24 @@ function Sandoz() {
   const resturant = data.filter(res => res.id === id);
   const bname = params.bname;
   const branches = tableset.filter(branch => branch.bname === bname);
-  const navigate=useNavigate();
-  const seatno=()=>{
-    alert ("How many seats do you want \n");
-    person=prompt(" ");
-    let result=window.confirm ("Do You Confirm "+person+" seats");
-    if(result===true){
-      totalno=totalseats-person;
+  const navigate = useNavigate();
+  const [seats, setseats] = useState();
+  const handlesubmit = () => {
+    const result = window.confirm(`Do you Confirm ${seats} seats`);
+    if (result === true) {
+      totalno = totalseats - seats;
     }
-    totalseats=totalno;
-    if(totalseats>=0){
-      navigate('/Menu');
+    totalseats = totalno;
+    if (totalseats >= 0) {
+      navigate(`/Menu/${seats}`);
     }
-    else{
+    else {
       alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
     }
+
+  }
+  const seatno = () => {
+
   }
 
   return (
@@ -40,7 +42,7 @@ function Sandoz() {
         return (
           <div className='container' key={index}>
             <div className="branch-container">
-              <div className='branch'>
+            <div className='branch'>
                 <p>Branches</p>
                 <ul>
                   <Link to="/Sandoz/2/ConnaughtPlace"><li>{item.b1}</li></Link>
@@ -53,25 +55,36 @@ function Sandoz() {
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <div>
-                <button className='tablesetting' onClick={seatno} >
-                <img src={Table} className='tablesetting' alt=''/>
-                </button>
-                <p className='loc'> Total No. Of Seats Available {totalseats}</p>
-              </div>
+              <button className='tablesetting' onClick={seatno} >
+                <img src={Table} className='tablesetting' alt='' />
+              </button>
               {branches.map((item, index) => {
                 return (
                   <div className='container-desc' key={index}>
                     <p className='loc'>
-                    Location:{item.loc}
-                    <br/>
-                    Hours:{item.hr}
-                    <br/>
-                    Contact:{item.ph}
+                      Location:{item.loc}
+                      <br />
+                      Hours:{item.hr}
+                      <br />
+                      Contact:{item.ph}
                     </p>
                   </div>
                 )
               })}
+              <a className="popup-btn" href="#popup-box">
+                Click to Open Popup Box !
+              </a>
+              <div id="popup-box" class="modal">
+                <div class="popup">
+                  <form onSubmit={(e) => e.preventDefault()}>
+                    <p>How Many seats Do you want?</p>
+                    <input type='number' id='seats' onChange={(e) => setseats(e.target.value)} ></input>
+                    <button onClick={() => handlesubmit()}>Confirm</button>
+                  </form>
+                  <p className='loc'> Total No. Of Seats Available {totalseats}</p>
+                  <a href="#popup-close" >Close</a>
+                </div>
+              </div>
             </div>
           </div>
         )

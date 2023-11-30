@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { data, tableset } from './Restraunts';
@@ -33,6 +33,7 @@ function AslamChicken() {
   const seatno = () => {
 
   }
+
   return (
     <div>
       <Navbar />
@@ -51,14 +52,9 @@ function AslamChicken() {
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <div>
-                <form onSubmit={(e)=>e.preventDefault()}>
-                  <p>How Many seats Do you want?</p>
-                  <input type='number' id='seats' onChange={(e) => setseats(e.target.value)} ></input>
-                  <button onClick={() => handlesubmit()}>Confirm</button>
-                </form>
-                <p className='loc'> Total No. Of Seats Available {totalseats}</p>
-              </div>
+              <button className='tablesetting' onClick={seatno} >
+                <img src={Table} className='tablesetting' alt='' />
+              </button>
               {branches.map((item, index) => {
                 return (
                   <div className='container-desc' key={index}>
@@ -72,6 +68,20 @@ function AslamChicken() {
                   </div>
                 )
               })}
+              <a className="popup-btn" href="#popup-box">
+                Click to Open Popup Box !
+              </a>
+              <div id="popup-box" class="modal">
+                <div class="popup">
+                  <form onSubmit={(e) => e.preventDefault()}>
+                    <p>How Many seats Do you want?</p>
+                    <input type='number' id='seats' onChange={(e) => setseats(e.target.value)} ></input>
+                    <button onClick={() => handlesubmit()}>Confirm</button>
+                  </form>
+                  <p className='loc'> Total No. Of Seats Available {totalseats}</p>
+                  <a href="#popup-close" >Close</a>
+                </div>
+              </div>
             </div>
           </div>
         )
