@@ -37,11 +37,6 @@ function AslamChicken() {
     <div>
       <Navbar />
       <br></br>
-      <form>
-        <p>How Many seats Do you want?</p>
-        <input type='number' id='seats' onChange={(e) => setseats(e.target.value)} ></input>
-        <button onClick={() => handlesubmit()}>Confirm</button>
-      </form>
       {resturant.map((item, index) => {
         return (
           <div className='container' key={index}>
@@ -62,9 +57,6 @@ function AslamChicken() {
                   <input type='number' id='seats' onChange={(e) => setseats(e.target.value)} ></input>
                   <button onClick={() => handlesubmit()}>Confirm</button>
                 </form>
-                <button className='tablesetting' onClick={seatno} >
-                  <img src={Table} className='tablesetting' alt='' />
-                </button>
                 <p className='loc'> Total No. Of Seats Available {totalseats}</p>
               </div>
               {branches.map((item, index) => {

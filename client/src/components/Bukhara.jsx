@@ -8,8 +8,6 @@ import { Link, useParams,useNavigate } from 'react-router-dom';
 
 var totalseats=52;
 var totalno;
-var person;
-
 function Bukhara() {
   const params = useParams();
   const id = params.id;
@@ -49,12 +47,9 @@ function Bukhara() {
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <div>
-                <button className='tablesetting-bukhara' onClick={seatno}>
-                <img src={Table} alt='' className='tablesetting-bukhara'/>
-                </button>
-                <p className='loc'> Total No. Of Seats Available {totalseats}</p>
-              </div>
+              <button className='tablesetting' onClick={seatno} >
+                <img src={Table} className='tablesetting' alt='' />
+              </button>
               {branches.map((item, index) => {
                 return (
                   <div className='container-desc' key={index}>
