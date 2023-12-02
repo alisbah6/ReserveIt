@@ -67,18 +67,18 @@ function RajindwrDaDhaba() {
                   </div>
                 )
               })}
-              <a className="popup-btn" href="#popup-box">
-                Click to Open Popup Box !
-              </a>
-              <div id="popup-box" class="modal">
-                <div class="popup">
+              <a className="popup-open" href="#popup-open">Seat Reserve</a>
+              <div id="popup-open" className="modal">
+                <div className="popup">
                   <form onSubmit={(e) => e.preventDefault()}>
-                    <p>How Many seats Do you want?</p>
-                    <input type='number' id='seats' onChange={(e) => setseats(e.target.value)} ></input>
-                    <button onClick={() => handlesubmit()}>Confirm</button>
+                    <p className='want'>How Many seats Do you want?</p>
+                    <div classname="buttonIn">
+                      <input type="number" className="seats-inbox" id='seats' onChange={(e) => setseats(e.target.value)} ></input>
+                      <button type="submit" className='seat-button' onClick={() => handlesubmit()}>Confirm</button>
+                    </div>
                   </form>
-                  <p className='loc'> Total No. Of Seats Available {totalseats}</p>
-                  <a href="#popup-close" >Close</a>
+                  <p className='available'> Total No. Of Seats Available {totalseats}</p>
+                  <a className="popup-close" href="#popup-close">x</a>
                 </div>
               </div>
             </div>
