@@ -53,11 +53,6 @@ h1{
     width: 100%;
     cursor: pointer;
 }
-.tablesetting-bukhara{
-    height: 75vh;
-    width: 100%;
-    cursor: pointer;
-}
 
 
 
@@ -69,9 +64,6 @@ h1{
     border-radius: 3px;
 }
 .modal {
-    align-items: center;
-    display: flex;
-    justify-content: center; 
     position: absolute;
     top: 0;
     bottom: 0;
