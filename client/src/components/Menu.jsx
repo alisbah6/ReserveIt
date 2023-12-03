@@ -225,7 +225,309 @@ function Menu() {
       </section>
       <section id='Gulati' className='main'>
         <div className="container-menu">
+          <div className='inside-container'>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>SOUPS</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHICKEN SHORBA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHICKEN CLEAR SOUP</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> HARYALI SHORBA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CREAM OF TOMATO</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CREAM OF MUSHROOM</label>
+                  </div>
+                </div>
+                <div className="amount">
+                  <div className='text-menu'>
+                    <label>₹320/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹320/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹320/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹320/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹320/-</label>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+              <h1 className='menu-head'>SALAD AUR DAHI KA DAUR</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PALAK PATTA CHAAT</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PINEAPPLE RAITA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> RAITA OF YOUR CHOICE<br/>&nbsp;&nbsp;&nbsp;&nbsp;(MINT,BOONDI,POTATO,CUCUMBER,MIX VEG,BOORANI)</label>
+                  </div>
 
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PLAIN RAITA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PLAIN CURD</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> KHATTI MEETHI DAHI</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> GREEN SALAD</label>
+                  </div>
+                </div>
+                <div className="amount">
+                  <div className='text-menu'>
+                    <label>₹335/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹335/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹315/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label></label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹295/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹285/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹295/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹270/-</label>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+              <h1 className='menu-head'>BEVERAGES</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHAACH</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> LASSI<br/>&nbsp;&nbsp;&nbsp;&nbsp;(MANGO,SWEET,SALTED,GULKAND,<br/>&nbsp;&nbsp;&nbsp;&nbsp;PEANUT BUTTER BANANA)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> AAM KA PANNA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> JALJEERA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> NIMBU SHIKANJI</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PHALSA KI SHIKANJI</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> FRESH LIME SODA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> LEMON ICED TEA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PEACH ICED TEA</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> MASALA COKE/ THUMPS UP/ DIET COKE/ SPRITE </label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> MOCKTAILS<br/>&nbsp;&nbsp;&nbsp;&nbsp;(PAAN GULKAND MOJITO /VIRGIN MOJITO/ <br/>&nbsp;&nbsp;&nbsp;&nbsp;BLUE LAGOON/ FRUIT PUNCH/<br/>&nbsp;&nbsp;&nbsp;&nbsp;MASALA VIRGIN MOJITO/ TROPICAL FIZZ)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHOCOLATE OREO SHAKE</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> THANDAI</label>
+                  </div>
+                </div>
+                <div className="amount">
+                  <div className='text-menu'>
+                    <label>₹215/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹175/-</label>
+                  </div>
+                  <br/>
+                  <br/>
+                  <div className='text-menu'>
+                    <label>₹175/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹175/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹175/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹255/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹199/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹199/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹199/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹170/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹225/-</label>
+                  </div>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <div className='text-menu'>
+                    <label>₹225/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹175/-</label>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>ASLAM SPECIAL DAHI BUTTER GRAVY</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHICKEN  (FULL)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHICKEN (HALF)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHICKEN (QUARTER)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHICKEN KABAB(FULL)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> CHIKEN KABAB(HALF)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> FISH(FULL)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> FISH(HALF)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> FISH (QUARTER)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PANEER(FULL)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> PANEER(HALF)</label>
+                  </div>
+                  <div className='text-menu'>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <label> EXTRA GRAVY</label>
+                  </div>
+                </div>
+                <div className="amount">
+                  <div className='text-menu'>
+                    <label>₹550/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹280/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹190/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹300/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹180/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹730/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹400/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹250/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹450/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹250/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label>₹50/-</label>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section id='Karim' className='main'>
@@ -4343,7 +4645,7 @@ function Menu() {
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
-                    <label> BADAM KA HALWA, KHURMANI KA MEETHA <br /> &nbsp;&nbsp;&nbsp;&nbsp;MILLE-FEUILE</label>
+                    <label> BADAM KA HALWA, KHURMANI KA MEETHA<br/>&nbsp;&nbsp;&nbsp;&nbsp;MILLE-FEUILE</label>
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
@@ -4376,6 +4678,9 @@ function Menu() {
                   </div>
                   <div className='text-menu'>
                     <label>₹800/-</label>
+                  </div>
+                  <div className='text-menu'>
+                    <label></label>
                   </div>
                   <div className='text-menu'>
                     <label>₹750/-</label>
