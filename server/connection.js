@@ -1,25 +1,13 @@
-import {mongoose } from 'mongoose';
-const http = require("http").Server(app);
-const URL = "mongodb+srv://alisbahhina:XLIBbcIE0dsWDsSp@cluster0.rd3md3x.mongodb.net/";
+const mongoose = require("mongoose");
 
-async function connetDb(){
+const URL =
+  "mongodb+srv://alisbahhina:XLIBbcIE0dsWDsSp@cluster0.rd3md3x.mongodb.net/";
 
-    try {
-        
-        await mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true});
-        console.log("connected to database");
-
-    } catch (error) {
-        console.log(error);
-    }
-
-    http.listen(4000, function () {
-        console.log("Server is running on Port 4000 ");
-      });
+async function connetDb() {
+  return mongoose.connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
 }
 
-
-export default connetDb;
-
-
-connetDb();
+module.exports = connetDb;
