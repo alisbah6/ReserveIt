@@ -12,7 +12,7 @@ function Navbar() {
             <ul className="nav-menu">
                 <NavLink to="/" className="log"><i class="fa-solid fa-house"></i>Home</NavLink>
                 <NavLink to="/Booking" className="log"><i class="fa-solid fa-utensils"></i>Booking</NavLink>
-                <NavLink to="/Menu" className="log"><i class="fa-solid fa-bars"></i>Menu</NavLink>
+                <NavLink to="/Menu/0" className="log"><i class="fa-solid fa-bars"></i>Menu</NavLink>
                 <NavLink to="/Contact" className="log"><i class="fa-solid fa-users"></i>Contact Us</NavLink>
                 <form>
                     <div class="search-box">

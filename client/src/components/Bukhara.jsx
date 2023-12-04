@@ -67,7 +67,7 @@ function Bukhara() {
                   </div>
                 )
               })}
-              <a className="popup-open" href="#popup-open">Seat Reserve</a>
+              <a className="popup-open" href="#popup-open">Seat Reservation</a>
               <div id="popup-open" className="modal">
                 <div className="popup">
                   <form onSubmit={(e) => e.preventDefault()}>
