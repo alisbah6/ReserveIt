@@ -1,22 +1,16 @@
-import {mongoose } from 'mongoose';
-
+const mongoose = require('mongoose');
 const URL = "mongodb+srv://alisbahhina:XLIBbcIE0dsWDsSp@cluster0.rd3md3x.mongodb.net/";
 
-async function connetDb(){
-
+async function connetDb() {
     try {
-        
-        await mongoose.connect(URL,{useNewUrlParser:true,useUnifiedTopology:true});
+
+        await mongoose.connect(URL);
         console.log("connected to database");
 
     } catch (error) {
         console.log(error);
     }
-
 }
 
-
-export default connetDb;
-
-
+// export default connetDb;
 connetDb();

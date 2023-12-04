@@ -7,15 +7,12 @@
 
 .container {
     display: grid;
-    grid-template-columns: repeat(2,auto);
-    padding-top: 80px;
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    grid-template-columns: repeat(2, auto);
+    padding: 80px 20px 40px;
     grid-gap: 10px;
     margin: 20px auto;
     max-width: 90%;
-    
+
 }
 
 .branch-container {
@@ -23,41 +20,145 @@
     border-radius: 10px;
     box-shadow: -10px 0px 40px rgba(8, 7, 16, 0.6);
 }
+
 .details-container {
     width: 145vh;
     border-radius: 10px;
     box-shadow: 10px 0px 40px rgba(8, 7, 16, 0.6);
 }
-.branch{
+
+.branch {
     padding: 25px;
 }
-li{
+
+li {
     list-style: none;
     padding: 15px;
 }
-li:hover{
+
+li:hover {
     border-radius: 2rem;
     background-color: blue;
 }
-h1{
+
+h1 {
     padding: 10px;
 }
-.desc{
-    padding-left:15px;
+
+.desc {
+    padding-left: 15px;
     font-size: larger;
     padding-right: 10px;
 }
-.loc{
-    margin-left: 15px;
-    font-size: 17px;
+
+
+.buttonIn {
+    width: 300px;
+    position: relative;
 }
-.tablesetting{
+
+.seats-inbox {
+    margin-left: 15px;
+    padding: 0px;
+    float: left;
+    width: 80%;
+    outline: none;
+    height: 30px;
+    border-radius: 5px 0px 0px 5px;
+    font-size: large;
+}
+
+.seat-button {
+    border-radius: 0px 5px 5px 0px;
+    padding: 5px;
+    float: left;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+    color: white;
+    background-color: #1e90ff;
+}
+
+
+.want {
+    font-size: xx-large;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.loc {
+    font-size: large;
+}
+
+
+.available {
+    padding-top: 50px;
+    font-size: medium;
+}
+
+.tablesetting {
     height: 77vh;
     width: 100%;
     cursor: pointer;
 }
-.tablesetting-bukhara{
-    height: 75vh;
-    width: 100%;
-    cursor: pointer;
+
+
+
+/*POPUP*/
+
+.popup-open {
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    font-size: medium;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 3px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 80%;
+}
+
+.popup-open:hover{
+    background-color: #1e90ff;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 155%;
+    transition: all 0.4s;
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.3);
+
+}
+
+.popup {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: white;
+    width: 500px;
+    padding: 30px 30px;
+    border-radius: 10px;
+}
+
+.modal:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-close {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    color: #fe0606;
+    text-decoration: none;
+    font-size: 30px;
 }
