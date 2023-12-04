@@ -4,10 +4,6 @@ const bcrypt = require("bcrypt");
 
 /*  function to login:
 
-@params:
-    email: string
-    password: string
-
 status:
 200: user found , returns the data of the current user,
 400: for bad request , if email or password is missing,
