@@ -119,20 +119,7 @@ const signup = async (req, res) => {
     }
 };
 
-const getUserByID = async (req, res) => {
-    const { id } = req.params;
-
-    console.log(id);
-
-    const user = await User.find({ _id: id });
-
-    if (!user) {
-        res.status(400).json({ message: "no user found for the id" });
-    }
-    return res.status(200).json(user);
-};
 module.exports = {
     login,
     signup,
-    getUserByID,
 };
