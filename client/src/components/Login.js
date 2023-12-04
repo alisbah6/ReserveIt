@@ -8,8 +8,8 @@ function Login() {
                 <div className="box">
                         <img className="center" src="https://cdn.discordapp.com/attachments/947184208491733032/1155862457751982151/key_1.png" alt="Avatar"></img>
                         <form>
-                        <label htmlFor='username' className="label" for="username">Username</label>
-                        <input className="input" type="text" name='username' autoComplete='off' placeholder="Username" id="username"></input>
+                        <label htmlFor='email' className="label" for="email">Email</label>
+                        <input className="input" type="text" name='email' autoComplete='off' placeholder="Email Id" id="username"></input>
                         <label className="label" for="password">Password</label>
                         <input className="input" type="password" placeholder="Password" id="password"></input>
                         <button className="button">Log In</button>

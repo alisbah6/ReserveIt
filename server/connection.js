@@ -1,5 +1,5 @@
 import {mongoose } from 'mongoose';
-
+const http = require("http").Server(app);
 const URL = "mongodb+srv://alisbahhina:XLIBbcIE0dsWDsSp@cluster0.rd3md3x.mongodb.net/";
 
 async function connetDb(){
@@ -13,6 +13,9 @@ async function connetDb(){
         console.log(error);
     }
 
+    http.listen(4000, function () {
+        console.log("Server is running on Port 4000 ");
+      });
 }
 
 
