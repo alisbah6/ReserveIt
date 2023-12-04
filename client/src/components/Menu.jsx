@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import './Menu.css';
@@ -14,6 +14,17 @@ function change(n) {
 }
 
 function Menu() {
+  const [item, setItem] = useState([]);
+  const getItem = (e) => {
+    const { value, checked } = e.target
+    console.log(`${value} is ${checked}`);
+    if (checked) {
+      setItem([...item, value]);
+    }
+    else {
+      setItem(item.filter((e) => e !== value));
+    }
+  }
   return (
     <div>
       <Navbar />
@@ -35,39 +46,40 @@ function Menu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKEN (FULL)"
+                      onChange={(e) => { getItem(e) }}></input>
                     <label> CHICKEN (FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo" onChange={(e) => { getItem(e) }}></input>
                     <label> CHICKEN (HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKEN (HALF)" onChange={(e) => { getItem(e) }}></input>
                     <label> CHICKEN KABAB (FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKEN KEBAB" onChange={(e) => { getItem(e) }}></input>
                     <label> CHIKEN KABAB (HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_FISH(FULL)" onChange={(e) => { getItem(e) }}></input>
                     <label> FISH (FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_FISH (HALF)" onChange={(e) => { getItem(e) }}></input>
                     <label> FISH (HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_FISH(QUARTER)" onChange={(e)=>{getItem(e)}}></input>
                     <label> FISH (QUARTER)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_PANEERTIKKA" onChange={(e)=>{getItem(e)}}></input>
                     <label> PANEER TIKKA(FUL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_PANEERTIKKA(HALF)" onChange={(e)=>{getItem(e)}}></input>
                     <label> PANEER TIKKA (HALF)</label>
                   </div>
                 </div>
@@ -107,11 +119,11 @@ function Menu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_WATERBOTTLE" onChange={(e)=>{getItem(e)}}></input>
                     <label> WATER BOTTLE</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_KULADKHEER" onChange={(e)=>{getItem(e)}}></input>
                     <label> KULAD KHEER</label>
                   </div>
                 </div>
@@ -132,47 +144,47 @@ function Menu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKEN(FULL)"onChange={(e)=>{getItem(e)}}></input>
                     <label> CHICKEN  (FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKEN(HALF)"onChange={(e)=>{getItem(e)}}></input>
                     <label> CHICKEN (HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKEN(QUARTER)"onChange={(e)=>{getItem(e)}}></input>
                     <label> CHICKEN (QUARTER)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKENKABAB(FULL)" onChange={(e)=>{getItem(e)}}></input>
                     <label> CHICKEN KABAB(FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_CHICKENKABAB(HALF)" onChange={(e)=>{getItem(e)}}></input>
                     <label> CHIKEN KABAB(HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_FISH(FULL)" onChange={(e)=>{getItem(e)}}></input>
                     <label> FISH(FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_FISH(HALF)" onChange={(e)=>{getItem(e)}}></input>
                     <label> FISH(HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_FISH(QUARTER)" onChange={(e)=>{getItem(e)}}></input>
                     <label> FISH (QUARTER)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_PANNER(FULL)" onChange={(e)=>{getItem(e)}}></input>
                     <label> PANEER(FULL)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_PANEER(HALF)" onChange={(e)=>{getItem(e)}}></input>
                     <label> PANEER(HALF)</label>
                   </div>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo_EXTRAGRAVY" onChange={(e)=>{getItem(e)}}></input>
                     <label> EXTRA GRAVY</label>
                   </div>
                 </div>
@@ -284,7 +296,7 @@ function Menu() {
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
-                    <label> RAITA OF YOUR CHOICE<br/>&nbsp;&nbsp;&nbsp;&nbsp;(MINT,BOONDI,POTATO,CUCUMBER,MIX VEG,BOORANI)</label>
+                    <label> RAITA OF YOUR CHOICE<br />&nbsp;&nbsp;&nbsp;&nbsp;(MINT,BOONDI,POTATO,CUCUMBER,MIX VEG,BOORANI)</label>
                   </div>
 
                   <div className='text-menu'>
@@ -342,7 +354,7 @@ function Menu() {
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
-                    <label> LASSI<br/>&nbsp;&nbsp;&nbsp;&nbsp;(MANGO,SWEET,SALTED,GULKAND,<br/>&nbsp;&nbsp;&nbsp;&nbsp;PEANUT BUTTER BANANA)</label>
+                    <label> LASSI<br />&nbsp;&nbsp;&nbsp;&nbsp;(MANGO,SWEET,SALTED,GULKAND,<br />&nbsp;&nbsp;&nbsp;&nbsp;PEANUT BUTTER BANANA)</label>
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
@@ -378,7 +390,7 @@ function Menu() {
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
-                    <label> MOCKTAILS<br/>&nbsp;&nbsp;&nbsp;&nbsp;(PAAN GULKAND MOJITO /VIRGIN MOJITO/ <br/>&nbsp;&nbsp;&nbsp;&nbsp;BLUE LAGOON/ FRUIT PUNCH/<br/>&nbsp;&nbsp;&nbsp;&nbsp;MASALA VIRGIN MOJITO/ TROPICAL FIZZ)</label>
+                    <label> MOCKTAILS<br />&nbsp;&nbsp;&nbsp;&nbsp;(PAAN GULKAND MOJITO /VIRGIN MOJITO/ <br />&nbsp;&nbsp;&nbsp;&nbsp;BLUE LAGOON/ FRUIT PUNCH/<br />&nbsp;&nbsp;&nbsp;&nbsp;MASALA VIRGIN MOJITO/ TROPICAL FIZZ)</label>
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
@@ -396,8 +408,8 @@ function Menu() {
                   <div className='text-menu'>
                     <label>₹175/-</label>
                   </div>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
                   <div className='text-menu'>
                     <label>₹175/-</label>
                   </div>
@@ -425,9 +437,9 @@ function Menu() {
                   <div className='text-menu'>
                     <label>₹225/-</label>
                   </div>
-                  <br/>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
+                  <br />
                   <div className='text-menu'>
                     <label>₹225/-</label>
                   </div>
@@ -4645,7 +4657,7 @@ function Menu() {
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
-                    <label> BADAM KA HALWA, KHURMANI KA MEETHA<br/>&nbsp;&nbsp;&nbsp;&nbsp;MILLE-FEUILE</label>
+                    <label> BADAM KA HALWA, KHURMANI KA MEETHA<br />&nbsp;&nbsp;&nbsp;&nbsp;MILLE-FEUILE</label>
                   </div>
                   <div className='text-menu'>
                     <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Breakfast_Combo"></input>
