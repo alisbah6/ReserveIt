@@ -56,13 +56,13 @@ function Contact() {
               <div className='box-two'>
                 <h4>Send Feedback/Message</h4>
                 <br />
-                <input className='feed' placeholder='Full Name'  onChange={(e)=>{ setName(e.target.value);}} />
+                <input className='feed' placeholder='Full Name' id="name" onChange={(e)=>{ setName(e.target.value);}} />
                 <br />
-                <input className='feed' placeholder='Email' onChange={(e)=>{setEmail(e.target.value);}} />
+                <input className='feed' placeholder='Email' id="email" onChange={(e)=>{setEmail(e.target.value);}} />
                 <br />
-                <input className='info' placeholder='Type your message' onChange={(e)=>{setMsg(e.target.value);}}/>
+                <input className='info' placeholder='Type your message' id="msg" onChange={(e)=>{setMsg(e.target.value);}}/>
                 <br />
-                <button className='send' onChange={submit}>Send</button>
+                <button className='send' onClick={submit}>Send</button>
               </div>
             </div>
           </div>

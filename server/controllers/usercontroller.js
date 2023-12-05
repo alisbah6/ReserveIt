@@ -1,5 +1,5 @@
 const User = require("../model/userSchema");
-const Feedback=require("../model/userSchema");
+const Feedback=require("../model/feedbackSchema");
 const bcrypt = require("bcrypt");
 
 /*  function to login:
