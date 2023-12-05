@@ -16,12 +16,12 @@ function Register() {
         try {
             // Make an API request to create a new user
             const response = await axios.post(
-                "http://localhost:4000/user/signup",
+                "http://localhost:3500/user/signup",{
                 name,
                 username,
                 email,
                 password,
-                confirmpassword,
+                confirmpassword,}
             );
 
             if (response.status === 201) {

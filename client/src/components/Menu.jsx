@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import './Menu.css';
-
+import axios from 'axios';
 document.querySelectorAll('nav a')
   .forEach(e => e.addEventListener('click', _ => change(e.dataset.id)))
 
@@ -25,6 +25,13 @@ function Menu() {
       setItem(item.filter((e) => e !== value));
     }
   }
+  // async function finalitem(e){
+  //   e.preventDefault();
+  //   const response=await axios.post("http://localhost:3500/user/menu",
+  //   {
+  //     item
+  //   })
+  // }
   return (
     <div>
       <Navbar />
@@ -4803,6 +4810,7 @@ function Menu() {
           </div>
         </div>
       </section>
+      {/* <button onClick={finalitem}>Book</button> */}
       <Footer />
     </div>
   )
