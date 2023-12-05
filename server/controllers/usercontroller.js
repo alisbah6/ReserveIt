@@ -1,5 +1,5 @@
 const User = require("../model/userSchema");
-
+const Feedback=require("../model/userSchema");
 const bcrypt = require("bcrypt");
 
 /*  function to login:
@@ -121,9 +121,39 @@ const signup = async (req, res) => {
     }
 
 };
+const feedback = async (req, res) => {
+    try {
+        const { name, email,msg } = req.body;
+
+        //validating the user data.
+        if (!name) {
+            return res.status(400).json({ message: "name is required" });
+        }
+        if (!email) {
+            return res.status(400).json({ message: "email is required" });
+        }
+        if (!msg) {
+            return res.status(400).json({ message: "message is required" });
+        }
+
+        const newUserFeedback = await Feedback.create({
+            name,
+            email: email,
+            msg,
+        });
+
+        if (newUserFeedback) {
+            return res.status(201).json(newUserFeedback);
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500);
+    }
+};
 
 module.exports = {
     login,
     signup,
     welcome,
+    feedback,
 };
