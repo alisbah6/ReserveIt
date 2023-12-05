@@ -1,12 +1,34 @@
 const express = require("express");
 const app = express();
-const http = require("http").Server(app);
 const cors = require("cors");
-app.use(cors());
 
 require("dotenv").config();
+const bodyParser = require('body-parser');
+
+
+app.use(cors());
+app.use(bodyParser());
+
+
 const connectDB = require("./connection");
 
-http.listen(4000, function () {
-  console.log("Server is running on Port 4000 ");
-});
+
+
+
+const userRoutes = require('./routes/userRoutes');
+
+app.use('/user' , userRoutes);
+
+
+const PORT = 3500;
+
+app.listen(PORT , async () => {
+  try{
+    await connectDB();
+    console.log(`server running on port ${PORT}`);
+    
+  }catch(err){
+    console.log("something went wrong ");
+    process.exit(1);
+  }
+})

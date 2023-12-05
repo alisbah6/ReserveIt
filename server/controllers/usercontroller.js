@@ -25,7 +25,7 @@ const login = async (req, res) => {
         }
 
         // finding user for the given email.
-        const user = await User.findOne({ emailID: email });
+        const user = await User.findOne({ email: email });
 
         if (!user) {
             return res.status(401).json({ message: "no user found for this email" });
@@ -43,6 +43,12 @@ const login = async (req, res) => {
         return res.status(500);
     }
 };
+
+const welcome = (req , res) =>{
+
+    res.status(200).json({message:"demo connection"});
+    
+}
 
 /* function to sign up for a new student
 
@@ -101,7 +107,7 @@ const signup = async (req, res) => {
         const newUser = await User.create({
             name,
             username,
-            emailID: email,
+            email: email,
             password: encryptedPassword,
             confirmpassword:encryptedPassword,
         });
@@ -113,9 +119,11 @@ const signup = async (req, res) => {
         console.log(err);
         return res.status(500);
     }
+
 };
 
 module.exports = {
     login,
     signup,
+    welcome
 };

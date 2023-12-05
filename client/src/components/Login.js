@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
     try {
       await axios
-        .get("http://localhost:4000/user/login", {
+        .get("http://localhost:3500/user/login", {
           params: {
             email,
             password,
@@ -23,6 +23,8 @@ function Login() {
             navigate("/");
           }
         });
+
+
     } catch (err) {
       if (err.request.status === 401) {
         alert(err.response.data.message);
