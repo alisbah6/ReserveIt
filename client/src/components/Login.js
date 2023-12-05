@@ -11,18 +11,21 @@ function Login() {
   async function submit(e) {
     e.preventDefault();
     try {
-      await axios
-        .get("http://localhost:4000/user/login", {
-          params: {
-            email,
-            password,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            navigate("/");
-          }
-        });
+      // await axios
+      //   .get("http://localhost:3500/user/welcome", {
+      //     params: {
+      //       email,
+      //       password,
+      //     },
+      //   })
+      //   .then((res) => {
+      //     if (res.status === 200) {
+      //       navigate("/");
+      //     }
+      //   });
+
+      axios.get('http://localhost:3500/user/welcome')
+      .then(res => console.log(res));
     } catch (err) {
       if (err.request.status === 401) {
         alert(err.response.data.message);

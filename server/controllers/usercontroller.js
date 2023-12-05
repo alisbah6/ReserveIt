@@ -44,6 +44,12 @@ const login = async (req, res) => {
     }
 };
 
+const welcome = (req , res) =>{
+
+    res.status(200).json({message:"demo connection"});
+    
+}
+
 /* function to sign up for a new student
 
 @param:
@@ -118,4 +124,5 @@ const signup = async (req, res) => {
 module.exports = {
     login,
     signup,
+    welcome
 };
