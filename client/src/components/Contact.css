@@ -3,10 +3,14 @@
     padding: 0px;
     scroll-behavior: smooth;
 }
+.bg{
+    background-color: pink;
+}
 .heading-contact{
     padding-top: 120px;
     font-size: xx-large;
     text-align: center;
+    background-color: pink;
 }
 .container-content{
     margin: 0px auto;
@@ -30,7 +34,7 @@
     top: 70%;
     left: 70%;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    
+    background-color: pink;    
 }
 .box-two
 {   height: 350px;
