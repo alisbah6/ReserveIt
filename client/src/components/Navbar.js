@@ -13,12 +13,12 @@ function Navbar() {
                 <NavLink to="/Booking" className="log"><i class="fa-solid fa-utensils"></i>Booking</NavLink>
                 <NavLink to="/Menu/0" className="log"><i class="fa-solid fa-bars"></i>Menu</NavLink>
                 <NavLink to="/Contact" className="log"><i class="fa-solid fa-users"></i>Contact Us</NavLink>
-                <form>
+                {/* <form>
                     <div class="search-box">
                         <button class="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
                         <input type="text" class="input-search" placeholder="Type to Search..."></input>
                     </div>
-                </form>
+                </form> */}
                 <div className="get-in">
                     {User === null ? <Link to='/Login' className='log'><i class="fa-solid fa-user"></i>Log In</Link> :
                         <>
