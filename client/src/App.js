@@ -14,6 +14,7 @@ import Varq from './components/Varq'
 import Gulati from './components/Gulati';
 import Sandoz from './components/Sandoz';
 import { Route,Routes } from 'react-router-dom';
+import FinalItem from './components/FinalItem';
 //import Tablesetting from './components/Tablesetting';
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
         <Route path='/AslamChicken/:id/:bname' element={<AslamChicken/>}/>
         <Route path='/Varq/:id/:bname' element={<Varq/>}/>
         <Route path='/Gulati/:id/:bname' element={<Gulati/>}/>
-
+        <Route path='/FinalItem' element={<FinalItem/>}/>
         {/* <Route path='/Tablesetting' element={<Tablesetting/>}/> */}
       </Routes>
     </div>

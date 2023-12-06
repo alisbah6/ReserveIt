@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
 import './Menu.css';
 // import axios from 'axios';
 document.querySelectorAll('nav a')
@@ -13,7 +14,9 @@ function change(n) {
   panels[n - 1].classList.add('active')
 }
 
+
 function Menu() {
+  const navigate=useNavigate();
   const [item, setItem] = useState([]);
   const getItem = (e) => {
     const { value, checked } = e.target
@@ -25,6 +28,11 @@ function Menu() {
       setItem(item.filter((e) => e !== value));
     }
   }
+
+function finalitem(){
+  // console.log(item);
+  navigate('/FinalItem',{state:{item:item}});
+}
   // async function finalitem(e){
   //   e.preventDefault();
   //   const response=await axios.post("http://localhost:3500/user/menu",
@@ -4810,7 +4818,7 @@ function Menu() {
           </div>
         </div>
       </section>
-      {/* <button onClick={finalitem}>Book</button> */}
+        <button onClick={finalitem}>Book</button>
       <Footer />
     </div>
   )

@@ -28,7 +28,7 @@ function Register() {
                 // User registration was successful
                 console.log("User registered successfully");
                 // Redirect or perform other actions as needed
-                navigate("/");
+                navigate("/",{state:{name:name}});
             }
         } catch (error) {
             // Handle registration errors

@@ -1,10 +1,9 @@
 import React from "react";
 import './Navbar.css';
-import { NavLink, Link} from "react-router-dom";
+import { NavLink, Link,} from "react-router-dom";
 import { Avatar } from "./Avatar";
 function Navbar() {
     const User=null;
-
     return (
         <nav className="Navbar-items">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,7 +24,8 @@ function Navbar() {
                         <>
                             <Avatar backgroundColor='#009dff' px='10px' py='9px' borderRadius='50%' color='white'><Link to="/User" style={{ color: "white", textDecoration: "none" }}>M</Link></Avatar>
                             <button className='log'>Log out</button>
-                        </>}
+                        </>
+                        }
                     {/* <Link to="/Register" className="log"><i class="fa-solid fa-user"></i>SignIn</Link>
                             <a href="/#"className="log">|</a>
                             <Link to="/Login" className="log">SignUp</Link> */}
