@@ -26,6 +26,7 @@ function Login() {
 
 
     } catch (err) {
+      navigate("/Popuperrorl", err)
       if (err.request.status === 401) {
         alert(err.response.data.message);
       } else if (err.request.status === 500) {

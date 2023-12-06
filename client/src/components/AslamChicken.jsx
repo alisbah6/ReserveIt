@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { data, tableset } from './Restraunts';
 import './Hotelpage.css';
+import axios from 'axios';
 import Table from '../assets/Table1.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
@@ -16,10 +17,27 @@ function AslamChicken() {
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
   const [seats, setseats] = useState();
-  const handlesubmit = () => {
+  const handlesubmit = async (e) => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
       totalno = totalseats - seats;
+      e.preventDefault();
+      try {
+        // Make an API request to create a new user
+        const response = await axios.post(
+            "http://localhost:3500/user/seats",{
+            seats,}
+        );
+
+        if (response.status === 201) {
+            // User registration was successful
+            console.log("Seats Confirm successfully");
+            // Redirect or perform other actions as needed
+        }
+    } catch (error) {
+        // Handle registration errors
+        console.error("Error registering user:", error);
+    }
     }
     totalseats = totalno;
     if (totalseats >= 0) {
@@ -70,16 +88,16 @@ function AslamChicken() {
               })}
               <a className="popup-open" href="#popup-open">Seat Reservation</a>
               <div id="popup-open" className="modal">
-                <div className="popup">
+                <div className="popup_booking">
                   <form onSubmit={(e) => e.preventDefault()}>
                     <p className='want'>How Many seats Do you want?</p>
                     <div classname="buttonIn">
                       <input type="number" className="seats-inbox" id='seats' onChange={(e) => setseats(e.target.value)} ></input>
-                      <button type="submit" className='seat-button' onClick={() => handlesubmit()}>Confirm</button>
+                      <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
                     </div>
                   </form>
                   <p className='available'> Total No. Of Seats Available {totalseats}</p>
-                  <a className="popup-close" href="#popup-close">x</a>
+                  <a className="popup-close" href="#popup-close">&times;</a>
                 </div>
               </div>
             </div>

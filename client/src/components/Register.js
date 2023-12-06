@@ -16,23 +16,24 @@ function Register() {
         try {
             // Make an API request to create a new user
             const response = await axios.post(
-                "http://localhost:4000/user/signup",
+                "http://localhost:3500/user/signup",{
                 name,
                 username,
                 email,
                 password,
-                confirmpassword,
+                confirmpassword,}
             );
 
-            if (response.status === 201) {
+            if(response.status === 201) {
                 // User registration was successful
                 console.log("User registered successfully");
                 // Redirect or perform other actions as needed
-                navigate("/");
+                navigate("/Popup",{state:{name:name}});
             }
         } catch (error) {
             // Handle registration errors
             console.error("Error registering user:", error);
+            navigate("/Popuperror", error)
         }
     };
     return (
