@@ -17,6 +17,7 @@ function change(n) {
 
 function Menu() {
   const navigate = useNavigate();
+  const navigate=useNavigate();
   const [item, setItem] = useState([]);
   const getItem = (e) => {
     const { value, checked } = e.target
@@ -33,6 +34,10 @@ function Menu() {
     // console.log(item);
     navigate('/FinalItem', { state: { item: item } });
   }
+function finalitem(){
+  // console.log(item);
+  navigate('/FinalItem',{state:{item:item}});
+}
   // async function finalitem(e){
   //   e.preventDefault();
   //   const response=await axios.post("http://localhost:3500/user/menu",
@@ -4737,6 +4742,7 @@ function Menu() {
           <button className="button_menu"onClick={finalitem}>Book</button>
         </div>
       </section>
+        <button onClick={finalitem}>Book</button>
       <Footer />
     </div>
   )
