@@ -88,7 +88,7 @@ function AslamChicken() {
               })}
               <a className="popup-open" href="#popup-open">Seat Reservation</a>
               <div id="popup-open" className="modal">
-                <div className="popup">
+                <div className="popup_booking">
                   <form onSubmit={(e) => e.preventDefault()}>
                     <p className='want'>How Many seats Do you want?</p>
                     <div classname="buttonIn">
@@ -97,7 +97,7 @@ function AslamChicken() {
                     </div>
                   </form>
                   <p className='available'> Total No. Of Seats Available {totalseats}</p>
-                  <a className="popup-close" href="#popup-close">x</a>
+                  <a className="popup-close" href="#popup-close">&times;</a>
                 </div>
               </div>
             </div>

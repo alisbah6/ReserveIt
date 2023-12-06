@@ -15,6 +15,9 @@ import Gulati from './components/Gulati';
 import Sandoz from './components/Sandoz';
 import { Route,Routes } from 'react-router-dom';
 import FinalItem from './components/FinalItem';
+import Popup from './components/Popup';
+import Popuperror from './components/Popuperror';
+import Popuperrorl from './components/Popuperrorl';
 //import Tablesetting from './components/Tablesetting';
 function App() {
   return (
@@ -35,6 +38,9 @@ function App() {
         <Route path='/Varq/:id/:bname' element={<Varq/>}/>
         <Route path='/Gulati/:id/:bname' element={<Gulati/>}/>
         <Route path='/FinalItem' element={<FinalItem/>}/>
+        <Route path='/Popup' element={<Popup/>}/>
+        <Route path='/Popuperror' element={<Popuperror/>}/>
+        <Route path='/Popuperrorl' element={<Popuperrorl/>}/>
         {/* <Route path='/Tablesetting' element={<Tablesetting/>}/> */}
       </Routes>
     </div>

@@ -24,15 +24,16 @@ function Register() {
                 confirmpassword,}
             );
 
-            if (response.status === 201) {
+            if(response.status === 201) {
                 // User registration was successful
                 console.log("User registered successfully");
                 // Redirect or perform other actions as needed
-                navigate("/",{state:{name:name}});
+                navigate("/Popup",{state:{name:name}});
             }
         } catch (error) {
             // Handle registration errors
             console.error("Error registering user:", error);
+            navigate("/Popuperror", error)
         }
     };
     return (
