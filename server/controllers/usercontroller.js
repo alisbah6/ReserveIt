@@ -1,6 +1,8 @@
 const User = require("../model/userSchema");
-
+const Feedback=require("../model/feedbackSchema");
+const Seat=require("../model/seatsSchema");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 
 /*  function to login:
 
@@ -121,9 +123,74 @@ const signup = async (req, res) => {
     }
 
 };
+const feedback = async (req, res) => {
+    try {
+        const { name, email,msg } = req.body;
+
+        //validating the user data.
+        if (!name) {
+            return res.status(400).json({ message: "name is required" });
+        }
+        if (!email) {
+            return res.status(400).json({ message: "email is required" });
+        }
+        if (!msg) {
+            return res.status(400).json({ message: "message is required" });
+        }
+
+        const newUserFeedback = await Feedback.create({
+            name,
+            email: email,
+            msg,
+        });
+
+        if (newUserFeedback) {
+            return res.status(201).json(newUserFeedback);
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500);
+    }
+};
+
+const seats = async (req, res) => {
+    try {
+        const { seats } = req.body;
+
+        //validating the user data.
+        if (!seats) {
+            return res.status(400).json({ message: "seat is required" });
+        }
+
+        const newUserSeats = await Seat.create({
+            seats
+        });
+
+        if (newUserSeats) {
+            return res.status(201).json(newUserSeats);
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500);
+    }
+};
+//fetching data from database
+
+const avatar = (login,async (req, res)=>{
+    const { name } = req.query;
+    try {
+        const allUser = await User.findOne({name:name});
+        res.send({status:"ok",data:allUser});
+    } catch (error) {
+        console.log(err);
+    }
+});
 
 module.exports = {
     login,
     signup,
-    welcome
+    welcome,
+    feedback,
+    seats,
+    avatar,
 };
