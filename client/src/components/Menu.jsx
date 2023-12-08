@@ -17,7 +17,6 @@ function change(n) {
 
 function Menu() {
   const navigate = useNavigate();
-  const navigate=useNavigate();
   const [item, setItem] = useState([]);
   const getItem = (e) => {
     const { value, checked } = e.target

@@ -3,6 +3,7 @@ const Feedback=require("../model/feedbackSchema");
 const Seat=require("../model/seatsSchema");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
+const authenticate=require("../middleware/authenticate");
 
 /*  function to login:
 
@@ -15,6 +16,7 @@ status:
 
 const login = async (req, res) => {
     try {
+        let token;
         const { email, password } = req.query;
 
         //validating if the email and the password exist.
@@ -33,14 +35,25 @@ const login = async (req, res) => {
             return res.status(401).json({ message: "no user found for this email" });
         }
 
+
         //comparing the password
         const isMatched = await bcrypt.compare(password, user.password);
-
+        //generating token
+        // token=jwt.sign(user,secretKey,{expiresIn:'1h'},(err,token)=>{
+        //     res.json(token)
+        // }); 
+        token=user.generateAuthToken();
+        console.log(token);
+        res.cookie("jwtoken",token,{
+            expires:new Date(Date.now()+25892000000),
+            httpOnly:true
+        });
         if (!isMatched) {
             return res.status(401).json({ message: "incorrect Password" });
         }
         return res.status(200).json(user);
-    } catch (err) {
+    } 
+    catch (err) {
         console.log(err);
         return res.status(500);
     }
@@ -176,7 +189,7 @@ const seats = async (req, res) => {
 };
 //fetching data from database
 
-const avatar = (login,async (req, res)=>{
+const avatar = (authenticate,async (req, res)=>{
     const { name } = req.query;
     try {
         const allUser = await User.findOne({name:name});
@@ -185,6 +198,7 @@ const avatar = (login,async (req, res)=>{
         console.log(err);
     }
 });
+
 
 module.exports = {
     login,
