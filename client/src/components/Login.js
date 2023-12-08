@@ -20,7 +20,7 @@ function Login() {
         })
         .then((res) => {
           if (res.status === 200) {
-            navigate("/");
+            navigate("/Home");
           }
         });
 
@@ -33,6 +33,7 @@ function Login() {
         alert("something went wrong");
       }
     }
+    localStorage.setItem(1,email);
   }
 
   return (
