@@ -31,12 +31,10 @@ function Menu() {
 
   function finalitem() {
     // console.log(item);
-    navigate('/FinalItem', { state: { item: item } });
+    navigate('/FinalItem');
+    // , { state: { item: item } }
+    localStorage.setItem("item",item);
   }
-function finalitem(){
-  // console.log(item);
-  navigate('/FinalItem',{state:{item:item}});
-}
   // async function finalitem(e){
   //   e.preventDefault();
   //   const response=await axios.post("http://localhost:3500/user/menu",

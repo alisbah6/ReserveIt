@@ -1,11 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Style.css';
 import axios from 'axios';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
+import { useAuth } from './AuthContext';
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {login } = useAuth();
   const navigate = useNavigate();
 
   async function submit(e) {
@@ -20,6 +21,7 @@ function Login() {
         })
         .then((res) => {
           if (res.status === 200) {
+            login();
             navigate("/Home");
           }
         });
@@ -33,7 +35,7 @@ function Login() {
         alert("something went wrong");
       }
     }
-    localStorage.setItem(1,email);
+    localStorage.setItem(1, email);
   }
 
   return (
@@ -53,7 +55,7 @@ function Login() {
           <input className="input" type="password" placeholder="Password" id="password" onChange={(e) => {
             setPassword(e.target.value);
           }}></input>
-          <button className="button" onClick={submit}>Log In</button>
+          <button className="button" onClick={submit} >Log In</button>
           <div className="extra">
             <Link to="/Register" className="log">Register?</Link>
             <Link className="log">Forget Password?</Link>
@@ -64,4 +66,3 @@ function Login() {
   );
 }
 export default Login;
-
