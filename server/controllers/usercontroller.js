@@ -1,5 +1,6 @@
 const User = require("../model/userSchema");
 const Feedback = require("../model/feedbackSchema");
+const Submission = require("../model/datasubmission");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 
@@ -163,7 +164,50 @@ const feedback = async (req, res) => {
         return res.status(500);
     }
 };
-//fetching data from database
+//posting data to database
+const submission = async (req, res) => {
+    try {
+        const { UserEmail, Seat, item,time,date,contact, } = req.body;
+
+        //validating the user data.
+        if (!UserEmail) {
+            return res.status(400).json({ message: "email is required" });
+        }
+        if (!Seat) {
+            return res.status(400).json({ message: "seat is required" });
+        }
+        if (!item) {
+            return res.status(400).json({ message: "items are required" });
+        }
+        if (!time) {
+            return res.status(400).json({ message: "time is required" });
+        }
+        if (!date) {
+            return res.status(400).json({ message: "date are required" });
+        }
+        if (!contact) {
+            return res.status(400).json({ message: "contact are required" });
+        }
+
+
+
+        const newReservation = await Submission.create({
+            UserEmail,
+            Seat,
+            item,
+            time,
+            date,
+            contact,
+        });
+
+        if (newReservation) {
+            return res.status(201).json(newReservation);
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500);
+    }
+};
 
 
 
@@ -172,4 +216,5 @@ module.exports = {
     signup,
     welcome,
     feedback,
+    submission,
 };

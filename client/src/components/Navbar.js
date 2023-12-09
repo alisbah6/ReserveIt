@@ -2,7 +2,7 @@ import React from "react";
 import './Navbar.css';
 import { NavLink, Link,} from "react-router-dom";
 function Navbar() {
-    const User=localStorage.getItem(1);
+    const UserEmail=localStorage.getItem(1);
     return (
         <nav className="Navbar-items">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,9 +19,9 @@ function Navbar() {
                     </div>
                 </form> */}
                 <div className="get-in">
-                    {User === null ? <Link to='/Login' className='log'><i class="fa-solid fa-user"></i>Log In</Link> :
+                    {UserEmail === null ? <Link to='/Login' className='log'><i class="fa-solid fa-user"></i>Log In</Link> :
                         <>
-                            <p className="userlogo" style={{backgroundColor:'blue', borderRadius:'60%', color:'white',paddingRight:"5px",paddingLeft:"5px", fontSize:"20px", fontFamily: 'Times New Roman'}}>{User.toUpperCase().charAt()}</p>
+                            <p className="userlogo" style={{backgroundColor:'blue', borderRadius:'60%', color:'white',paddingRight:"5px",paddingLeft:"5px", fontSize:"20px", fontFamily: 'Times New Roman'}}>{UserEmail.toUpperCase().charAt()}</p>
                             <Link to="/Home" className='log' onClick={()=>{localStorage.clear()}}>Log out</Link>
                         </>
                         }
