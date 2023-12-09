@@ -1,9 +1,7 @@
 const User = require("../model/userSchema");
-const Feedback=require("../model/feedbackSchema");
-const Seat=require("../model/seatsSchema");
+const Feedback = require("../model/feedbackSchema");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-const authenticate=require("../middleware/authenticate");
 
 /*  function to login:
 
@@ -42,27 +40,27 @@ const login = async (req, res) => {
         // token=jwt.sign(user,secretKey,{expiresIn:'1h'},(err,token)=>{
         //     res.json(token)
         // }); 
-        token=user.generateAuthToken();
+        token = user.generateAuthToken();
         console.log(token);
-        res.cookie("jwtoken",token,{
-            expires:new Date(Date.now()+25892000000),
-            httpOnly:true
+        res.cookie("jwtoken", token, {
+            expires: new Date(Date.now() + 25892000000),
+            httpOnly: true
         });
         if (!isMatched) {
             return res.status(401).json({ message: "incorrect Password" });
         }
         return res.status(200).json(user);
-    } 
+    }
     catch (err) {
         console.log(err);
         return res.status(500);
     }
 };
 
-const welcome = (req , res) =>{
+const welcome = (req, res) => {
 
-    res.status(200).json({message:"demo connection"});
-    
+    res.status(200).json({ message: "demo connection" });
+
 }
 
 /* function to sign up for a new student
@@ -113,10 +111,10 @@ const signup = async (req, res) => {
         const encryptedPassword = await bcrypt.hash(password, 10);
 
         // checking password
-        if(password!=confirmpassword){
+        if (password != confirmpassword) {
             return res
                 .status(400)
-                .json({message:"Password doesn't match"});
+                .json({ message: "Password doesn't match" });
         }
 
         const newUser = await User.create({
@@ -124,7 +122,7 @@ const signup = async (req, res) => {
             username,
             email: email,
             password: encryptedPassword,
-            confirmpassword:encryptedPassword,
+            confirmpassword: encryptedPassword,
         });
 
         if (newUser) {
@@ -138,7 +136,7 @@ const signup = async (req, res) => {
 };
 const feedback = async (req, res) => {
     try {
-        const { name, email,msg } = req.body;
+        const { name, email, msg } = req.body;
 
         //validating the user data.
         if (!name) {
@@ -165,39 +163,8 @@ const feedback = async (req, res) => {
         return res.status(500);
     }
 };
-
-const seats = async (req, res) => {
-    try {
-        const { seats } = req.body;
-
-        //validating the user data.
-        if (!seats) {
-            return res.status(400).json({ message: "seat is required" });
-        }
-
-        const newUserSeats = await Seat.create({
-            seats
-        });
-
-        if (newUserSeats) {
-            return res.status(201).json(newUserSeats);
-        }
-    } catch (err) {
-        console.log(err);
-        return res.status(500);
-    }
-};
 //fetching data from database
 
-const avatar = (authenticate,async (req, res)=>{
-    const { name } = req.query;
-    try {
-        const allUser = await User.findOne({name:name});
-        res.send({status:"ok",data:allUser});
-    } catch (error) {
-        console.log(err);
-    }
-});
 
 
 module.exports = {
@@ -205,6 +172,4 @@ module.exports = {
     signup,
     welcome,
     feedback,
-    seats,
-    avatar,
 };
