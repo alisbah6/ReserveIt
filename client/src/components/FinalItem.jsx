@@ -65,7 +65,6 @@ const FinalItem = () => {
       </form>
       <button onClick={submit}>Book Now</button>
       <Link to='/Home'><button>Cancel</button></Link>
-
     </div>
   )
 }

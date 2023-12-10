@@ -58,22 +58,20 @@ h1 {
 }
 
 .seats-inbox {
-    margin-left: 15px;
     padding: 0px;
-    float: left;
-    width: 80%;
+    width: 60%;
     outline: none;
     height: 30px;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 5px;
     font-size: large;
 }
 
 .seat-button {
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 5px;
+    margin-top: 30px;
     padding: 5px;
-    float: left;
     border: none;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
     color: white;
     background-color: #1e90ff;
@@ -81,9 +79,9 @@ h1 {
 
 
 .want {
-    font-size: xx-large;
+    font-size: x-large;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .loc {
@@ -92,7 +90,7 @@ h1 {
 
 
 .available {
-    padding-top: 50px;
+    padding-top: 10px;
     font-size: medium;
 }
 
@@ -100,6 +98,20 @@ h1 {
     height: 77vh;
     width: 100%;
     cursor: pointer;
+}
+
+
+.combobox{
+    width: 60%;
+    font-size: large;
+    margin-top: 30px;
+    
+}
+
+.calender{
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 
@@ -139,13 +151,13 @@ h1 {
 
 .popup_booking {
     position: absolute;
-    top: 35%;
+    top: 36%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     background: white;
     width: 500px;
-    padding: 30px 30px;
+    padding: 20px 30px;
     border-radius: 10px;
 }
 
