@@ -4739,7 +4739,6 @@ function Menu() {
           <button className="button_menu"onClick={finalitem}>Book</button>
         </div>
       </section>
-        <button onClick={finalitem}>Book</button>
       <Footer />
     </div>
   )

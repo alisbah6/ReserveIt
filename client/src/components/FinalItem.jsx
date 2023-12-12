@@ -14,7 +14,7 @@ const FinalItem = () => {
     try {
         // Make an API request to create a new user
         const response = await axios.post(
-            "http://localhost:3500/user/submission",{
+            "http : //localhost : 3500/user/submission",{
             UserEmail,
             Seat,
             item,
@@ -48,24 +48,45 @@ const FinalItem = () => {
 
   return (
     <div className='items'>
-      <form>
-      <p>Email:{UserEmail}</p>
-      <p>No.of.Seats:{Seat}</p>
-      <p>Items: {item}</p>
-      <p>Time:{time}</p>
-      <p>Day:{date.substring(0, 16)}</p>
-      <p>Contact Number:{contact}</p>
-      <p>Please read the Terms And Conditon Below</p>
+      <form className='font' id='makepdf'>
+      <h1 className='cart'>ORDER DETAILS</h1>
+      <div className='book_lable'>
+      <label>Email : {UserEmail}</label>
+      </div>
+      <div className='book_lable'>
+      <label>No.of.Seats : {Seat}</label>
+      </div>
+      <div className='book_lable'>
+      <label>Items :  {item}</label>
+      </div>
+      <div className='book_lable'>
+      <label>Time : {time}</label>
+      </div>
+      <div className='book_lable'>
+      <label>Day : {date.substring(0, 16)}</label>
+      </div>
+      <div className='book_lable'>
+      <label>Contact Number : {contact}</label>
+      </div>
       <hr />
+      <div className='book_lable'>
+      <label>Please read the Terms And Conditon Below</label>
+      </div>
+      <div className='book_lable'>
       <input type='checkbox' id="myCheckbox" />
-      <p>The seats will be reserved for only 15-20 mins after that they will be cancelled</p>
+      <label className='book_lable'>The seats will be reserved for only 15-20 mins after that they will be cancelled.</label>
+      </div>
+      <div className='book_lable'>
       <input type='checkbox' id="myCheckbox2" />
-      <p>The amount will be paid at the restraunt only,no online payment available</p>
-      <p>As a comment click the check box to confirm</p>
+      <label className='book_lable'>The amount will be paid at the restraunt only,no online payment available.</label>
+      </div>
+      <div className='book_lable'>
+      <label>click the check box to confirm Terms And Conditon.</label>
+      </div>
       </form>
-      <button onClick={submit}>Book Now</button>
-      <Link to='/Home'><button>Cancel</button></Link>
-
+      <button className='book_button' onClick={submit}>Book Now</button>
+      <button className='book_button'>Download Pdf</button>
+      <Link to='/Home'><button className='book_button' >Cancel</button></Link>
     </div>
   )
 }
