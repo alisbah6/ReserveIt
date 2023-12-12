@@ -18,7 +18,8 @@ import FinalItem from './components/FinalItem';
 import Popup from './components/Popup';
 import Popuperror from './components/Popuperror';
 import Popuperrorl from './components/Popuperrorl';
-//import Tablesetting from './components/Tablesetting';
+import Selectionmenu from './components/Selectionmenu';
+
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
         <Route path='/Booking' element={<Booking/>}/>
         <Route path='/Contact' element={<Contact/>}/>
         <Route path='/Menu/:seat' element={<Menu/>}/>
+        <Route path='/Selectionmenu/:seat' element={<Selectionmenu/>}/>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/Login' element={<Login/>}/>
         <Route path='/SagarRatna/:id/:bname' element={<SagarRatna/>}/>
@@ -42,7 +44,6 @@ function App() {
         <Route path='/Popup' element={<Popup/>}/>
         <Route path='/Popuperror' element={<Popuperror/>}/>
         <Route path='/Popuperrorl' element={<Popuperrorl/>}/>
-        {/* <Route path='/Tablesetting' element={<Tablesetting/>}/> */}
       </Routes>
     </div>
   );
