@@ -83,10 +83,12 @@ const FinalItem = () => {
       <div className='book_lable'>
       <label>click the check box to confirm Terms And Conditon.</label>
       </div>
-      </form>
       <button className='book_button' onClick={submit}>Book Now</button>
       <button className='book_button'>Download Pdf</button>
       <Link to='/Home'><button className='book_button' >Cancel</button></Link>
+      <button onClick={submit}>Book Now</button>
+      <Link to='/Home'><button>Cancel</button></Link>
+
     </div>
   )
 }
