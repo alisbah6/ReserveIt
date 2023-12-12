@@ -18,28 +18,39 @@
 .branch-container {
     width: 30vh;
     border-radius: 10px;
-    box-shadow: -10px 0px 40px rgba(8, 7, 16, 0.6);
+    box-shadow: -8px 0px 40px rgba(8, 7, 16, 0.6);
 }
 
 .details-container {
     width: 145vh;
     border-radius: 10px;
-    box-shadow: 10px 0px 40px rgba(8, 7, 16, 0.6);
+    box-shadow: 15px 0px 40px rgba(8, 7, 16, 0.6);
+}
+.b{
+    padding-bottom: 15px;
 }
 
 .branch {
     padding: 25px;
+    justify-content: center;
+    align-items: center;
 }
 
-li {
+.branch_sub{
     list-style: none;
-    padding: 15px;
+    text-decoration: none;
+    color: black;
 }
 
-li:hover {
-    border-radius: 2rem;
-    background-color: blue;
+.branch_sub li{
+   padding: 15px 10px
 }
+
+.branch_sub li:hover{
+    background-color: blue;
+    border-radius: 2rem;
+}
+
 
 h1 {
     padding: 10px;
@@ -64,6 +75,7 @@ h1 {
     height: 30px;
     border-radius: 5px;
     font-size: large;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .seat-button {
@@ -82,7 +94,24 @@ h1 {
     font-size: x-large;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.bold {
+    font-size: large;
+    padding-top: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.text-center {
+    font-size: large;
+    padding-top: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
 
 .loc {
     font-size: large;
@@ -92,6 +121,8 @@ h1 {
 .available {
     padding-top: 10px;
     font-size: medium;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 
 .tablesetting {
@@ -104,6 +135,9 @@ h1 {
 .combobox{
     width: 60%;
     font-size: large;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 30px;
     
 }
@@ -157,6 +191,7 @@ h1 {
     text-align: center;
     background: white;
     width: 500px;
+    padding: 10px 30px;
     padding: 20px 30px;
     border-radius: 10px;
 }

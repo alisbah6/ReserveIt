@@ -52,10 +52,10 @@ function AslamChicken() {
           <div className='container' key={index}>
             <div className="branch-container">
               <div className='branch'>
-                <p>Branches</p>
+                <p className='b'>Branches</p>
                 <ul>
-                  <Link to="/AslamChicken/6/ChandniChowk"><li>{item.b1}</li></Link>
-                  <Link to="/AslamChicken/6/BatlaHouse"><li>{item.b2}</li></Link>
+                  <Link className='branch_sub' to="/AslamChicken/6/ChandniChowk"><li>{item.b1}</li></Link>
+                  <Link className='branch_sub' to="/AslamChicken/6/BatlaHouse"><li>{item.b2}</li></Link>
                 </ul>
               </div>
             </div>
@@ -94,6 +94,10 @@ function AslamChicken() {
                           onChange={onChange}
                           value={date} />
                       </div>
+                      <p className='text-center'>
+                        <span className='bold'>Selected Date:</span>{' '}
+                        {date.toDateString()}
+                      </p>
                       <div>
                         <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
                           <option value="">-- Select a timing --</option>
