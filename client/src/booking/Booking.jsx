@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
 import './Booking.css';
 import {Link} from 'react-router-dom';
 function Booking() {

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { data, tableset } from './Restraunts';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
+import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Table from '../assets/Table1.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../user/AuthContext';
 import Calendar from 'react-calendar';
 var totalseats = 52;
 var totalno;
-function Sandoz() {
+function Varq() {
   const params = useParams();
   const id = params.id;
   const resturant = data.filter(res => res.id === id);
@@ -41,7 +41,6 @@ function Sandoz() {
     localStorage.setItem("date", date);
     localStorage.setItem("contact",contact);
   }
-
   return (
     <div>
       <Navbar />
@@ -53,17 +52,13 @@ function Sandoz() {
             <div className='branch'>
                 <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/Sandoz/2/ConnaughtPlace"><li>{item.b1}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/KarolBagh"><li>{item.b2}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/LajpatNagar"><li>{item.b3}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/RajouriGarden"><li>{item.b4}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/Jasola"><li>{item.b5}</li></Link>
+                  <Link className='branch_sub' to="/Varq/7/TajMahal"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <button className='tablesetting'>
+              <button className='tablesetting' >
                 <img src={Table} className='tablesetting' alt='' />
               </button>
               {branches.map((item, index) => {
@@ -138,4 +133,4 @@ function Sandoz() {
     </div>
   );
 }
-export default Sandoz;
+export default Varq;

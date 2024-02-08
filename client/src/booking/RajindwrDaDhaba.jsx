@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { data, tableset } from './Restraunts';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
+import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
-import Calendar from 'react-calendar';
 import Table from '../assets/Table1.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext';
-
+import { useAuth } from '../user/AuthContext';
+import Calendar from 'react-calendar';
 var totalseats = 52;
 var totalno;
-function Gulati() {
+function RajindwrDaDhaba() {
   const params = useParams();
   const id = params.id;
   const resturant = data.filter(res => res.id === id);
@@ -22,9 +21,9 @@ function Gulati() {
   const [contact, setContact] = useState();
   const pattern = new RegExp(/^\d{1,10}$/);
   const [date, setDate] = useState(new Date());
+  const { isLoggedIn } = useAuth();
   const onChange = (newDate) => {
     setDate(newDate);}
-  const { isLoggedIn } = useAuth();
   const handlesubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -42,7 +41,7 @@ function Gulati() {
     localStorage.setItem("date", date);
     localStorage.setItem("contact",contact);
   }
-  
+ 
   return (
     <div>
       <Navbar />
@@ -51,16 +50,16 @@ function Gulati() {
         return (
           <div className='container' key={index}>
             <div className="branch-container">
-              <div className='branch'>
+            <div className='branch'>
                 <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/Gulati/8/Pandara"><li>{item.b1}</li></Link>
+                  <Link className='branch_sub' to="/RajinderDaDhaba/4/Safdarjung"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <button className='tablesetting' >
+              <button className='tablesetting'>
                 <img src={Table} className='tablesetting' alt='' />
               </button>
               {branches.map((item, index) => {
@@ -135,4 +134,4 @@ function Gulati() {
     </div>
   );
 }
-export default Gulati;
+export default RajindwrDaDhaba;

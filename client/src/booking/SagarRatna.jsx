@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { data, tableset } from './Restraunts';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
+import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Table from '../assets/Table1.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../user/AuthContext';
 import Calendar from 'react-calendar';
-
 var totalseats = 52;
 var totalno;
-function Karim() {
+function SagarRatna() {
   const params = useParams();
   const id = params.id;
   const resturant = data.filter(res => res.id === id);
@@ -24,7 +23,8 @@ function Karim() {
   const [date, setDate] = useState(new Date());
   const { isLoggedIn } = useAuth();
   const onChange = (newDate) => {
-    setDate(newDate);}
+    setDate(newDate);
+  }
   const handlesubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -37,10 +37,10 @@ function Karim() {
     else {
       alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
     }
-    localStorage.setItem("seats",seats);
+    localStorage.setItem("seats", seats);
     localStorage.setItem("time", selectedValue);
     localStorage.setItem("date", date);
-    localStorage.setItem("contact",contact);
+    localStorage.setItem("contact", contact);
   }
   return (
     <div>
@@ -50,20 +50,20 @@ function Karim() {
         return (
           <div className='container' key={index}>
             <div className="branch-container">
-            <div className='branch'>
-                <p className='b' >Branches</p>
+              <div className='branch'>
+                <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/Karim/5/GreenPark"><li>{item.b1}</li></Link>
-                  <Link className='branch_sub' to="/Karim/5/JasolaKarims"><li>{item.b2}</li></Link>
-                  <Link className='branch_sub' to="/Karim/5/Nizamuddin"><li>{item.b3}</li></Link>
-                  <Link className='branch_sub' to="/Karim/5/DLFAvenue"><li>{item.b4}</li></Link>
-                  <Link className='branch_sub' to="/Karim/5/JamaMasjid"><li>{item.b5}</li></Link>
+                  <Link className='branch_sub' to="/SagarRatna/1/DefenceColony"><li>{item.b1}</li></Link>
+                  <Link className='branch_sub' to="/SagarRatna/1/PreetVihar"><li>{item.b2}</li></Link>
+                  <Link className='branch_sub' to="/SagarRatna/1/MasjidMoth"><li>{item.b3}</li></Link>
+                  <Link className='branch_sub' to="/SagarRatna/1/NarainaVihar"><li>{item.b4}</li></Link>
+                  <Link className='branch_sub' to="/SagarRatna/1/PaschimVihar"><li>{item.b5}</li></Link>
                 </ul>
               </div>
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <button className='tablesetting' >
+              <button className='tablesetting'>
                 <img src={Table} className='tablesetting' alt='' />
               </button>
               {branches.map((item, index) => {
@@ -138,4 +138,4 @@ function Karim() {
     </div>
   );
 }
-export default Karim;
+export default SagarRatna;

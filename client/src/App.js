@@ -1,24 +1,24 @@
 import './App.css';
-import Login from './components/Login';
-import Home from './components/Home';
-import Contact from './components/Contact';
-import Menu from './components/Menu';
-import Register from './components/Register';
-import Booking from './components/Booking';
-import SagarRatna from './components/SagarRatna';
-import Bukhara from './components/Bukhara';
-import RajinderDaDhaba from './components/RajindwrDaDhaba';
-import Karim from './components/Karim';
-import AslamChicken from './components/AslamChicken';
-import Varq from './components/Varq'
-import Gulati from './components/Gulati';
-import Sandoz from './components/Sandoz';
+import Login from './user/Login';
+import Home from './home-page/Home';
+import Contact from './feedback/Contact';
+import Menu from './menu/Menu';
+import Register from './user/Register';
+import Booking from './booking/Booking';
+import SagarRatna from './booking/SagarRatna';
+import Bukhara from './booking/Bukhara';
+import RajinderDaDhaba from './booking/RajindwrDaDhaba';
+import Karim from './booking/Karim';
+import AslamChicken from './booking/AslamChicken';
+import Varq from './booking/Varq'
+import Gulati from './booking/Gulati';
+import Sandoz from './booking/Sandoz';
 import { Route,Routes } from 'react-router-dom';
-import FinalItem from './components/FinalItem';
+import FinalItem from './order/FinalItem';
 import Popup from './components/Popup';
 import Popuperror from './components/Popuperror';
 import Popuperrorl from './components/Popuperrorl';
-import Selectionmenu from './components/Selectionmenu';
+import Selectionmenu from './menu/Selectionmenu';
 
 function App() {
   return (

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { data, tableset } from './Restraunts';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
+import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
+import Calendar from 'react-calendar';
 import Table from '../assets/Table1.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext';
-import Calendar from 'react-calendar';
+import { useAuth } from '../user/AuthContext';
+
 var totalseats = 52;
 var totalno;
-function RajindwrDaDhaba() {
+function AslamChicken() {
   const params = useParams();
   const id = params.id;
   const resturant = data.filter(res => res.id === id);
@@ -23,25 +24,25 @@ function RajindwrDaDhaba() {
   const [date, setDate] = useState(new Date());
   const { isLoggedIn } = useAuth();
   const onChange = (newDate) => {
-    setDate(newDate);}
+    setDate(newDate);
+  }
   const handlesubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
       totalno = totalseats - seats;
+      totalseats = totalno;
+      if (totalseats >= 0) {
+        navigate(`/Selectionmenu/${seats}`);
+      } else {
+        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+      }
+      localStorage.setItem("seats", seats);
+      localStorage.setItem("time", selectedValue);
+      localStorage.setItem("date", date);
+      localStorage.setItem("contact", contact);
     }
-    totalseats = totalno;
-    if (totalseats >= 0) {
-      navigate(`/Menu/${seats}`);
-    }
-    else {
-      alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
-    }
-    localStorage.setItem("seats", seats);
-    localStorage.setItem("time", selectedValue);
-    localStorage.setItem("date", date);
-    localStorage.setItem("contact",contact);
   }
- 
+
   return (
     <div>
       <Navbar />
@@ -50,16 +51,17 @@ function RajindwrDaDhaba() {
         return (
           <div className='container' key={index}>
             <div className="branch-container">
-            <div className='branch'>
+              <div className='branch'>
                 <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/RajinderDaDhaba/4/Safdarjung"><li>{item.b1}</li></Link>
+                  <Link className='branch_sub' to="/AslamChicken/6/ChandniChowk"><li>{item.b1}</li></Link>
+                  <Link className='branch_sub' to="/AslamChicken/6/BatlaHouse"><li>{item.b2}</li></Link>
                 </ul>
               </div>
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
-              <button className='tablesetting'>
+              <button className='tablesetting' >
                 <img src={Table} className='tablesetting' alt='' />
               </button>
               {branches.map((item, index) => {
@@ -134,4 +136,4 @@ function RajindwrDaDhaba() {
     </div>
   );
 }
-export default RajindwrDaDhaba;
+export default AslamChicken

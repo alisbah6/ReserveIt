@@ -1,5 +1,5 @@
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
 import './Menu.css';
 
 function Menu() {

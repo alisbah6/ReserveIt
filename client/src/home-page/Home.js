@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Footer from "./Footer";
-import Navbar from './Navbar';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
 import videoBg from '../assets/foodvideo.mp4';
 import './Home.css';
 

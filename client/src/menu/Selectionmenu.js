@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Navbar from '../nav-foot/Navbar';
+import Footer from '../nav-foot/Footer';
 import { useNavigate } from 'react-router-dom';
 import './Selectionmenu.css';
 // import axios from 'axios';
