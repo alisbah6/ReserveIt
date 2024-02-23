@@ -164,6 +164,16 @@ const feedback = async (req, res) => {
         return res.status(500);
     }
 };
+//getting feedback from database
+const Allfeedbacks=async(req,res)=>{
+    try {
+        const feedbackResponses = await Feedback.find();
+        res.status(200).json(feedbackResponses);
+    } catch (error) {
+        console.error("Error fetching feedback responses:", error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
 //posting data to database
 const submission = async (req, res) => {
     try {
@@ -216,5 +226,6 @@ module.exports = {
     signup,
     welcome,
     feedback,
+    Allfeedbacks,
     submission,
 };

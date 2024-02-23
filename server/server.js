@@ -11,9 +11,6 @@ app.use(bodyParser());
 
 const connectDB = require("./connection");
 
-
-
-
 const userRoutes = require('./routes/userRoutes');
 
 app.use('/user' , userRoutes);
