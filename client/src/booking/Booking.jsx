@@ -11,7 +11,7 @@ function Booking() {
       <div class="hotel-container">
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160222310381395999/sagar.png?ex=6533e03a&is=65216b3a&hm=3f321ee55bf0bc0b059d3e8629acf20f8cb29ec88292444efcb4384e8c4473c0&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160222310381395999/sagar.png?ex=65e337ba&is=65d0c2ba&hm=7118b7ad4e123a18f60e82cbd95ca927774ff3b2816ec497ef2ca8fc4716326b&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -25,7 +25,7 @@ function Booking() {
         </div>
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160223519368544276/1622656026615.png?ex=6533e15a&is=65216c5a&hm=de1330987a33cf4238532225039f98412aefa7cbddc39a7414f376986714b322&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160223519368544276/1622656026615.png?ex=65e338da&is=65d0c3da&hm=69a8346a3867822b64fad1ba89f731251b2a95a68dc8a0b88617174d88756416&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -39,7 +39,7 @@ function Booking() {
         </div>
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160231596415258705/Aslam-Chicken-Vector-Mascot-Logo-Template-43-large-removebg-preview_2_1.png?ex=6533e8e0&is=652173e0&hm=764f2ba49837f4e6822d9ee16b5c940c457bc81f803d6aa2cd1adf9f1848e042&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160231596415258705/Aslam-Chicken-Vector-Mascot-Logo-Template-43-large-removebg-preview_2_1.png?ex=65e34060&is=65d0cb60&hm=b29a4d39704510515100b6fe04534677e06d6406ecbd2f5c1fda95431cf41248&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -53,7 +53,7 @@ function Booking() {
         </div>
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160232758912753676/varq_-_removebg-preview_1.png?ex=6533e9f5&is=652174f5&hm=e10a2c40fd1665692b4524e160dcd0dccf237d9e344c593f6c8ffc3987eb0fbc&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160232758912753676/varq_-_removebg-preview_1.png?ex=65e34175&is=65d0cc75&hm=28063f6bf20272c74ef3475928875e2aa0dcd61b623b9e0e507624a33c49a4a0&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -70,7 +70,7 @@ function Booking() {
       <div class="hotel-container">
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160228827201556540/234676_1_1.png?ex=6533e64c&is=6521714c&hm=6d4b52e6bba1d244a1f4acca410dba70c42d4e4b9e3801fd84cab04771814298&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160228827201556540/234676_1_1.png?ex=65e33dcc&is=65d0c8cc&hm=4bf2a141293723bfdd2cb525c7563305fd96d198147be9979b2336cdb102523f&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -84,7 +84,7 @@ function Booking() {
         </div>
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160233560347774976/1627640725_1553781524_LogoGulati-removebg-preview_1.png?ex=6533eab4&is=652175b4&hm=82a282af7be85fd4e0f8d2442f8a60debea7956eccd6f42727fce54a4c454d47&" alt="" class="poster" /></div>
+            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160233560347774976/1627640725_1553781524_LogoGulati-removebg-preview_1.png?ex=65e34234&is=65d0cd34&hm=a3fba80fc8a76a256bc88fa21ce94846c42347352c4881633ce4482a3f38649c&" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -98,7 +98,7 @@ function Booking() {
         </div>
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160225342447964233/590x375-1684554391_29aea936d59e82dae364_2_1.png?ex=6533e30d&is=65216e0d&hm=b681d659a2a57c5765e028c90f8a9fa085dd518d03f3ae6245b6b10743380226&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160225342447964233/590x375-1684554391_29aea936d59e82dae364_2_1.png?ex=65e33a8d&is=65d0c58d&hm=0ccb0f01c078f58fe79d3d4523e19d047411ac9635dcd318205dbd37f42bbe53&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">
@@ -112,7 +112,7 @@ function Booking() {
         </div>
         <div class="main-container">
           <div class="poster-container">
-            <div><img src="https://cdn.discordapp.com/attachments/947184208491733032/1160227694911442964/OSIqY9re_1.png?ex=6533e53e&is=6521703e&hm=5daf072357a3d3e798907acc8d7f6271c1cf7aa238b76e12d80c5e651aab156c&" alt="" class="poster" /></div>
+            <div><img src="https://media.discordapp.net/attachments/947184208491733032/1160227694911442964/OSIqY9re_1.png?ex=65e33cbe&is=65d0c7be&hm=9076fef253b33407efacbbc860789c5fad81ecf977911481529357ae654e15aa&=&format=webp&quality=lossless&width=460&height=684" alt="" class="poster" /></div>
           </div>
           <div class="booking-container">
             <div class="booking__content">

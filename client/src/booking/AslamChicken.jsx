@@ -74,6 +74,25 @@ function AslamChicken() {
                       <br />
                       Contact:{item.ph}
                     </p>
+                    <div className='order-booking'>
+                      <div className='chair-top'></div>
+                      <div className='flex'>
+                        <div>
+                          <div className='chair-left'></div>
+                          <div className='chair-left'></div>
+                          <div className='chair-left'></div>
+                        </div>
+                        <div>
+                          <div className='table'></div>
+                        </div>
+                        <div>
+                          <div className='chair-right'></div>
+                          <div className='chair-right'></div>
+                          <div className='chair-right'></div>
+                        </div>
+                      </div>
+                      <div className='chair-bottom'></div>
+                    </div>
                   </div>
                 )
               })}
