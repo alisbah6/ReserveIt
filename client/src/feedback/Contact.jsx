@@ -43,7 +43,6 @@ useEffect(()=>{
         }
     } catch (error) {
         console.error("Error fetching feedback responses:", error);
-        return []; // Return an empty array in case of error
     }
   };
   const cachedRecords = localStorage.getItem('feedbackRecords');
@@ -54,8 +53,13 @@ useEffect(()=>{
       // If no cached records, fetch them
       fetchFeedbackResponses();
     }
+  const interval=setInterval(()=>{
+     fetchFeedbackResponses()
+      },100)
+  return()=>clearInterval(interval)   
 },[])
-console.log(records);
+
+
   return (
     <div className='bg'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
