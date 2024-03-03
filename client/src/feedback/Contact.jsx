@@ -63,9 +63,7 @@ useEffect(()=>{
   return (
     <div className='bg'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <Navbar />
       <div className='container-content'>
-        <div style={{ backgroundImage: 'url("client/src/assets/contact.jpg")' }}>
           <h1 className='heading-contact'>Contact Us</h1>
           <div className='contact-deatils'>
             <div className='contactInfo'>
@@ -82,13 +80,6 @@ useEffect(()=>{
                 <p>alisbahhina@gmail.com</p>
               </div>
             </div>
-            <div>
-            </div>
-            <ul>
-        {records.map(record => (
-          <li key={record.id}>{record.msg}</li>
-        ))}
-      </ul>
             <div className='feedInfo'>
               <div className='box-two'>
                 <h4>Send Feedback/Message</h4>
