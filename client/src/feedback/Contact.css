@@ -1,69 +1,104 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    padding: 0;
+    margin: 0;
     scroll-behavior: smooth;
 }
 
-.heading-contact{
-    padding-top: 120px;
-    font-size: xx-large;
-    text-align: center;
+.container-content {
+    padding: 20px 20px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    border-radius: 10px;
 }
-.container-content{
-    margin: 0px auto;
-    max-width: 100%;
-    background: white;
+
+.heading-contact {
+    margin: 20px auto;
+    width: 20%;
 }
-.contact-deatils{
-    margin: 0px auto;
-    max-width: 80%;
+.heading-feed {
+    margin: 10px auto;
+    width: 20%;
+
 }
-.contactInfo{
-    margin: 0px auto;
-    max-width: 60%;
-    float: left;
-    padding: 60px;
+.feed-address{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
 }
-.box-one
-{   height: 100px;
-    width: 400px;
-    background-color: rgb(255, 255, 255);
-    top: 70%;
-    left: 70%;
-    border: 2px solid rgba(255, 255, 255, 0.1);   
-}
-.box-two
-{   height: 350px;
-    width: 400px;
-    background-color: rgb(255, 255, 255);
-    top: 50%;
-    right: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    padding: 30px 5px 10px 0px;
-    text-align: center;
-    border-color: black;
-}
+
 .feedInfo{
-    margin: 0px auto;
-    max-width: 60%;
-    float: right;
-    padding: 40px;
-    height: 20vh;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    padding: 20px 20px;
+    gap: 20px;
 }
+
+.contactInfo{
+    margin-top: 40px;
+    width: 90%;
+}
+.box-one{
+    margin-top: 20px;
+}
+
 .feed{
-    height: 10%;
-    width: 80%;
-    margin: 10px;
+    height: 40px;
+    font-size: x-large;
 }
 .info{
-    height: 30%;
-    width: 80%;
-    margin-top: 10px;
+    height: 100px;
+    font-size: x-large;
+    resize: none;
 }
-.send{
-    margin-top: 10px;
-    font-size: large;
-    border-radius: 2rem;
-    padding: 7px;   
+
+
+.feedback-comment {
+    height: 1000px;
+    list-style-type: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    border-radius: 10px;
 }
+
+.comment {
+    margin: 20px auto;
+    max-width: 95%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 0px 100px 100px 100px;
+}
+
+.font-comment{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px auto;
+    padding-left: 35px;
+}
+
+.font-user{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px auto;
+    padding-left: 10px;
+}
+
+.send-feed{
+    color: #000;
+}
+.button_feed{
+    width: 20%;
+    margin-bottom: 10px;
+    margin-left: 75%;
+    background-color: #219ebc;
+    color: #000000;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 5px rgba(8,7,16,0.6);
+  }
+  
+  .button_feed:hover{
+    background-color: #8ecae6;
+  }
