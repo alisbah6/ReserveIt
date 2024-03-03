@@ -42,7 +42,7 @@ function Register() {
                 <div className="box-image-reg">
                 </div>
                 <div className="box-reg">
-                    <img className="center-reg" src="https://cdn.discordapp.com/attachments/1143205844058656780/1150113358830383144/key_2.png?ex=6513b6c8&is=65126548&hm=6e6057865b2a58f1490e4063fa351b4416005f5587473bb21b31c9915e620ffd&" alt="Avatar"></img>
+                    <img className="center-reg" src="https://media.discordapp.net/attachments/947184208491733032/1155862457751982151/key_1.png?ex=65ef0acc&is=65dc95cc&hm=167c12390bb123936a330120f9fb8617b94ba7f372a614c95d8f2a37641af647&=&format=webp&quality=lossless&width=160&height=160" alt="Avatar"></img>
                     <form id='register-form'>
                         <label className="label-reg" htmlFor="name">Name</label>
                         <input className="input" type="text" placeholder="name" id="name" onChange={(e) => {

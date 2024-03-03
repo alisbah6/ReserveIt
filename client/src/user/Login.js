@@ -43,7 +43,7 @@ function Login() {
       <div className="box-image">
       </div>
       <div className="box">
-        <img className="center" src="https://cdn.discordapp.com/attachments/947184208491733032/1155862457751982151/key_1.png" alt="Avatar"></img>
+        <img className="center" src="https://media.discordapp.net/attachments/947184208491733032/1155862457751982151/key_1.png?ex=65ef0acc&is=65dc95cc&hm=167c12390bb123936a330120f9fb8617b94ba7f372a614c95d8f2a37641af647&=&format=webp&quality=lossless&width=160&height=160" alt="Avatar"></img>
         <form>
           <label className="label" htmlFor="email">Email</label>
           <input className="input" type="text" name='email' autoComplete='off' placeholder="Email Id" id="username"
