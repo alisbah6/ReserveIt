@@ -17,6 +17,8 @@ import { Route,Routes } from 'react-router-dom';
 import FinalItem from './order/FinalItem';
 import Popup from './components/Popup';
 import Popuperror from './components/Popuperror';
+import Popupcontacterror from './components/Popupcontacterror';
+import Popupcontact from './components/Popupcontact';
 import Popuperrorl from './components/Popuperrorl';
 import Selectionmenu from './menu/Selectionmenu';
 
@@ -44,6 +46,8 @@ function App() {
         <Route path='/Popup' element={<Popup/>}/>
         <Route path='/Popuperror' element={<Popuperror/>}/>
         <Route path='/Popuperrorl' element={<Popuperrorl/>}/>
+        <Route path='/Popupcontacterror' element={<Popupcontacterror/>}/>
+        <Route path='/Popupcontact' element={<Popupcontact/>}/>
       </Routes>
     </div>
   );

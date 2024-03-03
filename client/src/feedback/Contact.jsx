@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import {useNavigate } from 'react-router-dom';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import './Contact.css';
@@ -10,6 +11,7 @@ function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
 
   const submit = async (e) => {
     e.preventDefault();
@@ -26,11 +28,13 @@ function Contact() {
         // User registration was successful
         console.log("Feedback Successfull");
         console.log("Responded Data", response.data);
+        navigate("/Popupcontact")
         // Redirect or perform other actions as needed
       }
     } catch (error) {
       // Handle registration errors
       console.error("Error in Feedback:", error);
+      navigate("/Popupcontacterror", error)
     }
   };
   useEffect(() => {
