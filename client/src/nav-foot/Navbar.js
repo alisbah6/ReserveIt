@@ -3,6 +3,13 @@ import './Navbar.css';
 import { NavLink, Link,} from "react-router-dom";
 function Navbar() {
     const UserEmail=localStorage.getItem(1);
+    const handleLogout = () => {
+        // Remove the user's token from local storage
+        localStorage.clear();
+    
+        // Redirect the user to the Home page
+        window.location.href = '/Home';
+      };
     return (
         <nav className="Navbar-items">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,7 +29,7 @@ function Navbar() {
                     {UserEmail === null ? <Link to='/Login' className='log'><i class="fa-solid fa-user"></i>Log In</Link> :
                         <>
                             <p className="userlogo" style={{backgroundColor:'blue', borderRadius:'60%', color:'white',paddingRight:"5px",paddingLeft:"5px", fontSize:"20px", fontFamily: 'Times New Roman'}}>{UserEmail.toUpperCase().charAt()}</p>
-                            <Link to="/Home" className='log' onClick={()=>{localStorage.clear()}}>Log out</Link>
+                            <Link to="/Home" className='log' onClick={handleLogout}>Log out</Link>
                         </>
                         }
                     {/* <Link to="/Register" className="log"><i class="fa-solid fa-user"></i>SignIn</Link>
