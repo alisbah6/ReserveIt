@@ -25,8 +25,6 @@ function Login() {
             navigate("/Home");
           }
         });
-
-
     } catch (err) {
       navigate("/Popuperrorl", err)
       if (err.request.status === 401) {
