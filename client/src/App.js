@@ -22,6 +22,7 @@ import Popupcontact from './components/Popupcontact';
 import Popuperrorl from './components/Popuperrorl';
 import Selectionmenu from './menu/Selectionmenu';
 import Adminpage from './admin_side/adminpage';
+import AdminNavbar from './admin_side/adminnavbar';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path='/Popupcontacterror' element={<Popupcontacterror/>}/>
         <Route path='/Popupcontact' element={<Popupcontact/>}/>
         <Route path='/AdminPage' element={<Adminpage/>}/>
+        <Route path='/AdminNavbar' element={<AdminNavbar/>}/>
       </Routes>
     </div>
   );

@@ -8,6 +8,8 @@ import jspdf from 'jspdf';
 const FinalItem = () => {
   const pdfRef = useRef();
   const UserEmail = localStorage.getItem(1);
+  const Restraunt= localStorage.getItem("restraunt");
+  const BranchName=localStorage.getItem("branch name");
   const Seat = localStorage.getItem("seats");
   const item = localStorage.getItem("item");
   const time = localStorage.getItem("time");
@@ -18,7 +20,9 @@ const FinalItem = () => {
     try {
       // Make an API request to create a new user
       const response = await axios.post(
-        "http : //localhost : 3500/user/submission", {
+        "http://localhost:3500/user/submission", {
+          Restraunt,
+        BranchName,
         UserEmail,
         Seat,
         item,
@@ -72,6 +76,12 @@ const FinalItem = () => {
       <div className='items'>
         <form className='font' ref={pdfRef}>
           <h1 className='cart'>ORDER DETAILS</h1>
+          <div className='book_lable'>
+            <label>{Restraunt}</label>
+          </div>
+          <div className='book_lable'>
+            <label>Branch: {BranchName}</label>
+          </div>
           <div className='book_lable'>
             <label>Email : {UserEmail}</label>
           </div>

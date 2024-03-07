@@ -5,8 +5,7 @@ function Navbar() {
     const UserEmail=localStorage.getItem(1);
     const handleLogout = () => {
         // Remove the user's token from local storage
-        localStorage.clear();
-    
+        localStorage.clear();    
         // Redirect the user to the Home page
         window.location.href = '/Home';
       };
@@ -32,9 +31,6 @@ function Navbar() {
                             <Link to="/Home" className='log' onClick={handleLogout}>Log out</Link>
                         </>
                         }
-                    {/* <Link to="/Register" className="log"><i class="fa-solid fa-user"></i>SignIn</Link>
-                            <a href="/#"className="log">|</a>
-                            <Link to="/Login" className="log">SignUp</Link> */}
                 </div>
             </ul>
         </nav>

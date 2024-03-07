@@ -177,9 +177,15 @@ const Allfeedbacks=async(req,res)=>{
 //posting data to database
 const submission = async (req, res) => {
     try {
-        const { UserEmail, Seat, item,time,date,contact, } = req.body;
+        const { Restraunt,BranchName,UserEmail, Seat, item,time,date,contact, } = req.body;
 
         //validating the user data.
+        if (!Restraunt) {
+            return res.status(400).json({ message: "email is required" });
+        }
+        if (!BranchName) {
+            return res.status(400).json({ message: "email is required" });
+        }
         if (!UserEmail) {
             return res.status(400).json({ message: "email is required" });
         }
@@ -202,6 +208,8 @@ const submission = async (req, res) => {
 
 
         const newReservation = await Submission.create({
+            Restraunt,
+            BranchName,
             UserEmail,
             Seat,
             item,

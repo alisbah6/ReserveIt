@@ -8,5 +8,6 @@ router.route('/welcome').get(welcome);
 router.route('/feedback').post(feedback);
 router.route('/feedbacks').get(Allfeedbacks);
 router.route('/submission').post(submission)
+// router.route('/Allrecords').get(Allrecords);
 
 module.exports = router;
