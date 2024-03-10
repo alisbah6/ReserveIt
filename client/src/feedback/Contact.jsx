@@ -64,7 +64,6 @@ function Contact() {
     return () => clearInterval(interval)
   }, [])
 
-
   return (
     <div>
       <Navbar />
@@ -97,10 +96,11 @@ function Contact() {
         </div>
         <ul className='feedback-comment'>
         <h1 className='heading-contact'>Feedbacks</h1>
-          {records.map(record => (
+          {records.slice().reverse().map(record => (
             <li className='comment' key={record.id}>
               <p className='font-user'><i class="fa-solid fa-circle-user"></i> {record.name}</p>
-              <p className='font-comment'>{record.msg}</p></li>
+              <p className='font-comment'>{record.msg}</p>
+              </li>
           ))}
         </ul>
       </div>

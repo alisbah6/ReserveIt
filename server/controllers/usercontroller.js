@@ -15,7 +15,6 @@ status:
 
 const login = async (req, res) => {
     try {
-        let token;
         const { email, password } = req.query;
 
         //validating if the email and the password exist.
@@ -33,24 +32,24 @@ const login = async (req, res) => {
         if (!user) {
             return res.status(401).json({ message: "no user found for this email" });
         }
-
-
         //comparing the password
         const isMatched = await bcrypt.compare(password, user.password);
         //generating token
         // token=jwt.sign(user,secretKey,{expiresIn:'1h'},(err,token)=>{
         //     res.json(token)
         // }); 
-        token = user.generateAuthToken();
-        console.log(token);
-        res.cookie("jwtoken", token, {
-            expires: new Date(Date.now() + 25892000000),
-            httpOnly: true
-        });
+        // token = user.generateAuthToken();
+        // console.log(token);
+        // res.cookie("jwtoken", token, {
+        //     expires: new Date(Date.now() + 25892000000),
+        //     httpOnly: true
+        // });
         if (!isMatched) {
             return res.status(401).json({ message: "incorrect Password" });
         }
-        return res.status(200).json(user);
+        const token=jwt.sign({email:user.email,id:user.id},"test",{expiresIn:"1h"});
+    res.status(200).json({result:user,token})
+        return res.status(200).json(user);       
     }
     catch (err) {
         console.log(err);
@@ -226,7 +225,16 @@ const submission = async (req, res) => {
         return res.status(500);
     }
 };
-
+//getting submits from database
+const Allrecords=async(req,res)=>{
+    try {
+        const RecordResponses = await Submission.find();
+        res.status(200).json(RecordResponses);
+    } catch (error) {
+        console.error("Error fetching record responses:", error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
 
 
 module.exports = {
@@ -236,4 +244,5 @@ module.exports = {
     feedback,
     Allfeedbacks,
     submission,
+    Allrecords
 };

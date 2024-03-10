@@ -21,8 +21,8 @@ import Popupcontacterror from './components/Popupcontacterror';
 import Popupcontact from './components/Popupcontact';
 import Popuperrorl from './components/Popuperrorl';
 import Selectionmenu from './menu/Selectionmenu';
-import Adminpage from './admin_side/adminpage';
-import AdminNavbar from './admin_side/adminnavbar';
+import Adminpage from './admin_side/Adminpage';
+import AdminNavbar from './admin_side/Adminnavbar';
 
 function App() {
   return (

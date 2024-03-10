@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../nav-foot/Navbar.css';
-const adminnavbar = () => {
+const Adminnavbar = () => {
   const UserEmail=localStorage.getItem(1);
   const handleLogout = () => {
     // Remove the user's token from local storage
@@ -34,4 +34,4 @@ const adminnavbar = () => {
   )
 }
 
-export default adminnavbar
+export default Adminnavbar

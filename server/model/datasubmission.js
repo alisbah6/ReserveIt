@@ -9,6 +9,7 @@ const submissionSchema=new mongoose.Schema({
     time:{type:String,required:true},
     date:{type:String,required:true},
     contact:{type:String,required:true},
+    bookedOn:{type:Date,default:Date.now}
 });
 
 const Submission=mongoose.model('SUBMIT',submissionSchema);
