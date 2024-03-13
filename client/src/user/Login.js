@@ -10,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
 
   async function submit(e) {
-    if(email=="admin" && password=="0987654321"){
+    if(email === "admin" && password === "0987654321"){
       e.preventDefault();
       navigate("/AdminPage");
     }
@@ -47,7 +47,7 @@ function Login() {
       <div className="box-image">
       </div>
       <div className="box">
-        <img className="center" src="https://media.discordapp.net/attachments/947184208491733032/1155862457751982151/key_1.png?ex=65ef0acc&is=65dc95cc&hm=167c12390bb123936a330120f9fb8617b94ba7f372a614c95d8f2a37641af647&=&format=webp&quality=lossless&width=160&height=160" alt="Avatar"></img>
+        <img className="center" src="https://media.discordapp.net/attachments/947184208491733032/1217469390509965342/key_1.webp?ex=660423ba&is=65f1aeba&hm=fcdb6fc1f90f178bfb74ab9a624c802a54d5a4cb380f8928c54ee36f066a00a0&=&format=webp&width=100&height=100" alt="Avatar"></img>
         <form>
           <label className="label" htmlFor="email">Email</label>
           <input className="input" type="text" name='email' autoComplete='off' placeholder="Email Id" id="username"

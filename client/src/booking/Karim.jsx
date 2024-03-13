@@ -32,7 +32,7 @@ function Karim() {
     }
     totalseats = totalno;
     if (totalseats >= 0) {
-      navigate(`/Menu/${seats}`);
+      navigate(`/Selectionmenu/${seats}`);
     }
     else {
       alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
