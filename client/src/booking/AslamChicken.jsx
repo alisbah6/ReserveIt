@@ -93,12 +93,51 @@ function AslamChicken() {
                           <div className='chair-left'></div>
                         </div>
                         <div>
-                          <div className='table'></div>
+                          <div className='table-eight'></div>
                         </div>
                         <div>
                           <div className='chair-right'></div>
                           <div className='chair-right'></div>
                           <div className='chair-right'></div>
+                        </div>
+                      </div>
+                      <div className='chair-bottom'></div>
+                    </div>
+                    <div className='order-booking'>
+                      <div className='chair-top'></div>
+                      <div className='flex'>
+                        <div>
+                          <div className='chair-left'></div>
+                          <div className='chair-left'></div>
+                        </div>
+                        <div>
+                          <div className='table-six'></div>
+                        </div>
+                        <div>
+                          <div className='chair-right'></div>
+                          <div className='chair-right'></div>
+                        </div>
+                      </div>
+                      <div className='chair-bottom'></div>
+                    </div><div className='order-booking'>
+                      <div className='chair-top'></div>
+                      <div className='flex'>
+                        <div>
+                          <div className='chair-left'></div>
+                        </div>
+                        <div>
+                          <div className='table-four'></div>
+                        </div>
+                        <div>
+                          <div className='chair-right'></div>
+                        </div>
+                      </div>
+                      <div className='chair-bottom'></div>
+                    </div><div className='order-booking'>
+                      <div className='chair-top'></div>
+                      <div className='flex'>
+                        <div>
+                          <div className='table-two'></div>
                         </div>
                       </div>
                       <div className='chair-bottom'></div>

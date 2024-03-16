@@ -26,7 +26,8 @@
     border-radius: 10px;
     box-shadow: 15px 0px 40px rgba(8, 7, 16, 0.6);
 }
-.b{
+
+.b {
     padding-bottom: 15px;
 }
 
@@ -36,17 +37,17 @@
     align-items: center;
 }
 
-.branch_sub{
+.branch_sub {
     list-style: none;
     text-decoration: none;
     color: black;
 }
 
-.branch_sub li{
-   padding: 15px 10px
+.branch_sub li {
+    padding: 15px 10px
 }
 
-.branch_sub li:hover{
+.branch_sub li:hover {
     background-color: blue;
     border-radius: 2rem;
 }
@@ -75,7 +76,7 @@ h1 {
     height: 30px;
     border-radius: 5px;
     font-size: large;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .seat-button {
@@ -94,19 +95,19 @@ h1 {
     font-size: x-large;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .bold {
     font-size: large;
     padding-top: 10px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .text-center {
     font-size: large;
     padding-top: 10px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -118,8 +119,8 @@ h1 {
 .available {
     padding-top: 10px;
     font-size: medium;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .tablesetting {
@@ -129,16 +130,16 @@ h1 {
 }
 
 
-.combobox{
+.combobox {
     width: 60%;
     font-size: large;
     margin-top: 20px;
     margin-bottom: 10px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
-.calender{
+.calender {
     border: 2px solid black;
     padding: 5px;
     border-radius: 5px;
@@ -161,7 +162,7 @@ h1 {
     margin-left: 80%;
 }
 
-.popup-open:hover{
+.popup-open:hover {
     background-color: #1e90ff;
 }
 
@@ -204,60 +205,100 @@ h1 {
     text-decoration: none;
     font-size: 30px;
 }
-.active-link{
-    color:blue;
+
+.active-link {
+    color: blue;
 }
 
-.order-booking{
-    border: 2px solid black;
+.order-booking {
     width: fit-content;
     padding: 10px 10px;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.chair-left{
-    border: 2px solid black;
+.chair-left {
     width: 20px;
     height: 20px;
+    background-color: #A1A1A8;
     margin-top: 10px;
     margin-right: 2px;
     border-radius: 0px 8px 8px 0px;
 }
 
-.chair-right{
-    border: 2px solid black;
+.chair-right {
     width: 20px;
     height: 20px;
+    background-color: #A1A1A8;
     margin-top: 10px;
     margin-left: 2px;
     border-radius: 8px 0px 0px 8px;
 }
 
-.chair-top{
-    border: 2px solid black;
+.chair-top {
     width: 20px;
     height: 20px;
+    background-color: #A1A1A8;
     margin-left: 38px;
     margin-bottom: 2px;
     border-radius: 0px 0px 8px 8px;
 }
-.chair-bottom{
-    border: 2px solid black;
+
+.chair-bottom {
     width: 20px;
     height: 20px;
+    background-color: #A1A1A8;
     margin-left: 38px;
     margin-top: 2px;
     border-radius: 8px 8px 0px 0px;
 }
 
-.table{
+.table-eight {
     width: 50px;
     height: 100px;
-    border: 1px black solid;
-    box-shadow: 1px 1px 20px rgba(8,7,16,0.6);
+    background-color: #B4B4B9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
+}
+
+.table-six {
+    width: 50px;
+    height: 70px;
+    background-color: #B4B4B9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
+}
+
+.table-four {
+    width: 50px;
+    height: 40px;
+    background-color: #B4B4B9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
+}
+
+.table-two {
+    width: 50px;
+    height: 30px;
+    margin-left: 23px;
+    margin-right: 21px;
+    background-color: #B4B4B9;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
 }
 
 
+.order-booking:hover{
+    transform: scale(1.1);
+}
+
+.table-selected{
+    background-color: lightgreen;
+}
+
+.hotel-design{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
