@@ -26,10 +26,10 @@ function Adminpage () {
       // If no cached records, fetch them
       fetchAllResponses();
     }
-    // const interval = setInterval(() => {
-    //   fetchAllResponses()
-    // }, 100)
-    // return () => clearInterval(interval)
+    const interval = setInterval(() => {
+      fetchAllResponses()
+    }, 1000)
+    return () => clearInterval(interval)
   }, [])
   console.log(entries);
   return (
@@ -37,10 +37,11 @@ function Adminpage () {
       <Adminnavbar/>
       <br/>
       <h1 style={{marginTop:70,textAlign:'center'}} >Orders</h1>
-      <div className='order-cards'>
+      <div >
       <ul >
           {entries.slice().reverse().map(entry => (
             <li key={entry.id}>
+              <div className='order-cards'>
               <h2 className='restraunt-name'>{entry.Restraunt}</h2>
               <p>Branch: {entry.BranchName}</p>
               <div className='order-details'>
@@ -56,6 +57,7 @@ function Adminpage () {
               <h4>Email:  {entry.UserEmail}</h4>
               <p className='order-time'>{moment(entry.bookedOn).fromNow()}</p>
               <h4>Contact: {entry.contact}</h4>
+              </div>
               </div>
               </li>
           ))}

@@ -1,6 +1,5 @@
 import React from 'react'
 import './FinalItem.css'
-import { Link } from 'react-router-dom';
 import axios from "axios";
 import {useRef } from "react";
 import html2canvas from 'html2canvas';
@@ -71,6 +70,18 @@ const FinalItem = () => {
         pdf.save('Booking.pdf');
       });
     }
+    const cancelorder=()=>{
+      localStorage.removeItem("restraunt");
+      localStorage.removeItem("branch name"); 
+      localStorage.removeItem("seats");
+       localStorage.removeItem("item");
+   localStorage.removeItem("time");
+  localStorage.removeItem("date");
+  localStorage.removeItem("contact");
+
+      // Redirect the user to the Home page
+      window.location.href = '/Home';
+    }
 
     return (
       <div className='items'>
@@ -118,7 +129,7 @@ const FinalItem = () => {
         </form>
         <button className='book_button' onClick={submit}>Book Now</button>
         <button className='book_button' onClick={downloadpdf}>Download Pdf</button>
-        <Link to='/Home'><button className='book_button' >Cancel</button></Link>
+        <button className='book_button' onClick={cancelorder} >Cancel</button>
       </div>
     )
   }

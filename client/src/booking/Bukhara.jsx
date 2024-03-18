@@ -134,7 +134,8 @@ function Bukhara() {
                     </form>
                   ) : (
                     <p>Please login in this site for Booking.</p>
-                  )}
+                  )
+                }
                   <a className="popup-close" href="#popup-close">&times;</a>
                 </div>
               </div>
