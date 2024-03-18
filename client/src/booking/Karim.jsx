@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
@@ -20,11 +20,19 @@ function Karim() {
   const [seats, setseats] = useState();
   const [selectedValue, setSelectedValue] = useState('');
   const [contact, setContact] = useState();
+  const [restaurantName, setRestaurantName] = useState(null);
   const pattern = new RegExp(/^\d{1,10}$/);
   const [date, setDate] = useState(new Date());
   const { isLoggedIn } = useAuth();
   const onChange = (newDate) => {
     setDate(newDate);}
+    useEffect(() => {
+      // Find the restaurant data corresponding to the id
+      const restaurant = data.find(res => res.id === params.id);
+      if (restaurant) {
+        setRestaurantName(restaurant.name);
+      }
+    }, [params.id]);
   const handlesubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -37,6 +45,8 @@ function Karim() {
     else {
       alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
     }
+    localStorage.setItem("restraunt",restaurantName);
+      localStorage.setItem("branch name",bname);
     localStorage.setItem("seats",seats);
     localStorage.setItem("time", selectedValue);
     localStorage.setItem("date", date);

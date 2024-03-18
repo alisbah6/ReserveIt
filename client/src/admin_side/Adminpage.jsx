@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import moment from 'moment';
+import './adminpage.css';
 import Adminnavbar from './Adminnavbar';
 function Adminpage () {
   const [entries,setEntries] = useState([]);
@@ -34,6 +36,31 @@ function Adminpage () {
     <div>
       <Adminnavbar/>
       <br/>
+      <h1 style={{marginTop:70,textAlign:'center'}} >Orders</h1>
+      <div className='order-cards'>
+      <ul >
+          {entries.slice().reverse().map(entry => (
+            <li key={entry.id}>
+              <h2 className='restraunt-name'>{entry.Restraunt}</h2>
+              <p>Branch: {entry.BranchName}</p>
+              <div className='order-details'>
+              <h3>Order Summary</h3>
+              <p>Seats: {entry.Seat}</p>
+              <p>Items: {entry.item}</p>
+              <p>Time: {entry.time}</p>
+              <button className='order-done'>Done</button>
+              <p>Reservation Date: {entry.date.substring(0, 16)}</p>
+              </div>
+              <div className='user-details'>
+                <h4>User Details</h4>
+              <h4>Email:  {entry.UserEmail}</h4>
+              <p className='order-time'>{moment(entry.bookedOn).fromNow()}</p>
+              <h4>Contact: {entry.contact}</h4>
+              </div>
+              </li>
+          ))}
+        </ul>
+        </div>
     </div>
   )
 }

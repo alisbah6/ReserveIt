@@ -3,6 +3,7 @@ import {useNavigate } from 'react-router-dom';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import './Contact.css';
+import moment from 'moment';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -99,6 +100,7 @@ function Contact() {
           {records.slice().reverse().map(record => (
             <li className='comment' key={record.id}>
               <p className='font-user'><i class="fa-solid fa-circle-user"></i> {record.name}</p>
+              <p className='font-time'>{moment(record.postedOn).fromNow()}</p>
               <p className='font-comment'>{record.msg}</p>
               </li>
           ))}

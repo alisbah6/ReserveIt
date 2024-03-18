@@ -1,39 +1,41 @@
-/* .left-sidebar{
-    width:140px ;
-    box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
-    transition: box-shadow ease-in-out 0.1s;
-    transform: translateZ(0);
-    box-sizing: border-box;
-    font-size: 13px;
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif ;
 }
-.side-nav{
-    height: auto;
-    max-width: 100%;
-    position: sticky;
-    margin:  50px 0px;
-    padding: 20px 0px;
+.order-cards{
+    margin: 10px;
+    border-radius: 2px;
+    border: 2px solid black;
+    padding: 5px;
+    height: 50%;
+    width: 50%;
 }
-.side-nav-div{
-    padding: 10px 0px;
+li{
+    list-style-type: none;
 }
-.side-nav-div div{
-    padding-left: 10px;
+.restraunt-name{
+    text-align: center;
 }
-.side-nav-links{
-    text-decoration: none;
-    color: #3a3a3a;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 10px;
-    transition: 0.2s;
+.order-details{
+    border: 2px solid black;
+    height: 50%;
+    width: 100%;
+    padding-left: 15px;
+    padding-bottom: 10px;
+
 }
-.side-nav-links:hover{
-    color: black;
+.order-time{
+    float: right;
+    font-size: medium;
+    margin: 4px 10px;
 }
-.active{
-    font-weight: bolder;
-    color: black;
-    background-color: rgb(225,225,225);
-    border-right: solid 3px #ef8235;
-} */
+.user-details{
+    padding: 10px;
+}
+.order-done{
+    float: right;
+    margin: 0px 10px ;
+    font-size: 120%;
+    padding: 5px;
+}
