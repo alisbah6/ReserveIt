@@ -63,7 +63,7 @@ function RajindwrDaDhaba() {
             <div className='branch'>
                 <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/RajinderDaDhaba/4/Safdarjung"><li>{item.b1}</li></Link>
+                  <Link className='branch_sub'  activeClassName='is-active' to="/RajinderDaDhaba/4/Safdarjung"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>

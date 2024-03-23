@@ -2,24 +2,21 @@
     margin: 0;
     padding: 0;
     font-family: Georgia, 'Times New Roman', Times, serif ;
+    box-sizing: border-box;
 }
 .order-cards{
-    margin: 10px;
     border-radius: 2px;
     border: 2px solid black;
     padding: 5px;
-    height: 50%;
-    width: 50%;
-}
-li{
-    list-style-type: none;
+    height: 100%;
+    width: 100%;
 }
 .restraunt-name{
     text-align: center;
 }
 .order-details{
     border: 2px solid black;
-    height: 50%;
+    height: 60%;
     width: 100%;
     padding-left: 15px;
     padding-bottom: 10px;
@@ -39,3 +36,24 @@ li{
     font-size: 120%;
     padding: 5px;
 }
+.search-bar{
+    width: 95%;
+    margin: 3%;
+
+}
+.flex-container {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .flex-item {
+    flex: 1 0 50%; /* Each item takes up 50% of the container */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .flex-container.single-item {
+    justify-content: flex-start; /* Center the item if there's only one */
+  }
