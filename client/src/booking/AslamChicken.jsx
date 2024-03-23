@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
@@ -44,14 +44,19 @@ function AslamChicken() {
       } else {
         alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
       }
-      localStorage.setItem("restraunt",restaurantName);
-      localStorage.setItem("branch name",bname);
+      localStorage.setItem("restraunt", restaurantName);
+      localStorage.setItem("branch name", bname);
       localStorage.setItem("seats", seats);
       localStorage.setItem("time", selectedValue);
       localStorage.setItem("date", date);
       localStorage.setItem("contact", contact);
     }
   }
+  const [selectedSeat, setSelectedSeat] = useState(null);
+
+  const TableSelected = (id) => {
+    setSelectedSeat(id);
+  };
 
   return (
     <div>
@@ -84,63 +89,63 @@ function AslamChicken() {
                       <br />
                       Contact:{item.ph}
                     </p>
-                    <div className='order-booking'>
-                      <div className='chair-top'></div>
+                    <div className='order-booking' id="seatA" onClick={() => TableSelected('seatA')}>
+                      <div className='chair-top' id="seatA1" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
                       <div className='flex'>
                         <div>
-                          <div className='chair-left'></div>
-                          <div className='chair-left'></div>
-                          <div className='chair-left'></div>
+                          <div className='chair-left' id="seatA2" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
+                          <div className='chair-left' id="seatA3" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
+                          <div className='chair-left' id="seatA4" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
                         </div>
                         <div>
-                          <div className='table-eight'></div>
+                          <div className='table-eight' id="seatA5" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
                         </div>
                         <div>
-                          <div className='chair-right'></div>
-                          <div className='chair-right'></div>
-                          <div className='chair-right'></div>
+                          <div className='chair-right' id="seatA6" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
+                          <div className='chair-right' id="seatA7" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
+                          <div className='chair-right' id="seatA8" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom'></div>
+                      <div className='chair-bottom' id="seatA9" style={{ backgroundColor: selectedSeat === 'seatA' ? 'red' : '' }}></div>
                     </div>
-                    <div className='order-booking'>
-                      <div className='chair-top'></div>
+                    <div className='order-booking' id="seatB" onClick={() => TableSelected('seatB')}>
+                      <div className='chair-top' id="seatB1" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
                       <div className='flex'>
                         <div>
-                          <div className='chair-left'></div>
-                          <div className='chair-left'></div>
+                          <div className='chair-left' id="seatB2" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
+                          <div className='chair-left' id="seatB3" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
                         </div>
                         <div>
-                          <div className='table-six'></div>
+                          <div className='table-six' id="seatB4" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
                         </div>
                         <div>
-                          <div className='chair-right'></div>
-                          <div className='chair-right'></div>
+                          <div className='chair-right' id="seatB5" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
+                          <div className='chair-right' id="seatb6" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom'></div>
-                    </div><div className='order-booking'>
-                      <div className='chair-top'></div>
+                      <div className='chair-bottom' id="seatB7" style={{ backgroundColor: selectedSeat === 'seatB' ? 'red' : '' }}></div>
+                    </div><div className='order-booking' id="seatC" onClick={() => TableSelected('seatC')}>
+                      <div className='chair-top' id="seatC1" style={{ backgroundColor: selectedSeat === 'seatC' ? 'red' : '' }}></div>
                       <div className='flex'>
                         <div>
-                          <div className='chair-left'></div>
+                          <div className='chair-left' id="seatC2" style={{ backgroundColor: selectedSeat === 'seatC' ? 'red' : '' }}></div>
                         </div>
                         <div>
-                          <div className='table-four'></div>
+                          <div className='table-four' id="seatC3" style={{ backgroundColor: selectedSeat === 'seatC' ? 'red' : '' }}></div>
                         </div>
                         <div>
-                          <div className='chair-right'></div>
+                          <div className='chair-right' id="seatC4" style={{ backgroundColor: selectedSeat === 'seatC' ? 'red' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom'></div>
-                    </div><div className='order-booking'>
-                      <div className='chair-top'></div>
+                      <div className='chair-bottom' id="seatC5" style={{ backgroundColor: selectedSeat === 'seatC' ? 'red' : '' }}></div>
+                    </div><div className='order-booking' id="seatD" onClick={() => TableSelected('seatD')}>
+                      <div className='chair-top' id="seatD1" style={{ backgroundColor: selectedSeat === 'seatD' ? 'red' : '' }}></div>
                       <div className='flex'>
                         <div>
-                          <div className='table-two'></div>
+                          <div className='table-two' id="seatD2" style={{ backgroundColor: selectedSeat === 'seatD' ? 'red' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom'></div>
+                      <div className='chair-bottom' id="seatD3" style={{ backgroundColor: selectedSeat === 'seatD' ? 'red' : '' }}></div>
                     </div>
                   </div>
                 )
