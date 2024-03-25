@@ -7,6 +7,7 @@ import Adminnavbar from './Adminnavbar';
 function Adminpage () {
   const [entries,setEntries] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectBranch,setBranchOption]=useState();
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
@@ -36,12 +37,17 @@ function Adminpage () {
   const handleSelectChange = (selectedOption) => {
     setSelectedOption(selectedOption);
   };
-  const filteredData = selectedOption
+  const handleSelectBranch=(selectBranch)=>{
+    setBranchOption(selectBranch);
+  }
+  const filteredData = (selectedOption,selectBranch)
     ? entries.filter(item =>
-        item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase())
+        item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase())&&
+        item.BranchName.toLowerCase().includes(selectBranch.value.toLowerCase())
       )
     : [];
     const options = entries.map(item => ({ value: item.Restraunt, label: item.Restraunt }));
+    const BranchOptions=entries.map(item=>({value:item.BranchName,label:item.BranchName}))
   return (
     <div>
       <Adminnavbar/>
@@ -54,6 +60,12 @@ function Adminpage () {
         options={options}
         placeholder="Search..."
       />
+      <Select className='search-bar'
+        value={selectBranch}
+        onChange={handleSelectBranch}
+        options={BranchOptions}
+        placeholder="Search..."
+      />
       <ul class="flex-container single-item">
         {filteredData.map(item => (
            <li key={item.id} class="flex-item">
@@ -62,6 +74,7 @@ function Adminpage () {
            <p>Branch: {item.BranchName}</p>
            <div className='order-details'>
            <h3>Order Summary</h3>
+           <p>OrderId: #{item.OrderId}</p>
            <p>Seats: {item.Seat}</p>
            <p>Items: {item.item}</p>
            <p>Time: {item.time}</p>
@@ -90,6 +103,7 @@ function Adminpage () {
               <p>Branch: {entry.BranchName}</p>
               <div className='order-details'>
               <h3>Order Summary</h3>
+              <p>OrderId: #{entry.OrderId}</p>
               <p>Seats: {entry.Seat}</p>
               <p>Items: {entry.item}</p>
               <p>Time: {entry.time}</p>

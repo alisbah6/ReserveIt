@@ -1,11 +1,20 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './FinalItem.css'
 import axios from "axios";
 import {useRef } from "react";
 import html2canvas from 'html2canvas';
 import jspdf from 'jspdf';
 const FinalItem = () => {
+  const [OrderId, setOrderId] = useState('');
   const pdfRef = useRef();
+  // Function to generate a random 10-digit number
+  function generateOrderId() {
+    const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
+    setOrderId(randomNumber.toString());
+  }
+  useEffect(() => {
+    generateOrderId();
+  }, []);
   const UserEmail = localStorage.getItem(1);
   const Restraunt= localStorage.getItem("restraunt");
   const BranchName=localStorage.getItem("branch name");
@@ -20,6 +29,7 @@ const FinalItem = () => {
       // Make an API request to create a new user
       const response = await axios.post(
         "http://localhost:3500/user/submission", {
+          OrderId,
         Restraunt,
         BranchName,
         UserEmail,
@@ -51,7 +61,6 @@ const FinalItem = () => {
     } else {
       window.confirm("Please agree to T&C to proceed");
     }
-
     };
 
     const downloadpdf = () => {
@@ -87,6 +96,9 @@ const FinalItem = () => {
       <div className='items'>
         <form className='font' ref={pdfRef}>
           <h1 className='cart'>ORDER DETAILS</h1>
+          <div className='book_lable'>
+            <label>OrderId: #{OrderId}</label>
+          </div>
           <div className='book_lable'>
             <label>{Restraunt}</label>
           </div>
