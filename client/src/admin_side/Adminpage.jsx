@@ -8,6 +8,8 @@ function Adminpage () {
   const [entries,setEntries] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectBranch,setBranchOption]=useState();
+  const [selectedBranch,setSelectedBranch]=useState();
+  const [selectDate,setSelectedDate]=useState();
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
@@ -34,20 +36,78 @@ function Adminpage () {
     }, 1000)
     return () => clearInterval(interval)
   }, [])
+
   const handleSelectChange = (selectedOption) => {
     setSelectedOption(selectedOption);
+    let branchOptions = [];
+    if(selectedOption){
+      if(selectedOption.value==="Aslam Chicken"){
+        branchOptions = [
+          { value: "ChandniChowk", label: "Chandni Chowk" },
+          { value: "BatlaHouse", label: "Batla House" }
+        ];
+      }
+      else if(selectedOption.value==="Bukhara"){
+        branchOptions=[
+          {value:"ITCMaurya",label:"ITC Maurya"},
+        ]
+      }
+      else if(selectedOption.value==="Gulati"){
+        branchOptions=[
+          {value:"PandaraRoad",label:"Pandara Road"}
+        ]
+      }
+      else if(selectedOption.value==="Karim's"){
+        branchOptions=[
+          {value:"GreenPark",label:"Green Park"},
+          {value:"Jasola",label:"Jasola"},
+          {value:"Nizamuddin",label:"Nizamuddin"},
+          {value:"DLFAvenue",label:"DLF Avenue,Saket"},
+          {value:"Jama Masjid",label:"Jama Masjid"},
+        ]
+      }
+      else if(selectedOption.value==="Rajender Da Dhaba"){
+        branchOptions=[
+          {value:"SafdarjungEnclave",label:"Safdarjung Enclave"},
+         ]
+      }
+      else if(selectedOption.value==="Sagar Ratna"){
+        branchOptions=[
+          {value:"DefenceColony",label:"Defence Colony"},
+          {value:"PreetVihar",label:"Preet Vihar"},
+          {value:"MasjidMoth",label:"Masjid Moth"},
+          {value:"NarainaVihar",label:"Naraina Vihar"},
+          {value:"PaschimVihar",label:"Paschim Vihar"},
+         ]
+      }
+      else if(selectedOption.value==="Sandoz"){
+        branchOptions=[
+          {value:"ConnaughtPlace",label:"Connaught Place"},
+          {value:"KarolBagh",label:"Karol Bagh"},
+          {value:"LajpatNagar",label:"Lajpat Nagar"},
+          {value:"RajouriGarden",label:"Rajouri Garden"},
+          {value:"Jasola",label:"Jasola"},
+         ]
+      }
+      else if(selectedOption.value==="Varq"){
+        branchOptions=[
+          {value:"TajMahal",label:"Taj Mahal Hotel"},
+         ]
+      }
+      else{branchOptions=[];}
+    }
+    setBranchOption(branchOptions);
+    setSelectedBranch(null);
   };
-  const handleSelectBranch=(selectBranch)=>{
-    setBranchOption(selectBranch);
-  }
-  const filteredData = (selectedOption,selectBranch)
+  const handleBranchChange = (selectedBranch) => {
+    setSelectedBranch(selectedBranch);
+  };
+  const filteredData = (selectedOption && selectedBranch)
     ? entries.filter(item =>
         item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase())&&
-        item.BranchName.toLowerCase().includes(selectBranch.value.toLowerCase())
+        item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
       )
-    : [];
-    const options = entries.map(item => ({ value: item.Restraunt, label: item.Restraunt }));
-    const BranchOptions=entries.map(item=>({value:item.BranchName,label:item.BranchName}))
+    : entries;
   return (
     <div>
       <Adminnavbar/>
@@ -57,13 +117,22 @@ function Adminpage () {
       <Select className='search-bar'
         value={selectedOption}
         onChange={handleSelectChange}
-        options={options}
+        options={[
+          { value: "Aslam Chicken", label: "Aslam Chicken" },
+          { value: "Bukhara", label: "Bukhara" },
+          { value: "Gulati", label: "Gulati" },
+          { value: "Karim's", label: "Karim's" },
+          { value: "Rajender Da Dhaba", label: "Rajender Da Dhaba" },
+          { value: "Sagar Ratna", label: "Sagar Ratna" },
+          { value: "Sandoz", label: "Sandoz" },
+          { value: "Varq", label: "Varq" }
+        ]}
         placeholder="Search..."
       />
       <Select className='search-bar'
-        value={selectBranch}
-        onChange={handleSelectBranch}
-        options={BranchOptions}
+        value={selectedBranch}
+        onChange={handleBranchChange}
+        options={selectBranch}
         placeholder="Search..."
       />
       <ul class="flex-container single-item">
