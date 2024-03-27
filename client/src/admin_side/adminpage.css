@@ -5,55 +5,5 @@
     box-sizing: border-box;
 }
 .order-cards{
-    border-radius: 2px;
-    border: 2px solid black;
-    padding: 5px;
-    height: 100%;
     width: 100%;
 }
-.restraunt-name{
-    text-align: center;
-}
-.order-details{
-    border: 2px solid black;
-    height: 60%;
-    width: 100%;
-    padding-left: 15px;
-    padding-bottom: 10px;
-
-}
-.order-time{
-    float: right;
-    font-size: medium;
-    margin: 4px 10px;
-}
-.user-details{
-    padding: 10px;
-}
-.order-done{
-    float: right;
-    margin: 0px 10px ;
-    font-size: 120%;
-    padding: 5px;
-}
-.search-bar{
-    width: 95%;
-    margin: 3%;
-
-}
-.flex-container {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0;
-  }
-
-  .flex-item {
-    flex: 1 0 50%; /* Each item takes up 50% of the container */
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  .flex-container.single-item {
-    justify-content: flex-start; /* Center the item if there's only one */
-  }
