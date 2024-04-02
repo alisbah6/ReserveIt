@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Style.css';
 import axios from 'axios';
 import { useState } from 'react';
+import logo from '../assets/key_2.webp';
 function Register() {
     const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ function Register() {
                 <div className="box-image-reg">
                 </div>
                 <div className="box-reg">
-                    <img className="center-reg" src="https://media.discordapp.net/attachments/947184208491733032/1217469390509965342/key_1.webp?ex=660423ba&is=65f1aeba&hm=fcdb6fc1f90f178bfb74ab9a624c802a54d5a4cb380f8928c54ee36f066a00a0&=&format=webp&width=100&height=100" alt="Avatar"></img>
+                    <img className="center-reg" src={logo} alt="Avatar"></img>
                     <form id='register-form'>
                         <label className="label-reg" htmlFor="name">Name</label>
                         <input className="input" type="text" placeholder="name" id="name" onChange={(e) => {

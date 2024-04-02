@@ -3,6 +3,7 @@ import './Style.css';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuth } from './AuthContext';
+import logo from '../assets/key_1.webp';
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +48,7 @@ function Login() {
       <div className="box-image">
       </div>
       <div className="box">
-        <img className="center" src="https://media.discordapp.net/attachments/947184208491733032/1217469390509965342/key_1.webp?ex=660423ba&is=65f1aeba&hm=fcdb6fc1f90f178bfb74ab9a624c802a54d5a4cb380f8928c54ee36f066a00a0&=&format=webp&width=100&height=100" alt="Avatar"></img>
+        <img className="center" src={logo} alt="Avatar"></img>
         <form>
           <label className="label" htmlFor="email">Email</label>
           <input className="input" type="text" name='email' autoComplete='off' placeholder="Email Id" id="username"
