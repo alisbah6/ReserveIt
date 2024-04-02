@@ -136,34 +136,6 @@ function Adminpage() {
           placeholder="Search Branch..."
         />
       </div>
-      <div>
-        <ul class="order-recipt">
-          {filteredData.map(item => (
-            <li key={item.id} className="flex-item">
-              <div className='order-cards'>
-                <h2 className='restraunt-name'>{item.Restraunt}</h2>
-                <p>Branch: {item.BranchName}</p>
-                <div className='order-details'>
-                  <h3>Order Summary</h3>
-                  <p>OrderId: #{item.OrderId}</p>
-                  <p>Seats: {item.Seat}</p>
-                  <p>Items: {item.item}</p>
-                  <p>Time: {item.time}</p>
-                  <p>Reservation Date: {item.date.substring(0, 16)}</p>
-                  <button className='order-done'>Done</button>
-                </div>
-                <div className='user-details'>
-                  <h4>User Details</h4>
-                  <h4>Email:  {item.UserEmail}</h4>
-                  <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
-                  <h4>Contact: {item.contact}</h4>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <hr />
       <h1 style={{ marginTop: 10, textAlign: 'center' }} >All Orders</h1>
       <div >
         <ul class="order-recipt">
