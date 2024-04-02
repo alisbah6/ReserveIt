@@ -107,7 +107,7 @@ function Adminpage() {
       item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
     )
     : entries;
-  return(
+  return (
 
     <div>
       <Adminnavbar />
@@ -141,23 +141,55 @@ function Adminpage() {
         <ul class="order-recipt">
           {entries.slice().reverse().map(entry => (
             <li key={entry.id} className="flex-item">
-              <div className='order-cards'>
+              <div className='order-cards' id='target'>
                 <h2 className='restraunt-name'>{entry.Restraunt}</h2>
-                <p>Branch: {entry.BranchName}</p>
+                <h3 className='orderS'>Order Summary</h3>
+                <hr />
                 <div className='order-details'>
-                  <h3>Order Summary</h3>
-                  <p>OrderId: #{entry.OrderId}</p>
-                  <p>Seats: {entry.Seat}</p>
-                  <p>Items: {entry.item}</p>
-                  <p>Time: {entry.time}</p>
-                  <p>Reservation Date: {entry.date.substring(0, 16)}</p>
+                  <p className='order-info'>Branch: {entry.BranchName}</p>
+                  <p className='order-info'>OrderId: #{entry.OrderId}</p>
+                  <p className='order-info'>Seats: {entry.Seat}</p>
+                  <p className='order-info'>Items: {entry.item}</p>
+                  <p className='order-info'>Time: {entry.time}</p>
+                  <p className='order-info'>Reservation Date: {entry.date.substring(0, 16)}</p>
                   <button className='order-done'>Done</button>
                 </div>
+                <hr/>
                 <div className='user-details'>
-                  <h4>User Details</h4>
-                  <h4>Email:  {entry.UserEmail}</h4>
-                  <p className='order-time'>{moment(entry.bookedOn).fromNow()}</p>
-                  <h4>Contact: {entry.contact}</h4>
+                  <h2>Customer Details</h2>
+                  <p className='order-info'>Email:  {entry.UserEmail}</p>
+                  <p className='order-info'>Contact: {entry.contact}</p>
+                  <p className='order-time' id='hide'>{moment(entry.bookedOn).fromNow()}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <hr />
+      <div>
+        <ul class="order-recipt">
+          {filteredData.map(item => (
+            <li key={item.id} className="flex-item">
+              <div className='order-cards'>
+                <h2 className='restraunt-name'>{item.Restraunt}</h2>
+                <h3 className='orderS'>Order Summary</h3>
+                <hr/>
+                <div className='order-details'>
+                  <p className='order-info'>Branch: {item.BranchName}</p>
+                  <p className='order-info'>OrderId: #{item.OrderId}</p>
+                  <p className='order-info'>Seats: {item.Seat}</p>
+                  <p className='order-info'>Items: {item.item}</p>
+                  <p className='order-info'>Time: {item.time}</p>
+                  <p className='order-info'>Reservation Date: {item.date.substring(0, 16)}</p>
+                  <button className='order-done'>Done</button>
+                </div>
+                <hr/>
+                <div className='user-details'>
+                  <h2>Customer Details</h2>
+                  <p className='order-info'>Email:  {item.UserEmail}</p>
+                  <p className='order-info'>Contact: {item.contact}</p>
+                  <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
                 </div>
               </div>
             </li>

@@ -14,6 +14,18 @@
 
 .order-cards{
     width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(8,7,16,0.6);
+}
+
+.orderS{
+    padding-bottom: 20px;
+}
+
+.order-details{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .order-recipt {
@@ -30,4 +42,35 @@
     flex: 0 0 50%;
     padding: 10px;
     box-sizing: border-box;
+  }
+
+.order-time{
+    text-align: right;
+    font-size: small;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.order-info{
+    font-size:large;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.order-done{
+    width: 15%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 80%;
+    background-color: #219ebc;
+    color: #000000;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 4px rgba(8,7,16,0.6);
+  }
+  
+  .order-done:hover{
+    background-color: #8ecae6;
   }
