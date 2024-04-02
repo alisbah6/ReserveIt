@@ -107,6 +107,22 @@ function Adminpage() {
       item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
     )
     : entries;
+  
+  var div = document.getElementById('target');
+  var display = 0 ;
+
+  const hideshow = () => {
+    if(display === 1)
+    {
+      div.style.display = 'block';
+      display = 0 ;
+    }
+    else
+    {
+      div.style.display = 'none';
+      display = 1 ;
+    }
+  }
   return (
 
     <div>
@@ -144,7 +160,7 @@ function Adminpage() {
                 <h2 className='restraunt-name'>{item.Restraunt}</h2>
                 <h3 className='orderS'>Order Summary</h3>
                 <hr/>
-                <div className='order-details'>
+                <div className='order-details' id='target'>
                   <p className='order-info'>Branch: {item.BranchName}</p>
                   <p className='order-info'>OrderId: #{item.OrderId}</p>
                   <p className='order-info'>Seats: {item.Seat}</p>
@@ -182,14 +198,14 @@ function Adminpage() {
                   <p className='order-info'>Items: {entry.item}</p>
                   <p className='order-info'>Time: {entry.time}</p>
                   <p className='order-info'>Reservation Date: {entry.date.substring(0, 16)}</p>
-                  <button className='order-done'>Done</button>
-                </div>
-                <hr/>
-                <div className='user-details'>
-                  <h2>Customer Details</h2>
-                  <p className='order-info'>Email:  {entry.UserEmail}</p>
-                  <p className='order-info'>Contact: {entry.contact}</p>
-                  <p className='order-time' id='hide'>{moment(entry.bookedOn).fromNow()}</p>
+                  <button className='order-done' onClick={hideshow}>Done</button>
+                  <hr />
+                  <div className='user-details'>
+                    <h2>Customer Details</h2>
+                    <p className='order-info'>Email:  {entry.UserEmail}</p>
+                    <p className='order-info'>Contact: {entry.contact}</p>
+                    <p className='order-time' id='hide'>{moment(entry.bookedOn).fromNow()}</p>
+                  </div>
                 </div>
               </div>
             </li>
