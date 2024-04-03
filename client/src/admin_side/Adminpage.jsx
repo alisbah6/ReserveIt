@@ -107,20 +107,18 @@ function Adminpage() {
       item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
     )
     : entries;
-  
-  var div = document.getElementById('target');
-  var display = 0 ;
+
+  let orderdetails = document.querySelector('.order-details');
+  let ishow = true;
 
   const hideshow = () => {
-    if(display === 1)
-    {
-      div.style.display = 'block';
-      display = 0 ;
+    if (ishow) {
+      orderdetails.style.display = 'none';
+      ishow = false;
     }
-    else
-    {
-      div.style.display = 'none';
-      display = 1 ;
+    else {
+      orderdetails.style.display = 'block';
+      ishow = true;
     }
   }
   return (
@@ -157,23 +155,27 @@ function Adminpage() {
           {filteredData.map(item => (
             <li key={item.id} className="flex-item">
               <div className='order-cards'>
-                <h2 className='restraunt-name'>{item.Restraunt}</h2>
-                <h3 className='orderS'>Order Summary</h3>
-                <hr/>
                 <div className='order-details' id='target'>
+                  <h2 className='restraunt-name'>{item.Restraunt}</h2>
+                  <h3 className='orderS'>Order Summary</h3>
+                  <hr />
                   <p className='order-info'>Branch: {item.BranchName}</p>
                   <p className='order-info'>OrderId: #{item.OrderId}</p>
                   <p className='order-info'>Seats: {item.Seat}</p>
                   <p className='order-info'>Items: {item.item}</p>
                   <p className='order-info'>Time: {item.time}</p>
                   <p className='order-info'>Reservation Date: {item.date.substring(0, 16)}</p>
-                  <button className='order-done'>Done</button>
+                  <hr />
                 </div>
-                <hr/>
                 <div className='user-details'>
                   <h2>Customer Details</h2>
-                  <p className='order-info'>Email:  {item.UserEmail}</p>
-                  <p className='order-info'>Contact: {item.contact}</p>
+                  <div className='d-row'>
+                    <div>
+                      <p className='order-info'>Email:  {item.UserEmail}</p>
+                      <p className='order-info'>Contact: {item.contact}</p>
+                    </div>
+                    <button className='order-done' onClick={hideshow}>Done</button>
+                  </div>
                   <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
                 </div>
               </div>
@@ -181,31 +183,35 @@ function Adminpage() {
           ))}
         </ul>
       </div>
-      <hr/>
+      <hr />
       <h1 style={{ marginTop: 10, textAlign: 'center' }} >All Orders</h1>
       <div >
         <ul class="order-recipt">
           {entries.slice().reverse().map(entry => (
             <li key={entry.id} className="flex-item">
               <div className='order-cards' id='target'>
-                <h2 className='restraunt-name'>{entry.Restraunt}</h2>
-                <h3 className='orderS'>Order Summary</h3>
-                <hr />
                 <div className='order-details'>
+                  <h2 className='restraunt-name'>{entry.Restraunt}</h2>
+                  <h3 className='orderS'>Order Summary</h3>
+                  <hr />
                   <p className='order-info'>Branch: {entry.BranchName}</p>
                   <p className='order-info'>OrderId: #{entry.OrderId}</p>
                   <p className='order-info'>Seats: {entry.Seat}</p>
                   <p className='order-info'>Items: {entry.item}</p>
                   <p className='order-info'>Time: {entry.time}</p>
                   <p className='order-info'>Reservation Date: {entry.date.substring(0, 16)}</p>
-                  <button className='order-done' onClick={hideshow}>Done</button>
                   <hr />
-                  <div className='user-details'>
-                    <h2>Customer Details</h2>
-                    <p className='order-info'>Email:  {entry.UserEmail}</p>
-                    <p className='order-info'>Contact: {entry.contact}</p>
-                    <p className='order-time' id='hide'>{moment(entry.bookedOn).fromNow()}</p>
+                </div>
+                <div className='user-details'>
+                  <h2>Customer Details</h2>
+                  <div className='d-row'>
+                    <div>
+                      <p className='order-info'>Email:  {entry.UserEmail}</p>
+                      <p className='order-info'>Contact: {entry.contact}</p>
+                    </div>
+                    <button className='order-done' onClick={hideshow}>Done</button>
                   </div>
+                  <p className='order-time' id='hide'>{moment(entry.bookedOn).fromNow()}</p>
                 </div>
               </div>
             </li>
