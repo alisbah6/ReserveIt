@@ -109,8 +109,8 @@ h1 {
 .loc {
     width: 90%;
     margin: 0px 20px;
-    font-size:large;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -288,14 +288,55 @@ h1 {
 }
 
 
-.order-booking:hover{
+.order-booking:hover {
     transform: scale(1.1);
 }
 
+.hotel-design {
+    display: grid;
+    height: 1000px;
+    place-content: center;
+    perspective: 4000px;
+    margin-bottom: 20px;
+}
 
+.face {
+    height: 1000px;
+    width: 1000px;
+}
 
-.face{
-    height: 150px;
-    width: 150px;
-    background: black;
+.left {
+    position: relative;
+    left: -1000px;
+    top: 2000px;
+    transform-origin: right;
+    transform: rotateY(-90deg);
+    background-color: #1e90ff;
+
+}
+
+.right {
+    position: relative;
+    left: 1000px;
+    top: -2000px;
+    transform-origin: left;
+    transform: rotateY(90deg);
+    background-color: #1e90ff;
+}
+
+.back-face {
+    background-color:lavender;
+
+}
+
+.top {
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+    background-color: lightblue;
+}
+
+.bottom {
+    transform-origin: top;
+    transform: rotateX(-90deg);
+    background-color: lightblue;
 }
