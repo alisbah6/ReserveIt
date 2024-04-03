@@ -109,17 +109,8 @@ function Adminpage() {
     : entries;
 
   let orderdetails = document.querySelector('.order-details');
-  let ishow = true;
-
   const hideshow = () => {
-    if (ishow) {
-      orderdetails.style.display = 'none';
-      ishow = false;
-    }
-    else {
-      orderdetails.style.display = 'block';
-      ishow = true;
-    }
+    orderdetails.style.display = 'none';
   }
   return (
 

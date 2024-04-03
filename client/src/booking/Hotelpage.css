@@ -347,8 +347,6 @@ h1 {
     margin: 50px 70px;
     border: 2px solid black;
     display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0;
+    flex-direction: row;
+    gap: 40px;
 }
