@@ -287,26 +287,27 @@ h1 {
 
 
 .order-booking:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .hotel-design {
     display: grid;
-    height: 1000px;
+    height: 600px;
     place-content: center;
     perspective: 4000px;
     margin-bottom: 20px;
 }
 
 .face {
-    height: 1000px;
+    height: 600px;
     width: 1000px;
 }
 
 .left {
     position: relative;
-    left: -1000px;
-    top: 2000px;
+    width: 600px;
+    left: -600px;
+    top: 1200px;
     transform-origin: right;
     transform: rotateY(-90deg);
     background-color: #6699CC;
@@ -315,8 +316,9 @@ h1 {
 
 .right {
     position: relative;
+    width: 600px;
     left: 1000px;
-    top: -2000px;
+    top: -1200px;
     transform-origin: left;
     transform: rotateY(90deg);
     background-color: #6699CC;
@@ -337,4 +339,16 @@ h1 {
     transform-origin: top;
     transform: rotateX(-90deg);
     background-color: #5072A7;
+}
+
+
+.seating{
+    width: fit-content;
+    margin: 50px 70px;
+    border: 2px solid black;
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
 }

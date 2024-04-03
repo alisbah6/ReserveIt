@@ -90,20 +90,8 @@ function AslamChicken() {
               <div className='hotel-design'>
                 <div className='face left'></div>
                 <div className='face top'></div>
-                <div className='face back-face'></div>
-                <div className='face bottom'></div>
-                <div className='face right'></div>
-              </div>
-              {branches.map((item, index) => {
-                return (
-                  <div className='container-desc' key={index}>
-                    <p className='loc'>
-                      Location:{item.loc}
-                      <br />
-                      Hours:{item.hr}
-                      <br />
-                      Contact:{item.ph}
-                    </p>
+                <div className='face back-face'>
+                  <div className='seating'>
                     <div className='order-booking' onClick={() => TableSelected('seatA', 8)}>
                       <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
                       <div className='flex'>
@@ -162,6 +150,22 @@ function AslamChicken() {
                       </div>
                       <div className='chair-bottom' id="seatD" style={{ backgroundColor: selectedSeat.includes('seatD') ? 'green' : '' }}></div>
                     </div>
+                  </div>
+                </div>
+                <div className='face bottom'></div>
+                <div className='face right'></div>
+              </div>
+              {branches.map((item, index) => {
+                return (
+                  <div className='container-desc' key={index}>
+                    <p className='loc'>
+                      Location:{item.loc}
+                      <br />
+                      Hours:{item.hr}
+                      <br />
+                      Contact:{item.ph}
+                    </p>
+
                   </div>
                 )
               })}
