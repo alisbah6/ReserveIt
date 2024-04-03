@@ -13,13 +13,11 @@
 .branch-container {
     width: 30vh;
     border-radius: 10px;
-    box-shadow: -8px 0px 40px rgba(8, 7, 16, 0.6);
 }
 
 .details-container {
     width: 145vh;
     border-radius: 10px;
-    box-shadow: 15px 0px 40px rgba(8, 7, 16, 0.6);
 }
 
 .b {
@@ -311,7 +309,7 @@ h1 {
     top: 2000px;
     transform-origin: right;
     transform: rotateY(-90deg);
-    background-color: #1e90ff;
+    background-color: #6699CC;
 
 }
 
@@ -321,7 +319,7 @@ h1 {
     top: -2000px;
     transform-origin: left;
     transform: rotateY(90deg);
-    background-color: #1e90ff;
+    background-color: #6699CC;
 }
 
 .back-face {
@@ -332,11 +330,11 @@ h1 {
 .top {
     transform-origin: bottom;
     transform: rotateX(90deg);
-    background-color: lightblue;
+    background-color: #5072A7;
 }
 
 .bottom {
     transform-origin: top;
     transform: rotateX(-90deg);
-    background-color: lightblue;
+    background-color: #5072A7;
 }
