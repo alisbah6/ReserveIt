@@ -216,59 +216,64 @@ h1 {
 }
 
 .chair-left {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: #A1A1A8;
-    margin-top: 10px;
-    margin-right: 2px;
+    margin: 12px 2px;;
     border-radius: 0px 8px 8px 0px;
 }
 
 .chair-right {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: #A1A1A8;
-    margin-top: 10px;
+    margin-top: 12px;
     margin-left: 2px;
     border-radius: 8px 0px 0px 8px;
 }
 
 .chair-top {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: #A1A1A8;
-    margin-left: 38px;
-    margin-bottom: 2px;
+    margin: 2px 5px;
     border-radius: 0px 0px 8px 8px;
+}
+.top-flex{
+    display: flex;
+    margin-left: 22px;
+}
+.bottom-flex{
+    display: flex;
+    margin-left: 23px;
 }
 
 .chair-bottom {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: #A1A1A8;
-    margin-left: 38px;
-    margin-top: 2px;
+    margin: 2px 5px;
     border-radius: 8px 8px 0px 0px;
 }
 
 .table-eight {
-    width: 50px;
-    height: 100px;
+    width: 80px;
+    height: 40px;
     background-color: #B4B4B9;
     border-radius: 5px;
     box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
 }
 
 .table-six {
-    width: 50px;
-    height: 70px;
+    width: 58px;
+    height: 40px;
     background-color: #B4B4B9;
     border-radius: 5px;
     box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
 }
 
 .table-four {
-    width: 50px;
+    width: 33px;
     height: 40px;
     background-color: #B4B4B9;
     border-radius: 5px;
@@ -276,8 +281,8 @@ h1 {
 }
 
 .table-two {
-    width: 50px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     margin-left: 23px;
     margin-right: 21px;
     background-color: #B4B4B9;
@@ -343,10 +348,13 @@ h1 {
 
 
 .seating{
-    width: fit-content;
-    margin: 50px 70px;
+    width: 850px;
+    height: 500px;
+    margin: 50px 75px;
     border: 2px solid black;
+}
+
+.eight-one{
     display: flex;
     flex-direction: row;
-    gap: 40px;
 }

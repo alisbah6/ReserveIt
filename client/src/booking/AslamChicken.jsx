@@ -92,31 +92,61 @@ function AslamChicken() {
                 <div className='face top'></div>
                 <div className='face back-face'>
                   <div className='seating'>
-                    <div>
-                    <div className='order-booking' onClick={() => TableSelected('seatA', 8)}>
-                      <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                      <div className='flex'>
-                        <div>
-                          <div className='chair-left' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                          <div className='chair-left' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                          <div className='chair-left' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                    <div className='eight-one'>
+                      <div className='order-booking' onClick={() => TableSelected('seatA', 8)}>
+                        <div className='top-flex'>
+                          <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
                         </div>
-                        <div>
-                          <div className='table-eight' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                        <div className='flex'>
+                          <div>
+                            <div className='chair-left' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          </div>
+                          <div>
+                            <div className='table-eight' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          </div>
+                          <div>
+                            <div className='chair-right' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          </div>
                         </div>
-                        <div>
-                          <div className='chair-right' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                          <div className='chair-right' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                          <div className='chair-right' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                        <div className='bottom-flex'>
+                          <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                          <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                      <div className='order-booking' onClick={() => TableSelected('seatE', 8)}>
+                        <div className='top-flex'>
+                          <div className='chair-top' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          <div className='chair-top' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          <div className='chair-top' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                        </div>
+                        <div className='flex'>
+                          <div>
+                            <div className='chair-left' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          </div>
+                          <div>
+                            <div className='table-eight' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          </div>
+                          <div>
+                            <div className='chair-right' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          </div>
+                        </div>
+                        <div className='bottom-flex'>
+                          <div className='chair-bottom' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          <div className='chair-bottom' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                          <div className='chair-bottom' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
+                        </div>
+                      </div>
                     </div>
                     <div className='order-booking' onClick={() => TableSelected('seatB', 6)}>
-                      <div className='chair-top' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
+                      <div className='top-flex'>
+                        <div className='chair-top' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
+                        <div className='chair-top' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
+                      </div>
                       <div className='flex'>
                         <div>
-                          <div className='chair-left' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
                           <div className='chair-left' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
                         </div>
                         <div>
@@ -124,12 +154,16 @@ function AslamChicken() {
                         </div>
                         <div>
                           <div className='chair-right' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
-                          <div className='chair-right' id="seatb" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom' id="seatB7" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
+                      <div className='bottom-flex'>
+                        <div className='chair-bottom' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
+                        <div className='chair-bottom' id="seatB" style={{ backgroundColor: selectedSeat.includes('seatB') ? 'green' : '' }}></div>
+                      </div>
                     </div><div className='order-booking' onClick={() => TableSelected('seatC', 4)}>
-                      <div className='chair-top' id="seatC" style={{ backgroundColor: selectedSeat.includes('seatC') ? 'green' : '' }}></div>
+                      <div className='top-flex'>
+                        <div className='chair-top' id="seatC" style={{ backgroundColor: selectedSeat.includes('seatC') ? 'green' : '' }}></div>
+                      </div>
                       <div className='flex'>
                         <div>
                           <div className='chair-left' id="seatC" style={{ backgroundColor: selectedSeat.includes('seatC') ? 'green' : '' }}></div>
@@ -141,76 +175,21 @@ function AslamChicken() {
                           <div className='chair-right' id="seatC" style={{ backgroundColor: selectedSeat.includes('seatC') ? 'green' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom' id="seatC" style={{ backgroundColor: selectedSeat.includes('seatC') ? 'green' : '' }}></div>
+                      <div className='bottom-flex'>
+                        <div className='chair-bottom' id="seatC" style={{ backgroundColor: selectedSeat.includes('seatC') ? 'green' : '' }}></div>
+                      </div>
                     </div><div className='order-booking' onClick={() => TableSelected('seatD', 2)}>
-                      <div className='chair-top' id="seatD" style={{ backgroundColor: selectedSeat.includes('seatD') ? 'green' : '' }}></div>
+                      <div className='top-flex'>
+                        <div className='chair-top' id="seatD" style={{ backgroundColor: selectedSeat.includes('seatD') ? 'green' : '' }}></div>
+                      </div>
                       <div className='flex'>
                         <div>
                           <div className='table-two' id="seatD" style={{ backgroundColor: selectedSeat.includes('seatD') ? 'green' : '' }}></div>
                         </div>
                       </div>
-                      <div className='chair-bottom' id="seatD" style={{ backgroundColor: selectedSeat.includes('seatD') ? 'green' : '' }}></div>
-                    </div>
-                    </div>
-                    <div>
-                    <div className='order-booking' onClick={() => TableSelected('seatE', 8)}>
-                      <div className='chair-top' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                      <div className='flex'>
-                        <div>
-                          <div className='chair-left' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                          <div className='chair-left' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                          <div className='chair-left' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                        </div>
-                        <div>
-                          <div className='table-eight' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                        </div>
-                        <div>
-                          <div className='chair-right' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                          <div className='chair-right' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                          <div className='chair-right' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                        </div>
+                      <div className='bottom-flex'>
+                        <div className='chair-bottom' id="seatD" style={{ backgroundColor: selectedSeat.includes('seatD') ? 'green' : '' }}></div>
                       </div>
-                      <div className='chair-bottom' id="seatE" style={{ backgroundColor: selectedSeat.includes('seatE') ? 'green' : '' }}></div>
-                    </div>
-                    <div className='order-booking' onClick={() => TableSelected('seatF', 6)}>
-                      <div className='chair-top' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                      <div className='flex'>
-                        <div>
-                          <div className='chair-left' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                          <div className='chair-left' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                        </div>
-                        <div>
-                          <div className='table-six' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                        </div>
-                        <div>
-                          <div className='chair-right' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                          <div className='chair-right' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                        </div>
-                      </div>
-                      <div className='chair-bottom' id="seatF" style={{ backgroundColor: selectedSeat.includes('seatF') ? 'green' : '' }}></div>
-                    </div><div className='order-booking' onClick={() => TableSelected('seatG', 4)}>
-                      <div className='chair-top' id="seatG" style={{ backgroundColor: selectedSeat.includes('seatG') ? 'green' : '' }}></div>
-                      <div className='flex'>
-                        <div>
-                          <div className='chair-left' id="seatG" style={{ backgroundColor: selectedSeat.includes('seatG') ? 'green' : '' }}></div>
-                        </div>
-                        <div>
-                          <div className='table-four' id="seatG" style={{ backgroundColor: selectedSeat.includes('seatG') ? 'green' : '' }}></div>
-                        </div>
-                        <div>
-                          <div className='chair-right' id="seatG" style={{ backgroundColor: selectedSeat.includes('seatG') ? 'green' : '' }}></div>
-                        </div>
-                      </div>
-                      <div className='chair-bottom' id="seatG" style={{ backgroundColor: selectedSeat.includes('seatG') ? 'green' : '' }}></div>
-                    </div><div className='order-booking' onClick={() => TableSelected('seatH', 2)}>
-                      <div className='chair-top' id="seatH" style={{ backgroundColor: selectedSeat.includes('seatH') ? 'green' : '' }}></div>
-                      <div className='flex'>
-                        <div>
-                          <div className='table-two' id="seatH" style={{ backgroundColor: selectedSeat.includes('seatH') ? 'green' : '' }}></div>
-                        </div>
-                      </div>
-                      <div className='chair-bottom' id="seatH" style={{ backgroundColor: selectedSeat.includes('seatH') ? 'green' : '' }}></div>
-                    </div>
                     </div>
                   </div>
                 </div>
@@ -287,7 +266,7 @@ function AslamChicken() {
         )
       })}
       <Footer />
-    </div>
+    </div >
   );
 }
 export default AslamChicken
