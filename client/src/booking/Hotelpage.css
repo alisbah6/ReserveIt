@@ -4,20 +4,18 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     padding: 80px 20px 40px;
-    grid-gap: 10px;
+    grid-gap: 5px;
     margin: 20px auto;
     max-width: 90%;
 
 }
 
 .branch-container {
-    width: 30vh;
-    border-radius: 10px;
+    width: 35vh;
 }
 
 .details-container {
-    width: 145vh;
-    border-radius: 10px;
+    width: 150vh;
 }
 
 .b {
@@ -44,7 +42,6 @@
     background-color: #1e90ff;
     border-radius: 2rem;
 }
-
 
 h1 {
     padding: 10px;
@@ -208,7 +205,7 @@ h1 {
 
 .order-booking {
     width: fit-content;
-    padding: 10px 10px;
+    padding: 10px 20px;
 }
 
 .flex {
@@ -219,7 +216,7 @@ h1 {
     width: 15px;
     height: 15px;
     background-color: #A1A1A8;
-    margin: 12px 2px;;
+    margin: 12px 2px;
     border-radius: 0px 8px 8px 0px;
 }
 
@@ -239,11 +236,13 @@ h1 {
     margin: 2px 5px;
     border-radius: 0px 0px 8px 8px;
 }
-.top-flex{
+
+.top-flex {
     display: flex;
     margin-left: 22px;
 }
-.bottom-flex{
+
+.bottom-flex {
     display: flex;
     margin-left: 23px;
 }
@@ -299,62 +298,155 @@ h1 {
     display: grid;
     height: 600px;
     place-content: center;
-    perspective: 4000px;
+    perspective: 3200px;
     margin-bottom: 20px;
 }
 
 .face {
     height: 600px;
-    width: 1000px;
-}
-
-.left {
-    position: relative;
-    width: 600px;
-    left: -600px;
-    top: 1200px;
-    transform-origin: right;
-    transform: rotateY(-90deg);
-    background-color: #6699CC;
-
-}
-
-.right {
-    position: relative;
-    width: 600px;
-    left: 1000px;
-    top: -1200px;
-    transform-origin: left;
-    transform: rotateY(90deg);
-    background-color: #6699CC;
+    width: 950px;
 }
 
 .back-face {
-    background-color:lavender;
+    background-color: lavender;
+    border: 4rem ridge #6699CC;
+    position: relative;
 
 }
+.back-face:after {
+    position: absolute;
+    top: -1.5rem; left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    background-color: mintcream;
+    width: 60px;
+    height: 1.5rem;
+  }
 
-.top {
-    transform-origin: bottom;
-    transform: rotateX(90deg);
-    background-color: #5072A7;
-}
-
-.bottom {
-    transform-origin: top;
-    transform: rotateX(-90deg);
-    background-color: #5072A7;
-}
-
-
-.seating{
-    width: 850px;
-    height: 500px;
-    margin: 50px 75px;
-    border: 2px solid black;
-}
 
 .eight-one{
     display: flex;
     flex-direction: row;
+    border: 0.5rem #3D5A79;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: fit-content;
+    position: relative;
+    gap: 10px;
 }
+
+.eight-one:after {
+    position: absolute;
+    bottom: -0.5rem; left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    background-color: lavender;
+    width: 80px;
+    height: 0.5rem;
+  }
+
+.eight-two{
+    display: flex;
+    flex-direction: row;
+    border: 0.5rem;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-left-color: #3D5A79;
+    border-bottom-color: #6699CC ;
+    width: fit-content;
+    position: relative;
+}
+.eight-two:after {
+    position: absolute;
+    bottom: -0.5rem; left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    background-color: lavender;
+    width: 50px;
+    height:0.5rem;
+  }
+
+.eight-flex{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+
+}
+
+.wall{
+    border: 0.5rem;
+    border-right-style: solid;
+    border-right-color: #6699CC;
+}
+.gate{
+    background-color: #A1A1A8;
+    width: 65px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.group-room{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.wall-part{
+    border: 0.5rem;
+    border-right-style: solid;
+    border-right-color: #6699CC;
+    padding-top: 18px;
+}
+.wall-part:after {
+    position: absolute;
+    right: -0.5rem; top: 48%;
+    transform: translateY(-50%);
+    content: '';
+    background-color: lavender;
+    width: 0.5rem;
+    height: 30px;
+  }
+.washroom {
+    border: 0.5rem;
+    width: 300px;
+    border-right-style: solid;
+    border-top-style: solid;
+    border-top-color: #3D5A79;
+    border-right-color: #6699CC;
+    border-spacing:15px;
+    height: 100px;
+    position: relative;
+    text-align: center;
+    padding-top: 18px;
+}
+.washroom:after {
+    position: absolute;
+    right: -0.5rem; top: 48%;
+    transform: translateY(-50%);
+    content: '';
+    background-color: lavender;
+    width: 0.5rem;
+    height: 30px;
+  }
+
+.kitchen{
+    border: 0.5rem;
+    width: 370px;
+    border-left-style: solid;
+    border-top-style: solid;
+    border-top-color: #6699CC;
+    border-left-color: #6699CC;
+    height: 100px;
+    position: relative;
+    text-align: center;
+    padding-top: 18px;
+}
+
+.kitchen:after {
+    position: absolute;
+    left: -0.5rem; top: 25%;
+    transform: translateY(-50%);
+    content: '';
+    background-color: lavender;
+    width: 0.5rem;
+    height: 30px;
+  }
