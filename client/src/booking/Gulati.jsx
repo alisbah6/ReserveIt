@@ -604,13 +604,11 @@ function Gulati() {
                 <div className="popup_booking">
                   {isLoggedIn ? (
                     <form onSubmit={(e) => e.preventDefault()}>
-                      <p className='want'>How Many seats Do you want?</p>
+                      <p className='want'>Total No. Of Seats Selected</p>
                       <div classname="buttonIn">
-                        <input type="number" className="seats-inbox" id='seats' onChange={(e) => setseats(e.target.value)} ></input>
+                        <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seats}></input>
                       </div>
-                      <p className='available'> Total No. Of Seats Available {totalseats}</p>
-                      <br />
-                      <br />
+                      <h2 className='want'>Select Your Date</h2>
                       <div className='calender'>
                         <Calendar
                           onChange={onChange}
@@ -639,7 +637,7 @@ function Gulati() {
                       </div>
                       <div>
                         <p className='want'>Enter Your Contact Number</p>
-                        <input className="seats-inbox" id='contact' onChange={(e) => { setContact(e.target.value); if (!pattern.test(e.target.value) && e.target.value.length >= 10) alert("Enter valid number"); }} />
+                        <input className="no-inbox" id='contact' onChange={(e) => { setContact(e.target.value); if (!pattern.test(e.target.value) && e.target.value.length >= 10) alert("Enter valid number"); }} />
                       </div>
                       <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
                       <a className="popup-close" href="#popup-close">&times;</a>
