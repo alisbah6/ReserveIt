@@ -1,12 +1,12 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
-import Table from '../assets/Table1.png';
+import Calendar from 'react-calendar';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
-import Calendar from 'react-calendar';
+
 var totalseats = 52;
 var totalno;
 function SagarRatna() {
@@ -16,10 +16,10 @@ function SagarRatna() {
   const bname = params.bname;
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
-  const [seats, setseats] = useState();
-  const [restaurantName, setRestaurantName] = useState(null);
+  const [seats, setseats] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
   const [contact, setContact] = useState();
+  const [restaurantName, setRestaurantName] = useState(null);
   const pattern = new RegExp(/^\d{1,10}$/);
   const [date, setDate] = useState(new Date());
   const { isLoggedIn } = useAuth();
@@ -37,22 +37,20 @@ function SagarRatna() {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
       totalno = totalseats - seats;
+      totalseats = totalno;
+      if (totalseats >= 0) {
+        navigate(`/Selectionmenu/${seats}`);
+      } else {
+        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+      }
+      localStorage.setItem("restraunt", restaurantName);
+      localStorage.setItem("branch name", bname);
+      localStorage.setItem("seats", seats);
+      localStorage.setItem("time", selectedValue);
+      localStorage.setItem("date", date);
+      localStorage.setItem("contact", contact);
     }
-    totalseats = totalno;
-    if (totalseats >= 0) {
-      navigate(`/Selectionmenu/${seats}`);
-    }
-    else {
-      alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
-    }
-    localStorage.setItem("restraunt",restaurantName);
-      localStorage.setItem("branch name",bname);
-    localStorage.setItem("seats", seats);
-    localStorage.setItem("time", selectedValue);
-    localStorage.setItem("date", date);
-    localStorage.setItem("contact", contact);
   }
-
   const [selectedSeat, setSelectedSeat] = useState([]);
 
   const TableSelected = (id, seat_value) => {
@@ -82,7 +80,7 @@ function SagarRatna() {
               <div className='branch'>
                 <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/SagarRatna/1/DefenceColony"><li>{item.b1}</li></Link>
+                <Link className='branch_sub' to="/SagarRatna/1/DefenceColony"><li>{item.b1}</li></Link>
                   <Link className='branch_sub' to="/SagarRatna/1/PreetVihar"><li>{item.b2}</li></Link>
                   <Link className='branch_sub' to="/SagarRatna/1/MasjidMoth"><li>{item.b3}</li></Link>
                   <Link className='branch_sub' to="/SagarRatna/1/NarainaVihar"><li>{item.b4}</li></Link>
@@ -600,6 +598,7 @@ function SagarRatna() {
                       <br />
                       Contact:{item.ph}
                     </p>
+
                   </div>
                 )
               })}
@@ -657,7 +656,7 @@ function SagarRatna() {
         )
       })}
       <Footer />
-    </div>
+    </div >
   );
 }
-export default SagarRatna;
+export default SagarRatna

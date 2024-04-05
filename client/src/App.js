@@ -7,7 +7,7 @@ import Register from './user/Register';
 import Booking from './booking/Booking';
 import SagarRatna from './booking/SagarRatna';
 import Bukhara from './booking/Bukhara';
-import RajinderDaDhaba from './booking/RajindwrDaDhaba';
+import RajinderDaDhaba from './booking/RajinderDaDhaba';
 import Karim from './booking/Karim';
 import AslamChicken from './booking/AslamChicken';
 import Varq from './booking/Varq'

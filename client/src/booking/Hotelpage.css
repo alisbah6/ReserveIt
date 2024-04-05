@@ -62,7 +62,8 @@ h1 {
 }
 
 .seats-inbox {
-    padding-left: 20px;
+    padding-left: 10px;
+    text-align: center;
     width: 15%;
     outline: none;
     height: 30px;

@@ -1,10 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import Table from '../assets/Table1.png';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 
@@ -15,17 +14,18 @@ function Gulati() {
   const id = params.id;
   const resturant = data.filter(res => res.id === id);
   const bname = params.bname;
-  const [restaurantName, setRestaurantName] = useState(null);
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
-  const [seats, setseats] = useState();
+  const [seats, setseats] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
   const [contact, setContact] = useState();
+  const [restaurantName, setRestaurantName] = useState(null);
   const pattern = new RegExp(/^\d{1,10}$/);
   const [date, setDate] = useState(new Date());
-  const onChange = (newDate) => {
-    setDate(newDate);}
   const { isLoggedIn } = useAuth();
+  const onChange = (newDate) => {
+    setDate(newDate);
+  }
   useEffect(() => {
     // Find the restaurant data corresponding to the id
     const restaurant = data.find(res => res.id === params.id);
@@ -37,22 +37,20 @@ function Gulati() {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
       totalno = totalseats - seats;
+      totalseats = totalno;
+      if (totalseats >= 0) {
+        navigate(`/Selectionmenu/${seats}`);
+      } else {
+        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+      }
+      localStorage.setItem("restraunt", restaurantName);
+      localStorage.setItem("branch name", bname);
+      localStorage.setItem("seats", seats);
+      localStorage.setItem("time", selectedValue);
+      localStorage.setItem("date", date);
+      localStorage.setItem("contact", contact);
     }
-    totalseats = totalno;
-    if (totalseats >= 0) {
-      navigate(`/Selectionmenu/${seats}`);
-    }
-    else {
-      alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
-    }
-    localStorage.setItem("restraunt",restaurantName);
-      localStorage.setItem("branch name",bname);
-    localStorage.setItem("seats", seats);
-    localStorage.setItem("time", selectedValue);
-    localStorage.setItem("date", date);
-    localStorage.setItem("contact",contact);
   }
-
   const [selectedSeat, setSelectedSeat] = useState([]);
 
   const TableSelected = (id, seat_value) => {
@@ -70,7 +68,7 @@ function Gulati() {
     });
     console.log(seat_value);
   };
-  
+
   return (
     <div>
       <Navbar />
@@ -82,7 +80,7 @@ function Gulati() {
               <div className='branch'>
                 <p className='b'>Branches</p>
                 <ul>
-                  <Link className='branch_sub' to="/Gulati/8/Pandara"><li>{item.b1}</li></Link>
+                <Link className='branch_sub' to="/Gulati/8/Pandara"><li>{item.b1}</li></Link>
                 </ul>
               </div>
             </div>
@@ -596,6 +594,7 @@ function Gulati() {
                       <br />
                       Contact:{item.ph}
                     </p>
+
                   </div>
                 )
               })}
@@ -653,7 +652,7 @@ function Gulati() {
         )
       })}
       <Footer />
-    </div>
+    </div >
   );
 }
-export default Gulati;
+export default Gulati
