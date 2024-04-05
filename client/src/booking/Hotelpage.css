@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     padding: 80px 20px 40px;
-    grid-gap: 5px;
+    grid-gap: 10;
     margin: 20px auto;
     max-width: 90%;
 
@@ -60,7 +60,16 @@ h1 {
 }
 
 .seats-inbox {
-    padding: 0px;
+    padding-left: 20px;
+    width: 15%;
+    outline: none;
+    height: 30px;
+    border-radius: 5px;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.no-inbox {
     width: 60%;
     outline: none;
     height: 30px;
@@ -205,6 +214,11 @@ h1 {
 
 .order-booking {
     width: fit-content;
+    padding: 20px 20px;
+}
+
+.order-booking-four{
+    width: fit-content;
     padding: 10px 20px;
 }
 
@@ -225,6 +239,15 @@ h1 {
     height: 15px;
     background-color: #A1A1A8;
     margin-top: 12px;
+    margin-left: 2px;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.chair-right-two {
+    width: 15px;
+    height: 15px;
+    background-color: #A1A1A8;
+    margin-top: 1px;
     margin-left: 2px;
     border-radius: 8px 0px 0px 8px;
 }
@@ -282,11 +305,14 @@ h1 {
 .table-two {
     width: 25px;
     height: 25px;
-    margin-left: 23px;
-    margin-right: 21px;
     background-color: #B4B4B9;
     border-radius: 5px;
     box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
+}
+.flex-two{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 
@@ -296,14 +322,13 @@ h1 {
 
 .hotel-design {
     display: grid;
-    height: 600px;
     place-content: center;
     perspective: 3200px;
     margin-bottom: 20px;
 }
 
 .face {
-    height: 600px;
+    height: 720px;
     width: 950px;
 }
 
@@ -315,12 +340,50 @@ h1 {
 }
 .back-face:after {
     position: absolute;
-    top: -1.5rem; left: 50%;
+    top: -1.5rem; left: 50.9%;
     transform: translateX(-50%);
     content: '';
     background-color: mintcream;
     width: 60px;
     height: 1.5rem;
+  }
+
+.four-wall{
+    display: flex;
+    flex-direction: row;
+    border: 0.5rem #3D5A79;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    width: fit-content;
+    position: relative;
+}
+
+.four-wall:after {
+    position: absolute;
+    right: -0.5rem; top: 48%;
+    transform: translateY(-50%);
+    content: '';
+    background-color: lavender;
+    width: 0.5rem;
+    height: 30px;
+  }
+.four-wall-down{
+    display: flex;
+    flex-direction: row;
+    border: 0.5rem #3D5A79;
+    border-right-style: solid;
+    width: fit-content;
+    position: relative;
+}
+
+.four-wall-down:after {
+    position: absolute;
+    right: -0.5rem; top: 48%;
+    transform: translateY(-50%);
+    content: '';
+    background-color: lavender;
+    width: 0.5rem;
+    height: 30px;
   }
 
 
@@ -337,11 +400,11 @@ h1 {
 
 .eight-one:after {
     position: absolute;
-    bottom: -0.5rem; left: 50%;
+    bottom: -0.5rem; left: 52.5%;
     transform: translateX(-50%);
     content: '';
     background-color: lavender;
-    width: 80px;
+    width: 90px;
     height: 0.5rem;
   }
 
@@ -355,6 +418,7 @@ h1 {
     border-bottom-color: #6699CC ;
     width: fit-content;
     position: relative;
+    gap: 10px;
 }
 .eight-two:after {
     position: absolute;
@@ -362,14 +426,14 @@ h1 {
     transform: translateX(-50%);
     content: '';
     background-color: lavender;
-    width: 50px;
+    width: 80px;
     height:0.5rem;
   }
 
 .eight-flex{
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 25px;
 
 }
 
@@ -378,8 +442,16 @@ h1 {
     border-right-style: solid;
     border-right-color: #6699CC;
 }
+
+.wall-one{
+    border: 0.5rem;
+    border-right-style: solid;
+    border-right-color: #6699CC;
+    padding-right: 15px;
+}
+
 .gate{
-    background-color: #A1A1A8;
+    background-color: lightseagreen;
     width: 65px;
     border-radius: 0px 0px 5px 5px;
 }
@@ -387,24 +459,9 @@ h1 {
 .group-room{
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 75px;
 }
 
-.wall-part{
-    border: 0.5rem;
-    border-right-style: solid;
-    border-right-color: #6699CC;
-    padding-top: 18px;
-}
-.wall-part:after {
-    position: absolute;
-    right: -0.5rem; top: 48%;
-    transform: translateY(-50%);
-    content: '';
-    background-color: lavender;
-    width: 0.5rem;
-    height: 30px;
-  }
 .washroom {
     border: 0.5rem;
     width: 300px;
@@ -416,11 +473,11 @@ h1 {
     height: 100px;
     position: relative;
     text-align: center;
-    padding-top: 18px;
+    padding-top: 25px;
 }
 .washroom:after {
     position: absolute;
-    right: -0.5rem; top: 48%;
+    right: -0.5rem; top: 70%;
     transform: translateY(-50%);
     content: '';
     background-color: lavender;
@@ -438,7 +495,7 @@ h1 {
     height: 100px;
     position: relative;
     text-align: center;
-    padding-top: 18px;
+    padding-top: 25px;
 }
 
 .kitchen:after {
@@ -450,3 +507,37 @@ h1 {
     width: 0.5rem;
     height: 30px;
   }
+
+.middel-flex{
+    display: flex;
+    flex-direction: row;
+}
+
+.three-seat{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 25px;
+}
+
+.three-seat-two{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 55px;
+}
+
+.three-seat-center{
+    height: fit-content;
+}
+
+.wall-wall{
+    border: 0.4rem;
+    border-style: solid;
+    border-color: #6699CC;
+    height: 300px;
+}
+
+.flex-for-two{
+    margin-left: 30px;
+}
