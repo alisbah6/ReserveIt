@@ -12,6 +12,8 @@
 
 .branch-container {
     width: 35vh;
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
 }
 
 .details-container {
@@ -112,7 +114,7 @@ h1 {
 
 .loc {
     width: 90%;
-    margin: 0px 20px;
+    margin: 0px 60px;
     font-size: large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
