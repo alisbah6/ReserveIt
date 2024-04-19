@@ -9,6 +9,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [showForm, setShowForm] = useState(false);
 
   async function submit(e) {
     if(email === "admin" && password === "0987654321"){
@@ -43,6 +44,11 @@ function Login() {
     localStorage.setItem(1, email);
   }
 
+  const handlePassword = () => {
+    // Toggle the state to show/hide the form
+    setShowForm(!showForm);
+  };
+
   return (
     <div className='grid'>
       <div className="box-image">
@@ -61,9 +67,10 @@ function Login() {
             setPassword(e.target.value);
           }}></input>
           <button className="button" onClick={submit} >Log In</button>
+          <button className='' >Google</button>
           <div className="extra">
             <Link to="/Register" className="log">Register?</Link>
-            <Link className="log">Forget Password?</Link>
+            <Link className="log" onClick={handlePassword}>Reset Password?</Link>
           </div>
         </form>
       </div>

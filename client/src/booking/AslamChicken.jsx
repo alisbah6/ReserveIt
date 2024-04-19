@@ -52,7 +52,6 @@ function AslamChicken() {
     }
   }
   const [selectedSeat, setSelectedSeat] = useState([]);
-
   const TableSelected = (id, seat_value) => {
     setSelectedSeat((prevSelectedSeats) => {
       if (prevSelectedSeats.includes(id)) {
@@ -66,8 +65,7 @@ function AslamChicken() {
         return [...prevSelectedSeats, id];
       }
     });
-    console.log(seat_value);
-  };
+  }
 
   return (
     <div>

@@ -53,7 +53,7 @@ function Adminpage() {
       }
       else if (selectedOption.value === "Gulati") {
         branchOptions = [
-          { value: "PandaraRoad", label: "Pandara Road" }
+          { value: "Pandara", label: "Pandara" }
         ]
       }
       else if (selectedOption.value === "Karim's") {
@@ -174,7 +174,7 @@ function Adminpage() {
           ))}
         </ul>
       </div>
-      <hr />
+      {/* <hr />
       <h1 style={{ marginTop: 10, textAlign: 'center' }} >All Orders</h1>
       <div >
         <ul class="order-recipt">
@@ -208,7 +208,7 @@ function Adminpage() {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -57,13 +57,8 @@ const login = async (req, res) => {
     }
 };
 
-const welcome = (req, res) => {
 
-    res.status(200).json({ message: "demo connection" });
-
-}
-
-/* function to sign up for a new student
+/* function to sign up for a new customer
 
 @param:
     name: string,
@@ -207,8 +202,6 @@ const submission = async (req, res) => {
             return res.status(400).json({ message: "contact are required" });
         }
 
-
-
         const newReservation = await Submission.create({
             OrderId,
             Restraunt,
@@ -240,11 +233,9 @@ const Allrecords=async(req,res)=>{
     }
 }
 
-
 module.exports = {
     login,
     signup,
-    welcome,
     feedback,
     Allfeedbacks,
     submission,
