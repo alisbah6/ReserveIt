@@ -81,3 +81,15 @@
   .order-done:hover{
     background-color: #8ecae6;
   }
+.search_all{
+    width: 10%;
+    background-color: #219ebc;
+    color: #000000;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 550;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 4px rgba(8,7,16,0.6);   
+}

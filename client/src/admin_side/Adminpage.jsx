@@ -9,6 +9,9 @@ function Adminpage() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectBranch, setBranchOption] = useState();
   const [selectedBranch, setSelectedBranch] = useState();
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [show,setshow]=useState(false);
+  const [detailsVisible, setDetailsVisible] = useState(true); 
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
@@ -98,9 +101,25 @@ function Adminpage() {
     setBranchOption(branchOptions);
     setSelectedBranch(null);
   };
+  //filter by branch
   const handleBranchChange = (selectedBranch) => {
     setSelectedBranch(selectedBranch);
   };
+  //filter by date
+const handleDate=()=>{  
+  const today = new Date();
+const filteredItems = (selectedOption && selectedBranch)?entries.filter(item => {
+  // Convert item date string to a Date object
+  const itemDate = new Date(item.date);
+  // Checking item's date matches today's date
+  return itemDate.toDateString() === today.toDateString()&&
+  item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase()) &&
+      item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
+}):[];
+setFilteredItems(filteredItems);
+setshow(true);
+}
+
   const filteredData = (selectedOption && selectedBranch)
     ? entries.filter(item =>
       item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase()) &&
@@ -108,9 +127,9 @@ function Adminpage() {
     )
     : entries;
 
-  let orderdetails = document.querySelector('.order-details');
+   let orderdetails = document.querySelector('.order-details');
   const hideshow = () => {
-    orderdetails.style.display = 'none';
+     orderdetails.style.display = 'none';
   }
   return (
 
@@ -140,11 +159,14 @@ function Adminpage() {
           options={selectBranch}
           placeholder="Search Branch..."
         />
+        <button onClick={()=>{setshow(false)}} className='search_all'>All</button>
+        <button onClick={handleDate} className='search_all'>Today</button>
       </div>
       <div>
         <ul class="order-recipt">
-          {filteredData.map(item => (
-            <li key={item.id} className="flex-item">
+          {show?
+             filteredItems.map((item, index) => (
+              <li key={index} className="flex-item">
               <div className='order-cards'>
                 <div className='order-details' id='target'>
                   <h2 className='restraunt-name'>{item.Restraunt}</h2>
@@ -155,7 +177,7 @@ function Adminpage() {
                   <p className='order-info'>Seats: {item.Seat}</p>
                   <p className='order-info'>Items: {item.item}</p>
                   <p className='order-info'>Time: {item.time}</p>
-                  <p className='order-info'>Reservation Date: {item.date.substring(0, 16)}</p>
+                  <p className='order-info'>Reservation Date: {item.date.substring(0,16)}</p>
                   <hr />
                 </div>
                 <div className='user-details'>
@@ -171,7 +193,38 @@ function Adminpage() {
                 </div>
               </div>
             </li>
-          ))}
+          ))
+            :
+          filteredData.slice().reverse().map(item => (
+            <li key={item.id} className="flex-item">
+              <div className='order-cards'>
+                <div className='order-details' id='target'>
+                <h2 className='restraunt-name'>{item.Restraunt}</h2>
+                <h3 className='orderS'>Order Summary</h3>
+                <hr />
+                <p className='order-info'>Branch: {item.BranchName}</p>
+                <p className='order-info'>OrderId: #{item.OrderId}</p>
+                <p className='order-info'>Seats: {item.Seat}</p>
+                <p className='order-info'>Items: {item.item}</p>
+                <p className='order-info'>Time: {item.time}</p>
+                <p className='order-info'>Reservation Date: {item.date.substring(0, 16)}</p>
+                <hr />
+              </div>
+                <div className='user-details'>
+                  <h2>Customer Details</h2>
+                  <div className='d-row'>
+                    <div>
+                      <p className='order-info'>Email:  {item.UserEmail}</p>
+                      <p className='order-info'>Contact: {item.contact}</p>
+                    </div>
+                    <button className='order-done' onClick={hideshow}>Done</button>
+                  </div>
+                  <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
+                </div>
+              </div>
+            </li>
+          ))
+        }
         </ul>
       </div>
       {/* <hr />

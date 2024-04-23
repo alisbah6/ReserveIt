@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../nav-foot/Navbar.css';
+
 const Adminnavbar = () => {
   const UserEmail = localStorage.getItem(1);
   const handleLogout = () => {

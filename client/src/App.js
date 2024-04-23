@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import Login from './user/Login';
 import Home from './home-page/Home';
 import Contact from './feedback/Contact';
@@ -23,9 +24,16 @@ import Popuperrorl from './components/Popuperrorl';
 import Selectionmenu from './menu/Selectionmenu';
 import Adminpage from './admin_side/Adminpage';
 import AdminNavbar from './admin_side/Adminnavbar';
-
+import { createContext } from "react";
+import OTPinput from './user/OTPinput';
+export const RecoveryContext = createContext();
 function App() {
+  const [email, setEmail] = useState();
+  const [otp, setOTP] = useState();
   return (
+    <RecoveryContext.Provider
+    value={{otp, setOTP, setEmail, email }}
+  >
     <div className="App">
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -52,8 +60,10 @@ function App() {
         <Route path='/Popupcontact' element={<Popupcontact/>}/>
         <Route path='/AdminPage' element={<Adminpage/>}/>
         <Route path='/AdminNavbar' element={<AdminNavbar/>}/>
+        <Route path='/OTPinput' element={<OTPinput/>}/>
       </Routes>
     </div>
+    </RecoveryContext.Provider>
   );
 }
 export default App;

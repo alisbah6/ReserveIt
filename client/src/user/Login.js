@@ -4,16 +4,18 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuth } from './AuthContext';
 import logo from '../assets/key_1.webp';
+import { useContext } from 'react';
+import { RecoveryContext } from '../App';
 function Login() {
-  const [email, setEmail] = useState("");
+  const {setEmail,email,setOTP}=useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [showForm, setShowForm] = useState(false);
 
   async function submit(e) {
     if(email === "admin" && password === "0987654321"){
       e.preventDefault();
+      login();
       navigate("/AdminPage");
     }
     else{
@@ -44,10 +46,25 @@ function Login() {
     localStorage.setItem(1, email);
   }
 
-  const handlePassword = () => {
-    // Toggle the state to show/hide the form
-    setShowForm(!showForm);
-  };
+  function navigateToOtp() {
+    if (email) {
+      const OTP = Math.floor(Math.random() * 9000 + 1000);
+      console.log(OTP);
+      setOTP(OTP);
+
+      axios
+        .post("http://localhost:3500/send_recovery_email", {
+          OTP,
+          recipient_email: email,
+        })
+        .then(() => navigate('/OTPinput'))
+        .catch(console.log);
+      return;
+    }
+    return alert("Please enter your email");
+  }
+
+
 
   return (
     <div className='grid'>
@@ -67,10 +84,10 @@ function Login() {
             setPassword(e.target.value);
           }}></input>
           <button className="button" onClick={submit} >Log In</button>
-          <button className='' >Google</button>
+          {/* <button className='' >Google</button> */}
           <div className="extra">
             <Link to="/Register" className="log">Register?</Link>
-            <Link className="log" onClick={handlePassword}>Reset Password?</Link>
+            <Link className="log" onClick={()=>navigateToOtp()}>Forget Password?</Link>
           </div>
         </form>
       </div>
