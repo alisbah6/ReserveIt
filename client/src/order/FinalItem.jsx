@@ -63,22 +63,6 @@ const FinalItem = () => {
     }
     };
 
-    const downloadpdf = () => {
-      const input = pdfRef.current;
-      html2canvas(input).then((canvas) =>{
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jspdf('p','mm','a4', true);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-        const imgX = (pdfWidth - imgWidth * ratio) / 2;
-        const imgY = 30;
-        pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-        pdf.save('Booking.pdf');
-      });
-    }
     const cancelorder=()=>{
       localStorage.removeItem("restraunt");
       localStorage.removeItem("branch name"); 
@@ -140,7 +124,6 @@ const FinalItem = () => {
           </div>
         </form>
         <button className='book_button' onClick={submit}>Book Now</button>
-        <button className='book_button' onClick={downloadpdf}>Download Pdf</button>
         <button className='book_button' onClick={cancelorder} >Cancel</button>
       </div>
     )

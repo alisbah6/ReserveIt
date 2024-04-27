@@ -16,6 +16,7 @@ function Booking() {
     <div>
       <Navbar />
       <p className='heading'>Restraunts Booking</p>
+      <div className='fix'>
       <div class="hotel-container">
         <div class="main-container">
           <div class="poster-container">
@@ -133,7 +134,7 @@ function Booking() {
           </div>
         </div>
       </div>
-      <br></br>
+      </div>
       <Footer />
     </div>
   );

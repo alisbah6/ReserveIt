@@ -7,7 +7,7 @@ function Popuperror() {
         <div>
             <div id="popup1" class="overlay">
                 <div class="popup">
-                    <h2>Fill the all box before register</h2>
+                    <h2>Fill the all box before login</h2>
                     <a class="close" href="/Login">&times;</a>
                 </div>
             </div >

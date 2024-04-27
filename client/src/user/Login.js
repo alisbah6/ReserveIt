@@ -7,18 +7,18 @@ import logo from '../assets/key_1.webp';
 import { useContext } from 'react';
 import { RecoveryContext } from '../App';
 function Login() {
-  const {setEmail,email,setOTP}=useContext(RecoveryContext);
+  const { setEmail, email, setOTP } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
 
   async function submit(e) {
-    if(email === "admin" && password === "0987654321"){
+    if (email === "admin" && password === "0987654321") {
       e.preventDefault();
       login();
       navigate("/AdminPage");
     }
-    else{
+    else {
       e.preventDefault();
       try {
         await axios
@@ -68,7 +68,9 @@ function Login() {
 
   return (
     <div className='grid'>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <div className="box-image">
+        <a href="/Home"><button class="round"><i class="fa-solid fa-arrow-left"></i></button></a>
       </div>
       <div className="box">
         <img className="center" src={logo} alt="Avatar"></img>
@@ -84,10 +86,9 @@ function Login() {
             setPassword(e.target.value);
           }}></input>
           <button className="button" onClick={submit} >Log In</button>
-          {/* <button className='' >Google</button> */}
           <div className="extra">
             <Link to="/Register" className="log">Register?</Link>
-            <Link className="log" onClick={()=>navigateToOtp()}>Forget Password?</Link>
+            <Link className="log" onClick={() => navigateToOtp()}>Forget Password?</Link>
           </div>
         </form>
       </div>

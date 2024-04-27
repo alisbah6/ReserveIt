@@ -160,7 +160,7 @@ setshow(true);
           placeholder="Search Branch..."
         />
         <button onClick={()=>{setshow(false)}} className='search_all'>All</button>
-        <button onClick={handleDate} className='search_all'>Today</button>
+        <button onClick={handleDate} className='search_today'>Today</button>
       </div>
       <div>
         <ul class="order-recipt">

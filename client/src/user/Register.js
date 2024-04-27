@@ -17,19 +17,20 @@ function Register() {
         try {
             // Make an API request to create a new user
             const response = await axios.post(
-                "http://localhost:3500/user/signup",{
+                "http://localhost:3500/user/signup", {
                 name,
                 username,
                 email,
                 password,
-                confirmpassword,}
+                confirmpassword,
+            }
             );
 
-            if(response.status === 201) {
+            if (response.status === 201) {
                 // User registration was successful
                 console.log("User registered successfully");
                 // Redirect or perform other actions as needed
-                navigate("/Popup",{state:{name:name}});
+                navigate("/Popup", { state: { name: name } });
             }
         } catch (error) {
             // Handle registration errors
@@ -40,7 +41,9 @@ function Register() {
     return (
         <div className='screen'>
             <div className='grid'>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <div className="box-image-reg">
+                    <a href="/Home"><button class="round"><i class="fa-solid fa-arrow-left"></i></button></a>
                 </div>
                 <div className="box-reg">
                     <img className="center-reg" src={logo} alt="Avatar"></img>
