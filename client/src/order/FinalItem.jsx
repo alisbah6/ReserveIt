@@ -2,8 +2,6 @@ import React,{useState,useEffect} from 'react'
 import './FinalItem.css'
 import axios from "axios";
 import {useRef } from "react";
-import html2canvas from 'html2canvas';
-import jspdf from 'jspdf';
 const FinalItem = () => {
   const [OrderId, setOrderId] = useState('');
   const pdfRef = useRef();

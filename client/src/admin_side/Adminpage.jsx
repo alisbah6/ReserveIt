@@ -11,7 +11,6 @@ function Adminpage() {
   const [selectedBranch, setSelectedBranch] = useState();
   const [filteredItems, setFilteredItems] = useState([]);
   const [show,setshow]=useState(false);
-  const [detailsVisible, setDetailsVisible] = useState(true); 
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
