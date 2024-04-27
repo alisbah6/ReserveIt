@@ -57,6 +57,42 @@ const login = async (req, res) => {
     }
 };
 
+reset_password = async (req, res) => {
+    const { email, password, confirm_password } = req.body;
+
+    try {
+        if (!email) {
+            return res.status(400).json({ message: "email is required" });
+        }
+        // Check if user exists
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        
+        if (!password || !confirm_password) {
+            return res.status(400).json({ message: "Both password and confirm password are required" });
+        }
+
+        // Checking if new password and confirm password match
+        if (password !== confirm_password) {
+            return res.status(400).json({ message: "Passwords don't match" });
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Update user's password in the database
+        await User.updateOne({ email }, { password: hashedPassword });
+
+        // Respond with success message
+        res.status(200).json({ message: 'Password reset successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 
 /* function to sign up for a new customer
 
@@ -236,6 +272,7 @@ const Allrecords=async(req,res)=>{
 module.exports = {
     login,
     signup,
+    reset_password,
     feedback,
     Allfeedbacks,
     submission,
