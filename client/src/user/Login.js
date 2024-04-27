@@ -51,7 +51,6 @@ function Login() {
       const OTP = Math.floor(Math.random() * 9000 + 1000);
       console.log(OTP);
       setOTP(OTP);
-
       axios
         .post("http://localhost:3500/send_recovery_email", {
           OTP,

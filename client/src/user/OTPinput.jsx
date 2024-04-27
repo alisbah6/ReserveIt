@@ -1,12 +1,12 @@
 import React from 'react'
 import { useContext, useState } from "react";
 import { RecoveryContext } from "../App";
-
+import axios from 'axios';
 const OTPinput = () => {
-  const { email, otp } = useContext(RecoveryContext);
-  const [timerCount, setTimer] = React.useState(60);
-  const [OTPinput, setOTPinput] = useState([0, 0, 0, 0]);
-  const [disable, setDisable] = useState(true);
+    const { email, otp } = useContext(RecoveryContext);
+    const [timerCount, setTimer] = React.useState(60);
+    const [OTPinput, setOTPinput] = useState([0, 0, 0, 0]);
+    const [disable, setDisable] = useState(true);
   return (
     <div>
       <p>Email Verification</p>

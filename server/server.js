@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require("dotenv").config({path: './.env' });
 
+const nodemailer = require("nodemailer");
 require("dotenv").config({path: './config.env' }); 
 const bodyParser = require('body-parser');
 
@@ -14,6 +16,8 @@ const connectDB = require("./connection");
 const userRoutes = require('./routes/userRoutes');
 
 app.use('/user' , userRoutes);
+app.use(express.json({ limit: "25mb" }));
+app.use(express.urlencoded({ limit: "25mb" }));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
@@ -26,6 +30,7 @@ function sendEmail({ recipient_email, OTP }) {
       auth: {
         user: process.env.MY_EMAIL,
         pass: process.env.MY_PASSWORD,
+        authMethod: 'PLAIN'
       },
     });
 
