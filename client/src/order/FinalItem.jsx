@@ -27,7 +27,6 @@ const FinalItem = () => {
       // Make an API request to create a new user
       const response = await axios.post(
         "http://localhost:3500/user/submission", {
-          OrderId,
         Restraunt,
         BranchName,
         UserEmail,
