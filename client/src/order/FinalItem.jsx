@@ -1,10 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import './FinalItem.css'
+import { Link } from 'react-router-dom';
 import axios from "axios";
-import {useRef } from "react";
+import { useRef } from "react";
+import html2canvas from 'html2canvas';
+import jspdf from 'jspdf';
+
 const FinalItem = () => {
-  const [OrderId, setOrderId] = useState('');
   const pdfRef = useRef();
+  const [OrderId, setOrderId] = useState('');
   // Function to generate a random 10-digit number
   function generateOrderId() {
     const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
@@ -14,19 +18,27 @@ const FinalItem = () => {
     generateOrderId();
   }, []);
   const UserEmail = localStorage.getItem(1);
-  const Restraunt= localStorage.getItem("restraunt");
-  const BranchName=localStorage.getItem("branch name");
+  const Restraunt = localStorage.getItem("restraunt");
+  const BranchName = localStorage.getItem("branch name");
   const Seat = localStorage.getItem("seats");
   const item = localStorage.getItem("item");
   const time = localStorage.getItem("time");
   const date = localStorage.getItem("date");
   const contact = localStorage.getItem("contact");
+  const Qrbox = document.getElementById("Qrbox");
+  const Qrimage = document.getElementById("Qrimage");
+  const Qrdata = localStorage.getItem(1,"seats", "time");
+
+  function generateQr(){
+      Qrimage.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+ Qrdata.value;
+  }
   const submit = async (e) => {
     e.preventDefault();
     try {
       // Make an API request to create a new user
       const response = await axios.post(
         "http://localhost:3500/user/submission", {
+          OrderId,
         Restraunt,
         BranchName,
         UserEmail,
@@ -58,72 +70,82 @@ const FinalItem = () => {
     } else {
       window.confirm("Please agree to T&C to proceed");
     }
-    };
 
-    const cancelorder=()=>{
-      localStorage.removeItem("restraunt");
-      localStorage.removeItem("branch name"); 
-      localStorage.removeItem("seats");
-       localStorage.removeItem("item");
-   localStorage.removeItem("time");
-  localStorage.removeItem("date");
-  localStorage.removeItem("contact");
+  };
 
-      // Redirect the user to the Home page
-      window.location.href = '/Home';
-    }
-
-    return (
-      <div className='items'>
-        <form className='font' ref={pdfRef}>
-          <h1 className='cart'>ORDER DETAILS</h1>
-          <div className='book_lable'>
-            <label>OrderId: #{OrderId}</label>
-          </div>
-          <div className='book_lable'>
-            <label>{Restraunt}</label>
-          </div>
-          <div className='book_lable'>
-            <label>Branch: {BranchName}</label>
-          </div>
-          <div className='book_lable'>
-            <label>Email : {UserEmail}</label>
-          </div>
-          <div className='book_lable'>
-            <label>No.of.Seats : {Seat}</label>
-          </div>
-          <div className='book_lable'>
-            <label>Items :  {item}</label>
-          </div>
-          <div className='book_lable'>
-            <label>Time : {time}</label>
-          </div>
-          <div className='book_lable'>
-            <label>Day : {date.substring(0, 16)}</label>
-          </div>
-          <div className='book_lable'>
-            <label>Contact Number : {contact}</label>
-          </div>
-          <hr />
-          <div className='book_lable'>
-            <label>Please read the Terms And Conditon Below</label>
-          </div>
-          <div className='book_lable'>
-            <input type='checkbox' id="myCheckbox" />
-            <label className='book_lable'>The seats will be reserved for only 15-20 mins after that they will be cancelled.</label>
-          </div>
-          <div className='book_lable'>
-            <input type='checkbox' id="myCheckbox2" />
-            <label className='book_lable'>The amount will be paid at the restraunt only,no online payment available.</label>
-          </div>
-          <div className='book_lable'>
-            <label>click the check box to confirm Terms And Conditon.</label>
-          </div>
-        </form>
-        <button className='book_button' onClick={submit}>Book Now</button>
-        <button className='book_button' onClick={cancelorder} >Cancel</button>
-      </div>
-    )
+  const downloadpdf = () => {
+    const input = pdfRef.current;
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jspdf('p', 'mm', 'a4', true);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 30;
+      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+    });
   }
 
-  export default FinalItem
+  return (
+    <div className='items'>
+      <form className='font' ref={pdfRef}>
+        <h1 className='cart'>ORDER DETAILS</h1>
+        <div className='book_lable'>
+            <label>OrderId: #{OrderId}</label>
+          </div>
+        <div className='book_lable'>
+          <label>{Restraunt}</label>
+        </div>
+        <div className='book_lable'>
+          <label>Branch: {BranchName}</label>
+        </div>
+        <div className='book_lable'>
+          <label>Email : {UserEmail}</label>
+        </div>
+        <div className='book_lable'>
+          <label>No.of.Seats : {Seat}</label>
+        </div>
+        <div className='book_lable'>
+          <label>Items :  {item}</label>
+        </div>
+        <div className='book_lable'>
+          <label>Time : {time}</label>
+        </div>
+        <div className='book_lable'>
+          <label>Day : {date.substring(0, 16)}</label>
+        </div>
+        <div className='book_lable'>
+          <label>Contact Number : {contact}</label>
+        </div>
+      </form>
+      <form>
+        <hr />
+        <div className='book_lable'>
+          <label>Please read the Terms And Conditon Below</label>
+        </div>
+        <div className='book_lable'>
+          <input type='checkbox' id="myCheckbox" />
+          <label className='book_lable'>The seats will be reserved for only 15-20 mins after that they will be cancelled.</label>
+        </div>
+        <div className='book_lable'>
+          <input type='checkbox' id="myCheckbox2" />
+          <label className='book_lable'>The amount will be paid at the restraunt only,no online payment available.</label>
+        </div>
+        <div className='book_lable'>
+          <label>click the check box to confirm Terms And Conditon.</label>
+        </div>
+      </form>
+      <div class="Qrbox">
+        <img src='' alt='' id='Qrimage'></img>
+      </div>
+      <button className='book_button' onClick={submit}>Book Now</button>
+      <button className='book_button' onClick={generateQr}>Download Pdf</button>
+      <Link to='/Home'><button className='book_button' >Cancel</button></Link>
+    </div>
+  )
+}
+
+export default FinalItem
