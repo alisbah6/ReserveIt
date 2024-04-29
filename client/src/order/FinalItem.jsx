@@ -25,13 +25,7 @@ const FinalItem = () => {
   const time = localStorage.getItem("time");
   const date = localStorage.getItem("date");
   const contact = localStorage.getItem("contact");
-  const Qrbox = document.getElementById("Qrbox");
-  const Qrimage = document.getElementById("Qrimage");
-  const Qrdata = localStorage.getItem(1,"seats", "time");
 
-  function generateQr(){
-      Qrimage.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+ Qrdata.value;
-  }
   const submit = async (e) => {
     e.preventDefault();
     try {
@@ -142,7 +136,7 @@ const FinalItem = () => {
         <img src='' alt='' id='Qrimage'></img>
       </div>
       <button className='book_button' onClick={submit}>Book Now</button>
-      <button className='book_button' onClick={generateQr}>Download Pdf</button>
+      <button className='book_button' onClick={downloadpdf}>Download Pdf</button>
       <Link to='/Home'><button className='book_button' >Cancel</button></Link>
     </div>
   )
