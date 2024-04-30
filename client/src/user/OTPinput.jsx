@@ -51,8 +51,8 @@ const OTPinput = () => {
     <div>
     <div className="otp-overlay" >
       <div className='otp-main-box '>
-        <p>Email Verification</p>
-        <p>
+        <p className='email-v'>Email Verification</p>
+        <p className='otp-p'>
           We have sent a code to your email {email}
         </p>
         <div className='Otp-box'>
@@ -125,7 +125,7 @@ const OTPinput = () => {
           <button className="verify_button" onClick={() => verfiyOTP()}>Verify Account</button>
         </div>
         <div>
-          <p>Didn't recieve code?</p>{" "}
+          <p className='otp-p'>Didn't recieve code?</p>{" "}
           <a className='resend'
             style={{
               color: disable ? "gray" : "blue",
