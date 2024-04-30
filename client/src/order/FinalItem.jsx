@@ -1,13 +1,14 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect, } from 'react'
 import './FinalItem.css'
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useRef } from "react";
 import html2canvas from 'html2canvas';
-import jspdf from 'jspdf';
+import { jsPDF } from 'jspdf';
 
 const FinalItem = () => {
   const pdfRef = useRef();
+  const qrRef = useRef();
   const [OrderId, setOrderId] = useState('');
   // Function to generate a random 10-digit number
   function generateOrderId() {
@@ -32,7 +33,7 @@ const FinalItem = () => {
       // Make an API request to create a new user
       const response = await axios.post(
         "http://localhost:3500/user/submission", {
-          OrderId,
+        OrderId,
         Restraunt,
         BranchName,
         UserEmail,
@@ -71,7 +72,7 @@ const FinalItem = () => {
     const input = pdfRef.current;
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jspdf('p', 'mm', 'a4', true);
+      const pdf = new jsPDF('p', 'mm', 'a4', true);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
       const imgWidth = canvas.width;
@@ -80,6 +81,7 @@ const FinalItem = () => {
       const imgX = (pdfWidth - imgWidth * ratio) / 2;
       const imgY = 30;
       pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      pdf.save("Booking");
     });
   }
 
@@ -88,8 +90,8 @@ const FinalItem = () => {
       <form className='font' ref={pdfRef}>
         <h1 className='cart'>ORDER DETAILS</h1>
         <div className='book_lable'>
-            <label>OrderId: #{OrderId}</label>
-          </div>
+          <label>OrderId: #{OrderId}</label>
+        </div>
         <div className='book_lable'>
           <label>{Restraunt}</label>
         </div>
@@ -132,9 +134,6 @@ const FinalItem = () => {
           <label>click the check box to confirm Terms And Conditon.</label>
         </div>
       </form>
-      <div class="Qrbox">
-        <img src='' alt='' id='Qrimage'></img>
-      </div>
       <button className='book_button' onClick={submit}>Book Now</button>
       <button className='book_button' onClick={downloadpdf}>Download Pdf</button>
       <Link to='/Home'><button className='book_button' >Cancel</button></Link>

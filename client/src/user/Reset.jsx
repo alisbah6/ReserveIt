@@ -1,16 +1,16 @@
 import React from 'react'
-import { useContext,useState } from 'react';
+import { useContext, useState } from 'react';
 import { RecoveryContext } from "../App";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
 const Reset = () => {
-    const { email} = useContext(RecoveryContext);
+    const { email } = useContext(RecoveryContext);
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmpassword] = useState("");
     const [loading, setLoading] = useState(false);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
 
     const submit = async (e) => {
@@ -39,21 +39,33 @@ const Reset = () => {
             setLoading(false);
         }
     };
-  return (
-    <div>
-        <form onSubmit={submit}>
-            <label>Email</label>
-            <input defaultValue={email} disabled/>
-            <label>New Password</label>
-            <input type="password" placeholder="Password" id="password" onChange={(e) => {
-            setPassword(e.target.value);}}/>
-            <label>Confirm Password</label>
-            <input type="password" placeholder="confirm password" id="confirmpassword" onChange={(e) => {
-            setConfirmpassword(e.target.value);}}/>
-            <button type="submit"disabled={loading}>{loading ? "Resetting..." : "Reset Password"}</button>
-        </form>
-    </div>
-  )
+    return (
+        <div>
+            <div className="otp-overlay">
+                <form className="reset-main-box" onSubmit={submit}>
+                    <div className='display-reset'>
+                        <div className='form-reset'>
+                            <label>Email</label>
+                            <label>New Password</label>
+                            <label>Confirm Password</label>
+                        </div>
+                        <div className='form-reset'>
+                            <input defaultValue={email} disabled />
+                            <input type="password" placeholder="Password" id="password" onChange={(e) => {
+                                setPassword(e.target.value);
+                            }} />
+                            <input type="password" placeholder="confirm password" id="confirmpassword" onChange={(e) => {
+                                setConfirmpassword(e.target.value);
+                            }} />
+                        </div>
+                    </div>
+                    <div className='center-reset'>
+                        <button className="verify_button " type="submit" disabled={loading}>{loading ? "Resetting..." : "Reset Password"}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
 }
 
 export default Reset;
