@@ -37,7 +37,10 @@ const Reset = () => {
     };
     return (
         <div>
-            <form className="reset-main-box " onSubmit={submit}>
+            <form className="reset-main-box " onSubmit={submit}> 
+                <div className='change-pos'>
+                <p className='email-v'>Reset Password</p>
+                </div>
                 <div className='display-reset'>
                     <div className='form-reset'>
                         <label>Email</label>
