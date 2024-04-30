@@ -177,7 +177,7 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 155%;
+    height:182%;
     transition: all 0.4s;
     visibility: hidden;
     opacity: 0;
@@ -187,7 +187,7 @@ h1 {
 
 .popup_booking {
     position: absolute;
-    top: 36%;
+    top: 31%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -543,4 +543,10 @@ h1 {
 
 .flex-for-two{
     margin-left: 30px;
+}
+
+.phone-sign{
+    border: 2px solid black;
+    width: fit-content;
+    margin-left: 15%;
 }
