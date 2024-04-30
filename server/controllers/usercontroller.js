@@ -58,8 +58,7 @@ const login = async (req, res) => {
 };
 
 reset_password = async (req, res) => {
-    const { email, password, confirm_password } = req.body;
-
+    const { email, password,confirmpassword } = req.body;
     try {
         if (!email) {
             return res.status(400).json({ message: "email is required" });
@@ -70,20 +69,20 @@ reset_password = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
         
-        if (!password || !confirm_password) {
+        if (!password || !confirmpassword) {
             return res.status(400).json({ message: "Both password and confirm password are required" });
         }
 
-        // Checking if new password and confirm password match
-        if (password !== confirm_password) {
-            return res.status(400).json({ message: "Passwords don't match" });
-        }
 
         // Hash the new password
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        if (password !== confirmpassword) {
+            return res.status(400).json({ message: "Passwords don't match" });
+        }
+
         // Update user's password in the database
-        await User.updateOne({ email }, { password: hashedPassword });
+        await User.updateOne({ email }, { $set: { password: hashedPassword, confirmpassword: hashedPassword } });
 
         // Respond with success message
         res.status(200).json({ message: 'Password reset successfully' });
