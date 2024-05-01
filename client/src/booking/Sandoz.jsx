@@ -4,7 +4,7 @@ import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate,NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 
 var totalseats = 52;
@@ -79,13 +79,13 @@ function Sandoz() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                <ul>
-                  <Link className='branch_sub' to="/Sandoz/2/ConnaughtPlace"><li>{item.b1}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/KarolBagh"><li>{item.b2}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/LajpatNagar"><li>{item.b3}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/RajouriGarden"><li>{item.b4}</li></Link>
-                  <Link className='branch_sub' to="/Sandoz/2/Jasola"><li>{item.b5}</li></Link>
-                </ul>
+                <nav className='nav'>
+                  <NavLink activeClassName='active' className='branch_sub' to="/Sandoz/2/ConnaughtPlace">{item.b1}</NavLink>
+                  <NavLink className='branch_sub' to="/Sandoz/2/KarolBagh">{item.b2}</NavLink>
+                  <NavLink className='branch_sub' to="/Sandoz/2/LajpatNagar">{item.b3}</NavLink>
+                  <NavLink className='branch_sub' to="/Sandoz/2/RajouriGarden">{item.b4}</NavLink>
+                  <NavLink className='branch_sub' to="/Sandoz/2/Jasola">{item.b5}</NavLink>
+                </nav>
               </div>
             </div>
             <div className="details-container">

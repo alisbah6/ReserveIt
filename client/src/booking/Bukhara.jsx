@@ -4,7 +4,7 @@ import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 
 var totalseats = 52;
@@ -79,9 +79,9 @@ function Bukhara() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                <ul>
-                <Link className='branch_sub' to="/Bukhara/3/ITCMaurya" activeClassName="active-link"><li>{item.b1}</li></Link>
-                </ul>
+                <nav>
+                <NavLink activeClassName='active' className='branch_sub' to="/Bukhara/3/ITCMaurya" >{item.b1}</NavLink>
+                </nav>
               </div>
             </div>
             <div className="details-container">

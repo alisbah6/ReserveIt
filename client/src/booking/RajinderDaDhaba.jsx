@@ -4,7 +4,7 @@ import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 
 var totalseats = 52;
@@ -79,9 +79,9 @@ function RajinderDaDhaba() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                <ul>
-                <Link className='branch_sub'  activeClassName='is-active' to="/RajinderDaDhaba/4/Safdarjung"><li>{item.b1}</li></Link>
-                </ul>
+                <nav className='nav'>
+                <NavLink className='branch_sub'  activeClassName='active' to="/RajinderDaDhaba/4/Safdarjung">{item.b1}</NavLink>
+                </nav>
               </div>
             </div>
             <div className="details-container">

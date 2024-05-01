@@ -5,7 +5,7 @@ import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate,NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -42,6 +42,7 @@ function AslamChicken() {
     } catch (err) {
       console.error(err)
     }
+    console.log(otp);
   }
 
   const VerifyOtp = async () => {
@@ -107,10 +108,10 @@ function AslamChicken() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                <ul>
-                  <Link className='branch_sub' to="/AslamChicken/6/ChandniChowk"><li>{item.b1}</li></Link>
-                  <Link className='branch_sub' to="/AslamChicken/6/BatlaHouse"><li>{item.b2}</li></Link>
-                </ul>
+                <nav className='nav'>
+                  <NavLink activeClassName='active' className='branch_sub' to="/AslamChicken/6/ChandniChowk">{item.b1}</NavLink>
+                  <NavLink className='branch_sub' to="/AslamChicken/6/BatlaHouse">{item.b2}</NavLink>
+                </nav>
               </div>
             </div>
             <div className="details-container">

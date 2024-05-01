@@ -29,21 +29,20 @@
     justify-content: center;
     align-items: center;
 }
-
+.nav {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+  }
 .branch_sub {
-    list-style: none;
     text-decoration: none;
-    color: black;
+    color:black;
+    margin: 15px;
+    font-weight:bold;
 }
-
-.branch_sub li {
-    padding: 15px 10px
-}
-
-.branch_sub li:hover {
-    background-color: #1e90ff;
-    border-radius: 2rem;
-}
+.active {
+    color: #007bff; /* Change the color to whatever you prefer */
+    font-weight: bold; /* Make the text bold */
+  }
 
 h1 {
     padding: 10px;

@@ -4,7 +4,7 @@ import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import {  useParams, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 
 var totalseats = 52;
@@ -79,13 +79,13 @@ function SagarRatna() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                <ul>
-                <Link className='branch_sub' to="/SagarRatna/1/DefenceColony"><li>{item.b1}</li></Link>
-                  <Link className='branch_sub' to="/SagarRatna/1/PreetVihar"><li>{item.b2}</li></Link>
-                  <Link className='branch_sub' to="/SagarRatna/1/MasjidMoth"><li>{item.b3}</li></Link>
-                  <Link className='branch_sub' to="/SagarRatna/1/NarainaVihar"><li>{item.b4}</li></Link>
-                  <Link className='branch_sub' to="/SagarRatna/1/PaschimVihar"><li>{item.b5}</li></Link>
-                </ul>
+                  <nav className='nav'>
+                  <NavLink activeClassName='active' className='branch_sub' to="/SagarRatna/1/DefenceColony">{item.b1}</NavLink>
+                  <NavLink className='branch_sub' to="/SagarRatna/1/PreetVihar">{item.b2}</NavLink>
+                  <NavLink className='branch_sub' to="/SagarRatna/1/MasjidMoth">{item.b3}</NavLink>
+                  <NavLink className='branch_sub' to="/SagarRatna/1/NarainaVihar">{item.b4}</NavLink>
+                  <NavLink className='branch_sub' to="/SagarRatna/1/PaschimVihar">{item.b5}</NavLink>
+                  </nav>
               </div>
             </div>
             <div className="details-container">

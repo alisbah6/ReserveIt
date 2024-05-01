@@ -4,7 +4,7 @@ import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 
 var totalseats = 52;
@@ -79,9 +79,9 @@ function Gulati() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                <ul>
-                <Link className='branch_sub' to="/Gulati/8/Pandara"><li>{item.b1}</li></Link>
-                </ul>
+                <nav>
+                <NavLink activeclassName='active' className='branch_sub' to="/Gulati/8/Pandara">{item.b1}</NavLink>
+                </nav>
               </div>
             </div>
             <div className="details-container">
