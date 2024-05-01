@@ -126,10 +126,6 @@ setshow(true);
     )
     : entries;
 
-   let orderdetails = document.querySelector('.order-details');
-  const hideshow = () => {
-     orderdetails.style.display = 'none';
-  }
   return (
 
     <div>
@@ -186,7 +182,6 @@ setshow(true);
                       <p className='order-info'>Email:  {item.UserEmail}</p>
                       <p className='order-info'>Contact: {item.contact}</p>
                     </div>
-                    <button className='order-done' onClick={hideshow}>Done</button>
                   </div>
                   <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
                 </div>
@@ -216,7 +211,6 @@ setshow(true);
                       <p className='order-info'>Email:  {item.UserEmail}</p>
                       <p className='order-info'>Contact: {item.contact}</p>
                     </div>
-                    <button className='order-done' onClick={hideshow}>Done</button>
                   </div>
                   <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
                 </div>

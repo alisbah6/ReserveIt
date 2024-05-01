@@ -1,14 +1,20 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect } from 'react'
 import './FinalItem.css'
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useRef } from "react";
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 
 const FinalItem = () => {
   const pdfRef = useRef();
-  const qrRef = useRef();
+  const [ticket, setTicket] = useState({ 
+     Restraunt: localStorage.getItem("restraunt"),
+   BranchName : localStorage.getItem("branch name"),
+   Seat : localStorage.getItem("seats"),
+   item : localStorage.getItem("item"),
+   time : localStorage.getItem("time"),
+   date : localStorage.getItem("date"),
+   contact : localStorage.getItem("contact")});
+
   const [OrderId, setOrderId] = useState('');
   // Function to generate a random 10-digit number
   function generateOrderId() {
@@ -49,6 +55,8 @@ const FinalItem = () => {
         // User registration was successful
         console.log("Data Submitted Successfull");
         // Redirect or perform other actions as needed
+        const response = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
+        console.log(response.data);
       }
     } catch (error) {
       // Handle registration errors
@@ -68,26 +76,9 @@ const FinalItem = () => {
 
   };
 
-  const downloadpdf = () => {
-    const input = pdfRef.current;
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4', true);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-      const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 30;
-      pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-      pdf.save("Booking");
-    });
-  }
-
   return (
     <div className='items'>
-      <form className='font' ref={pdfRef}>
+      <form className='font' ref={pdfRef} >
         <h1 className='cart'>ORDER DETAILS</h1>
         <div className='book_lable'>
           <label>OrderId: #{OrderId}</label>
@@ -135,7 +126,6 @@ const FinalItem = () => {
         </div>
       </form>
       <button className='book_button' onClick={submit}>Book Now</button>
-      <button className='book_button' onClick={downloadpdf}>Download Pdf</button>
       <Link to='/Home'><button className='book_button' >Cancel</button></Link>
     </div>
   )

@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("dotenv").config({path: './.env' });
+const pdf = require('html-pdf');
+
 
 const nodemailer = require("nodemailer");
 require("dotenv").config({path: './config.env' }); 
@@ -86,6 +88,83 @@ app.post("/send_recovery_email", (req, res) => {
   sendEmail(req.body)
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
+});
+
+
+const sendTicketEmail = async (userEmail, ticket) => {
+  try {
+    // Generate HTML content for the ticket details
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <title>ReserveIt Booking Confirmation</title>
+      </head>
+      <body>
+        <div>
+        <h1>Order Details</h1>
+          <p>Restaurant: ${ticket.Restraunt}</p>
+          <p>Branch Name: ${ticket.BranchName}</p>
+          <p>Seat: ${ticket.Seat}</p>
+          <p>Item: ${ticket.item}</p>
+          <p>Time: ${ticket.time}</p>
+          <p>Date: ${ticket.date}</p>
+          <p>Contact: ${ticket.contact}</p>
+        </div>
+        <p>Regards,<br />ReserveIt</p>
+      </body>
+      </html>
+    `;
+
+    // Generate PDF from HTML content
+    const pdfBuffer = await new Promise((resolve, reject) => {
+      pdf.create(htmlContent).toBuffer((err, buffer) => {
+        if (err) reject(err);
+        resolve(buffer);
+      });
+    });
+
+    // Create a Nodemailer transporter object with SMTP settings
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.MY_EMAIL,
+        pass: process.env.MY_PASSWORD,
+        authMethod: 'PLAIN'
+      }
+    });
+
+    // Compose email message with PDF attachment
+    const mailOptions = {
+      from: process.env.MY_EMAIL, // Sender address
+      to: userEmail, // Recipient address
+      subject: 'ReserveIt Booking', // Email subject
+      html: 'Please find your booking details attached.',
+      attachments: [{
+        filename: 'booking.pdf',
+        content: pdfBuffer
+      }]
+    };
+
+    // Send email
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent: ' + info.response);
+
+    return info;
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw new Error('Failed to send email');
+  }
+};
+
+
+app.post("/send_ticket_email", (req, res) => {
+  const { userEmail, ticket } = req.body; // Extract email and ticket from req.body
+  sendTicketEmail(userEmail, ticket) // Pass email and ticket separately to sendTicketEmail
+    .then((response) => res.send(response.message))
+    .catch((error) => res.status(500).send(error.message));
+    console.log(ticket);
 });
 
 
