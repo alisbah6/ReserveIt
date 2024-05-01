@@ -4,6 +4,7 @@ import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 import PhoneInput from 'react-phone-input-2';
@@ -11,7 +12,6 @@ import 'react-phone-input-2/lib/style.css';
 import { Button, TextField } from "@mui/material";
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { auth } from './firebase.config';
-
 
 
 var totalseats = 52;
@@ -34,21 +34,21 @@ function AslamChicken() {
   const [user, setUser] = useState(null)
   const [otp, setOtp] = useState("")
 
-  const sendOtp = async() => {
-    try{
+  const sendOtp = async () => {
+    try {
       const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {})
       const confirmation = await signInWithPhoneNumber(auth, phone, recaptcha)
       setUser(confirmation)
-    }catch(err){
+    } catch (err) {
       console.error(err)
     }
   }
 
-  const VerifyOtp = async()=>{
-    try{
-        const data = await user.confirm(otp)
-        console.log(data)
-    }catch(err){
+  const VerifyOtp = async () => {
+    try {
+      const data = await user.confirm(otp)
+      console.log(data)
+    } catch (err) {
       console.error(err)
     }
   }
@@ -78,7 +78,7 @@ function AslamChicken() {
       localStorage.setItem("seats", seats);
       localStorage.setItem("time", selectedValue);
       localStorage.setItem("date", date);
-      localStorage.setItem("contact", contact);
+      localStorage.setItem("contact", phone);
     }
   }
   const [selectedSeat, setSelectedSeat] = useState([]);
@@ -641,11 +641,11 @@ function AslamChicken() {
                         <Calendar
                           onChange={onChange}
                           value={date} />
-                      </div>
                       <p className='text-center'>
                         <span className='bold'>Selected Date:</span>{' '}
                         {date.toDateString()}
                       </p>
+                      </div>
                       <div>
                         <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
                           <option value="">-- Select a timing --</option>
@@ -668,18 +668,15 @@ function AslamChicken() {
                         <div className='phone-sign'>
                           <PhoneInput
                             placeholder="Enter phone number"
-                            defaultCountry="US"
+                            defaultCountry="INDIA"
                             value={phone}
                             onChange={(phone) => setPhone("+" + phone)}
                           />
-                          <Button onClick={sendOtp} sx={{ marginTop: "10px" }} variant='contained'>Send OTP</Button>
+                          <TextField onChange={(e) => setOtp(e.target.value)} sx={{ marginTop: "10px", width: "180px" }} variant='outlined' size='small' label="Enter OTP" />
+                          <Button onClick={sendOtp} sx={{ marginTop: "12px", marginLeft: "5px" }} variant='contained'>Send OTP</Button>
                           <div style={{ marginTop: "10px" }} id="recaptcha"></div>
-                          <br></br>
-                          <TextField onChange={(e)=>setOtp(e.target.value)} sx={{ marginTop: "10px", width: "300px" }} variant='outlined' size='small' label="Enter OTP" />
-                          <br></br>
-                          <Button onClick={VerifyOtp} sx={{ marginTop: "10px" }} variant='contained' color='success'>Verify OTP</Button>
+                          <Button onClick={VerifyOtp} sx={{ marginTop: "5px" }} variant='contained' color='success'>Verify OTP</Button>
                         </div>
-                        <input className="no-inbox" id='contact' onChange={(e) => { setContact(e.target.value); if (!pattern.test(e.target.value) && e.target.value.length >= 10) alert("Enter valid number"); }} />
                       </div>
                       <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
                       <a className="popup-close" href="#popup-close">&times;</a>

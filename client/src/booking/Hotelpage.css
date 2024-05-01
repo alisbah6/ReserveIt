@@ -145,9 +145,9 @@ h1 {
 }
 
 .calender {
-    border: 2px solid black;
-    padding: 5px;
-    border-radius: 5px;
+    width: fit-content;
+    margin-left: 6%;
+    padding: 20px;
 }
 
 
@@ -187,7 +187,7 @@ h1 {
 
 .popup_booking {
     position: absolute;
-    top: 31%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -546,7 +546,7 @@ h1 {
 }
 
 .phone-sign{
-    border: 2px solid black;
     width: fit-content;
-    margin-left: 15%;
+    margin-left: 11%;
+    padding: 20px;
 }

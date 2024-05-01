@@ -25,7 +25,7 @@ const FinalItem = () => {
   const item = localStorage.getItem("item");
   const time = localStorage.getItem("time");
   const date = localStorage.getItem("date");
-  const contact = localStorage.getItem("contact");
+  const phone = localStorage.getItem("contact");
 
   const submit = async (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const FinalItem = () => {
         item,
         time,
         date,
-        contact,
+        phone,
       }
       );
 
@@ -114,7 +114,7 @@ const FinalItem = () => {
           <label>Day : {date.substring(0, 16)}</label>
         </div>
         <div className='book_lable'>
-          <label>Contact Number : {contact}</label>
+          <label>Contact Number : {phone}</label>
         </div>
       </form>
       <form>
