@@ -5,13 +5,10 @@ import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { useParams, useNavigate,NavLink } from 'react-router-dom';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
-import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
-import { Button, TextField } from "@mui/material";
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
-import { auth } from './firebase.config';
+import axios from 'axios';
+
 
 
 var totalseats = 52;
@@ -25,34 +22,26 @@ function AslamChicken() {
   const navigate = useNavigate();
   const [seats, setseats] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
-  const [contact, setContact] = useState();
   const [restaurantName, setRestaurantName] = useState(null);
-  const pattern = new RegExp(/^\d{1,10}$/);
   const [date, setDate] = useState(new Date());
   const { isLoggedIn } = useAuth();
-  const [phone, setPhone] = useState("")
-  const [user, setUser] = useState(null)
-  const [otp, setOtp] = useState("")
+
+  const [phone, setPhone] = useState('+91');
+  const [otp, setOtp] = useState('');
+  const [serverOtp, setServerOtp] = useState(null);
 
   const sendOtp = async () => {
-    try {
-      const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {})
-      const confirmation = await signInWithPhoneNumber(auth, phone, recaptcha)
-      setUser(confirmation)
-    } catch (err) {
-      console.error(err)
-    }
-    console.log(otp);
-  }
+    const res = await axios.post('http://localhost:3500/sendotp', { phone: phone });
+    setServerOtp(res.data.otp); // Save OTP for verification
+  };
 
-  const VerifyOtp = async () => {
-    try {
-      const data = await user.confirm(otp)
-      console.log(data)
-    } catch (err) {
-      console.error(err)
+  const verifyOtp = () => {
+    if (Number(otp) === serverOtp) {
+      alert('Phone number verified!');
+    } else {
+      alert('Invalid OTP');
     }
-  }
+  };
 
   const onChange = (newDate) => {
     setDate(newDate);
@@ -624,7 +613,6 @@ function AslamChicken() {
                       <br />
                       Contact:{item.ph}
                     </p>
-
                   </div>
                 )
               })}
@@ -642,10 +630,10 @@ function AslamChicken() {
                         <Calendar
                           onChange={onChange}
                           value={date} />
-                      <p className='text-center'>
-                        <span className='bold'>Selected Date:</span>{' '}
-                        {date.toDateString()}
-                      </p>
+                        <p className='text-center'>
+                          <span className='bold'>Selected Date:</span>{' '}
+                          {date.toDateString()}
+                        </p>
                       </div>
                       <div>
                         <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
@@ -667,16 +655,12 @@ function AslamChicken() {
                       <div>
                         <p className='want'>Enter Your Contact Number</p>
                         <div className='phone-sign'>
-                          <PhoneInput
-                            placeholder="Enter phone number"
-                            defaultCountry="INDIA"
-                            value={phone}
-                            onChange={(phone) => setPhone("+" + phone)}
-                          />
-                          <TextField onChange={(e) => setOtp(e.target.value)} sx={{ marginTop: "10px", width: "180px" }} variant='outlined' size='small' label="Enter OTP" />
-                          <Button onClick={sendOtp} sx={{ marginTop: "12px", marginLeft: "5px" }} variant='contained'>Send OTP</Button>
-                          <div style={{ marginTop: "10px" }} id="recaptcha"></div>
-                          <Button onClick={VerifyOtp} sx={{ marginTop: "5px" }} variant='contained' color='success'>Verify OTP</Button>
+                          <input type="text"
+                            value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter phone number" />
+                          <button onClick={sendOtp}>Send OTP</button>
+
+                          <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
+                          <button onClick={verifyOtp}>Verify OTP</button>
                         </div>
                       </div>
                       <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
