@@ -57,12 +57,14 @@ const FinalItem = () => {
         // User registration was successful
         console.log("Data Submitted Successfull");
         // Redirect or perform other actions as needed
-        const response = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
-        console.log(response.data);
+        const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
+        console.log(emailResponse.data);
+        alert("Booking has been confirmed")
       }
     } catch (error) {
       // Handle registration errors
       console.error("Error in Submission", error);
+      alert("Server is low");
     }
     var checkbox = document.getElementById('myCheckbox');
     var checkboxtwo = document.getElementById('myCheckbox2');
@@ -78,6 +80,15 @@ const FinalItem = () => {
     }
 
   };
+  // const done=async(e)=>{
+  //   e.preventDefault();
+  //   try {
+  //     const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
+  //       console.log(emailResponse.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   return (
     <div className='items'>
