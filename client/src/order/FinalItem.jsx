@@ -57,9 +57,8 @@ const FinalItem = () => {
         // User registration was successful
         console.log("Data Submitted Successfull");
         // Redirect or perform other actions as needed
-        const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
-        console.log(emailResponse.data);
         alert("Booking has been confirmed")
+        navigate(`/Done`);
       }
     } catch (error) {
       // Handle registration errors
@@ -71,7 +70,6 @@ const FinalItem = () => {
 
     if (checkbox.checked && checkboxtwo.checked) {
       // alert("Booking has been confirmed")
-      navigate(`/Done`);
       //pdf function over here
       checkbox.checked = false;
       checkboxtwo.checked = false;
@@ -80,15 +78,15 @@ const FinalItem = () => {
     }
 
   };
-  // const done=async(e)=>{
-  //   e.preventDefault();
-  //   try {
-  //     const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
-  //       console.log(emailResponse.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  const done=async(e)=>{
+    e.preventDefault();
+    try {
+      const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
+        console.log(emailResponse.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className='items'>
@@ -140,6 +138,7 @@ const FinalItem = () => {
         </div>
       </form>
       <button className='book_button' onClick={submit}>Book Now</button>
+      <button className='book_button' onClick={done}>Done</button>
       <Link to='/Home'><button className='book_button' >Cancel</button></Link>
     </div>
   )
