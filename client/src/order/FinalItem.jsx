@@ -3,9 +3,11 @@ import './FinalItem.css'
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import { useRef } from "react";
+import {useNavigate } from 'react-router-dom';
 
 const FinalItem = () => {
   const pdfRef = useRef();
+  const navigate = useNavigate();
   const [ticket, setTicket] = useState({ 
      Restraunt: localStorage.getItem("restraunt"),
    BranchName : localStorage.getItem("branch name"),
@@ -66,7 +68,8 @@ const FinalItem = () => {
     var checkboxtwo = document.getElementById('myCheckbox2');
 
     if (checkbox.checked && checkboxtwo.checked) {
-      alert("Booking has been confirmed")
+      // alert("Booking has been confirmed")
+      navigate(`/Done`);
       //pdf function over here
       checkbox.checked = false;
       checkboxtwo.checked = false;

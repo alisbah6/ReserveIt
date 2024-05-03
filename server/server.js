@@ -43,6 +43,7 @@ app.post('/sendotp', (req, res) => {
         res.send({otp: otp}); // Send OTP for verification on client side
     });
 });
+
 function sendEmail({ recipient_email, OTP }) {
   return new Promise((resolve, reject) => {
     var transporter = nodemailer.createTransport({

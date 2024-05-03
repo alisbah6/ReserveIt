@@ -94,8 +94,9 @@ h1 {
 
 .want {
     font-size: x-large;
-    padding-top: 10px;
+    padding-top: 20px;
     padding-bottom: 10px;
+    padding-left: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -137,7 +138,8 @@ h1 {
 .combobox {
     width: 60%;
     font-size: large;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 15px;
     margin-bottom: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
@@ -164,7 +166,9 @@ h1 {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 80%;
+    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
 }
+
 
 .popup-open:hover {
     background-color: #1e90ff;
@@ -186,7 +190,7 @@ h1 {
 
 .popup_booking {
     position: absolute;
-    top: 42%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -545,7 +549,55 @@ h1 {
 }
 
 .phone-sign{
-    width: fit-content;
-    margin-left: 11%;
-    padding: 20px;
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 17%;
+}
+
+.phone-sign-input{
+    font-size: x-large;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.send-phone-otp{
+    display: flex;
+    gap: 10px;
+
+}
+.send-phone-otp-button{
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #1e90ff;
+    box-shadow: 0px 0px 8px rgba(8, 7, 16, 0.6);
+}
+
+.send-phone-otp-button:hover {
+    background-color:lightgreen;
+}
+
+
+.send-phone-verify-button{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: large;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #1e90ff;
+    box-shadow: 0px 0px 8px rgba(8, 7, 16, 0.6);
+}
+.send-phone-verify-button:hover {
+    background-color:lightgreen;
+}
+
+
+
+.send-phone-otp input{
+    font-size: x-large;
+    margin-left: 20px ;
+    width: 60%;
 }

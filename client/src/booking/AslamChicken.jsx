@@ -32,12 +32,14 @@ function AslamChicken() {
 
   const sendOtp = async () => {
     const res = await axios.post('http://localhost:3500/sendotp', { phone: phone });
+    alert('OTP has Sent to your phone number');
     setServerOtp(res.data.otp); // Save OTP for verification
   };
 
   const verifyOtp = () => {
     if (Number(otp) === serverOtp) {
       alert('Phone number verified!');
+      handlesubmit()
     } else {
       alert('Invalid OTP');
     }
@@ -655,15 +657,16 @@ function AslamChicken() {
                       <div>
                         <p className='want'>Enter Your Contact Number</p>
                         <div className='phone-sign'>
-                          <input type="text"
+                          <input className='phone-sign-input' type="text"
                             value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter phone number" />
-                          <button onClick={sendOtp}>Send OTP</button>
-
-                          <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
-                          <button onClick={verifyOtp}>Verify OTP</button>
+                          <div className='send-phone-otp'>
+                            <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
+                            <button  className='send-phone-otp-button' onClick={sendOtp}>Send OTP</button>
+                          </div>
+                          <button className='send-phone-verify-button' onClick={verifyOtp}>Verify OTP</button>
                         </div>
                       </div>
-                      <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
+                      {/* <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button> */}
                       <a className="popup-close" href="#popup-close">&times;</a>
                     </form>
                   ) : (

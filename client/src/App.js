@@ -27,6 +27,7 @@ import AdminNavbar from './admin_side/Adminnavbar';
 import { createContext } from "react";
 import OTPinput from './user/OTPinput';
 import Reset from './user/Reset';
+import Done from './order/Done';
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
@@ -63,6 +64,7 @@ function App() {
         <Route path='/AdminNavbar' element={<AdminNavbar/>}/>
         <Route path='/OTPinput' element={<OTPinput/>}/>
         <Route path='/Reset' element={<Reset/>}/>
+        <Route path='/Done' element={<Done/>}/>
       </Routes>
     </div>
     </RecoveryContext.Provider>

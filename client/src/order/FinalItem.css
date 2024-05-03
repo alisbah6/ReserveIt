@@ -1,6 +1,10 @@
 .items{
-    margin: 1% 10%;
-    padding: 10px 100px;
+    margin: 2% 10%;
+    padding: 40px 40px;
+    border: 2px solid #219ebc;
+    border-style: dashed;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #219ebc;
 }
 
 .font{
