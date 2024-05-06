@@ -631,6 +631,7 @@ function AslamChicken() {
                       <div className='calender'>
                         <Calendar
                           onChange={onChange}
+                          minDate={new Date()}
                           value={date} />
                         <p className='text-center'>
                           <span className='bold'>Selected Date:</span>{' '}
