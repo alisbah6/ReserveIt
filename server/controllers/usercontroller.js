@@ -204,39 +204,9 @@ const Allfeedbacks=async(req,res)=>{
     }
 }
 
-const generateTicket = async (OrderId, Restraunt, BranchName, UserEmail, Seat, item, time, date, contact) => {
-    try {
-      // Generate a unique identifier for the ticket (you can use a UUID library for this)
-      const uniqueIdentifier = generateUniqueIdentifier();
-  
-      // Construct the ticket object with the provided information
-      const ticket = {
-        orderId: OrderId,
-        restaurant: Restraunt,
-        branchName: BranchName,
-        userEmail: UserEmail,
-        seat: Seat,
-        item: item,
-        time: time,
-        date: date,
-        contact: contact,
-        uniqueIdentifier: uniqueIdentifier,
-      };
-  
-      return ticket;
-    } catch (error) {
-      // Handle any errors that occur during ticket generation
-      console.error('Error generating ticket:', error);
-      throw new Error('Failed to generate ticket');
-    }
-  };
-
-  const generateUniqueIdentifier = () => {
-    return uuidv4();
-  };
   
 //posting data to database
-const submission = async (req, res) => {
+const booking = async (req, res) => {
     try {
         const { OrderId,Restraunt,BranchName,UserEmail, Seat, item,time,date,contact } = req.body;
 
@@ -284,11 +254,6 @@ const submission = async (req, res) => {
         if (newReservation) {
             return res.status(201).json(newReservation);
         }
-         // Generate the ticket
-    const ticket = await generateTicket(OrderId, Restraunt, BranchName, UserEmail, Seat, item, time, date, contact);
-    // Respond with the generated ticket
-    console.log(ticket);
-    return res.status(201).json(ticket);
     } catch (err) {
         console.log(err);
         return res.status(500);
@@ -311,6 +276,6 @@ module.exports = {
     reset_password,
     feedback,
     Allfeedbacks,
-    submission,
+    booking,
     Allrecords
 };

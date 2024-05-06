@@ -33,14 +33,14 @@ const FinalItem = () => {
   const item = localStorage.getItem("item");
   const time = localStorage.getItem("time");
   const date = localStorage.getItem("date");
-  const phone = localStorage.getItem("contact");
+  const contact = localStorage.getItem("contact");
 
   const submit = async (e) => {
     e.preventDefault();
     try {
       // Make an API request to create a new user
       const response = await axios.post(
-        "http://localhost:3500/user/submission", {
+        "http://localhost:3500/user/booking", {
         OrderId,
         Restraunt,
         BranchName,
@@ -49,7 +49,7 @@ const FinalItem = () => {
         item,
         time,
         date,
-        phone,
+        contact,
       }
       );
 
@@ -57,9 +57,9 @@ const FinalItem = () => {
         // User registration was successful
         console.log("Data Submitted Successfull");
         // Redirect or perform other actions as needed
-        // const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
-        // console.log(emailResponse.data);
-        alert("Booking has been confirmed")
+        alert("Booking has been confirmed");
+        const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
+        console.log(emailResponse.data);
         navigate(`/Done`);
       }
     } catch (error) {
@@ -119,7 +119,7 @@ const FinalItem = () => {
           <label>Day : {date.substring(0, 16)}</label>
         </div>
         <div className='book_lable'>
-          <label>Contact Number : {phone}</label>
+          <label>Contact Number : {contact}</label>
         </div>
       </form>
       <form>
@@ -140,7 +140,7 @@ const FinalItem = () => {
         </div>
       </form>
       <button className='book_button' onClick={submit}>Book Now</button>
-      <button className='book_button' onClick={done}>Done</button>
+      {/* <button className='book_button' onClick={done}>Done</button> */}
       <Link to='/Home'><button className='book_button' >Cancel</button></Link>
     </div>
   )
