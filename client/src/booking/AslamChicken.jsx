@@ -23,12 +23,20 @@ function AslamChicken() {
   const [seats, setseats] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
   const [restaurantName, setRestaurantName] = useState(null);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
+  const [showCalendar, setShowCalendar] = useState(false);
   const { isLoggedIn } = useAuth();
-
   const [phone, setPhone] = useState('+91');
   const [otp, setOtp] = useState('');
   const [serverOtp, setServerOtp] = useState(null);
+  
+  const onChange = (date) => {
+    setDate(date);
+    setShowCalendar(false);
+  }
+  const handleClick = () => {
+    setShowCalendar(!showCalendar);
+  };
 
   const sendOtp = async () => {
     const res = await axios.post('http://localhost:3500/sendotp', { phone: phone });
@@ -45,9 +53,7 @@ function AslamChicken() {
     }
   };
 
-  const onChange = (newDate) => {
-    setDate(newDate);
-  }
+
   useEffect(() => {
     // Find the restaurant data corresponding to the id
     const restaurant = data.find(res => res.id === params.id);
@@ -107,6 +113,38 @@ function AslamChicken() {
             </div>
             <div className="details-container">
               <h2>{item.name}</h2>
+              <div className='fliter-time-date'>
+                <div>
+                  <button className='calender' onClick={handleClick}>{showCalendar ? 'Select the date' : (date ? date.toDateString() : "-- Select the date --")}
+                    {/* show the selected date on the button */}</button>
+                  {showCalendar && (
+                    <Calendar
+                      onChange={onChange}
+                      minDate={new Date()}
+                      value={date || new Date()}
+                    />
+                  )}
+                </div>
+                <div>
+                  <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)} disabled={!date}>
+                    <option value="">-- Select a timing --</option>
+                    <option value="8am-9am">8am-9am</option>
+                    <option value="9am-10am">9am-10am</option>
+                    <option value="10am-11am">10am-11am</option>
+                    <option value="11am-12am">11am-12am</option>
+                    <option value="12am-1pm">12am-1pm</option>
+                    <option value="1pm-2pm">1pm-2pm</option>
+                    <option value="2pm-3pm">2pm-3pm</option>
+                    <option value="3pm-4pm">3pm-4pm</option>
+                    <option value="4pm-5pm">4pm-5pm</option>
+                    <option value="5pm-6pm">5pm-6pm</option>
+                    <option value="6pm-7pm">6pm-7pm</option>
+                    <option value="7pm-8pm">7pm-8pm</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+              </div>
               <div className='hotel-design'>
                 <div className='face back-face'>
                   <div className='seating'>
@@ -627,34 +665,6 @@ function AslamChicken() {
                       <div classname="buttonIn">
                         <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seats}></input>
                       </div>
-                      <h2 className='want'>Select Your Date</h2>
-                      <div className='calender'>
-                        <Calendar
-                          onChange={onChange}
-                          minDate={new Date()}
-                          value={date} />
-                        <p className='text-center'>
-                          <span className='bold'>Selected Date:</span>{' '}
-                          {date.toDateString()}
-                        </p>
-                      </div>
-                      <div>
-                        <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
-                          <option value="">-- Select a timing --</option>
-                          <option value="8am-9am">8am-9am</option>
-                          <option value="9am-10am">9am-10am</option>
-                          <option value="10am-11am">10am-11am</option>
-                          <option value="11am-12am">11am-12am</option>
-                          <option value="12am-1pm">12am-1pm</option>
-                          <option value="1pm-2pm">1pm-2pm</option>
-                          <option value="2pm-3pm">2pm-3pm</option>
-                          <option value="3pm-4pm">3pm-4pm</option>
-                          <option value="4pm-5pm">4pm-5pm</option>
-                          <option value="5pm-6pm">5pm-6pm</option>
-                          <option value="6pm-7pm">6pm-7pm</option>
-                          <option value="7pm-8pm">7pm-8pm</option>
-                        </select>
-                      </div>
                       <div>
                         <p className='want'>Enter Your Contact Number</p>
                         <div className='phone-sign'>
@@ -662,7 +672,7 @@ function AslamChicken() {
                             value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter phone number" />
                           <div className='send-phone-otp'>
                             <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
-                            <button  className='send-phone-otp-button' onClick={sendOtp}>Send OTP</button>
+                            <button className='send-phone-otp-button' onClick={sendOtp}>Send OTP</button>
                           </div>
                           <button className='send-phone-verify-button' onClick={verifyOtp}>Verify OTP</button>
                         </div>
@@ -671,7 +681,7 @@ function AslamChicken() {
                       <a className="popup-close" href="#popup-close">&times;</a>
                     </form>
                   ) : (
-                    <p>Please login in this site for Booking.</p>
+                    <p className='please-log'>Please login in this site for Booking.</p>
                   )}
                   <a className="popup-close" href="#popup-close">&times;</a>
                 </div>
