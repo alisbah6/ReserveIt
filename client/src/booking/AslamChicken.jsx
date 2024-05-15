@@ -7,7 +7,6 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
-import axios from 'axios';
 
 
 
@@ -26,10 +25,15 @@ function AslamChicken() {
   const [date, setDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const { isLoggedIn } = useAuth();
-  const [phone, setPhone] = useState('+91');
-  const [otp, setOtp] = useState('');
-  const [serverOtp, setServerOtp] = useState(null);
-  
+  const [contact, setContact] = useState("+91");
+  const [OTP, setOTP] = useState('');
+
+
+  // const submit=()=>{
+  //   navigate("/OrderPopup",{state:{seats}})
+  //   console.log(seats)
+  // }
+
   const onChange = (date) => {
     setDate(date);
     setShowCalendar(false);
@@ -38,21 +42,7 @@ function AslamChicken() {
     setShowCalendar(!showCalendar);
   };
 
-  const sendOtp = async () => {
-    const res = await axios.post('http://localhost:3500/sendotp', { phone: phone });
-    alert('OTP has Sent to your phone number');
-    setServerOtp(res.data.otp); // Save OTP for verification
-  };
-
-  const verifyOtp = () => {
-    if (Number(otp) === serverOtp) {
-      alert('Phone number verified!');
-      handlesubmit()
-    } else {
-      alert('Invalid OTP');
-    }
-  };
-
+  
 
   useEffect(() => {
     // Find the restaurant data corresponding to the id
@@ -61,6 +51,7 @@ function AslamChicken() {
       setRestaurantName(restaurant.name);
     }
   }, [params.id]);
+
   const handlesubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -76,7 +67,7 @@ function AslamChicken() {
       localStorage.setItem("seats", seats);
       localStorage.setItem("time", selectedValue);
       localStorage.setItem("date", date);
-      localStorage.setItem("contact", phone);
+      localStorage.setItem("contact", contact);
     }
   }
   const [selectedSeat, setSelectedSeat] = useState([]);
@@ -656,6 +647,11 @@ function AslamChicken() {
                   </div>
                 )
               })}
+              <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} />
+              <button onClick={""}>Send OTP</button>
+              <input type="text" value={OTP} onChange={(e) => setOTP(e.target.value)} />
+              <button onClick={""}>Verify OTP</button>
+              {/* <Link className='book_button' to={{pathname:"/OrderPopup",state:{seats:seats}}}>Seat Reservation</Link> */}
               <a className="popup-open" href="#popup-open">Seat Reservation</a>
               <div id="popup-open" className="modal">
                 <div className="popup_booking">
@@ -666,18 +662,18 @@ function AslamChicken() {
                         <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seats}></input>
                       </div>
                       <div>
-                        <p className='want'>Enter Your Contact Number</p>
+                        {/* <p className='want'>Enter Your Contact Number</p>
                         <div className='phone-sign'>
                           <input className='phone-sign-input' type="text"
-                            value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter phone number" />
+                            value={contact} onChange={(e) => setContact(e.target.value)} placeholder="Enter phone number" />
                           <div className='send-phone-otp'>
                             <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
                             <button className='send-phone-otp-button' onClick={sendOtp}>Send OTP</button>
                           </div>
                           <button className='send-phone-verify-button' onClick={verifyOtp}>Verify OTP</button>
-                        </div>
+                        </div> */}
                       </div>
-                      {/* <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button> */}
+                      <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
                       <a className="popup-close" href="#popup-close">&times;</a>
                     </form>
                   ) : (
