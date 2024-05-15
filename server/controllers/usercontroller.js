@@ -4,19 +4,7 @@ const Submission = require("../model/datasubmission");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
-const firebase = require('firebase');
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCliDIFa_hh2SnCSvTzmCMhGWbPQT2QYsY",
-    authDomain: "otp-project-20a13.firebaseapp.com",
-    projectId: "otp-project-20a13",
-    storageBucket: "otp-project-20a13.appspot.com",
-    messagingSenderId: "646079026998",
-    appId: "1:646079026998:web:15adaada3ce68206148597",
-    measurementId: "G-5ZS05DFX7Q"
-};
-
-firebase.initializeApp(firebaseConfig);
 
 
 /*  function to login:
@@ -285,37 +273,6 @@ const Allrecords = async (req, res) => {
     }
 }
 
-//Sendotp
-
-const sendOTP = (req, res) => {
-    const { phoneNumber } = req.body;
-    const OTP = Math.floor(100000 + Math.random() * 900000);
-  
-    firebase.auth().signInWithPhoneNumber(phoneNumber, new firebase.auth.RecaptchaVerifier('recaptcha-container'))
-      .then((confirmationResult) => {
-        // OTP sent successfully
-        res.json({ success: true, OTP });
-      })
-      .catch((error) => {
-        // Error sending OTP
-        console.error(error);
-        res.status(500).json({ success: false, error: 'Error sending OTP' });
-      });
-  };
-
-
-const verifyOTP = (req, res) => {
-    const { contact, OTP } = req.body;
-
-    // Verify OTP
-    // Assuming you have a logic to verify OTP here
-
-    if (OTP === req.body.OTP) {
-        res.json({ success: true, message: 'OTP verified successfully' });
-    } else {
-        res.status(400).json({ success: false, message: 'Invalid OTP' });
-    }
-};
 
 module.exports = {
     login,
@@ -325,7 +282,4 @@ module.exports = {
     Allfeedbacks,
     booking,
     Allrecords,
-    sendOTP,
-    verifyOTP
-
 };
