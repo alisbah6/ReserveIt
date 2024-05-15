@@ -28,6 +28,7 @@ import { createContext } from "react";
 import OTPinput from './user/OTPinput';
 import Reset from './user/Reset';
 import Done from './order/Done';
+import OrderPopup from './components/order-popup';
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
@@ -65,6 +66,7 @@ function App() {
         <Route path='/OTPinput' element={<OTPinput/>}/>
         <Route path='/Reset' element={<Reset/>}/>
         <Route path='/Done' element={<Done/>}/>
+        <Route path='/OrderPopup' element={<OrderPopup/>}/>
       </Routes>
     </div>
     </RecoveryContext.Provider>

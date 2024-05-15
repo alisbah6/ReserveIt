@@ -126,7 +126,7 @@ const OTPinput = () => {
         </div>
         <div>
           <p className='otp-p'>Didn't recieve code?</p>{" "}
-          <a className='resend'
+          <a className='resend' href='##'
             style={{
               color: disable ? "gray" : "blue",
               cursor: disable ? "none" : "pointer",

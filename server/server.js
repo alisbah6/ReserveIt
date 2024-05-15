@@ -1,13 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-require("dotenv").config({path: './.env' });
+require("dotenv").config({ path: './.env' });
 const pdf = require('html-pdf');
-const twilio = require('twilio');
-
-
+// const twilio = require('twilio');
 const nodemailer = require("nodemailer");
-require("dotenv").config({path: './config.env' }); 
+require("dotenv").config({ path: './config.env' });
 const bodyParser = require('body-parser');
 
 app.use(cors());
@@ -15,10 +13,9 @@ app.use(bodyParser.json());
 
 
 const connectDB = require("./connection");
-
 const userRoutes = require('./routes/userRoutes');
 
-app.use('/user' , userRoutes);
+app.use('/user', userRoutes);
 app.use(express.json({ limit: "25mb" }));
 app.use(express.urlencoded({ limit: "25mb" }));
 app.use((req, res, next) => {
@@ -26,23 +23,24 @@ app.use((req, res, next) => {
   next();
 });
 
-const accountSid = 'ACa2ee4f0b942cf15449b6b82ca26ed553';
-const authToken = '7ffa7e2e2245270b0dfb8e8ae3b2d2e7';
-const client = new twilio(accountSid, authToken);
 
-app.post('/sendotp', (req, res) => {
-    const phone = req.body.phone;
-    const otp = Math.floor(100000 + Math.random() * 900000); // Generate 6 digit OTP
+// const accountSid = 'ACa2ee4f0b942cf15449b6b82ca26ed553';
+// const authToken = '7ffa7e2e2245270b0dfb8e8ae3b2d2e7';
+// const client = new twilio(accountSid, authToken);
 
-    client.messages.create({
-        body: `Your OTP is ${otp}`,
-        to: phone,
-        from: '+12569527192'
-    }).then((message) => {
-        console.log(message.sid);
-        res.send({otp: otp}); // Send OTP for verification on client side
-    });
-});
+// app.post('/sendotp', (req, res) => {
+//   const phone = req.body.phone;
+//   const otp = Math.floor(100000 + Math.random() * 900000); // Generate 6 digit OTP
+
+//   client.messages.create({
+//     body: `Your OTP is ${otp}`,
+//     to: phone,
+//     from: '+12569527192'
+//   }).then((message) => {
+//     console.log(message.sid);
+//     res.send({ otp: otp }); // Send OTP for verification on client side
+//   });
+// });
 
 function sendEmail({ recipient_email, OTP }) {
   return new Promise((resolve, reject) => {
@@ -183,18 +181,18 @@ app.post("/send_ticket_email", (req, res) => {
   sendTicketEmail(userEmail, ticket) // Pass email and ticket separately to sendTicketEmail
     .then((response) => res.send(response.message))
     .catch((error) => res.status(500).send(error.message));
-    console.log(ticket);
+  console.log(ticket);
 });
 
 
 const PORT = 3500;
 
-app.listen(PORT , async () => {
-  try{
+app.listen(PORT, async () => {
+  try {
     await connectDB();
     console.log(`server running on port ${PORT}`);
-    
-  }catch(err){
+
+  } catch (err) {
     console.log("something went wrong ");
     process.exit(1);
   }

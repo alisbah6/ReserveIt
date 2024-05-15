@@ -4,6 +4,21 @@ const Submission = require("../model/datasubmission");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
+const firebase = require('firebase');
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCliDIFa_hh2SnCSvTzmCMhGWbPQT2QYsY",
+    authDomain: "otp-project-20a13.firebaseapp.com",
+    projectId: "otp-project-20a13",
+    storageBucket: "otp-project-20a13.appspot.com",
+    messagingSenderId: "646079026998",
+    appId: "1:646079026998:web:15adaada3ce68206148597",
+    measurementId: "G-5ZS05DFX7Q"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+
 /*  function to login:
 
 status:
@@ -47,9 +62,9 @@ const login = async (req, res) => {
         if (!isMatched) {
             return res.status(401).json({ message: "incorrect Password" });
         }
-        const token=jwt.sign({email:user.email,id:user.id},"test",{expiresIn:"1h"});
-    res.status(200).json({result:user,token})
-        return res.status(200).json(user);       
+        const token = jwt.sign({ email: user.email, id: user.id }, "test", { expiresIn: "1h" });
+        res.status(200).json({ result: user, token })
+        return res.status(200).json(user);
     }
     catch (err) {
         console.log(err);
@@ -58,7 +73,7 @@ const login = async (req, res) => {
 };
 
 reset_password = async (req, res) => {
-    const { email, password,confirmpassword } = req.body;
+    const { email, password, confirmpassword } = req.body;
     try {
         if (!email) {
             return res.status(400).json({ message: "email is required" });
@@ -68,7 +83,7 @@ reset_password = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        
+
         if (!password || !confirmpassword) {
             return res.status(400).json({ message: "Both password and confirm password are required" });
         }
@@ -151,7 +166,7 @@ const signup = async (req, res) => {
             name,
             username,
             email: email,
-            password: encryptedPassword ,
+            password: encryptedPassword,
             confirmpassword: encryptedPassword,
         });
 
@@ -194,7 +209,7 @@ const feedback = async (req, res) => {
     }
 };
 //getting feedback from database
-const Allfeedbacks=async(req,res)=>{
+const Allfeedbacks = async (req, res) => {
     try {
         const feedbackResponses = await Feedback.find();
         res.status(200).json(feedbackResponses);
@@ -204,11 +219,11 @@ const Allfeedbacks=async(req,res)=>{
     }
 }
 
-  
+
 //posting data to database
 const booking = async (req, res) => {
     try {
-        const { OrderId,Restraunt,BranchName,UserEmail, Seat, item,time,date,contact } = req.body;
+        const { OrderId, Restraunt, BranchName, UserEmail, Seat, item, time, date, contact } = req.body;
 
         //validating the user data.
         if (!OrderId) {
@@ -260,7 +275,7 @@ const booking = async (req, res) => {
     }
 };
 //getting submits from database
-const Allrecords=async(req,res)=>{
+const Allrecords = async (req, res) => {
     try {
         const RecordResponses = await Submission.find();
         res.status(200).json(RecordResponses);
@@ -270,6 +285,38 @@ const Allrecords=async(req,res)=>{
     }
 }
 
+//Sendotp
+
+const sendOTP = (req, res) => {
+    const { phoneNumber } = req.body;
+    const OTP = Math.floor(100000 + Math.random() * 900000);
+  
+    firebase.auth().signInWithPhoneNumber(phoneNumber, new firebase.auth.RecaptchaVerifier('recaptcha-container'))
+      .then((confirmationResult) => {
+        // OTP sent successfully
+        res.json({ success: true, OTP });
+      })
+      .catch((error) => {
+        // Error sending OTP
+        console.error(error);
+        res.status(500).json({ success: false, error: 'Error sending OTP' });
+      });
+  };
+
+
+const verifyOTP = (req, res) => {
+    const { contact, OTP } = req.body;
+
+    // Verify OTP
+    // Assuming you have a logic to verify OTP here
+
+    if (OTP === req.body.OTP) {
+        res.json({ success: true, message: 'OTP verified successfully' });
+    } else {
+        res.status(400).json({ success: false, message: 'Invalid OTP' });
+    }
+};
+
 module.exports = {
     login,
     signup,
@@ -277,5 +324,8 @@ module.exports = {
     feedback,
     Allfeedbacks,
     booking,
-    Allrecords
+    Allrecords,
+    sendOTP,
+    verifyOTP
+
 };
