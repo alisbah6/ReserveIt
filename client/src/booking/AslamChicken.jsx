@@ -19,6 +19,7 @@ function AslamChicken() {
   const bname = params.bname;
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
+  const [entries, setEntries] = useState([]);
   const [seats, setseats] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
   const [restaurantName, setRestaurantName] = useState(null);
@@ -76,16 +77,75 @@ function AslamChicken() {
       if (prevSelectedSeats.includes(id)) {
         // If already selected, remove it (deselect)
         setseats(prevTotalSeats => prevTotalSeats - seat_value);
+        localStorage.removeItem("id");
         return prevSelectedSeats.filter(seat => seat !== id);
       } else {
         // If not selected, add it to the array (select)
         // Here, you could also enforce a limit on the number of selectable seats
         setseats(prevTotalSeats => prevTotalSeats + seat_value);
+        localStorage.setItem("id", id);
         return [...prevSelectedSeats, id];
       }
     });
   }
 
+  const settingItems=()=>{
+    localStorage.setItem("restraunt", restaurantName);
+      localStorage.setItem("branch name", bname);
+      localStorage.setItem("time", selectedValue);
+      localStorage.setItem("seats", seats);
+      localStorage.setItem("date", date);
+  }
+// Fetch bookings whenever selectedDate or selectedTime changes
+
+const fetchAllResponses = async () => {
+  try {
+    const response = await axios.get("http://localhost:3500/user/Allrecords");
+    if (response.status === 200) {
+      // Return the array of feedback responses
+      setEntries(response.data);
+      localStorage.setItem('AllResponses', JSON.stringify(response.data));
+    }
+  } catch (error) {
+    console.error("Error fetching All responses:", error);
+  }
+};
+useEffect(() => {
+  fetchAllResponses()
+}, [])
+const groupOrdersByDate = () => {
+  const groupedOrders = {};
+  entries.forEach(order => {
+    const rest_name=order.Restraunt;
+    const branch=order.BranchName;
+    const orderDate = new Date(order.date).toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+    const inputDate = new Date(date).toLocaleDateString('en-US', {
+      weekday: 'short', 
+      month: 'short',   
+      day: 'numeric',   
+      year: 'numeric'  
+    });
+    const orderTime = order.time;
+    const seatbooked=order.id;
+    if (rest_name === restaurantName && branch === bname) {
+      if(orderDate === inputDate && orderTime===selectedValue){
+      if (!groupedOrders[orderDate]) {
+        groupedOrders[orderDate] = [];
+      }
+      groupedOrders[orderDate].push(order);
+      console.log(seatbooked);
+    }
+    }
+});
+return groupedOrders;
+};
+useEffect(()=>{  groupOrdersByDate()
+})
   return (
     <div>
       <Navbar />
@@ -117,7 +177,7 @@ function AslamChicken() {
                   )}
                 </div>
                 <div>
-                  <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)} disabled={!date}>
+                  <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}  disabled={!date}>
                     <option value="">-- Select a timing --</option>
                     <option value="8am-9am">8am-9am</option>
                     <option value="9am-10am">9am-10am</option>
@@ -143,7 +203,7 @@ function AslamChicken() {
                       <div className='eight-one'>
                         <div className='order-booking' onClick={() => TableSelected('seatA', 8)}>
                           <div className='top-flex'>
-                            <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                            <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : ''}}></div>
                             <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
                             <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
                           </div>
@@ -668,7 +728,7 @@ function AslamChicken() {
                             value={contact} onChange={(e) => setContact(e.target.value)} placeholder="Enter phone number" />
                           <div className='send-phone-otp'>
                             <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
-                            <button className='send-phone-otp-button' onClick={sendOtp}>Send OTP</button>
+                            <button className='send-phone-otp-button'>Send OTP</button>
                           </div>
                           <button className='send-phone-verify-button' onClick={verifyOtp}>Verify OTP</button>
                         </div> */}

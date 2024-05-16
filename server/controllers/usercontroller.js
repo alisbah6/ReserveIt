@@ -211,7 +211,7 @@ const Allfeedbacks = async (req, res) => {
 //posting data to database
 const booking = async (req, res) => {
     try {
-        const { OrderId, Restraunt, BranchName, UserEmail, Seat, item, time, date, contact } = req.body;
+        const { OrderId,Restraunt,BranchName,UserEmail, Seat,id, item,time,date,contact } = req.body;
 
         //validating the user data.
         if (!OrderId) {
@@ -228,6 +228,9 @@ const booking = async (req, res) => {
         }
         if (!Seat) {
             return res.status(400).json({ message: "seat is required" });
+        }
+        if (!id) {
+            return res.status(400).json({ message: "seat id  is required" });
         }
         if (!item) {
             return res.status(400).json({ message: "items are required" });
@@ -248,6 +251,7 @@ const booking = async (req, res) => {
             BranchName,
             UserEmail,
             Seat,
+            id,
             item,
             time,
             date,

@@ -30,6 +30,7 @@ const FinalItem = () => {
   const Restraunt = localStorage.getItem("restraunt");
   const BranchName = localStorage.getItem("branch name");
   const Seat = localStorage.getItem("seats");
+  const id=localStorage.getItem("id");
   const item = localStorage.getItem("item");
   const time = localStorage.getItem("time");
   const date = localStorage.getItem("date");
@@ -46,6 +47,7 @@ const FinalItem = () => {
         BranchName,
         UserEmail,
         Seat,
+        id,
         item,
         time,
         date,
@@ -80,16 +82,6 @@ const FinalItem = () => {
     }
 
   };
-  // const done=async(e)=>{
-  //   e.preventDefault();
-  //   try {
-  //     const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
-  //       console.log(emailResponse.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   return (
     <div className='items'>
       <form className='font' ref={pdfRef} >

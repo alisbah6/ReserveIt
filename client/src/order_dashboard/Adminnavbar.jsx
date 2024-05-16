@@ -18,7 +18,7 @@ const Adminnavbar = () => {
         {UserEmail === null ? <Link to='/Login' className='log'><i class="fa-solid fa-user"></i>Log In</Link> :
           <>
             <p className="userlogo" style={{ backgroundColor: 'grey', color: 'white', paddingRight: "5px", paddingLeft: "5px", fontSize: "20px", fontFamily: 'Times New Roman' }}>
-              Hello,{UserEmail.charAt(0).toUpperCase() + UserEmail.slice(1)}</p>
+              Welcome to Order Dashboard</p>
             <Link className='log' onClick={handleLogout}>Log out</Link>
           </>
 
