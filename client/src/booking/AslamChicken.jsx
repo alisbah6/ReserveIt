@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
@@ -7,8 +7,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
-
-
+import axios from 'axios';
 
 var totalseats = 52;
 var totalno;
@@ -26,6 +25,7 @@ function AslamChicken() {
   const [date, setDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const { isLoggedIn } = useAuth();
+  const initialSelection = useRef(true);
   const [contact, setContact] = useState("+91");
   const [OTP, setOTP] = useState('');
 
@@ -53,6 +53,15 @@ function AslamChicken() {
     }
   }, [params.id]);
 
+  const handleChange = (e) => {
+    if (initialSelection.current) {
+      initialSelection.current = false;
+    } else {
+      window.location.reload();
+    }
+    setSelectedValue(e.target.value);
+  };
+
   const handlesubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -72,23 +81,6 @@ function AslamChicken() {
     }
   }
   const [selectedSeat, setSelectedSeat] = useState([]);
-  const TableSelected = (id, seat_value) => {
-    setSelectedSeat((prevSelectedSeats) => {
-      if (prevSelectedSeats.includes(id)) {
-        // If already selected, remove it (deselect)
-        setseats(prevTotalSeats => prevTotalSeats - seat_value);
-        localStorage.removeItem("id");
-        return prevSelectedSeats.filter(seat => seat !== id);
-      } else {
-        // If not selected, add it to the array (select)
-        // Here, you could also enforce a limit on the number of selectable seats
-        setseats(prevTotalSeats => prevTotalSeats + seat_value);
-        localStorage.setItem("id", id);
-        return [...prevSelectedSeats, id];
-      }
-    });
-  }
-
   const settingItems=()=>{
     localStorage.setItem("restraunt", restaurantName);
       localStorage.setItem("branch name", bname);
@@ -130,22 +122,55 @@ const groupOrdersByDate = () => {
       day: 'numeric',   
       year: 'numeric'  
     });
+    const seatbooked=[order.id];
     const orderTime = order.time;
-    const seatbooked=order.id;
-    if (rest_name === restaurantName && branch === bname) {
-      if(orderDate === inputDate && orderTime===selectedValue){
+    if (rest_name === restaurantName && branch === bname &&orderDate === inputDate && orderTime===selectedValue) {
       if (!groupedOrders[orderDate]) {
         groupedOrders[orderDate] = [];
       }
       groupedOrders[orderDate].push(order);
       console.log(seatbooked);
-    }
+      const seatElements = document.querySelectorAll(`[id="${seatbooked}"]`);
+      if (seatElements.length > 0) {
+        seatElements.forEach(seatEl=> {
+          seatEl.classList.add("disabled"); // Add a CSS class to disable the seat
+        })
+      };
     }
 });
-return groupedOrders;
+return { groupedOrders};
+};
+const isSeatDisabled = (id) => {
+  const seatElement = document.getElementById(id);
+  return seatElement && seatElement.classList.contains("disabled");
+};
+const TableSelected = (id, seat_value) => {
+  if (isSeatDisabled(id)) {
+    return false; // Seat is disabled, return false
+  }
+  setSelectedSeat((prevSelectedSeats) => {
+    if (prevSelectedSeats.includes(id)) {
+      // If already selected, remove it (deselect)
+      setseats(prevTotalSeats => prevTotalSeats - seat_value);
+      localStorage.removeItem("id");
+      return prevSelectedSeats.filter(seat => seat !== id);
+    } else {
+      // If not selected, add it to the array (select)
+      // Here, you could also enforce a limit on the number of selectable seats
+      setseats(prevTotalSeats => prevTotalSeats + seat_value);
+      localStorage.setItem("id", id);
+      return [...prevSelectedSeats, id];
+    }
+  });
+
+  return true; // Seat is not disabled, return true
 };
 useEffect(()=>{  groupOrdersByDate()
 })
+
+const seatStyle = (seatId) => ({
+  backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
+});
   return (
     <div>
       <Navbar />
@@ -177,7 +202,7 @@ useEffect(()=>{  groupOrdersByDate()
                   )}
                 </div>
                 <div>
-                  <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}  disabled={!date}>
+                  <select className="combobox" id="comboBox" value={selectedValue} onChange={handleChange}  disabled={!date}>
                     <option value="">-- Select a timing --</option>
                     <option value="8am-9am">8am-9am</option>
                     <option value="9am-10am">9am-10am</option>
@@ -203,25 +228,25 @@ useEffect(()=>{  groupOrdersByDate()
                       <div className='eight-one'>
                         <div className='order-booking' onClick={() => TableSelected('seatA', 8)}>
                           <div className='top-flex'>
-                            <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : ''}}></div>
-                            <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                            <div className='chair-top' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                            <div className='chair-top' id="seatA" style={seatStyle('seatA')}></div>
+                            <div className='chair-top' id="seatA" style={seatStyle('seatA')}></div>
+                            <div className='chair-top' id="seatA" style={seatStyle('seatA')}></div>
                           </div>
                           <div className='flex'>
                             <div>
-                              <div className='chair-left' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                              <div className='chair-left' id="seatA" style={seatStyle('seatA')}></div>
                             </div>
                             <div>
-                              <div className='table-eight' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                              <div className='table-eight' id="seatA" style={seatStyle('seatA')}></div>
                             </div>
                             <div>
-                              <div className='chair-right' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                              <div className='chair-right' id="seatA" style={seatStyle('seatA')}></div>
                             </div>
                           </div>
                           <div className='bottom-flex'>
-                            <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                            <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
-                            <div className='chair-bottom' id="seatA" style={{ backgroundColor: selectedSeat.includes('seatA') ? 'green' : '' }}></div>
+                            <div className='chair-bottom' id="seatA" style={seatStyle('seatA')}></div>
+                            <div className='chair-bottom' id="seatA" style={seatStyle('seatA')}></div>
+                            <div className='chair-bottom' id="seatA" style={seatStyle('seatA')}></div>
                           </div>
                         </div>
                         <div className='wall-one'></div>
@@ -436,21 +461,21 @@ useEffect(()=>{  groupOrdersByDate()
                         <div className='three-seat-center'>
                           <div className='order-booking-four' onClick={() => TableSelected('seatM', 4)}>
                             <div className='top-flex'>
-                              <div className='chair-top' id="seatM" style={{ backgroundColor: selectedSeat.includes('seatM') ? 'green' : '' }}></div>
+                              <div className='chair-top' id="seatM" style={seatStyle('seatM')}></div>
                             </div>
                             <div className='flex'>
                               <div>
-                                <div className='chair-left' id="seatM" style={{ backgroundColor: selectedSeat.includes('seatM') ? 'green' : '' }}></div>
+                                <div className='chair-left' id="seatM" style={seatStyle('seatM')}></div>
                               </div>
                               <div>
-                                <div className='table-four' id="seatM" style={{ backgroundColor: selectedSeat.includes('seatM') ? 'green' : '' }}></div>
+                                <div className='table-four' id="seatM" style={seatStyle('seatM')}></div>
                               </div>
                               <div>
-                                <div className='chair-right' id="seatM" style={{ backgroundColor: selectedSeat.includes('seatM') ? 'green' : '' }}></div>
+                                <div className='chair-right' id="seatM" style={seatStyle('seatM')}></div>
                               </div>
                             </div>
                             <div className='bottom-flex'>
-                              <div className='chair-bottom' id="seatM" style={{ backgroundColor: selectedSeat.includes('seatM') ? 'green' : '' }}></div>
+                              <div className='chair-bottom' id="seatM" style={seatStyle('seatM')}></div>
                             </div>
                           </div>
                           <div className='order-booking-four' onClick={() => TableSelected('seatN', 4)}>
