@@ -150,7 +150,7 @@ const groupOrdersByDate = () => {
       const seatElements = document.querySelectorAll(`[id="${seatbooked}"]`);
       if (seatElements.length > 0) {
         seatElements.forEach(seatEl=> {
-          seatEl.classList.add("disabled"); // Add a CSS class to disable the seat
+          seatEl.classList.add("disabled"); // a CSS class to disable the seat
         })
       };
     }
