@@ -28,7 +28,7 @@ import { createContext } from "react";
 import OTPinput from './user/OTPinput';
 import Reset from './user/Reset';
 import Done from './order/Done';
-import OrderPopup from './components/order-popup';
+import OrderPopup from './components/Order-popup';
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
@@ -43,7 +43,7 @@ function App() {
         <Route path='/Home' element={<Home/>}/>
         <Route path='/Booking' element={<Booking/>}/>
         <Route path='/Contact' element={<Contact/>}/>
-        <Route path='/Menu/:seat' element={<Menu/>}/>
+        <Route path='/Menu' element={<Menu/>}/>
         <Route path='/Selectionmenu/:seat' element={<Selectionmenu/>}/>
         <Route path='/Register' element={<Register/>}/>
         <Route path='/Login' element={<Login/>}/>

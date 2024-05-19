@@ -6,10 +6,7 @@ import './Hotelpage.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
-import { useAuth } from '../user/AuthContext';
 import axios from 'axios';
-import { auth } from './firebase.config';
-import { RecaptchaVerifier } from "firebase/auth";
 
 var totalseats = 52;
 var totalno;
@@ -21,36 +18,31 @@ function AslamChicken() {
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
   const [entries, setEntries] = useState([]);
-  const [seats, setseats] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
   const [restaurantName, setRestaurantName] = useState(null);
   const [date, setDate] = useState(null);
+  const [seats,setseats]=useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
-  const { isLoggedIn } = useAuth();
   const initialSelection = useRef(true);
   const [contact, setContact] = useState("+91");
   const [OTP, setOTP] = useState('');
-
-
-  // const submit=()=>{
-  //   navigate("/OrderPopup",{state:{seats}})
-  //   console.log(seats)
-  // }
-
-  const onCaptchverify = () => {
-    if (!window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(
-        'recaptcha-container', {
-        'size': 'invisible',
-        'callback': (response) => {
-        },
-        'expired-callback': () => {
-        }
-
-      }, auth);
+  const seatsubmit=()=>{
+    const result = window.confirm(`Do you Confirm ${seats} seats`);
+    if (result === true) {
+      totalno = totalseats - seats;
+      totalseats = totalno;
+      if (totalseats >= 0) {
+        navigate("/OrderPopup")
+      } else {
+        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
     }
   }
-
+    localStorage.setItem("restraunt", restaurantName);
+    localStorage.setItem("branch name", bname);
+    localStorage.setItem("time", selectedValue);
+    localStorage.setItem("date", date);
+    localStorage.setItem("seats",seats);
+  }
 
   const onChange = (date) => {
     setDate(date);
@@ -79,58 +71,32 @@ function AslamChicken() {
     setSelectedValue(e.target.value);
   };
 
-  const handlesubmit = () => {
-    const result = window.confirm(`Do you Confirm ${seats} seats`);
-    if (result === true) {
-      totalno = totalseats - seats;
-      totalseats = totalno;
-      if (totalseats >= 0) {
-        navigate(`/Selectionmenu/${seats}`);
-      } else {
-        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+  // Fetch bookings whenever selectedDate or selectedTime changes
+  
+  const fetchAllResponses = async () => {
+    try {
+      const response = await axios.get("http://localhost:3500/user/Allrecords");
+      if (response.status === 200) {
+        // Return the array of feedback responses
+        setEntries(response.data);
+        localStorage.setItem('AllResponses', JSON.stringify(response.data));
       }
-      localStorage.setItem("restraunt", restaurantName);
-      localStorage.setItem("branch name", bname);
-      localStorage.setItem("seats", seats);
-      localStorage.setItem("time", selectedValue);
-      localStorage.setItem("date", date);
-      localStorage.setItem("contact", contact);
+    } catch (error) {
+      console.error("Error fetching All responses:", error);
     }
-  }
-  const [selectedSeat, setSelectedSeat] = useState([]);
-  const settingItems=()=>{
-    localStorage.setItem("restraunt", restaurantName);
-      localStorage.setItem("branch name", bname);
-      localStorage.setItem("time", selectedValue);
-      localStorage.setItem("seats", seats);
-      localStorage.setItem("date", date);
-  }
-// Fetch bookings whenever selectedDate or selectedTime changes
-
-const fetchAllResponses = async () => {
-  try {
-    const response = await axios.get("http://localhost:3500/user/Allrecords");
-    if (response.status === 200) {
-      // Return the array of feedback responses
-      setEntries(response.data);
-      localStorage.setItem('AllResponses', JSON.stringify(response.data));
-    }
-  } catch (error) {
-    console.error("Error fetching All responses:", error);
-  }
-};
-useEffect(() => {
-  fetchAllResponses()
-}, [])
-const groupOrdersByDate = () => {
-  const groupedOrders = {};
-  entries.forEach(order => {
-    const rest_name=order.Restraunt;
-    const branch=order.BranchName;
-    const orderDate = new Date(order.date).toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
+  };
+  useEffect(() => {
+    fetchAllResponses()
+  }, [])
+  const groupOrdersByDate = () => {
+    const groupedOrders = {};
+    entries.forEach(order => {
+      const rest_name=order.Restraunt;
+      const branch=order.BranchName;
+      const orderDate = new Date(order.date).toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
       year: 'numeric'
     });
     const inputDate = new Date(date).toLocaleDateString('en-US', {
@@ -154,13 +120,14 @@ const groupOrdersByDate = () => {
         })
       };
     }
-});
-return { groupedOrders};
+  });
+  return { groupedOrders};
 };
 const isSeatDisabled = (id) => {
   const seatElement = document.getElementById(id);
   return seatElement && seatElement.classList.contains("disabled");
 };
+const [selectedSeat, setSelectedSeat] = useState([]);
 const TableSelected = (id, seat_value) => {
   if (isSeatDisabled(id)) {
     return false; // Seat is disabled, return false
@@ -179,7 +146,6 @@ const TableSelected = (id, seat_value) => {
       return [...prevSelectedSeats, id];
     }
   });
-
   return true; // Seat is not disabled, return true
 };
 useEffect(()=>{  groupOrdersByDate()
@@ -753,39 +719,9 @@ const seatStyle = (seatId) => ({
               <button onClick={""}>Send OTP</button>
               <input type="text" value={OTP} onChange={(e) => setOTP(e.target.value)} />
               <button onClick={""}>Verify OTP</button>
-              {/* <Link className='book_button' to={{pathname:"/OrderPopup",state:{seats:seats}}}>Seat Reservation</Link> */}
-              <a className="popup-open" href="#popup-open">Seat Reservation</a>
-              <div id="popup-open" className="modal">
-                <div className="popup_booking">
-                  {isLoggedIn ? (
-                    <form onSubmit={(e) => e.preventDefault()}>
-                      <p className='want'>Total No. Of Seats Selected</p>
-                      <div classname="buttonIn">
-                        <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seats}></input>
-                      </div>
-                      <div>
-                        {/* <p className='want'>Enter Your Contact Number</p>
-                        <div className='phone-sign'>
-                          <input className='phone-sign-input' type="text"
-                            value={contact} onChange={(e) => setContact(e.target.value)} placeholder="Enter phone number" />
-                          <div className='send-phone-otp'>
-                            <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder="Enter OTP" />
-                            <button className='send-phone-otp-button'>Send OTP</button>
-                          </div>
-                          <button className='send-phone-verify-button' onClick={verifyOtp}>Verify OTP</button>
-                        </div> */}
-                      </div>
-                      <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
-                      <a className="popup-close" href="#popup-close">&times;</a>
-                    </form>
-                  ) : (
-                    <p className='please-log'>Please login in this site for Booking.</p>
-                  )}
-                  <a className="popup-close" href="#popup-close">&times;</a>
+              <button onClick={seatsubmit}>Seat Reservation</button>
                 </div>
               </div>
-            </div>
-          </div>
         )
       })}
       <Footer />

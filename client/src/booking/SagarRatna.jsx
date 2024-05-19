@@ -68,6 +68,7 @@ function SagarRatna() {
     });
     console.log(seat_value);
   };
+  console.log(seats);
 
   return (
     <div>
