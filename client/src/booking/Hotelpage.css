@@ -142,73 +142,6 @@ h1 {
 }
 
 
-
-/*POPUP*/
-
-.popup-open {
-    display: inline-block;
-    background-color: blue;
-    color: white;
-    font-size: medium;
-    text-decoration: none;
-    padding: 15px;
-    border-radius: 3px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 80%;
-    box-shadow: 1px 1px 20px rgba(8, 7, 16, 0.6);
-}
-
-.please-log{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-}
-
-
-.popup-open:hover {
-    background-color: #1e90ff;
-}
-
-.modal {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height:192%;
-    transition: all 0.4s;
-    visibility: hidden;
-    opacity: 0;
-    background: rgba(0, 0, 0, 0.3);
-
-}
-
-.popup_booking {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background: white;
-    width: 500px;
-    padding: 10px 30px;
-    border-radius: 10px;
-}
-
-.modal:target {
-    visibility: visible;
-    opacity: 1;
-}
-
-.popup-close {
-    position: absolute;
-    top: 0;
-    right: 15px;
-    color: #fe0606;
-    text-decoration: none;
-    font-size: 30px;
-}
-
 .active-link {
     color: blue;
 }
@@ -628,9 +561,9 @@ h1 {
 
 }
 
-.book_button{
+.book_button-seat{
     margin-top: 40px;
-    margin-left: 20px;
+    margin-left: 70%;
     width: 20%;
     background-color: #219ebc;
     color: #000000;
@@ -643,6 +576,6 @@ h1 {
     box-shadow: 0 0 5px rgba(8,7,16,0.6);
   }
   
-.book_button:hover{
+.book_button-seat:hover{
     background-color: #8ecae6;
 }

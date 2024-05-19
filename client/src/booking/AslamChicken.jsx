@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
@@ -21,12 +21,13 @@ function AslamChicken() {
   const [selectedValue, setSelectedValue] = useState('');
   const [restaurantName, setRestaurantName] = useState(null);
   const [date, setDate] = useState(null);
-  const [seats,setseats]=useState(0);
+  const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
   const initialSelection = useRef(true);
   const [contact, setContact] = useState("+91");
   const [OTP, setOTP] = useState('');
-  const seatsubmit=()=>{
+  
+  const seatsubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
       totalno = totalseats - seats;
@@ -35,13 +36,13 @@ function AslamChicken() {
         navigate("/OrderPopup")
       } else {
         alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+      }
     }
-  }
     localStorage.setItem("restraunt", restaurantName);
     localStorage.setItem("branch name", bname);
     localStorage.setItem("time", selectedValue);
     localStorage.setItem("date", date);
-    localStorage.setItem("seats",seats);
+    localStorage.setItem("seats", seats);
   }
 
   const onChange = (date) => {
@@ -52,7 +53,7 @@ function AslamChicken() {
     setShowCalendar(!showCalendar);
   };
 
-  
+
 
   useEffect(() => {
     // Find the restaurant data corresponding to the id
@@ -72,7 +73,7 @@ function AslamChicken() {
   };
 
   // Fetch bookings whenever selectedDate or selectedTime changes
-  
+
   const fetchAllResponses = async () => {
     try {
       const response = await axios.get("http://localhost:3500/user/Allrecords");
@@ -91,69 +92,70 @@ function AslamChicken() {
   const groupOrdersByDate = () => {
     const groupedOrders = {};
     entries.forEach(order => {
-      const rest_name=order.Restraunt;
-      const branch=order.BranchName;
+      const rest_name = order.Restraunt;
+      const branch = order.BranchName;
       const orderDate = new Date(order.date).toLocaleDateString('en-US', {
         weekday: 'short',
         month: 'short',
         day: 'numeric',
-      year: 'numeric'
-    });
-    const inputDate = new Date(date).toLocaleDateString('en-US', {
-      weekday: 'short', 
-      month: 'short',   
-      day: 'numeric',   
-      year: 'numeric'  
-    });
-    const seatbooked=[order.id];
-    const orderTime = order.time;
-    if (rest_name === restaurantName && branch === bname &&orderDate === inputDate && orderTime===selectedValue) {
-      if (!groupedOrders[orderDate]) {
-        groupedOrders[orderDate] = [];
+        year: 'numeric'
+      });
+      const inputDate = new Date(date).toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+      const seatbooked = [order.id];
+      const orderTime = order.time;
+      if (rest_name === restaurantName && branch === bname && orderDate === inputDate && orderTime === selectedValue) {
+        if (!groupedOrders[orderDate]) {
+          groupedOrders[orderDate] = [];
+        }
+        groupedOrders[orderDate].push(order);
+        console.log(seatbooked);
+        const seatElements = document.querySelectorAll(`[id="${seatbooked}"]`);
+        if (seatElements.length > 0) {
+          seatElements.forEach(seatEl => {
+            seatEl.classList.add("disabled"); // a CSS class to disable the seat
+          })
+        };
       }
-      groupedOrders[orderDate].push(order);
-      console.log(seatbooked);
-      const seatElements = document.querySelectorAll(`[id="${seatbooked}"]`);
-      if (seatElements.length > 0) {
-        seatElements.forEach(seatEl=> {
-          seatEl.classList.add("disabled"); // a CSS class to disable the seat
-        })
-      };
+    });
+    return { groupedOrders };
+  };
+  const isSeatDisabled = (id) => {
+    const seatElement = document.getElementById(id);
+    return seatElement && seatElement.classList.contains("disabled");
+  };
+  const [selectedSeat, setSelectedSeat] = useState([]);
+  const TableSelected = (id, seat_value) => {
+    if (isSeatDisabled(id)) {
+      return false; // Seat is disabled, return false
     }
-  });
-  return { groupedOrders};
-};
-const isSeatDisabled = (id) => {
-  const seatElement = document.getElementById(id);
-  return seatElement && seatElement.classList.contains("disabled");
-};
-const [selectedSeat, setSelectedSeat] = useState([]);
-const TableSelected = (id, seat_value) => {
-  if (isSeatDisabled(id)) {
-    return false; // Seat is disabled, return false
-  }
-  setSelectedSeat((prevSelectedSeats) => {
-    if (prevSelectedSeats.includes(id)) {
-      // If already selected, remove it (deselect)
-      setseats(prevTotalSeats => prevTotalSeats - seat_value);
-      localStorage.removeItem("id");
-      return prevSelectedSeats.filter(seat => seat !== id);
-    } else {
-      // If not selected, add it to the array (select)
-      // Here, you could also enforce a limit on the number of selectable seats
-      setseats(prevTotalSeats => prevTotalSeats + seat_value);
-      localStorage.setItem("id", id);
-      return [...prevSelectedSeats, id];
-    }
-  });
-  return true; // Seat is not disabled, return true
-};
-useEffect(()=>{  groupOrdersByDate()
-})
+    setSelectedSeat((prevSelectedSeats) => {
+      if (prevSelectedSeats.includes(id)) {
+        // If already selected, remove it (deselect)
+        setseats(prevTotalSeats => prevTotalSeats - seat_value);
+        localStorage.removeItem("id");
+        return prevSelectedSeats.filter(seat => seat !== id);
+      } else {
+        // If not selected, add it to the array (select)
+        // Here, you could also enforce a limit on the number of selectable seats
+        setseats(prevTotalSeats => prevTotalSeats + seat_value);
+        localStorage.setItem("id", id);
+        return [...prevSelectedSeats, id];
+      }
+    });
+    return true; // Seat is not disabled, return true
+  };
+  useEffect(() => {
+    groupOrdersByDate()
+  })
 
-const seatStyle = (seatId) => ({
-  backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
-});
+  const seatStyle = (seatId) => ({
+    backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
+  });
   return (
     <div>
       <Navbar />
@@ -185,7 +187,7 @@ const seatStyle = (seatId) => ({
                   )}
                 </div>
                 <div>
-                  <select className="combobox" id="comboBox" value={selectedValue} onChange={handleChange}  disabled={!date}>
+                  <select className="combobox" id="comboBox" value={selectedValue} onChange={handleChange} disabled={!date}>
                     <option value="">-- Select a timing --</option>
                     <option value="8am-9am">8am-9am</option>
                     <option value="9am-10am">9am-10am</option>
@@ -715,13 +717,9 @@ const seatStyle = (seatId) => ({
                   </div>
                 )
               })}
-              <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} />
-              <button onClick={""}>Send OTP</button>
-              <input type="text" value={OTP} onChange={(e) => setOTP(e.target.value)} />
-              <button onClick={""}>Verify OTP</button>
-              <button onClick={seatsubmit}>Seat Reservation</button>
-                </div>
-              </div>
+              <button className="book_button-seat" onClick={seatsubmit}>Seat Reservation</button>
+            </div>
+          </div>
         )
       })}
       <Footer />
