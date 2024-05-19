@@ -8,6 +8,8 @@ import 'react-calendar/dist/Calendar.css';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { useAuth } from '../user/AuthContext';
 import axios from 'axios';
+import { auth } from './firebase.config';
+import { RecaptchaVerifier } from "firebase/auth";
 
 var totalseats = 52;
 var totalno;
@@ -34,6 +36,21 @@ function AslamChicken() {
   //   navigate("/OrderPopup",{state:{seats}})
   //   console.log(seats)
   // }
+
+  const onCaptchverify = () => {
+    if (!window.recaptchaVerifier) {
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        'recaptcha-container', {
+        'size': 'invisible',
+        'callback': (response) => {
+        },
+        'expired-callback': () => {
+        }
+
+      }, auth);
+    }
+  }
+
 
   const onChange = (date) => {
     setDate(date);
