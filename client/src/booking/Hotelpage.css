@@ -176,7 +176,6 @@ h1 {
     background-color: #A1A1A8;
     margin: 12px 2px;
     border-radius: 0px 8px 8px 0px;
-    border: 1px solid black;
 }
 
 .chair-right {
@@ -186,7 +185,6 @@ h1 {
     margin-top: 12px;
     margin-left: 2px;
     border-radius: 8px 0px 0px 8px;
-    border: 1px solid black;
 
 }
 
@@ -197,7 +195,6 @@ h1 {
     margin-top: 1px;
     margin-left: 2px;
     border-radius: 8px 0px 0px 8px;
-    border: 1px solid black;
 
 }
 
@@ -207,7 +204,6 @@ h1 {
     background-color: #A1A1A8;
     margin: 2px 5px;
     border-radius: 0px 0px 8px 8px;
-    border: 1px solid black;
 
 }
 
@@ -227,7 +223,6 @@ h1 {
     background-color: #A1A1A8;
     margin: 2px 5px;
     border-radius: 8px 8px 0px 0px;
-    border: 1px solid black;
 
 }
 

@@ -40,6 +40,7 @@ function OrderPopup() {
             const confirmation = await firebase.auth().signInWithPhoneNumber(contact, recaptchaVerifier);
             setVerificationId(confirmation.verificationId);
             setMessage('Verification code sent to your phone.');
+            localStorage.setItem("contact", contact);
         } catch (error) {
             console.error('Error sending code:', error);
             setMessage('Error sending code. Please try again.');

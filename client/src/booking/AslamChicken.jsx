@@ -87,9 +87,11 @@ function AslamChicken() {
       console.error("Error fetching All responses:", error);
     }
   };
+
   useEffect(() => {
     fetchAllResponses()
   }, [])
+
   const groupOrdersByDate = () => {
     const groupedOrders = {};
     entries.forEach(order => {
@@ -149,7 +151,6 @@ function AslamChicken() {
     });
     return true; // Seat is not disabled, return true
   };
-
 
 
   useEffect(() => {
