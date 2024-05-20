@@ -30,12 +30,12 @@ const FinalItem = () => {
   const Restraunt = localStorage.getItem("restraunt");
   const BranchName = localStorage.getItem("branch name");
   const Seat = localStorage.getItem("seats");
-  const id=localStorage.getItem("id");
+  const selectedSeats=localStorage.getItem("selectedSeats");
   const item = localStorage.getItem("item");
   const time = localStorage.getItem("time");
   const date = localStorage.getItem("date");
   const contact = localStorage.getItem("contact");
-
+  console.log(selectedSeats);
   const submit = async (e) => {
     e.preventDefault();
     try {
@@ -47,7 +47,7 @@ const FinalItem = () => {
         BranchName,
         UserEmail,
         Seat,
-        id,
+        selectedSeats,
         item,
         time,
         date,
