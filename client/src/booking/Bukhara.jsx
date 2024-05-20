@@ -1,11 +1,13 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { NavLink, useParams, useNavigate } from 'react-router-dom';
-import  axios  from "axios";
+import 'react-calendar/dist/Calendar.css';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
+import axios from 'axios';
+
 var totalseats = 52;
 var totalno;
 function Bukhara() {
@@ -15,15 +17,16 @@ function Bukhara() {
   const bname = params.bname;
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
-  const [seats, setseats] = useState(0);
+  const [entries, setEntries] = useState([]);
   const [selectedValue, setSelectedValue] = useState('');
   const [restaurantName, setRestaurantName] = useState(null);
-  const [date, setDate] = useState(new Date());
-  const [entries, setEntries] = useState([]);
-  const initialSelection = useRef(true);
+  const [date, setDate] = useState(null);
+  const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
-
-
+  const[selectedSeat,setSelectedSeat]=useState([]);
+  const initialSelection = useRef(true);
+  
+  
   const seatsubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -49,6 +52,7 @@ function Bukhara() {
   const handleClick = () => {
     setShowCalendar(!showCalendar);
   };
+
   useEffect(() => {
     // Find the restaurant data corresponding to the id
     const restaurant = data.find(res => res.id === params.id);
@@ -56,8 +60,6 @@ function Bukhara() {
       setRestaurantName(restaurant.name);
     }
   }, [params.id]);
- 
-  const [selectedSeat, setSelectedSeat] = useState([]);
 
   const handleChange = (e) => {
     if (initialSelection.current) {
@@ -144,9 +146,16 @@ function Bukhara() {
     });
     return true; // Seat is not disabled, return true
   };
+  
+
+
   useEffect(() => {
     groupOrdersByDate()
   })
+
+  const seatStyle = (seatId) => ({
+    backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
+  });
 
   return (
     <div>
@@ -703,7 +712,6 @@ function Bukhara() {
                       <br />
                       Contact:{item.ph}
                     </p>
-
                   </div>
                 )
               })}

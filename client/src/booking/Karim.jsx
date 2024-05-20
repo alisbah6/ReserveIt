@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { data, tableset } from '../components/Restraunts';
 import './Hotelpage.css';
 import Calendar from 'react-calendar';
-import { NavLink, useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '../user/AuthContext';
+import 'react-calendar/dist/Calendar.css';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 var totalseats = 52;
 var totalno;
@@ -16,16 +17,42 @@ function Karim() {
   const bname = params.bname;
   const branches = tableset.filter(branch => branch.bname === bname);
   const navigate = useNavigate();
-  const [seats, setseats] = useState(0);
+  const [entries, setEntries] = useState([]);
   const [selectedValue, setSelectedValue] = useState('');
-  const [contact, setContact] = useState();
   const [restaurantName, setRestaurantName] = useState(null);
-  const pattern = new RegExp(/^\d{1,10}$/);
-  const [date, setDate] = useState(new Date());
-  const { isLoggedIn } = useAuth();
-  const onChange = (newDate) => {
-    setDate(newDate);
+  const [date, setDate] = useState(null);
+  const [seats, setseats] = useState(0);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const[selectedSeat,setSelectedSeat]=useState([]);
+  const initialSelection = useRef(true);
+  
+  
+  const seatsubmit = () => {
+    const result = window.confirm(`Do you Confirm ${seats} seats`);
+    if (result === true) {
+      totalno = totalseats - seats;
+      totalseats = totalno;
+      if (totalseats >= 0) {
+        navigate("/OrderPopup")
+      } else {
+        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+      }
+    }
+    localStorage.setItem("restraunt", restaurantName);
+    localStorage.setItem("branch name", bname);
+    localStorage.setItem("time", selectedValue);
+    localStorage.setItem("date", date);
+    localStorage.setItem("seats", seats);
   }
+
+  const onChange = (date) => {
+    setDate(date);
+    setShowCalendar(false);
+  }
+  const handleClick = () => {
+    setShowCalendar(!showCalendar);
+  };
+
   useEffect(() => {
     // Find the restaurant data corresponding to the id
     const restaurant = data.find(res => res.id === params.id);
@@ -33,41 +60,103 @@ function Karim() {
       setRestaurantName(restaurant.name);
     }
   }, [params.id]);
-  const handlesubmit = () => {
-    const result = window.confirm(`Do you Confirm ${seats} seats`);
-    if (result === true) {
-      totalno = totalseats - seats;
-      totalseats = totalno;
-      if (totalseats >= 0) {
-        navigate(`/Selectionmenu/${seats}`);
-      } else {
-        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
-      }
-      localStorage.setItem("restraunt", restaurantName);
-      localStorage.setItem("branch name", bname);
-      localStorage.setItem("seats", seats);
-      localStorage.setItem("time", selectedValue);
-      localStorage.setItem("date", date);
-      localStorage.setItem("contact", contact);
-    }
-  }
-  const [selectedSeat, setSelectedSeat] = useState([]);
 
+  const handleChange = (e) => {
+    if (initialSelection.current) {
+      initialSelection.current = false;
+    } else {
+      window.location.reload();
+    }
+    setSelectedValue(e.target.value);
+  };
+
+  // Fetch bookings whenever selectedDate or selectedTime changes
+
+  const fetchAllResponses = async () => {
+    try {
+      const response = await axios.get("http://localhost:3500/user/Allrecords");
+      if (response.status === 200) {
+        // Return the array of feedback responses
+        setEntries(response.data);
+        localStorage.setItem('AllResponses', JSON.stringify(response.data));
+      }
+    } catch (error) {
+      console.error("Error fetching All responses:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllResponses()
+  }, [])
+  const groupOrdersByDate = () => {
+    const groupedOrders = {};
+    entries.forEach(order => {
+      const rest_name = order.Restraunt;
+      const branch = order.BranchName;
+      const orderDate = new Date(order.date).toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+      const inputDate = new Date(date).toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+      const seatbooked = [order.id];
+      const orderTime = order.time;
+      if (rest_name === restaurantName && branch === bname && orderDate === inputDate && orderTime === selectedValue) {
+        if (!groupedOrders[orderDate]) {
+          groupedOrders[orderDate] = [];
+        }
+        groupedOrders[orderDate].push(order);
+        console.log(seatbooked);
+        const seatElements = document.querySelectorAll(`[id="${seatbooked}"]`);
+        if (seatElements.length > 0) {
+          seatElements.forEach(seatEl => {
+            seatEl.classList.add("disabled"); // a CSS class to disable the seat
+          })
+        };
+      }
+    });
+    return { groupedOrders };
+  };
+  const isSeatDisabled = (id) => {
+    const seatElement = document.getElementById(id);
+    return seatElement && seatElement.classList.contains("disabled");
+  };
   const TableSelected = (id, seat_value) => {
+    if (isSeatDisabled(id)) {
+      return false; // Seat is disabled, return false
+    }
     setSelectedSeat((prevSelectedSeats) => {
       if (prevSelectedSeats.includes(id)) {
         // If already selected, remove it (deselect)
         setseats(prevTotalSeats => prevTotalSeats - seat_value);
+        localStorage.removeItem("id");
         return prevSelectedSeats.filter(seat => seat !== id);
       } else {
         // If not selected, add it to the array (select)
         // Here, you could also enforce a limit on the number of selectable seats
         setseats(prevTotalSeats => prevTotalSeats + seat_value);
+        localStorage.setItem("id", id);
         return [...prevSelectedSeats, id];
       }
     });
-    console.log(seat_value);
+    return true; // Seat is not disabled, return true
   };
+  
+
+
+  useEffect(() => {
+    groupOrdersByDate()
+  })
+
+  const seatStyle = (seatId) => ({
+    backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
+  });
+
 
   return (
     <div>
@@ -602,55 +691,7 @@ function Karim() {
                   </div>
                 )
               })}
-              <a className="popup-open" href="#popup-open">Seat Reservation</a>
-              <div id="popup-open" className="modal">
-                <div className="popup_booking">
-                  {isLoggedIn ? (
-                    <form onSubmit={(e) => e.preventDefault()}>
-                      <p className='want'>Total No. Of Seats Selected</p>
-                      <div classname="buttonIn">
-                        <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seats}></input>
-                      </div>
-                      <h2 className='want'>Select Your Date</h2>
-                      <div className='calender'>
-                        <Calendar
-                          onChange={onChange}
-                          value={date} />
-                      </div>
-                      <p className='text-center'>
-                        <span className='bold'>Selected Date:</span>{' '}
-                        {date.toDateString()}
-                      </p>
-                      <div>
-                        <select className="combobox" id="comboBox" value={selectedValue} onChange={(e) => setSelectedValue(e.target.value)}>
-                          <option value="">-- Select a timing --</option>
-                          <option value="8am-9am">8am-9am</option>
-                          <option value="9am-10am">9am-10am</option>
-                          <option value="10am-11am">10am-11am</option>
-                          <option value="11am-12am">11am-12am</option>
-                          <option value="12am-1pm">12am-1pm</option>
-                          <option value="1pm-2pm">1pm-2pm</option>
-                          <option value="2pm-3pm">2pm-3pm</option>
-                          <option value="3pm-4pm">3pm-4pm</option>
-                          <option value="4pm-5pm">4pm-5pm</option>
-                          <option value="5pm-6pm">5pm-6pm</option>
-                          <option value="6pm-7pm">6pm-7pm</option>
-                          <option value="7pm-8pm">7pm-8pm</option>
-                        </select>
-                      </div>
-                      <div>
-                        <p className='want'>Enter Your Contact Number</p>
-                        <input className="no-inbox" id='contact' onChange={(e) => { setContact(e.target.value); if (!pattern.test(e.target.value) && e.target.value.length >= 10) alert("Enter valid number"); }} />
-                      </div>
-                      <button type="submit" className='seat-button' onClick={handlesubmit}>Confirm</button>
-                      <a className="popup-close" href="#popup-close">&times;</a>
-                    </form>
-                  ) : (
-                    <p>Please login in this site for Booking.</p>
-                  )}
-                  <a className="popup-close" href="#popup-close">&times;</a>
-                </div>
-              </div>
+              <button className="book_button-seat" onClick={seatsubmit}>Seat Reservation</button>
             </div>
           </div>
         )
