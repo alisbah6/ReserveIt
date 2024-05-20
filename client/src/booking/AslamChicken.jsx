@@ -23,6 +23,7 @@ function AslamChicken() {
   const [date, setDate] = useState(null);
   const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
+  const[selectedSeat,setSelectedSeat]=useState([]);
   const initialSelection = useRef(true);
   
   
@@ -125,60 +126,29 @@ function AslamChicken() {
     const seatElement = document.getElementById(id);
     return seatElement && seatElement.classList.contains("disabled");
   };
-  // const TableSelected = (id, seat_value) => {
-  //   if (isSeatDisabled(id)) {
-  //     return false; // Seat is disabled, return false
-  //   }
-  //   setSelectedSeat((prevSelectedSeats) => {
-  //     if (prevSelectedSeats.includes(id)) {
-  //       // If already selected, remove it (deselect)
-  //       setseats(prevTotalSeats => prevTotalSeats - seat_value);
-  //       localStorage.removeItem("id");
-  //       return prevSelectedSeats.filter(seat => seat !== id);
-  //     } else {
-  //       // If not selected, add it to the array (select)
-  //       // Here, you could also enforce a limit on the number of selectable seats
-  //       setseats(prevTotalSeats => prevTotalSeats + seat_value);
-  //       localStorage.setItem("id", id);
-  //       return [...prevSelectedSeats, id];
-  //     }
-  //   });
-  //   return true; // Seat is not disabled, return true
-  // };
   const TableSelected = (id, seat_value) => {
     if (isSeatDisabled(id)) {
       return false; // Seat is disabled, return false
     }
-  
     setSelectedSeat((prevSelectedSeats) => {
-      let updatedSeats;
-  
       if (prevSelectedSeats.includes(id)) {
         // If already selected, remove it (deselect)
-        updatedSeats = prevSelectedSeats.filter(seat => seat !== id);
         setseats(prevTotalSeats => prevTotalSeats - seat_value);
+        localStorage.removeItem("id");
+        return prevSelectedSeats.filter(seat => seat !== id);
       } else {
         // If not selected, add it to the array (select)
-        updatedSeats = [...prevSelectedSeats, id];
+        // Here, you could also enforce a limit on the number of selectable seats
         setseats(prevTotalSeats => prevTotalSeats + seat_value);
+        localStorage.setItem("id", id);
+        return [...prevSelectedSeats, id];
       }
-  
-      // Update localStorage with the new array of selected seats
-      localStorage.setItem("selectedSeats", JSON.stringify(updatedSeats));
-  
-      return updatedSeats;
     });
+    return true; // Seat is not disabled, return true
   };
   
-  // Helper function to get selected seats from localStorage as an array
-  const getSelectedSeatsFromLocalStorage = () => {
-    const storedSeats = localStorage.getItem("selectedSeats");
-    return storedSeats ? JSON.parse(storedSeats) : [];
-  };
-  
-  // Example usage: Initialize selected seats from localStorage
-  const [selectedSeat, setSelectedSeat] = useState(getSelectedSeatsFromLocalStorage());
-  
+
+
   useEffect(() => {
     groupOrdersByDate()
   })

@@ -50,7 +50,7 @@ function OrderPopup() {
             const credential = firebase.auth.PhoneAuthProvider.credential(verificationId, verificationCode);
             await firebase.auth().signInWithCredential(credential);
             setMessage('Phone number verified successfully.');
-            navigate(`/Selectionmenu/${seat}`);
+            navigate('/Selectionmenu');
         } catch (error) {
             console.error('Error verifying code:', error);
             setMessage('Error verifying code. Please try again.');

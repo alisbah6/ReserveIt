@@ -6,7 +6,7 @@ const submissionSchema=new mongoose.Schema({
     BranchName:{type:String,required:true},
     UserEmail:{type:String,required:true},
     Seat:{type:String,required:true},
-    selectedSeat:{type:String,required:true},
+    id:{type:String,required:true},
     item:{type:String,required:true},
     time:{type:String,required:true},
     date:{type:String,required:true},
