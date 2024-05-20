@@ -65,6 +65,7 @@ function OrderPopup() {
                 <div class="popup">
                     {isLoggedIn ? (
                         <form onSubmit={(e) => e.preventDefault()}>
+                            <a className="popup-close" href="##" onClick={(e) => { e.preventDefault(); window.history.go(-1); }}>&times;</a>
                             <p className='want'>Total No. Of Seats Selected</p>
                             <div classname="buttonIn">
                                 <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seat} ></input>
@@ -79,7 +80,7 @@ function OrderPopup() {
                                         onChange={(e) => setContact(e.target.value)} />
                                     <div className='send-phone-otp'>
                                         <input type="text"
-                                            placeholder="Enter verification code"
+                                            placeholder="Enter code"
                                             value={verificationCode}
                                             onChange={(e) => setVerificationCode(e.target.value)} />
                                         <button className='send-phone-otp-button' onClick={handleSendCode}>Send OTP</button>
@@ -88,7 +89,6 @@ function OrderPopup() {
                                     <p>{message}</p>
                                 </div>
                             </div>
-                            <a className="popup-close" href="##" onClick={(e) => { e.preventDefault(); window.history.go(-1); }}>&times;</a>
                         </form>
                     ) : (
                         <p className='please-log'>Please login in this site for Booking.</p>
