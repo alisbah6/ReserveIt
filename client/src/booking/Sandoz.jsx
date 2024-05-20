@@ -23,10 +23,13 @@ function Sandoz() {
   const [date, setDate] = useState(null);
   const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
-  const[selectedSeat,setSelectedSeat]=useState([]);
+  const [selectedSeat, setSelectedSeat] = useState([]);
   const initialSelection = useRef(true);
-  
-  
+
+  const areAllSelectionsMade = () => {
+    return date && selectedValue && seats > 0;
+  };
+
   const seatsubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -146,7 +149,7 @@ function Sandoz() {
     });
     return true; // Seat is not disabled, return true
   };
-  
+
 
 
   useEffect(() => {
@@ -721,8 +724,10 @@ function Sandoz() {
                   </div>
                 )
               })}
-              <button className="book_button-seat" onClick={seatsubmit}>Seat Reservation</button>
-            </div>
+              <button
+                className={`book_button-seat ${areAllSelectionsMade() ? '' : 'disabled'}`}
+                onClick={seatsubmit}
+                disabled={!areAllSelectionsMade()}>Seat Reservation</button>            </div>
           </div>
         )
       })}

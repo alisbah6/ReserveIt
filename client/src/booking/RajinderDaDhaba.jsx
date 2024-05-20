@@ -23,10 +23,13 @@ function RajinderDaDhaba() {
   const [date, setDate] = useState(null);
   const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
-  const[selectedSeat,setSelectedSeat]=useState([]);
+  const [selectedSeat, setSelectedSeat] = useState([]);
   const initialSelection = useRef(true);
-  
-  
+
+  const areAllSelectionsMade = () => {
+    return date && selectedValue && seats > 0;
+  };
+
   const seatsubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -146,7 +149,7 @@ function RajinderDaDhaba() {
     });
     return true; // Seat is not disabled, return true
   };
-  
+
 
 
   useEffect(() => {
@@ -168,7 +171,7 @@ function RajinderDaDhaba() {
               <div className='branch'>
                 <p className='b'>Branches</p>
                 <nav className='nav'>
-                <NavLink className='branch_sub'  activeClassName='active' to="/RajinderDaDhaba/4/Safdarjung">{item.b1}</NavLink>
+                  <NavLink className='branch_sub' activeClassName='active' to="/RajinderDaDhaba/4/Safdarjung">{item.b1}</NavLink>
                 </nav>
               </div>
             </div>
@@ -716,8 +719,10 @@ function RajinderDaDhaba() {
                   </div>
                 )
               })}
-              <button className="book_button-seat" onClick={seatsubmit}>Seat Reservation</button>
-            </div>
+              <button
+                className={`book_button-seat ${areAllSelectionsMade() ? '' : 'disabled'}`}
+                onClick={seatsubmit}
+                disabled={!areAllSelectionsMade()}>Seat Reservation</button>            </div>
           </div>
         )
       })}

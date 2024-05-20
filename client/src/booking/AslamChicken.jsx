@@ -23,10 +23,13 @@ function AslamChicken() {
   const [date, setDate] = useState(null);
   const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
-  const[selectedSeat,setSelectedSeat]=useState([]);
+  const [selectedSeat, setSelectedSeat] = useState([]);
   const initialSelection = useRef(true);
-  
-  
+
+  const areAllSelectionsMade = () => {
+    return date && selectedValue && seats > 0;
+  };
+
   const seatsubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -146,7 +149,7 @@ function AslamChicken() {
     });
     return true; // Seat is not disabled, return true
   };
-  
+
 
 
   useEffect(() => {
@@ -338,30 +341,30 @@ function AslamChicken() {
                         <div className='four-wall'>
                           <div className='order-booking' onClick={() => TableSelected('seatF', 6)}>
                             <div className='top-flex'>
-                              <div className='chair-top' id="seatF"style={seatStyle('seatF')} ></div>
-                              <div className='chair-top' id="seatF"style={seatStyle('seatF')} ></div>
+                              <div className='chair-top' id="seatF" style={seatStyle('seatF')} ></div>
+                              <div className='chair-top' id="seatF" style={seatStyle('seatF')} ></div>
                             </div>
                             <div className='flex'>
                               <div>
-                                <div className='chair-left' id="seatF"style={seatStyle('seatF')} ></div>
+                                <div className='chair-left' id="seatF" style={seatStyle('seatF')} ></div>
                               </div>
                               <div>
-                                <div className='table-six' id="seatF"style={seatStyle('seatF')} ></div>
+                                <div className='table-six' id="seatF" style={seatStyle('seatF')} ></div>
                               </div>
                               <div>
-                                <div className='chair-right' id="seatF"style={seatStyle('seatF')} ></div>
+                                <div className='chair-right' id="seatF" style={seatStyle('seatF')} ></div>
                               </div>
                             </div>
                             <div className='bottom-flex'>
-                              <div className='chair-bottom' id="seatF"style={seatStyle('seatF')} ></div>
-                              <div className='chair-bottom' id="seatF"style={seatStyle('seatF')} ></div>
+                              <div className='chair-bottom' id="seatF" style={seatStyle('seatF')} ></div>
+                              <div className='chair-bottom' id="seatF" style={seatStyle('seatF')} ></div>
                             </div>
                           </div>
                         </div>
                         <div className='four-wall-down'>
                           <div className='order-booking' onClick={() => TableSelected('seatG', 6)}>
                             <div className='top-flex'>
-                              <div className='chair-top' id="seatG"style={seatStyle('seatG')} ></div>
+                              <div className='chair-top' id="seatG" style={seatStyle('seatG')} ></div>
                               <div className='chair-top' id="seatG" style={seatStyle('seatG')}></div>
                             </div>
                             <div className='flex'>
@@ -372,11 +375,11 @@ function AslamChicken() {
                                 <div className='table-six' id="seatG" style={seatStyle('seatG')}></div>
                               </div>
                               <div>
-                                <div className='chair-right' id="seatG"style={seatStyle('seatG')} ></div>
+                                <div className='chair-right' id="seatG" style={seatStyle('seatG')} ></div>
                               </div>
                             </div>
                             <div className='bottom-flex'>
-                              <div className='chair-bottom' id="seatG"style={seatStyle('seatG')} ></div>
+                              <div className='chair-bottom' id="seatG" style={seatStyle('seatG')} ></div>
                               <div className='chair-bottom' id="seatG" style={seatStyle('seatG')}></div>
                             </div>
                           </div>
@@ -415,7 +418,7 @@ function AslamChicken() {
                                 <div className='table-four' id="seatK" style={seatStyle('seatK')}></div>
                               </div>
                               <div>
-                                <div className='chair-right' id="seatK"style={seatStyle('seatK')} ></div>
+                                <div className='chair-right' id="seatK" style={seatStyle('seatK')} ></div>
                               </div>
                             </div>
                             <div className='bottom-flex'>
@@ -570,7 +573,7 @@ function AslamChicken() {
                               </div>
                               <div className='flex'>
                                 <div>
-                                  <div className='chair-left' id="seatS"style={seatStyle('seatS')}></div>
+                                  <div className='chair-left' id="seatS" style={seatStyle('seatS')}></div>
                                 </div>
                                 <div>
                                   <div className='table-four' id="seatS" style={seatStyle('seatS')}></div>
@@ -658,7 +661,7 @@ function AslamChicken() {
                                   <div className='table-two' id="seatV" style={seatStyle('seatV')}></div>
                                 </div>
                                 <div>
-                                  <div className='chair-right-two' id="seatV"style={seatStyle('seatV')}></div>
+                                  <div className='chair-right-two' id="seatV" style={seatStyle('seatV')}></div>
                                 </div>
                               </div>
                             </div>
@@ -717,7 +720,10 @@ function AslamChicken() {
                   </div>
                 )
               })}
-              <button className="book_button-seat" onClick={seatsubmit}>Seat Reservation</button>
+              <button
+                className={`book_button-seat ${areAllSelectionsMade() ? '' : 'disabled'}`}
+                onClick={seatsubmit}
+                disabled={!areAllSelectionsMade()}>Seat Reservation</button>
             </div>
           </div>
         )

@@ -23,10 +23,14 @@ function SagarRatna() {
   const [date, setDate] = useState(null);
   const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
-  const[selectedSeat,setSelectedSeat]=useState([]);
+  const [selectedSeat, setSelectedSeat] = useState([]);
   const initialSelection = useRef(true);
-  
-  
+
+
+  const areAllSelectionsMade = () => {
+    return date && selectedValue && seats > 0;
+  };
+
   const seatsubmit = () => {
     const result = window.confirm(`Do you Confirm ${seats} seats`);
     if (result === true) {
@@ -146,7 +150,7 @@ function SagarRatna() {
     });
     return true; // Seat is not disabled, return true
   };
-  
+
 
 
   useEffect(() => {
@@ -168,13 +172,13 @@ function SagarRatna() {
             <div className="branch-container">
               <div className='branch'>
                 <p className='b'>Branches</p>
-                  <nav className='nav'>
+                <nav className='nav'>
                   <NavLink activeClassName='active' className='branch_sub' to="/SagarRatna/1/DefenceColony">{item.b1}</NavLink>
                   <NavLink className='branch_sub' to="/SagarRatna/1/PreetVihar">{item.b2}</NavLink>
                   <NavLink className='branch_sub' to="/SagarRatna/1/MasjidMoth">{item.b3}</NavLink>
                   <NavLink className='branch_sub' to="/SagarRatna/1/NarainaVihar">{item.b4}</NavLink>
                   <NavLink className='branch_sub' to="/SagarRatna/1/PaschimVihar">{item.b5}</NavLink>
-                  </nav>
+                </nav>
               </div>
             </div>
             <div className="details-container">
@@ -721,8 +725,10 @@ function SagarRatna() {
                   </div>
                 )
               })}
-              <button className="book_button-seat" onClick={seatsubmit}>Seat Reservation</button>
-            </div>
+              <button
+                className={`book_button-seat ${areAllSelectionsMade() ? '' : 'disabled'}`}
+                onClick={seatsubmit}
+                disabled={!areAllSelectionsMade()}>Seat Reservation</button>            </div>
           </div>
         )
       })}
