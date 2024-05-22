@@ -3,6 +3,7 @@ import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
 import { useNavigate } from 'react-router-dom';
 import './Selectionmenu.css';
+
 // import axios from 'axios';
 document.querySelectorAll('nav a')
   .forEach(e => e.addEventListener('click', _ => change(e.dataset.id)))
