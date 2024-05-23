@@ -11,6 +11,7 @@ import Karims from '../assets/Karims.webp';
 import Rajinder from '../assets/Rajinder.webp';
 import Varq from '../assets/Varq.webp';
 import {Link} from 'react-router-dom';
+
 function Booking() {
   return (
     <div>

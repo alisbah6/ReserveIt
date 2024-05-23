@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Login from './user/Login';
 import Home from './home-page/Home';
 import Contact from './feedback/Contact';
@@ -14,7 +15,6 @@ import AslamChicken from './booking/AslamChicken';
 import Varq from './booking/Varq'
 import Gulati from './booking/Gulati';
 import Sandoz from './booking/Sandoz';
-import { Route,Routes } from 'react-router-dom';
 import FinalItem from './order/FinalItem';
 import Popup from './components/Popup';
 import Popuperror from './components/Popuperror';
@@ -29,46 +29,66 @@ import OTPinput from './user/OTPinput';
 import Reset from './user/Reset';
 import Done from './order/Done';
 import OrderPopup from './components/Order-popup';
+
 export const RecoveryContext = createContext();
 function App() {
   const [email, setEmail] = useState();
   const [otp, setOTP] = useState();
+  const NavigationMenu = () => {
+    const location = useLocation();
+    const showMenu = location.pathname === '/Selectionmenu';
+
+    return showMenu ? (
+      <nav className="nav-hotel">
+        <ul>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Aslamchicken">Aslam chicken</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Bukhara">Bukhara</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Gulati">Gulati</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Karim">Karim</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Rajinderdadhaba">Rajinder Da Dhaba</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Sagarratna">Sagar Ratna</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Sandoz">Sandoz</Link></li>
+          <li className="hotel"><Link className="tag" to="/Selectionmenu#Varq">Varq</Link></li>
+        </ul>
+      </nav>
+    ) : null;
+  };
   return (
     <RecoveryContext.Provider
-    value={{otp, setOTP, setEmail, email }}
-  >
-    <div className="App">
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/Home' element={<Home/>}/>
-        <Route path='/Booking' element={<Booking/>}/>
-        <Route path='/Contact' element={<Contact/>}/>
-        <Route path='/Menu' element={<Menu/>}/>
-        <Route path='/Selectionmenu' element={<Selectionmenu/>}/>
-        <Route path='/Register' element={<Register/>}/>
-        <Route path='/Login' element={<Login/>}/>
-        <Route path='/SagarRatna/:id/:bname' element={<SagarRatna/>}/>
-        <Route path='/Sandoz/:id/:bname' element={<Sandoz/>}/>
-        <Route path='/Bukhara/:id/:bname' element={<Bukhara/>}/>
-        <Route path='/RajinderDaDhaba/:id/:bname' element={<RajinderDaDhaba/>}/>
-        <Route path='/Karim/:id/:bname' element={<Karim/>}/>
-        <Route path='/AslamChicken/:id/:bname' element={<AslamChicken/>}/>
-        <Route path='/Varq/:id/:bname' element={<Varq/>}/>
-        <Route path='/Gulati/:id/:bname' element={<Gulati/>}/>
-        <Route path='/FinalItem' element={<FinalItem/>}/>
-        <Route path='/Popup' element={<Popup/>}/>
-        <Route path='/Popuperror' element={<Popuperror/>}/>
-        <Route path='/Popuperrorl' element={<Popuperrorl/>}/>
-        <Route path='/Popupcontacterror' element={<Popupcontacterror/>}/>
-        <Route path='/Popupcontact' element={<Popupcontact/>}/>
-        <Route path='/AdminPage' element={<Adminpage/>}/>
-        <Route path='/AdminNavbar' element={<AdminNavbar/>}/>
-        <Route path='/OTPinput' element={<OTPinput/>}/>
-        <Route path='/Reset' element={<Reset/>}/>
-        <Route path='/Done' element={<Done/>}/>
-        <Route path='/OrderPopup' element={<OrderPopup/>}/>
-      </Routes>
-    </div>
+      value={{ otp, setOTP, setEmail, email }}>
+      <div className="App">
+        <NavigationMenu />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Home' element={<Home />} />
+          <Route path='/Booking' element={<Booking />} />
+          <Route path='/Contact' element={<Contact />} />
+          <Route path='/Menu' element={<Menu />} />
+          <Route path='/Selectionmenu' element={<Selectionmenu />} />
+          <Route path='/Register' element={<Register />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/SagarRatna/:id/:bname' element={<SagarRatna />} />
+          <Route path='/Sandoz/:id/:bname' element={<Sandoz />} />
+          <Route path='/Bukhara/:id/:bname' element={<Bukhara />} />
+          <Route path='/RajinderDaDhaba/:id/:bname' element={<RajinderDaDhaba />} />
+          <Route path='/Karim/:id/:bname' element={<Karim />} />
+          <Route path='/AslamChicken/:id/:bname' element={<AslamChicken />} />
+          <Route path='/Varq/:id/:bname' element={<Varq />} />
+          <Route path='/Gulati/:id/:bname' element={<Gulati />} />
+          <Route path='/FinalItem' element={<FinalItem />} />
+          <Route path='/Popup' element={<Popup />} />
+          <Route path='/Popuperror' element={<Popuperror />} />
+          <Route path='/Popuperrorl' element={<Popuperrorl />} />
+          <Route path='/Popupcontacterror' element={<Popupcontacterror />} />
+          <Route path='/Popupcontact' element={<Popupcontact />} />
+          <Route path='/AdminPage' element={<Adminpage />} />
+          <Route path='/AdminNavbar' element={<AdminNavbar />} />
+          <Route path='/OTPinput' element={<OTPinput />} />
+          <Route path='/Reset' element={<Reset />} />
+          <Route path='/Done' element={<Done />} />
+          <Route path='/OrderPopup' element={<OrderPopup />} />
+        </Routes>
+      </div>
     </RecoveryContext.Provider>
   );
 }

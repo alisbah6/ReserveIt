@@ -50,9 +50,28 @@ function OrderPopup() {
     const handleVerifyCode = async () => {
         try {
             const credential = firebase.auth.PhoneAuthProvider.credential(verificationId, verificationCode);
+            const restrauntname = localStorage.getItem("restraunt")
             await firebase.auth().signInWithCredential(credential);
             setMessage('Phone number verified successfully.');
-            navigate(`/Selectionmenu`);
+            if (restrauntname === 'Aslam Chicken') {
+                navigate(`/Selectionmenu#Aslamchicken`);
+            } else if (restrauntname === 'Bhkhara') {
+                navigate(`Selectionmenu#Bukhara`);
+            } else if (restrauntname === 'Gulati') {
+                navigate(`/Selectionmenu#Gulati`);
+            } else if (restrauntname === 'Karim') {
+                navigate(`Selectionmenu#Karim`);
+            } else if (restrauntname === 'Rajinder Da Dhaba') {
+                navigate(`/Selectionmenu#Rajinderdadhaba`);
+            } else if (restrauntname === 'Sagar Ratna') {
+                navigate(`/Selectionmenu#Sagarratna`);
+            } else if (restrauntname === 'Sandoz') {
+                navigate(`/Selectionmenu#Sandoz`);
+            } else if (restrauntname === 'Varq') {
+                navigate(`/Selectionmenu#Varq`);
+            } else {
+                navigate(`/Selectionmenu`);
+            }
         } catch (error) {
             console.error('Error verifying code:', error);
             setMessage('Error verifying code. Please try again.');
