@@ -17,13 +17,12 @@ function OrderPopup() {
     const [message, setMessage] = useState('');
 
     const firebaseConfig = {
-        apiKey: "AIzaSyCC3sbdu-YUV6Tokc-bdISrG7ceWpIxI7E",
-        authDomain: "otpr-28466.firebaseapp.com",
-        projectId: "otpr-28466",
-        storageBucket: "otpr-28466.appspot.com",
-        messagingSenderId: "562927401690",
-        appId: "1:562927401690:web:af10f3c7418adc817e83e3"
-
+        apiKey: "AIzaSyC8B03paNFTv9lpcigRFJ0YG19IYf8Cyqc",
+        authDomain: "reserveit-dab00.firebaseapp.com",
+        projectId: "reserveit-dab00",
+        storageBucket: "reserveit-dab00.appspot.com",
+        messagingSenderId: "321197892588",
+        appId: "1:321197892588:web:492aa6e134af11399056c9"
     };
 
     // Initialize Firebase
@@ -46,6 +45,28 @@ function OrderPopup() {
             setMessage('Error sending code. Please try again.');
         }
     };
+    const submit = () => {
+        const restrauntname = localStorage.getItem("restraunt")
+        if (restrauntname === 'Aslam Chicken') {
+            navigate(`/Selectionmenu#Aslamchicken`);
+        } else if (restrauntname === 'Bukhara') {
+            navigate(`/Selectionmenu#Bukhara`);
+        } else if (restrauntname === 'Gulati') {
+            navigate(`/Selectionmenu#Gulati`);
+        } else if (restrauntname === "Karim's") {
+            navigate(`/Selectionmenu#Karim`);
+        } else if (restrauntname === 'Rajender Da Dhaba') {
+            navigate(`/Selectionmenu#Rajinderdadhaba`);
+        } else if (restrauntname === 'Sagar Ratna') {
+            navigate(`/Selectionmenu#Sagarratna`);
+        } else if (restrauntname === 'Sandoz') {
+            navigate(`/Selectionmenu#Sandoz`);
+        } else if (restrauntname === 'Varq') {
+            navigate(`/Selectionmenu#Varq`);
+        } else {
+            navigate(`/Selectionmenu`);
+        }
+    }
 
     const handleVerifyCode = async () => {
         try {
@@ -55,13 +76,13 @@ function OrderPopup() {
             setMessage('Phone number verified successfully.');
             if (restrauntname === 'Aslam Chicken') {
                 navigate(`/Selectionmenu#Aslamchicken`);
-            } else if (restrauntname === 'Bhkhara') {
-                navigate(`Selectionmenu#Bukhara`);
+            } else if (restrauntname === 'Bukhara') {
+                navigate(`/Selectionmenu#Bukhara`);
             } else if (restrauntname === 'Gulati') {
                 navigate(`/Selectionmenu#Gulati`);
-            } else if (restrauntname === 'Karim') {
-                navigate(`Selectionmenu#Karim`);
-            } else if (restrauntname === 'Rajinder Da Dhaba') {
+            } else if (restrauntname === "Karim's") {
+                navigate(`/Selectionmenu#Karim`);
+            } else if (restrauntname === 'Rajender Da Dhaba') {
                 navigate(`/Selectionmenu#Rajinderdadhaba`);
             } else if (restrauntname === 'Sagar Ratna') {
                 navigate(`/Selectionmenu#Sagarratna`);
@@ -77,7 +98,6 @@ function OrderPopup() {
             setMessage('Error verifying code. Please try again.');
         }
     };
-
     const seat = localStorage.getItem("seats");
     return (
         <div>
@@ -109,6 +129,7 @@ function OrderPopup() {
                                     <p>{message}</p>
                                 </div>
                             </div>
+                            <button className='send-phone-verify-button' onClick={submit}>Verify OTP</button>
                         </form>
                     ) : (
                         <p className='please-log'>Please login in this site for Booking.</p>

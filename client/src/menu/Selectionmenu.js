@@ -1,7 +1,7 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../nav-foot/Navbar';
 import Footer from '../nav-foot/Footer';
-import { useNavigate, useLocation} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Selectionmenu.css';
 
 // import axios from 'axios';
@@ -116,7 +116,67 @@ function Selectionmenu() {
       </section>
       <section id='Bukhara' className='main'>
         <div className="container-menu">
-
+        <div className='inside-container'>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>TANDOORI</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER TIKKA (FULL)', 'PANEER TIKKA (HALF)'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹410/-', '₹210/-', '₹270/-', '₹150/-', '₹700/-', '₹380/-', '₹200/-', '₹400/-', '₹200/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>DESSERTS & BEVERAGES</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['WATER BOTTLE', 'KULAD KHEER'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹20/-', '₹60/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>ASLAM SPECIAL DAHI BUTTER GRAVY</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Special_Dahi_Butter_Gravy_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹550/-', '₹280/-', '₹190/-', '₹300/-', '₹180/-', '₹730/-', '₹400/-', '₹250/-', '₹450/-', '₹250/-', '₹50/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button className="button_menu" onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Gulati' className='main'>
@@ -465,6 +525,67 @@ function Selectionmenu() {
       </section>
       <section id='Rajinderdadhaba' className='main'>
         <div className="container-menu">
+        <div className='inside-container'>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>TANDOORI</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER TIKKA (FULL)', 'PANEER TIKKA (HALF)'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹410/-', '₹210/-', '₹270/-', '₹150/-', '₹700/-', '₹380/-', '₹200/-', '₹400/-', '₹200/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>DESSERTS & BEVERAGES</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['WATER BOTTLE', 'KULAD KHEER'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹20/-', '₹60/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>ASLAM SPECIAL DAHI BUTTER GRAVY</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Special_Dahi_Butter_Gravy_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹550/-', '₹280/-', '₹190/-', '₹300/-', '₹180/-', '₹730/-', '₹400/-', '₹250/-', '₹450/-', '₹250/-', '₹50/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button className="button_menu" onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Sagarratna' className='main'>
@@ -935,264 +1056,89 @@ function Selectionmenu() {
               <h1 className='menu-head'>STARTERS</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" APLAM (SOUTH INDIAN PAPAD)" onChange={(e) => { getItem(e) }}></input>
-                    <label> APLAM (SOUTH INDIAN PAPAD)</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" RASAM (SMALL) + APLAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> RASAM (SMALL) + APLAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="RASAM  (FULL) + APLAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> RASAM  (FULL) + APLAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="UPMA" onChange={(e) => { getItem(e) }}></input>
-                    <label> UPMA</label>
-                  </div>
+                {["APLAM (SOUTH INDIAN PAPAD)", "RASAM (SMALL) + APLAM", "RASAM (FULL) + APLAM", "UPMA"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹40/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹95/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹145/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹155/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹40/-", "₹95/-", "₹145/-", "₹155/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>UTTAPAM</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PLAIN UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> PLAIN UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TOMATO UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> TOMATO UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="ONION UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> ONION UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="COCONUT UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> COCONUT UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TOMATO ONION UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> TOMATO ONION UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="VEGETABLE UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> VEGETABLE UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="MIXED VEGETABLE UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> MIXED VEGETABLE UTTAPAM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TOMATO COCONUT UTTAPAM" onChange={(e) => { getItem(e) }}></input>
-                    <label> TOMATO COCONUT UTTAPAM</label>
-                  </div>
+                  {["PLAIN UTTAPAM", "TOMATO UTTAPAM", "ONION UTTAPAM", "COCONUT UTTAPAM", "TOMATO ONION UTTAPAM", "VEGETABLE UTTAPAM", "MIXED VEGETABLE UTTAPAM", "TOMATO COCONUT UTTAPAM"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹215/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹245/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹250/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹250/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹255/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹250/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹260/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹260/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹215/-", "₹245/-", "₹250/-", "₹250/-", "₹255/-", "₹250/-", "₹260/-", "₹260/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>SOUTH INDIAN RICE</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="LEMON RICE" onChange={(e) => { getItem(e) }}></input>
-                    <label> LEMON RICE</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="CURD RICE" onChange={(e) => { getItem(e) }}></input>
-                    <label> CURD RICE</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="POORI BHAJI WITH KURMA" onChange={(e) => { getItem(e) }}></input>
-                    <label> POORI BHAJI WITH KURMA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="VEGETABLE BIRYANI" onChange={(e) => { getItem(e) }}></input>
-                    <label> VEGETABLE BIRYANI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SAMBHAR RICE" onChange={(e) => { getItem(e) }}></input>
-                    <label> SAMBHAR RICE</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="RASAM RICE" onChange={(e) => { getItem(e) }}></input>
-                    <label> RASAM RICE</label>
-                  </div>
+                  {["LEMON RICE", "CURD RICE", "POORI BHAJI WITH KURMA", "VEGETABLE BIRYANI", "SAMBHAR RICE", "RASAM RICE"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹215/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹215/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹225/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹270/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹215/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹225/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹215/-", "₹215/-", "₹225/-", "₹270/-", "₹215/-", "₹225/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+
                 </div>
               </div>
               <h1 className='menu-head'>NORTH INDIAN</h1>
               <h1 className='menu-head'>SOUPS</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TOMATO SOUP" onChange={(e) => { getItem(e) }}></input>
-                    <label> TOMATO SOUP</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" MIXED VEGETABLE SOUP" onChange={(e) => { getItem(e) }}></input>
-                    <label> MIXED VEGETABLE SOUP</label>
-                  </div>
+                  {["TOMATO SOUP", "MIXED VEGETABLE SOUP"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹205/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹205/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹205/-", "₹205/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>SHURUAAT</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="VEGETABLE PAKORAS" onChange={(e) => { getItem(e) }}></input>
-                    <label> VEGETABLE PAKORAS</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="ASSORTED PAKORAS" onChange={(e) => { getItem(e) }}></input>
-                    <label> ASSORTED PAKORAS</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER PAKORA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER PAKORA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="VEG. SEEKH KEBAB" onChange={(e) => { getItem(e) }}></input>
-                    <label> VEG. SEEKH KEBAB</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="HARA BHARA KEBA" onChange={(e) => { getItem(e) }}></input>
-                    <label> HARA BHARA KEBA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TANDOORI ALOO" onChange={(e) => { getItem(e) }}></input>
-                    <label> TANDOORI ALOO</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER TIKKA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER TIKKA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="ACHARI PANEER TIKKA" onChange={(e) => { getItem(e) }}></input>
-                    <label> ACHARI PANEER TIKKA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TAWA CHANA KEBAB (WITH CURD DIP)" onChange={(e) => { getItem(e) }}></input>
-                    <label> TAWA CHANA KEBAB (WITH CURD DIP)</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TANDOORI PINEAPPLE" onChange={(e) => { getItem(e) }}></input>
-                    <label> TANDOORI PINEAPPLE</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SOYA MALAI TIKKA" onChange={(e) => { getItem(e) }}></input>
-                    <label> SOYA MALAI TIKKA</label>
-                  </div>
+                  {["VEGETABLE PAKORAS", "ASSORTED PAKORAS", "PANEER PAKORA", "VEG. SEEKH KEBAB", "HARA BHARA KEBA", "TANDOORI ALOO", "PANEER TIKKA", "ACHARI PANEER TIKKA", "TAWA CHANA KEBAB (WITH CURD DIP)", "TANDOORI PINEAPPLE", "SOYA MALAI TIKKA"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹225/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹235/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹255/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹285/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹285/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹285/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹335/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹335/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹295/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹335/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹345/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹225/-", "₹235/-", "₹255/-", "₹285/-", "₹285/-", "₹285/-", "₹335/-", "₹335/-", "₹295/-", "₹335/-", "₹345/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>PLATTER</h1>
@@ -1214,438 +1160,91 @@ function Selectionmenu() {
               <h1 className='menu-head'>MAIN COURSE</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SAGAR SPECIAL YELLOW DAL TADKA" onChange={(e) => { getItem(e) }}></input>
-                    <label> SAGAR SPECIAL YELLOW DAL TADKA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" DAL MAKHANI" onChange={(e) => { getItem(e) }}></input>
-                    <label> DAL MAKHANI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="BHINDI DO PYAZA" onChange={(e) => { getItem(e) }}></input>
-                    <label> BHINDI DO PYAZA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="MIXED VEGETABLES" onChange={(e) => { getItem(e) }}></input>
-                    <label> MIXED VEGETABLES</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="JEERA ALOO" onChange={(e) => { getItem(e) }}></input>
-                    <label> JEERA ALOO</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" GOBHI MASALA" onChange={(e) => { getItem(e) }}></input>
-                    <label> GOBHI MASALA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="CHANA MASALA" onChange={(e) => { getItem(e) }}></input>
-                    <label> CHANA MASALA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="DUM ALOO" onChange={(e) => { getItem(e) }}></input>
-                    <label> DUM ALOO</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="ALOO GOBHI" onChange={(e) => { getItem(e) }}></input>
-                    <label> ALOO GOBHI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="NAVRATAN KORMA" onChange={(e) => { getItem(e) }}></input>
-                    <label> NAVRATAN KORMA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="MALAI KOFTA" onChange={(e) => { getItem(e) }}></input>
-                    <label> MALAI KOFTA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="MUSHROOM MASALA" onChange={(e) => { getItem(e) }}></input>
-                    <label> MUSHROOM MASALA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" MUTTER MUSHROOM" onChange={(e) => { getItem(e) }}></input>
-                    <label> MUTTER MUSHROOM</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" MUTTER MALAI METHI" onChange={(e) => { getItem(e) }}></input>
-                    <label> MUTTER MALAI METHI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER DO PYAZA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER DO PYAZA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SHAHI PANEER" onChange={(e) => { getItem(e) }}></input>
-                    <label> SHAHI PANEER</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PALAK PANEER" onChange={(e) => { getItem(e) }}></input>
-                    <label> PALAK PANEER</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" KADHAI PANEER" onChange={(e) => { getItem(e) }}></input>
-                    <label> KADHAI PANEER</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER LABABDAR" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER LABABDAR</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER TIKKA MASALA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER TIKKA MASALA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER BUTTER MASALA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER BUTTER MASALA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PINDI CHANA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PINDI CHANA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="MUSHROOM HARA PYAAZ" onChange={(e) => { getItem(e) }}></input>
-                    <label> MUSHROOM HARA PYAAZ</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="KADHAI CHAAP" onChange={(e) => { getItem(e) }}></input>
-                    <label> KADHAI CHAAP</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="BUTTER MASALA CHAAP" onChange={(e) => { getItem(e) }}></input>
-                    <label> BUTTER MASALA CHAAP</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER HARA PYAAZ" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER HARA PYAAZ</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="METHI PANEER" onChange={(e) => { getItem(e) }}></input>
-                    <label> METHI PANEER</label>
-                  </div>
+                  {["SAGAR SPECIAL YELLOW DAL TADKA", "DAL MAKHANI", "BHINDI DO PYAZA", "MIXED VEGETABLES", "JEERA ALOO", "GOBHI MASALA", "CHANA MASALA", "DUM ALOO", "ALOO GOBHI", "NAVRATAN KORMA", "MALAI KOFTA", "MUSHROOM MASALA", "MUTTER MUSHROOM", "MUTTER MALAI METHI", "PANEER DO PYAZA", "SHAHI PANEER", "PALAK PANEER", "KADHAI PANEER", "PANEER LABABDAR", "PANEER TIKKA MASALA", "PANEER BUTTER MASALA", "PINDI CHANA", "MUSHROOM HARA PYAAZ", "KADHAI CHAAP", "BUTTER MASALA CHAAP", "PANEER HARA PYAAZ", "METHI PANEER", "Paneer Butter Masala"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Main_Course_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹335/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹325/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹375/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹385/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹325/-", "₹335/-", "₹325/-", "₹325/-", "₹325/-", "₹325/-", "₹325/-", "₹325/-", "₹325/-", "₹375/-", "₹385/-", "₹375/-", "₹375/-", "₹375/-", "₹385/-", "₹385/-", "₹385/-", "₹385/-", "₹385/-", "₹385/-", "₹385/-", "₹385/-", "₹325/-", "₹375/-", "₹375/-", "₹375/-", "₹385/-", "₹385/-", "₹0"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>SANGI SAATHI</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" PAPAD" onChange={(e) => { getItem(e) }}></input>
-                    <label> PAPAD</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="CGREEN SALAD" onChange={(e) => { getItem(e) }}></input>
-                    <label> CGREEN SALAD</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="MIXED RAITA" onChange={(e) => { getItem(e) }}></input>
-                    <label> MIXED RAITA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="BOONDI RAITA" onChange={(e) => { getItem(e) }}></input>
-                    <label> BOONDI RAITA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PINEAPPLE RAITA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PINEAPPLE RAITA</label>
-                  </div>
+                  {["PAPAD", "CGREEN SALAD", "MIXED RAITA", "BOONDI RAITA", "PINEAPPLE RAITA"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Sangi_Saathi_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹40/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹145/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹180/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹180/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹185/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹40/-", "₹145/-", "₹180/-", "₹180/-", "₹185/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>TANDOOR SE</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" TANDOORI ROTI" onChange={(e) => { getItem(e) }}></input>
-                    <label> TANDOORI ROTI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TANDOORI BUTTER ROTI" onChange={(e) => { getItem(e) }}></input>
-                    <label> TANDOORI BUTTER ROTI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PLAIN NAAN" onChange={(e) => { getItem(e) }}></input>
-                    <label> PLAIN NAAN</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="BUTTER NAAN" onChange={(e) => { getItem(e) }}></input>
-                    <label> BUTTER NAAN</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="STUFFED NAAN" onChange={(e) => { getItem(e) }}></input>
-                    <label> STUFFED NAAN</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="GARLIC NAAN" onChange={(e) => { getItem(e) }}></input>
-                    <label> GARLIC NAAN</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PUDINA PARATHA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PUDINA PARATHA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="LACHHA PARANTHA" onChange={(e) => { getItem(e) }}></input>
-                    <label> LACHHA PARANTHA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value=" MISSI ROTI" onChange={(e) => { getItem(e) }}></input>
-                    <label> MISSI ROTI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Onion Kulcha" onChange={(e) => { getItem(e) }}></input>
-                    <label> Onion Kulcha</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="Aloo Kulcha" onChange={(e) => { getItem(e) }}></input>
-                    <label> Aloo Kulcha</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PANEER KULCHA" onChange={(e) => { getItem(e) }}></input>
-                    <label> PANEER KULCHA</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="LEHSUNI MIRCHI PARANTHA" onChange={(e) => { getItem(e) }}></input>
-                    <label> LEHSUNI MIRCHI PARANTHA</label>
-                  </div>
+                  {["TANDOORI ROTI", "TANDOORI BUTTER ROTI", "PLAIN NAAN", "BUTTER NAAN", "STUFFED NAAN", "GARLIC NAAN", "PUDINA PARATHA", "LACHHA PARANTHA", "MISSI ROTI", "Onion Kulcha", "Aloo Kulcha", "PANEER KULCHA", "LEHSUNI MIRCHI PARANTHA"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Tandoor_Se_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹45/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹55/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹80/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹95/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹100/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹105/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹90/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹90/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹75/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹95/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹95/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹100/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹95/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹45/-", "₹55/-", "₹80/-", "₹95/-", "₹100/-", "₹105/-", "₹90/-", "₹90/-", "₹75/-", "₹95/-", "₹95/-", "₹100/-", "₹95/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>RICE</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="STEAMED RICE" onChange={(e) => { getItem(e) }}></input>
-                    <label> STEAMED RICE</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="JEERA RICE" onChange={(e) => { getItem(e) }}></input>
-                    <label> JEERA RICE</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="VEGETABLE PULAO" onChange={(e) => { getItem(e) }}></input>
-                    <label> VEGETABLE PULAO</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="KASHMIRI PULAO" onChange={(e) => { getItem(e) }}></input>
-                    <label> KASHMIRI PULAO</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="PEAS PULAO" onChange={(e) => { getItem(e) }}></input>
-                    <label> PEAS PULAO</label>
-                  </div>
+                  {["STEAMED RICE", "JEERA RICE", "VEGETABLE PULAO", "KASHMIRI PULAO", "PEAS PULAO"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Rice_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹185/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹225/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹245/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹255/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹255/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹185/-", "₹225/-", "₹245/-", "₹255/-", "₹255/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
               <h1 className='menu-head'>DESSERTS & BEVERAGES</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SWEET LASSI" onChange={(e) => { getItem(e) }}></input>
-                    <label> SWEET LASSI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SALTED LASSI" onChange={(e) => { getItem(e) }}></input>
-                    <label> SALTED LASSI</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="GULAB JAMUN (TWO PCS)" onChange={(e) => { getItem(e) }}></input>
-                    <label> GULAB JAMUN (TWO PCS)</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="RAVA KESARI - SMALL" onChange={(e) => { getItem(e) }}></input>
-                    <label> RAVA KESARI - SMALL</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="RAVA KESARI -  FULL" onChange={(e) => { getItem(e) }}></input>
-                    <label> RAVA KESARI -  FULL</label>
-                  </div>
-                  <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="GULAB JAMUN - SINGLE " onChange={(e) => { getItem(e) }}></input>
-                    <label> GULAB JAMUN - SINGLE </label>
-                  </div>
+                  {["SWEET LASSI", "SALTED LASSI", "GULAB JAMUN (TWO PCS)", "RAVA KESARI - SMALL", "RAVA KESARI -  FULL", "GULAB JAMUN - SINGLE "].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <label>{item}</label>
+                    </div>
+                  ))}
                 </div>
                 <div className="amount">
-                  <div className='text-menu'>
-                    <label>₹125/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹125/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹135/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹75/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹135/-</label>
-                  </div>
-                  <div className='text-menu'>
-                    <label>₹70/-</label>
-                  </div>
-                  <div>
-                  </div>
+                  {["₹125/-", "₹125/-", "₹135/-", "₹75/-", "₹135/-", "₹70/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
