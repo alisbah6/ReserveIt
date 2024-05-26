@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Login from './user/Login';
 import Home from './home-page/Home';
@@ -37,22 +37,43 @@ function App() {
   const NavigationMenu = () => {
     const location = useLocation();
     const showMenu = location.pathname === '/Selectionmenu';
+    const [activeItem, setActiveItem] = useState('');
+
+    useEffect(() => {
+        setActiveItem(location.hash); // Update active item based on the hash in the URL
+    }, [location]);
 
     return showMenu ? (
-      <nav className="nav-hotel">
-        <ul>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Aslamchicken">Aslam chicken</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Bukhara">Bukhara</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Gulati">Gulati</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Karim">Karim</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Rajinderdadhaba">Rajinder Da Dhaba</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Sagarratna">Sagar Ratna</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Sandoz">Sandoz</Link></li>
-          <li className="hotel"><Link className="tag" to="/Selectionmenu#Varq">Varq</Link></li>
-        </ul>
-      </nav>
+        <nav className="nav-hotel">
+            <ul>
+                <li className={`hotel ${activeItem === '#Aslamchicken' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Aslamchicken">Aslam chicken</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Bukhara' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Bukhara">Bukhara</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Gulati' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Gulati">Gulati</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Karim' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Karim">Karim</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Rajinderdadhaba' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Rajinderdadhaba">Rajinder Da Dhaba</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Sagarratna' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Sagarratna">Sagar Ratna</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Sandoz' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Sandoz">Sandoz</Link>
+                </li>
+                <li className={`hotel ${activeItem === '#Varq' ? 'active' : ''}`}>
+                    <Link className="tag" to="/Selectionmenu#Varq">Varq</Link>
+                </li>
+            </ul>
+        </nav>
     ) : null;
-  };
+};
   return (
     <RecoveryContext.Provider
       value={{ otp, setOTP, setEmail, email }}>
