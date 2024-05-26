@@ -47,24 +47,34 @@ function OrderPopup() {
     };
     const submit = () => {
         const restrauntname = localStorage.getItem("restraunt")
-        if (restrauntname === 'Aslam Chicken') {
-            navigate(`/Selectionmenu#Aslamchicken`);
-        } else if (restrauntname === 'Bukhara') {
-            navigate(`/Selectionmenu#Bukhara`);
-        } else if (restrauntname === 'Gulati') {
-            navigate(`/Selectionmenu#Gulati`);
-        } else if (restrauntname === "Karim's") {
-            navigate(`/Selectionmenu#Karim`);
-        } else if (restrauntname === 'Rajender Da Dhaba') {
-            navigate(`/Selectionmenu#Rajinderdadhaba`);
-        } else if (restrauntname === 'Sagar Ratna') {
-            navigate(`/Selectionmenu#Sagarratna`);
-        } else if (restrauntname === 'Sandoz') {
-            navigate(`/Selectionmenu#Sandoz`);
-        } else if (restrauntname === 'Varq') {
-            navigate(`/Selectionmenu#Varq`);
-        } else {
-            navigate(`/Selectionmenu`);
+        switch (restrauntname) {
+            case 'Aslam Chicken':
+                navigate(`/Selectionmenu#Aslamchicken`);
+                break;
+            case 'Bukhara':
+                navigate(`/Selectionmenu#Bukhara`);
+                break;
+            case 'Gulati':
+                navigate(`/Selectionmenu#Gulati`);
+                break;
+            case "Karim's":
+                navigate(`/Selectionmenu#Karim`);
+                break;
+            case 'Rajinder Da Dhaba':
+                navigate(`/Selectionmenu#Rajinderdadhaba`);
+                break;
+            case 'Sagar Ratna':
+                navigate(`/Selectionmenu#Sagarratna`);
+                break;
+            case 'Sandoz':
+                navigate(`/Selectionmenu#Sandoz`);
+                break;
+            case 'Varq':
+                navigate(`/Selectionmenu#Varq`);
+                break;
+            default:
+                navigate(`/Selectionmenu`);
+                break;
         }
     }
 
@@ -74,24 +84,34 @@ function OrderPopup() {
             const restrauntname = localStorage.getItem("restraunt")
             await firebase.auth().signInWithCredential(credential);
             setMessage('Phone number verified successfully.');
-            if (restrauntname === 'Aslam Chicken') {
-                navigate(`/Selectionmenu#Aslamchicken`);
-            } else if (restrauntname === 'Bukhara') {
-                navigate(`/Selectionmenu#Bukhara`);
-            } else if (restrauntname === 'Gulati') {
-                navigate(`/Selectionmenu#Gulati`);
-            } else if (restrauntname === "Karim's") {
-                navigate(`/Selectionmenu#Karim`);
-            } else if (restrauntname === 'Rajender Da Dhaba') {
-                navigate(`/Selectionmenu#Rajinderdadhaba`);
-            } else if (restrauntname === 'Sagar Ratna') {
-                navigate(`/Selectionmenu#Sagarratna`);
-            } else if (restrauntname === 'Sandoz') {
-                navigate(`/Selectionmenu#Sandoz`);
-            } else if (restrauntname === 'Varq') {
-                navigate(`/Selectionmenu#Varq`);
-            } else {
-                navigate(`/Selectionmenu`);
+            switch (restrauntname) {
+                case 'Aslam Chicken':
+                    navigate(`/Selectionmenu#Aslamchicken`);
+                    break;
+                case 'Bukhara':
+                    navigate(`/Selectionmenu#Bukhara`);
+                    break;
+                case 'Gulati':
+                    navigate(`/Selectionmenu#Gulati`);
+                    break;
+                case "Karim's":
+                    navigate(`/Selectionmenu#Karim`);
+                    break;
+                case 'Rajinder Da Dhaba':
+                    navigate(`/Selectionmenu#Rajinderdadhaba`);
+                    break;
+                case 'Sagar Ratna':
+                    navigate(`/Selectionmenu#Sagarratna`);
+                    break;
+                case 'Sandoz':
+                    navigate(`/Selectionmenu#Sandoz`);
+                    break;
+                case 'Varq':
+                    navigate(`/Selectionmenu#Varq`);
+                    break;
+                default:
+                    navigate(`/Selectionmenu`);
+                    break;
             }
         } catch (error) {
             console.error('Error verifying code:', error);
