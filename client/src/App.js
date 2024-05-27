@@ -17,10 +17,7 @@ import Gulati from './booking/Gulati';
 import Sandoz from './booking/Sandoz';
 import FinalItem from './order/FinalItem';
 import Popup from './components/Popup';
-import Popuperror from './components/Popuperror';
-import Popupcontacterror from './components/Popupcontacterror';
 import Popupcontact from './components/Popupcontact';
-import Popuperrorl from './components/Popuperrorl';
 import Selectionmenu from './menu/Selectionmenu';
 import Adminpage from './order_dashboard/Adminpage';
 import AdminNavbar from './order_dashboard/Adminnavbar';
@@ -98,9 +95,6 @@ function App() {
           <Route path='/Gulati/:id/:bname' element={<Gulati />} />
           <Route path='/FinalItem' element={<FinalItem />} />
           <Route path='/Popup' element={<Popup />} />
-          <Route path='/Popuperror' element={<Popuperror />} />
-          <Route path='/Popuperrorl' element={<Popuperrorl />} />
-          <Route path='/Popupcontacterror' element={<Popupcontacterror />} />
           <Route path='/Popupcontact' element={<Popupcontact />} />
           <Route path='/AdminPage' element={<Adminpage />} />
           <Route path='/AdminNavbar' element={<AdminNavbar />} />

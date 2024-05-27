@@ -16,28 +16,32 @@ function Contact() {
 
   const submit = async (e) => {
     e.preventDefault();
-    try {
-      // Make an API request to create a new user
-      const response = await axios.post(
-        "http://localhost:3500/user/feedback", {
-        name,
-        email,
-        msg,
-      }
-      );
-      if (response.status === 201) {
-        // User registration was successful
-        console.log("Feedback Successfull");
-        console.log("Responded Data", response.data);
-        navigate("/Popupcontact")
-        // Redirect or perform other actions as needed
-      }
-    } catch (error) {
-      // Handle registration errors
-      console.error("Error in Feedback:", error);
-      navigate("/Popupcontacterror", error)
+
+    // Check for empty fields
+    if (!name || !email || !msg) {
+        alert("All fields are required");
+        return; // Exit the function if any field is empty
     }
-  };
+
+    try {
+        // Make an API request to create a new user feedback
+        const response = await axios.post("http://localhost:3500/user/feedback", {
+            name,
+            email,
+            msg,
+        });
+
+        if (response.status === 201) {
+            // Feedback submission was successful
+            console.log("Feedback Successful");
+            console.log("Responded Data", response.data);
+            navigate("/Popupcontact");
+        }
+    } catch (error) {
+        // Handle feedback submission errors
+        console.error("Error in Feedback:", error);
+    }
+};
   useEffect(() => {
     const fetchFeedbackResponses = async () => {
       try {

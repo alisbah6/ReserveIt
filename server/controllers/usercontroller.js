@@ -23,18 +23,18 @@ const login = async (req, res) => {
 
         //validating if the email and the password exist.
         if (!email) {
-            return res.status(400).json({ message: "email is required" });
+            return res.status(400).json({ message: "Email is required" });
         }
 
         if (!password) {
-            return res.status(400).json({ message: "password is required" });
+            return res.status(400).json({ message: "Password is required" });
         }
 
         // finding user for the given email.
         const user = await User.findOne({ email: email });
 
         if (!user) {
-            return res.status(401).json({ message: "no user found for this email" });
+            return res.status(401).json({ message: "No user found for this email" });
         }
         //comparing the password
         const isMatched = await bcrypt.compare(password, user.password);
@@ -49,7 +49,7 @@ const login = async (req, res) => {
         //     httpOnly: true
         // });
         if (!isMatched) {
-            return res.status(401).json({ message: "incorrect Password" });
+            return res.status(401).json({ message: "Incorrect Password" });
         }
         const token = jwt.sign({ email: user.email, id: user.id }, "test", { expiresIn: "1h" });
         res.status(200).json({ result: user, token })
@@ -65,7 +65,7 @@ reset_password = async (req, res) => {
     const { email, password, confirmpassword } = req.body;
     try {
         if (!email) {
-            return res.status(400).json({ message: "email is required" });
+            return res.status(400).json({ message: "Email is required" });
         }
         // Check if user exists
         const user = await User.findOne({ email });
@@ -121,24 +121,24 @@ const signup = async (req, res) => {
 
         //validating the user data.
         if (!name) {
-            return res.status(400).json({ message: "name is required" });
+            return res.status(400).json({ message: "Name is required" });
         }
 
         if (!password) {
-            return res.status(400).json({ message: "password is required" });
+            return res.status(400).json({ message: "Password is required" });
         }
 
         if (!email) {
-            return res.status(400).json({ message: "email is required" });
+            return res.status(400).json({ message: "Email is required" });
         }
         if (!validator.isEmail(email)) {
             return res.status(400).json({ message: "Invalid email format" });
         }
         if (!username) {
-            return res.status(400).json({ message: "username is required" });
+            return res.status(400).json({ message: "Username is required" });
         }
         if (!confirmpassword) {
-            return res.status(400).json({ message: "confirm password is required" });
+            return res.status(400).json({ message: "Confirm password is required" });
         }
         //password validation
         if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)) {
@@ -185,13 +185,13 @@ const feedback = async (req, res) => {
 
         //validating the user data.
         if (!name) {
-            return res.status(400).json({ message: "name is required" });
+            return res.status(400).json({ message: "Name is required" });
         }
         if (!email) {
-            return res.status(400).json({ message: "email is required" });
+            return res.status(400).json({ message: "Email is required" });
         }
         if (!msg) {
-            return res.status(400).json({ message: "message is required" });
+            return res.status(400).json({ message: "Message is required" });
         }
 
         const newUserFeedback = await Feedback.create({
@@ -227,34 +227,34 @@ const booking = async (req, res) => {
 
         //validating the user data.
         if (!OrderId) {
-            return res.status(400).json({ message: "auto generated" });
+            return res.status(400).json({ message: "Auto generated" });
         }
         if (!Restraunt) {
-            return res.status(400).json({ message: "select restraunt" });
+            return res.status(400).json({ message: "Select restraunt" });
         }
         if (!BranchName) {
-            return res.status(400).json({ message: "select branch" });
+            return res.status(400).json({ message: "Select branch" });
         }
         if (!UserEmail) {
-            return res.status(400).json({ message: "email is required" });
+            return res.status(400).json({ message: "Email is required" });
         }
         if (!Seat) {
-            return res.status(400).json({ message: "seat is required" });
+            return res.status(400).json({ message: "Seat is required" });
         }
         if (!id) {
-            return res.status(400).json({ message: "seat id  is required" });
+            return res.status(400).json({ message: "Seat id  is required" });
         }
         if (!item) {
-            return res.status(400).json({ message: "items are required" });
+            return res.status(400).json({ message: "Items are required" });
         }
         if (!time) {
-            return res.status(400).json({ message: "time is required" });
+            return res.status(400).json({ message: "Time is required" });
         }
         if (!date) {
-            return res.status(400).json({ message: "date are required" });
+            return res.status(400).json({ message: "Date are required" });
         }
         if (!contact) {
-            return res.status(400).json({ message: "contact are required" });
+            return res.status(400).json({ message: "Contact are required" });
         }
 
         const newReservation = await Submission.create({

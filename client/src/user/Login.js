@@ -13,36 +13,37 @@ function Login() {
   const navigate = useNavigate();
 
   async function submit(e) {
+    e.preventDefault(); // Prevent form submission by default
+  
+    if (!email || !password) {
+      alert("All fields are required");
+      return; // Exit the function if either field is empty
+    }
+  
     if (email === "admin" && password === "0987654321") {
-      e.preventDefault();
       login();
       navigate("/AdminPage");
-    }
-    else {
-      e.preventDefault();
+    } else {
       try {
-        await axios
-          .get("http://localhost:3500/user/login", {
-            params: {
-              email,
-              password,
-            },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              login();
-              navigate("/Home");
-            }
-          });
+        const res = await axios.get("http://localhost:3500/user/login", {
+          params: {
+            email,
+            password,
+          },
+        });
+        if (res.status === 200) {
+          login();
+          navigate("/Home");
+        }
       } catch (err) {
         if (err.request.status === 401) {
           alert(err.response.data.message);
         } else if (err.request.status === 500) {
-          alert("something went wrong");
+          alert("Something went wrong");
         }
-        navigate("/Popuperrorl", err)
       }
     }
+  
     localStorage.setItem(1, email);
   }
 
