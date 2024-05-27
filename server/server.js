@@ -24,24 +24,6 @@ app.use((req, res, next) => {
 });
 
 
-// const accountSid = 'ACa2ee4f0b942cf15449b6b82ca26ed553';
-// const authToken = '7ffa7e2e2245270b0dfb8e8ae3b2d2e7';
-// const client = new twilio(accountSid, authToken);
-
-// app.post('/sendotp', (req, res) => {
-//   const phone = req.body.phone;
-//   const otp = Math.floor(100000 + Math.random() * 900000); // Generate 6 digit OTP
-
-//   client.messages.create({
-//     body: `Your OTP is ${otp}`,
-//     to: phone,
-//     from: '+12569527192'
-//   }).then((message) => {
-//     console.log(message.sid);
-//     res.send({ otp: otp }); // Send OTP for verification on client side
-//   });
-// });
-
 function sendEmail({ recipient_email, OTP }) {
   return new Promise((resolve, reject) => {
     var transporter = nodemailer.createTransport({
