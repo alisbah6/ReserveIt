@@ -3,6 +3,7 @@ const Feedback = require("../model/feedbackSchema");
 const Submission = require("../model/datasubmission");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
+const validator = require('validator');
 const { v4: uuidv4 } = require('uuid');
 
 
@@ -84,6 +85,10 @@ reset_password = async (req, res) => {
             return res.status(400).json({ message: "Passwords don't match" });
         }
 
+        if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)) {
+            return res.status(400).json({ message: "Password must be exactly 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
+        }
+
         // Update user's password in the database
         await User.updateOne({ email }, { $set: { password: hashedPassword, confirmpassword: hashedPassword } });
 
@@ -126,11 +131,18 @@ const signup = async (req, res) => {
         if (!email) {
             return res.status(400).json({ message: "email is required" });
         }
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ message: "Invalid email format" });
+        }
         if (!username) {
             return res.status(400).json({ message: "username is required" });
         }
         if (!confirmpassword) {
             return res.status(400).json({ message: "confirm password is required" });
+        }
+        //password validation
+        if (!validator.matches(password, /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/)) {
+            return res.status(400).json({ message: "Password must be exactly 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
         }
 
         //   checking for any duplicate email

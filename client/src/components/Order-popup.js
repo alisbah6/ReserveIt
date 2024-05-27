@@ -32,6 +32,8 @@ function OrderPopup() {
 
 
     const handleSendCode = async () => {
+        const contlen=contact.length;
+        if(contlen===13){
         try {
             const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
                 size: 'invisible',
@@ -42,41 +44,52 @@ function OrderPopup() {
             localStorage.setItem("contact", contact);
         } catch (error) {
             console.error('Error sending code:', error);
-            setMessage('Error sending code. Please try again.');
-        }
-    };
-    const submit = () => {
-        const restrauntname = localStorage.getItem("restraunt")
-        switch (restrauntname) {
-            case 'Aslam Chicken':
-                navigate(`/Selectionmenu#Aslamchicken`);
-                break;
-            case 'Bukhara':
-                navigate(`/Selectionmenu#Bukhara`);
-                break;
-            case 'Gulati':
-                navigate(`/Selectionmenu#Gulati`);
-                break;
-            case "Karim's":
-                navigate(`/Selectionmenu#Karim`);
-                break;
-            case 'Rajinder Da Dhaba':
-                navigate(`/Selectionmenu#Rajinderdadhaba`);
-                break;
-            case 'Sagar Ratna':
-                navigate(`/Selectionmenu#Sagarratna`);
-                break;
-            case 'Sandoz':
-                navigate(`/Selectionmenu#Sandoz`);
-                break;
-            case 'Varq':
-                navigate(`/Selectionmenu#Varq`);
-                break;
-            default:
-                navigate(`/Selectionmenu`);
-                break;
+            setMessage('Error sending code. Please check the phone number.');
         }
     }
+    else{
+        setMessage("Invalid Number.")
+    }
+    };
+    // const submit = () => {
+    //     const restrauntname = localStorage.getItem("restraunt")
+    //     localStorage.setItem("contact", contact);
+    //     const contlen=contact.length;
+    //     if(contlen===13){
+    //     switch (restrauntname) {
+    //         case 'Aslam Chicken':
+    //             navigate(`/Selectionmenu#Aslamchicken`);
+    //             break;
+    //         case 'Bukhara':
+    //             navigate(`/Selectionmenu#Bukhara`);
+    //             break;
+    //         case 'Gulati':
+    //             navigate(`/Selectionmenu#Gulati`);
+    //             break;
+    //         case "Karim's":
+    //             navigate(`/Selectionmenu#Karim`);
+    //             break;
+    //         case 'Rajinder Da Dhaba':
+    //             navigate(`/Selectionmenu#Rajinderdadhaba`);
+    //             break;
+    //         case 'Sagar Ratna':
+    //             navigate(`/Selectionmenu#Sagarratna`);
+    //             break;
+    //         case 'Sandoz':
+    //             navigate(`/Selectionmenu#Sandoz`);
+    //             break;
+    //         case 'Varq':
+    //             navigate(`/Selectionmenu#Varq`);
+    //             break;
+    //         default:
+    //             navigate(`/Selectionmenu`);
+    //             break;
+    //     }
+    // }
+    // else{
+    //     setMessage("Invalid Number");
+    // }
+    // }
 
     const handleVerifyCode = async () => {
         try {
@@ -149,7 +162,7 @@ function OrderPopup() {
                                     <p>{message}</p>
                                 </div>
                             </div>
-                            <button className='send-phone-verify-button' onClick={submit}>Verify OTP</button>
+                            {/* <button className='send-phone-verify-button' onClick={submit}>Verify OTP</button> */}
                         </form>
                     ) : (
                         <p className='please-log'>Please login in this site for Booking.</p>

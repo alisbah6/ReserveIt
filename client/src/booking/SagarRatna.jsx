@@ -472,14 +472,14 @@ function SagarRatna() {
                           </div>
                           <div className='order-booking-four' onClick={() => TableSelected('seatN', 4)}>
                             <div className='top-flex'>
-                              <div className='chair-top' id="seatN" style={seatStyle('seatL')}></div>
+                              <div className='chair-top' id="seatN" style={seatStyle('seatN')}></div>
                             </div>
                             <div className='flex'>
                               <div>
-                                <div className='chair-left' id="seatN" style={seatStyle('seatL')}></div>
+                                <div className='chair-left' id="seatN" style={seatStyle('seatN')}></div>
                               </div>
                               <div>
-                                <div className='table-four' id="seatN" style={seatStyle('seatL')}></div>
+                                <div className='table-four' id="seatN" style={seatStyle('seatN')}></div>
                               </div>
                               <div>
                                 <div className='chair-right' id="seatN" style={seatStyle('seatN')}></div>

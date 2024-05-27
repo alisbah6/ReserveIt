@@ -8,6 +8,7 @@ import {useNavigate } from 'react-router-dom';
 const FinalItem = () => {
   const pdfRef = useRef();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [ticket, setTicket] = useState({ 
      Restraunt: localStorage.getItem("restraunt"),
    BranchName : localStorage.getItem("branch name"),
@@ -37,52 +38,75 @@ const FinalItem = () => {
   const contact = localStorage.getItem("contact");
   const submit = async (e) => {
     e.preventDefault();
-    try {
-      // Make an API request to create a new user
-      const response = await axios.post(
-        "http://localhost:3500/user/booking", {
-        OrderId,
-        Restraunt,
-        BranchName,
-        UserEmail,
-        Seat,
-        id,
-        item,
-        time,
-        date,
-        contact,
-      }
-      );
-
-      if (response.status === 201) {
-        // User registration was successful
-        console.log("Data Submitted Successfull");
-        // Redirect or perform other actions as needed
-        alert("Booking has been confirmed");
-        const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
-        console.log(emailResponse.data);
-        navigate(`/Done`);
-      }
-    } catch (error) {
-      // Handle registration errors
-      console.error("Error in Submission", error);
-      alert("Server is low");
-    }
     var checkbox = document.getElementById('myCheckbox');
     var checkboxtwo = document.getElementById('myCheckbox2');
-
-    if (checkbox.checked && checkboxtwo.checked) {
+    var checkboxthree = document.getElementById('myCheckbox3');
+    if (checkbox.checked && checkboxtwo.checked && checkboxthree.checked) {
       // alert("Booking has been confirmed")
       //pdf function over here
+      try {
+        // Make an API request to create a new user
+        const response = await axios.post(
+          "http://localhost:3500/user/booking", {
+          OrderId,
+          Restraunt,
+          BranchName,
+          UserEmail,
+          Seat,
+          id,
+          item,
+          time,
+          date,
+          contact,
+        }
+        );
+        if (response.status === 201) {
+          // User registration was successful
+          console.log("Data Submitted Successfull");
+          // Redirect or perform other actions as needed
+          alert("Booking has been confirmed");
+          setIsLoading(true);
+          try {
+            const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });
+            navigate(`/Done`);  
+          } catch (error) {
+            console.error('Error sending email:', error);
+      } finally {
+        setIsLoading(false);
+      }   
+        }
+      } catch (error) {
+        // Handle registration errors
+        console.error("Error in Submission", error);
+        alert("Server is low");
+      }
       checkbox.checked = false;
       checkboxtwo.checked = false;
+      checkboxthree.checked =false;
     } else {
       window.confirm("Please agree to T&C to proceed");
     }
-
+   
   };
+  const cancel_all=()=>{
+    localStorage.removeItem("date");
+    localStorage.removeItem("time");
+    localStorage.removeItem("contact");
+    localStorage.removeItem("id");
+    localStorage.removeItem("item");
+    localStorage.removeItem("restraunt");
+    localStorage.removeItem("seats");
+    localStorage.removeItem("branch name");
+    navigate('/Home');
+  }
   return (
     <div className='items'>
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-circle"></div>
+          <div className="loading-text">Wait it might take few seconds</div>
+        </div>
+      )}
       <form className='font' ref={pdfRef} >
         <h1 className='cart'>ORDER DETAILS</h1>
         <div className='book_lable'>
@@ -127,12 +151,15 @@ const FinalItem = () => {
           <label className='book_lable'>The amount will be paid at the restraunt only,no online payment available.</label>
         </div>
         <div className='book_lable'>
+          <input type='checkbox' id="myCheckbox3" />
+          <label className='book_lable'>Service Charge 5% and GST 18% included</label>
+        </div>
+        <div className='book_lable'>
           <label>click the check box to confirm Terms And Conditon.</label>
         </div>
       </form>
-      <button className='book_button' onClick={submit}>Book Now</button>
-      {/* <button className='book_button' onClick={done}>Done</button> */}
-      <Link to='/Home'><button className='book_button' >Cancel</button></Link>
+      <button className='book_button' onClick={submit}>Book Now</button> 
+      <button className='book_button' onClick={cancel_all} >Cancel</button>
     </div>
   )
 }
