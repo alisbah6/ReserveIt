@@ -9,6 +9,7 @@ import { RecoveryContext } from '../App';
 function Login() {
   const { setEmail, email, setOTP } = useContext(RecoveryContext);
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -59,8 +60,10 @@ function Login() {
         })
         .then(() => navigate('/OTPinput'))
         .catch(console.log);
+        setIsLoading(true);
       return;
     }
+    setIsLoading(false);
     return alert("Please enter your email");
   }
 
@@ -68,6 +71,12 @@ function Login() {
 
   return (
     <div className='grid'>
+       {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-circle"></div>
+          <div className="loading-text">Wait it might take few seconds</div>
+        </div>
+      )}
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <div className="box-image">
         <a href="/Home"><button class="round"><i class="fa-solid fa-arrow-left"></i></button></a>

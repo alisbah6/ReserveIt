@@ -29,6 +29,9 @@ const login = async (req, res) => {
         if (!password) {
             return res.status(400).json({ message: "Password is required" });
         }
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ message: "Invalid email format" });
+        }
 
         // finding user for the given email.
         const user = await User.findOne({ email: email });

@@ -11,7 +11,7 @@ class Home extends Component {
                 <Navbar />
                 <video className="vd" src={videoBg} autoPlay muted loop></video>
                 <h2>#No more waiting,neither for table nor for food</h2>
-                <h3>Book your seat now at Delhi's Busiest Restraunts</h3>
+                <h3>Book your seat now at Delhi's Busiest Restaurants</h3>
                 <section className="sec">
                     <h3>Sagar Ratna</h3>
                     <br></br>
