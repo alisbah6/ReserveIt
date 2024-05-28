@@ -1,7 +1,7 @@
 const User = require("../model/userSchema");
 const Feedback = require("../model/feedbackSchema");
 const Submission = require("../model/datasubmission");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
 const { v4: uuidv4 } = require('uuid');
@@ -41,16 +41,7 @@ const login = async (req, res) => {
         }
         //comparing the password
         const isMatched = await bcrypt.compare(password, user.password);
-        //generating token
-        // token=jwt.sign(user,secretKey,{expiresIn:'1h'},(err,token)=>{
-        //     res.json(token)
-        // }); 
-        // token = user.generateAuthToken();
-        // console.log(token);
-        // res.cookie("jwtoken", token, {
-        //     expires: new Date(Date.now() + 25892000000),
-        //     httpOnly: true
-        // });
+
         if (!isMatched) {
             return res.status(401).json({ message: "Incorrect Password" });
         }

@@ -7,6 +7,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../user/AuthContext';
 
 var totalseats = 52;
 var totalno;
@@ -25,28 +26,34 @@ function Bukhara() {
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState([]);
   const initialSelection = useRef(true);
+  const { isLoggedIn } = useAuth();
 
   const areAllSelectionsMade = () => {
     return date && selectedValue && seats > 0;
   };
 
   const seatsubmit = () => {
-    const result = window.confirm(`Do you Confirm ${seats} seats`);
-    if (result === true) {
-      totalno = totalseats - seats;
-      totalseats = totalno;
-      if (totalseats >= 0) {
-        navigate("/OrderPopup")
-      } else {
-        alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
-      }
+    if (isLoggedIn) {
+        const result = window.confirm(`Do you Confirm ${seats} seats`);
+        if (result === true) {
+            totalno = totalseats - seats;
+            totalseats = totalno;
+            if (totalseats >= 0) {
+                navigate("/OrderPopup")
+            } else {
+                alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
+            }
+        }
+        localStorage.setItem("restraunt", restaurantName);
+        localStorage.setItem("branch name", bname);
+        localStorage.setItem("time", selectedValue);
+        localStorage.setItem("date", date);
+        localStorage.setItem("seats", seats);
+    } else {
+        // Handle case when user is not logged in, perhaps by prompting them to login
+        alert("Please login to confirm seats.");
     }
-    localStorage.setItem("restraunt", restaurantName);
-    localStorage.setItem("branch name", bname);
-    localStorage.setItem("time", selectedValue);
-    localStorage.setItem("date", date);
-    localStorage.setItem("seats", seats);
-  }
+}
 
   const onChange = (date) => {
     setDate(date);

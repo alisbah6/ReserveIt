@@ -14,13 +14,13 @@ function Register() {
 
     const submit = async (e) => {
         e.preventDefault();
-    
+
         // Check for empty fields
         if (!name || !username || !email || !password || !confirmpassword) {
             alert("All fields are required");
             return; // Exit the function if any field is empty
         }
-    
+
         try {
             // Make an API request to create a new user
             const response = await axios.post("http://localhost:3500/user/signup", {
@@ -30,7 +30,7 @@ function Register() {
                 password,
                 confirmpassword,
             });
-    
+
             if (response.status === 201) {
                 // User registration was successful
                 console.log("User registered successfully");
@@ -38,14 +38,28 @@ function Register() {
                 navigate("/Popup", { state: { name: name } });
             }
         } catch (error) {
+            console.log("Error:", error); // Add this line for debugging
             // Handle registration errors
-            console.error("Error registering user:", error);
+            if (error.response && error.response.status === 400) {
+                // Display specific error message from the server
+                alert(error.response.data.message);
+            } else if (error.response && error.response.status === 401) {
+                // Duplicate email error
+                alert(error.response.data.message);
+            } else if (error.response && error.response.status === 500) {
+                // Server error
+                alert("Something went wrong");
+            } else {
+                // Other errors
+                console.error("Error registering user:", error);
+            }
         }
     };
+    
     return (
         <div className='screen'>
             <div className='grid'>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <div className="box-image-reg">
                     <a href="/Home"><button class="round"><i class="fa-solid fa-arrow-left"></i></button></a>
                 </div>
