@@ -7,17 +7,17 @@ function Menu() {
   return (
     <div>
       <Navbar />
-      <div className="nav-hotel">
-        <div className="hotel"><a className="tag" href="#Aslamchicken">Aslam chicken</a></div>
-        <div className="hotel"><a className="tag" href="#Bukhara">Bukhara</a></div>
-        <div className="hotel"><a className="tag" href="#Gulati">Gulati</a></div>
-        <div className="hotel"><a className="tag" href="#Karim">Karim</a></div>
-        <div className="hotel"><a className="tag" href="#Rajinderdadhaba">Rajinder Da Dhaba</a></div>
-        <div className="hotel"><a className="tag" href="#Sagarratna">Sagar Ratna</a></div>
-        <div className="hotel"><a className="tag" href="#Sandoz">Sandoz</a></div>
-        <div className="hotel"><a className="tag" href="#Varq">Varq</a></div>
+      <div className="nav-hotel-menu">
+        <div className="hotel"><a className="tag" href="#Aslamchicken-menu">Aslam chicken</a></div>
+        <div className="hotel"><a className="tag" href="#Bukhara-menu">Bukhara</a></div>
+        <div className="hotel"><a className="tag" href="#Gulati-menu">Gulati</a></div>
+        <div className="hotel"><a className="tag" href="#Karim-menu">Karim</a></div>
+        <div className="hotel"><a className="tag" href="#Rajinderdadhaba-menu">Rajinder Da Dhaba</a></div>
+        <div className="hotel"><a className="tag" href="#Sagarratna-menu">Sagar Ratna</a></div>
+        <div className="hotel"><a className="tag" href="#Sandoz-menu">Sandoz</a></div>
+        <div className="hotel"><a className="tag" href="#Varq-menu">Varq</a></div>
       </div>
-      <section id='Aslamchicken' className='main'>
+      <section id='Aslamchicken-menu' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
             <div className='main-main-menu'>
@@ -78,11 +78,140 @@ function Menu() {
           </div>
         </div>
       </section>
-      <section id='Bukhara' className='main'>
-        <div className="container-menu">
+      <section id='Bukhara-menu' className='main'>
+      <div className="container-menu">
+          <div className='inside-container'>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>NAAN & ROTI</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {["QEEMA NAAN", "BAQARKHANI KULCHA", "ROGHNI NAAN", "PLAIN NAAN", "TANDOORI ROTI", "RUMALI ROTI"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {["₹210/-", "₹120/-", "₹95/-", "₹75/-", "₹40/-", "₹40/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>INDIAN BREADS</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {["BUTTER NAAN", "GARLIC NAAN", "PLAIN NAAN", "LACHHA PARATHA", "TANDOORI ROTI", "BUTTER ROTI"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {["₹75/-", "₹85/-", "₹65/-", "₹75/-", "₹40/-", "₹50/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>MITHAAS</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {["KHEER BENAZEER", "GULAB JAMUN", "GAJAR KA HALWA", "SHAHI TUKDA"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {["₹120/-", "₹125/-", "₹160/-", "₹155/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>BHARATIA PATTAL</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {["SUBZ-E-KHAZANA(MIX VEG)", "KARAHI PANEER", "MALAI KOFTA", "PALAK PANEER", "DAL TADKA", "DAL MAKHANI", "SHAHI PANEER", "MIX RAITA", "BOONDI RAITA", "GREEN SALAD"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {["₹320/-", "₹345/-", "₹375/-", "₹385/-", "₹310/-", "₹345/-", "₹395/-", "₹175/-", "₹165/-", "₹115/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>SHAHI DASTAR KHWAN</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {[
+                    "AKBARI MURGH MASALA (HALF)",
+                    "AKBARI MURGH MASALA (FULL)",
+                    "SHAHI MURGH DOPYAZA(STEW) (HALF)",
+                    "SHAHI MURGH DOPYAZA(STEW) (FULL)",
+                    "LAZEEZ SAAG MURGH (HALF)",
+                    "LAZEEZ SAAG MURGH (FULL)",
+                    "KARAHI CHICKEN (HALF)",
+                    "KARAHI CHICKEN (FULL)",
+                    "BUTTER CHICKEN BONELESS (HALF)",
+                    "BUTTER CHICKEN BONELESS (FULL)",
+                    "BUTTER CHICKEN (HALF)",
+                    "BUTTER CHICKEN (FULL)",
+                    "CHICKEN MUGHLAI (HALF)",
+                    "CHICKEN MUGHLAI (FULL)",
+                    "CHICKEN JAHANGIRI (HALF)",
+                    "CHICKEN JAHANGIRI (FULL)",
+                    "CHICKEN QORMA (HALF)",
+                    "CHICKEN QORMA (FULL)",
+                    "CHICKEN HANDI (HALF)",
+                    "CHICKEN HANDI (FULL)",
+                    "TUKKHM-E-MURGH MASALA(EGG CURRY)",
+                    "MUTTON MUGHLAI (HALF)",
+                    "MUTTON MUGHLAI (FULL)",
+                    "FIRDAUSI QORMA(ROGHAN JODH) (HALF)",
+                    "FIRDAUSI QORMA(ROGHAN JODH) (FULL)",
+                    "DIL BAHAR DOPYAZA(STEW) (HALF)",
+                    "DIL BAHAR DOPYAZA(STEW) (FULL)",
+                    "NARGISI KOFTA (HALF)",
+                    "NARGISI KOFTA (FULL)",
+                    "NAYAB MUGHZ MASALA(BRAIN CURRY)",
+                    "KARAHI GOSHT (HALF)",
+                    "KARAHI GOSHT (FULL)",
+                  ].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {[
+                    "₹495/-", "₹795/-", "₹375/-", "₹525/-", "₹385/-", "₹520/-", "₹385/-", "₹520/-",
+                    "₹595/-", "₹835/-", "₹550/-", "₹795/-", "₹395/-", "₹545/-", "₹395/-", "₹545/-",
+                    "₹395/-", "₹550/-", "₹395/-", "₹575/-", "₹345/-", "₹495/-", "₹795/-", "₹495/-",
+                    "₹795/-", "₹495/-", "₹795/-", "₹495/-", "₹795/-", "₹575/-", "₹495/-", "₹695/-",
+                  ].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <section id='Gulati' className='main'>
+      <section id='Gulati-menu' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
             <div className='main-main-menu'>
@@ -145,7 +274,7 @@ function Menu() {
           </div>
         </div>
       </section>
-      <section id='Karim' className='main'>
+      <section id='Karim-menu' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
             <div className='main-main-menu'>
@@ -237,7 +366,7 @@ function Menu() {
               <h1 className='menu-head'>ROLLS</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  {["KARIM ROLL", "MURGH SEEKH ROLL", "FISH TIKKA ROLL(WINTER SEASON)", "MURGH TIKKA ROLL", "BOTI ROTI ROLL", "PANEER ROLL", "SHAMI KEBAB ROLL", "MURGH MALAI TIKKA ROLL", "SOYA CHAAP ROLL"].map((item, index) => (
+                  {["KARIM-menu ROLL", "MURGH SEEKH ROLL", "FISH TIKKA ROLL(WINTER SEASON)", "MURGH TIKKA ROLL", "BOTI ROTI ROLL", "PANEER ROLL", "SHAMI KEBAB ROLL", "MURGH MALAI TIKKA ROLL", "SOYA CHAAP ROLL"].map((item, index) => (
                     <div className='text-menu' key={index}>
                       <label>{item}</label>
                     </div>
@@ -371,7 +500,7 @@ function Menu() {
                     "CHAAP MASALA",
                     "CHAAP MALAI",
                     "FISH TIKKA(WINTER SEASON)",
-                    "KARIM'S ASSORTED KEBAB PLATTER"
+                    "KARIM-menu'S ASSORTED KEBAB PLATTER"
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
                       <label>{item}</label>
@@ -410,12 +539,129 @@ function Menu() {
           </div>
         </div>
       </section>
-      <section id='Rajinderdadhaba' className='main'>
-        <div className="container-menu">
+      <section id='Rajinderdadhaba-menu' className='main'>
+      <div className="container-menu">
+        <div className='inside-container'>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>TANDOORI</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER TIKKA (FULL)', 'PANEER TIKKA (HALF)'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹410/-', '₹210/-', '₹270/-', '₹150/-', '₹700/-', '₹380/-', '₹200/-', '₹400/-', '₹200/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>DESSERTS & BEVERAGES</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['WATER BOTTLE', 'KULAD KHEER'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹20/-', '₹60/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>BREAKFAST COMBO</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['8 RICE IDLI + 8 MEDU VADA', '4 RICE IDLI + 4 MEDU VADA + 2 MASALA DOSA', '4 RICE IDLI + 4 MEDU VADA', '2 RICE IDLI + 2 MEDU VADA + 1 MASALA DOSA'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹749/-', '₹749/-', '₹429/-', '₹429/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>MEAL COMBO</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['MASALA DOSA COMBO', 'RAVA MASALA DOSA COMBO'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹315/-', '₹345/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'> SPECIAL DAHI BUTTER GRAVY</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹550/-', '₹280/-', '₹190/-', '₹300/-', '₹180/-', '₹730/-', '₹400/-', '₹250/-', '₹450/-', '₹250/-', '₹50/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>BREAD SELECTION</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {[
+                    'LEMON LEAF NAAN',
+                    'AMRITSARI KULCHA',
+                    'CAMEMBERT AND TRUFFLE NAAN',
+                    'GLUTEN FREE NAAN',
+                    'KHAMEERI ROTI',
+                    'BAJRA KI MISSI',
+                    'TANDOORI ROTI',
+                    'NARANGI SHEERMAL',
+                    'MANDUA ROTI'
+                  ].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹300/-', '₹300/-', '₹300/-', '₹300/-', '₹270/-', '₹270/-', '₹230/-', '₹300/-', '₹250/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </section>
-      <section id='Sagarratna' className='main'>
+      <section id='Sagarratna-menu' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
             <div className='main-main-menu'>
@@ -961,7 +1207,7 @@ function Menu() {
           </div>
         </div>
       </section >
-      <section id='Sandoz' className='main'>
+      <section id='Sandoz-menu' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
             <div className='main-main-menu'>
@@ -1366,7 +1612,7 @@ function Menu() {
           </div>
         </div>
       </section>
-      <section id='Varq' className='main'>
+      <section id='Varq-menu' className='main'>
         <div className="container-menu">
           <div className='inside-container'>
             <div className='main-main-menu'>
@@ -1376,7 +1622,7 @@ function Menu() {
                 <div className='Breakfast_Combos'>
                   {[
                     'JASMINE AND GIN PRAWN TIKKA',
-                    'VARQUI CRAB',
+                    'VARQ-menuUI CRAB',
                     'CRUSTACEAN SALAD',
                     'ACHARI HALDI FISH TIKKA',
                     'MURG METHI MALAI SOUFFLÉ',
@@ -1406,8 +1652,8 @@ function Menu() {
                     'CORN KE KEBAB',
                     'MUSHROOM MIRCH MALAI',
                     'GALOUTI THREE WAYS',
-                    'VARQUI KHUMB',
-                    'VARQ GARDEN GREEN',
+                    'VARQ-menuUI KHUMB',
+                    'VARQ-menu GARDEN GREEN',
                     'CHILLED MASALA POT'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
@@ -1659,7 +1905,7 @@ function Menu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   {[
-                    'VARQUI SPECIAL',
+                    'VARQ-menuUI SPECIAL',
                     'GINGER N LIME',
                     'CARDAMOM CREAM',
                     'KESAR KI KAHANI'
@@ -1681,7 +1927,7 @@ function Menu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   {[
-                    'VARQUI KAPHILE GREEN TEA',
+                    'VARQ-menuUI KAPHILE GREEN TEA',
                     'KADI PATTA CHA',
                     'VAN GULAB'
                   ].map((item, index) => (

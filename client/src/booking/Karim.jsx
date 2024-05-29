@@ -21,10 +21,11 @@ function Karim() {
   const [entries, setEntries] = useState([]);
   const [selectedValue, setSelectedValue] = useState('');
   const [restaurantName, setRestaurantName] = useState(null);
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState();
   const [seats, setseats] = useState(0);
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState([]);
+  const [disabledSlots, setDisabledSlots] = useState([]);
   const initialSelection = useRef(true);
   const { isLoggedIn } = useAuth();
 
@@ -32,28 +33,31 @@ function Karim() {
     return date && selectedValue && seats > 0;
   };
 
+  //timing disable accordingly
+
   const seatsubmit = () => {
     if (isLoggedIn) {
-        const result = window.confirm(`Do you Confirm ${seats} seats`);
-        if (result === true) {
-            totalno = totalseats - seats;
-            totalseats = totalno;
-            if (totalseats >= 0) {
-                navigate("/OrderPopup")
-            } else {
-                alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
-            }
+      const result = window.confirm(`Do you Confirm ${seats} seats`);
+      if (result === true) {
+        totalno = totalseats - seats;
+        totalseats = totalno;
+        if (totalseats >= 0) {
+          navigate("/OrderPopup")
+        } else {
+          alert("Sorry,Booking is Full \n SEE YOU NEXT BYE");
         }
-        localStorage.setItem("restraunt", restaurantName);
-        localStorage.setItem("branch name", bname);
-        localStorage.setItem("time", selectedValue);
-        localStorage.setItem("date", date);
-        localStorage.setItem("seats", seats);
+      }
+      localStorage.setItem("restraunt", restaurantName);
+      localStorage.setItem("branch name", bname);
+      localStorage.setItem("time", selectedValue);
+      localStorage.setItem("date", date);
+      localStorage.setItem("seats", seats);
     } else {
-        // Handle case when user is not logged in, perhaps by prompting them to login
-        alert("Please login to confirm seats.");
+      // Handle case when user is not logged in, perhaps by prompting them to login
+      alert("Please login to confirm seats.");
     }
-}
+  }
+
   const onChange = (date) => {
     setDate(date);
     setShowCalendar(false);
@@ -70,14 +74,44 @@ function Karim() {
     }
   }, [params.id]);
 
-  const handleChange = (e) => {
-    if (initialSelection.current) {
-      initialSelection.current = false;
-    } else {
-      window.location.reload();
+  const timeSlots = [
+    "8am-9am", "9am-10am", "10am-11am", "11am-12pm",
+    "12pm-1pm", "1pm-2pm", "2pm-3pm", "3pm-4pm",
+    "4pm-5pm", "5pm-6pm", "6pm-7pm", "7pm-8pm"
+  ];
+  useEffect(() => {
+    const date_t = new Date();
+    let hour = date_t.getHours();
+    const isPM = hour >= 12;
+    hour = hour % 12 || 12; // Converts 0 to 12 for midnight and handles PM conversion
+    const showTime = `${hour}${isPM ? 'pm' : 'am'}`;
+    const selecteddate = new Date(date);
+    let matchFound = false;
+    const isSameDay = date_t.getFullYear() === selecteddate.getFullYear() &&
+      date_t.getMonth() === selecteddate.getMonth() &&
+      date_t.getDate() === selecteddate.getDate();
+
+    if (isSameDay && showTime) {
+      const disabledSlots = [];
+      for (let i = 0; i < timeSlots.length; i++) {
+        const [start, end] = timeSlots[i].split('-');
+        const starts_time = start.trim() // Trim to remove any leading or trailing spaces
+        if (starts_time === showTime) {
+          matchFound = true;
+          // Disable the matched slot and all previous slots
+          disabledSlots.push(...timeSlots.slice(0, i + 1));
+          break; // Exit loop once match is found
+        }
+      }
+      if (!matchFound) {
+      }
+      setDisabledSlots(disabledSlots);
     }
-    setSelectedValue(e.target.value);
-  };
+    else {
+      setDisabledSlots([]);
+    }
+  }, [date, timeSlots]);
+
 
   // Fetch bookings whenever selectedDate or selectedTime changes
 
@@ -93,9 +127,11 @@ function Karim() {
       console.error("Error fetching All responses:", error);
     }
   };
+
   useEffect(() => {
     fetchAllResponses()
   }, [])
+
   const groupOrdersByDate = () => {
     const groupedOrders = {};
     entries.forEach(order => {
@@ -157,7 +193,6 @@ function Karim() {
   };
 
 
-
   useEffect(() => {
     groupOrdersByDate()
   })
@@ -165,6 +200,10 @@ function Karim() {
   const seatStyle = (seatId) => ({
     backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
   });
+  const handleChange = (e) => {
+    setSelectedValue(e.target.value);
+  };
+
 
 
   return (
@@ -201,20 +240,11 @@ function Karim() {
                   )}
                 </div>
                 <div>
-                  <select className="combobox" id="comboBox" value={selectedValue} onChange={handleChange} disabled={!date}>
+                <select className="combobox" id="comboBox" value={selectedValue} onChange={handleChange} disabled={!date}>
                     <option value="">-- Select a timing --</option>
-                    <option value="8am-9am">8am-9am</option>
-                    <option value="9am-10am">9am-10am</option>
-                    <option value="10am-11am">10am-11am</option>
-                    <option value="11am-12am">11am-12am</option>
-                    <option value="12am-1pm">12am-1pm</option>
-                    <option value="1pm-2pm">1pm-2pm</option>
-                    <option value="2pm-3pm">2pm-3pm</option>
-                    <option value="3pm-4pm">3pm-4pm</option>
-                    <option value="4pm-5pm">4pm-5pm</option>
-                    <option value="5pm-6pm">5pm-6pm</option>
-                    <option value="6pm-7pm">6pm-7pm</option>
-                    <option value="7pm-8pm">7pm-8pm</option>
+                    {timeSlots.map((slot, index) => (
+                      <option key={index} value={slot} disabled={disabledSlots.includes(slot)}>{slot}</option>
+                    ))}
                   </select>
                 </div>
               </div>

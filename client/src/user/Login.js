@@ -15,12 +15,7 @@ function Login() {
 
   async function submit(e) {
     e.preventDefault(); // Prevent form submission by default
-  
-    if (!email || !password) {
-      alert("All fields are required");
-      return; // Exit the function if either field is empty
-    }
-  
+
     try {
       const res = await axios.get("http://localhost:3500/user/login", {
         params: {
@@ -28,7 +23,7 @@ function Login() {
           password,
         },
       });
-  
+
       if (res.status === 200) {
         const { token } = res.data;
         login(token); // Pass the token to the login function
@@ -45,43 +40,42 @@ function Login() {
         alert("An unexpected error occurred");
       }
     }
-  
+
     localStorage.setItem(1, email);
   }
 
   function navigateToOtp() {
-    try{
-    if (email) {
-      const OTP = Math.floor(Math.random() * 9000 + 1000);
-      console.log(OTP);
-      setOTP(OTP);
-      axios
-        .post("http://localhost:3500/send_recovery_email", {
-          OTP,
-          recipient_email: email,
-        })
-        .then(() => navigate('/OTPinput'))
-        .catch(console.log);
+    try {
+      if (email) {
+        const OTP = Math.floor(Math.random() * 9000 + 1000);
+        console.log(OTP);
+        setOTP(OTP);
+        axios
+          .post("http://localhost:3500/send_recovery_email", {
+            OTP,
+            recipient_email: email,
+          })
+          .then(() => navigate('/OTPinput'))
+          .catch(console.log);
         setIsLoading(true);
-      return;
+        return;
+      }
+      setIsLoading(false);
+      return alert("Please enter your email");
     }
-    setIsLoading(false);
-    return alert("Please enter your email");
+    catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        alert(error.response.data.message);
+      } else {
+        alert('An unexpected error occurred. Please try again.');
+      }
+    }
   }
-  catch(error){
-    if (error.response && error.response.data && error.response.data.message) {
-      alert(error.response.data.message);
-  } else {
-      alert('An unexpected error occurred. Please try again.');
-  }
-  }
-  }
-
 
 
   return (
     <div className='grid'>
-       {isLoading && (
+      {isLoading && (
         <div className="loading-overlay">
           <div className="loading-circle"></div>
           <div className="loading-text">Wait it might take few seconds</div>

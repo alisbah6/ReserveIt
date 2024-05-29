@@ -64,7 +64,6 @@ const FinalItem = () => {
           // User registration was successful
           console.log("Data Submitted Successfully");
           // Redirect or perform other actions as needed
-          alert("Booking has been confirmed");
           setIsLoading(true);
           try {
             const emailResponse = await axios.post('http://localhost:3500/send_ticket_email', { userEmail: UserEmail, ticket });

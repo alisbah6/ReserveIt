@@ -26,7 +26,7 @@
 .checkmark{
     color: #9ABC66;
     font-size: 100px;
-    line-height: 200px;
+    line-height: 100px;
     margin-left: -15px;
 }
 
@@ -47,6 +47,6 @@
     text-decoration: none;
     padding: 15px;
     border-radius: 3px;
-    margin-top: 50px;
+    margin-top: 40px;
     cursor: pointer;
 }

@@ -15,12 +15,6 @@ function Register() {
     const submit = async (e) => {
         e.preventDefault();
 
-        // Check for empty fields
-        if (!name || !username || !email || !password || !confirmpassword) {
-            alert("All fields are required");
-            return; // Exit the function if any field is empty
-        }
-
         try {
             // Make an API request to create a new user
             const response = await axios.post("http://localhost:3500/user/signup", {

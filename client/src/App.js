@@ -17,7 +17,6 @@ import Gulati from './booking/Gulati';
 import Sandoz from './booking/Sandoz';
 import FinalItem from './order/FinalItem';
 import Popup from './components/Popup';
-import Popupcontact from './components/Popupcontact';
 import Selectionmenu from './menu/Selectionmenu';
 import Adminpage from './order_dashboard/Adminpage';
 import AdminNavbar from './order_dashboard/Adminnavbar';
@@ -35,7 +34,7 @@ function App() {
     const location = useLocation();
     const showMenu = location.pathname === '/Selectionmenu';
     const [activeItem, setActiveItem] = useState('');
-
+    
     useEffect(() => {
         setActiveItem(location.hash); // Update active item based on the hash in the URL
     }, [location]);
@@ -44,28 +43,28 @@ function App() {
         <nav className="nav-hotel">
             <ul>
                 <li className={`hotel ${activeItem === '#Aslamchicken' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Aslamchicken">Aslam chicken</Link>
+                    <Link className={`tag ${activeItem !== '#Aslamchicken' ? 'disabled' : ''}`} to="/Selectionmenu#Aslamchicken">Aslam chicken</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Bukhara' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Bukhara">Bukhara</Link>
+                    <Link className={`tag ${activeItem !== '#Bukhara' ? 'disabled' : ''}`} to="/Selectionmenu#Bukhara">Bukhara</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Gulati' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Gulati">Gulati</Link>
+                    <Link className={`tag ${activeItem !== '#Gulati' ? 'disabled' : ''}`} to="/Selectionmenu#Gulati">Gulati</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Karim' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Karim">Karim</Link>
+                    <Link className={`tag ${activeItem !== '#Karim' ? 'disabled' : ''}`} to="/Selectionmenu#Karim">Karim</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Rajinderdadhaba' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Rajinderdadhaba">Rajinder Da Dhaba</Link>
+                    <Link className={`tag ${activeItem !== '#Rajinderdadhaba' ? 'disabled' : ''}`} to="/Selectionmenu#Rajinderdadhaba">Rajinder Da Dhaba</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Sagarratna' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Sagarratna">Sagar Ratna</Link>
+                    <Link className={`tag ${activeItem !== '#Sagarratna' ? 'disabled' : ''}`} to="/Selectionmenu#Sagarratna">Sagar Ratna</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Sandoz' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Sandoz">Sandoz</Link>
+                    <Link className={`tag ${activeItem !== '#Sandoz' ? 'disabled' : ''}`} to="/Selectionmenu#Sandoz">Sandoz</Link>
                 </li>
                 <li className={`hotel ${activeItem === '#Varq' ? 'active' : ''}`}>
-                    <Link className="tag" to="/Selectionmenu#Varq">Varq</Link>
+                    <Link className={`tag ${activeItem !== '#Varq' ? 'disabled' : ''}`} to="/Selectionmenu#Varq">Varq</Link>
                 </li>
             </ul>
         </nav>
@@ -95,7 +94,6 @@ function App() {
           <Route path='/Gulati/:id/:bname' element={<Gulati />} />
           <Route path='/FinalItem' element={<FinalItem />} />
           <Route path='/Popup' element={<Popup />} />
-          <Route path='/Popupcontact' element={<Popupcontact />} />
           <Route path='/AdminPage' element={<Adminpage />} />
           <Route path='/AdminNavbar' element={<AdminNavbar />} />
           <Route path='/OTPinput' element={<OTPinput />} />

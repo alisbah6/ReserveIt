@@ -45,3 +45,17 @@
   color: #007bff;
   font-weight: bold;
 }
+
+.nav-hotel .tag:hover:not(.disabled) {
+  background-color: blue; /* Darker color on hover */
+  color: white; /* Text color on hover */
+}
+
+/* Disabled link styles */
+.nav-hotel .tag.disabled {
+  background-color: white; /* Disabled background color */
+  color: #666666; /* Disabled text color */
+  pointer-events: none; /* Disable pointer events */
+  border-color: white;
+}
+

@@ -39,6 +39,22 @@ function Selectionmenu() {
       setItem(item.filter((e) => e !== value));
     }
   }
+  const [activeItem, setActiveItem] = useState('');
+
+  useEffect(() => {
+    setActiveItem(location.hash); // Update active item based on the hash in the URL
+  }, [location]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      if (section.id !== activeItem.substring(1)) {
+        section.style.filter = "blur(5px)"; // Blur non-active sections
+      } else {
+        section.style.filter = "none"; // Remove blur from active section
+      }
+    });
+  }, [activeItem]);
 
   function finalitem() {
     // console.log(item);
@@ -58,7 +74,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER TIKKA (FULL)', 'PANEER TIKKA (HALF)'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Aslamchicken'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -76,7 +92,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['WATER BOTTLE', 'KULAD KHEER'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Aslamchicken'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -96,7 +112,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Special_Dahi_Butter_Gravy_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Special_Dahi_Butter_Gravy_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Aslamchicken'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -111,43 +127,79 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Aslamchicken'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Bukhara' className='main'>
         <div className="container-menu">
-        <div className='inside-container'>
+          <div className='inside-container'>
             <div className='main-main-menu'>
-              <h1 className='menu-head'>TANDOORI</h1>
+              <h1 className='menu-head'>NAAN & ROTI</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER TIKKA (FULL)', 'PANEER TIKKA (HALF)'].map((item, index) => (
+                  {["QEEMA NAAN", "BAQARKHANI KULCHA", "ROGHNI NAAN", "PLAIN NAAN", "TANDOORI ROTI", "RUMALI ROTI"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Bukhara'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
                 </div>
                 <div className="amount">
-                  {['₹410/-', '₹210/-', '₹270/-', '₹150/-', '₹700/-', '₹380/-', '₹200/-', '₹400/-', '₹200/-'].map((price, index) => (
+                  {["₹210/-", "₹120/-", "₹95/-", "₹75/-", "₹40/-", "₹40/-"].map((price, index) => (
                     <div className='text-menu' key={index}>
                       <label>{price}</label>
                     </div>
                   ))}
                 </div>
               </div>
-              <h1 className='menu-head'>DESSERTS & BEVERAGES</h1>
+              <h1 className='menu-head'>INDIAN BREADS</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  {['WATER BOTTLE', 'KULAD KHEER'].map((item, index) => (
+                  {["BUTTER NAAN", "GARLIC NAAN", "PLAIN NAAN", "LACHHA PARATHA", "TANDOORI ROTI", "BUTTER ROTI"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Bukhara'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
                 </div>
                 <div className="amount">
-                  {['₹20/-', '₹60/-'].map((price, index) => (
+                  {["₹75/-", "₹85/-", "₹65/-", "₹75/-", "₹40/-", "₹50/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>MITHAAS</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {["KHEER BENAZEER", "GULAB JAMUN", "GAJAR KA HALWA", "SHAHI TUKDA"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Bukhara'} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {["₹120/-", "₹125/-", "₹160/-", "₹155/-"].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>BHARATIA PATTAL</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {["SUBZ-E-KHAZANA(MIX VEG)", "KARAHI PANEER", "MALAI KOFTA", "PALAK PANEER", "DAL TADKA", "DAL MAKHANI", "SHAHI PANEER", "MIX RAITA", "BOONDI RAITA", "GREEN SALAD"].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Bukhara'} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {["₹320/-", "₹345/-", "₹375/-", "₹385/-", "₹310/-", "₹345/-", "₹395/-", "₹175/-", "₹165/-", "₹115/-"].map((price, index) => (
                     <div className='text-menu' key={index}>
                       <label>{price}</label>
                     </div>
@@ -156,18 +208,56 @@ function Selectionmenu() {
               </div>
             </div>
             <div className='main-main-menu'>
-              <h1 className='menu-head'>ASLAM SPECIAL DAHI BUTTER GRAVY</h1>
+              <h1 className='menu-head'>SHAHI DASTAR KHWAN</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
+                  {[
+                    "AKBARI MURGH MASALA (HALF)",
+                    "AKBARI MURGH MASALA (FULL)",
+                    "SHAHI MURGH DOPYAZA(STEW) (HALF)",
+                    "SHAHI MURGH DOPYAZA(STEW) (FULL)",
+                    "LAZEEZ SAAG MURGH (HALF)",
+                    "LAZEEZ SAAG MURGH (FULL)",
+                    "KARAHI CHICKEN (HALF)",
+                    "KARAHI CHICKEN (FULL)",
+                    "BUTTER CHICKEN BONELESS (HALF)",
+                    "BUTTER CHICKEN BONELESS (FULL)",
+                    "BUTTER CHICKEN (HALF)",
+                    "BUTTER CHICKEN (FULL)",
+                    "CHICKEN MUGHLAI (HALF)",
+                    "CHICKEN MUGHLAI (FULL)",
+                    "CHICKEN JAHANGIRI (HALF)",
+                    "CHICKEN JAHANGIRI (FULL)",
+                    "CHICKEN QORMA (HALF)",
+                    "CHICKEN QORMA (FULL)",
+                    "CHICKEN HANDI (HALF)",
+                    "CHICKEN HANDI (FULL)",
+                    "TUKKHM-E-MURGH MASALA(EGG CURRY)",
+                    "MUTTON MUGHLAI (HALF)",
+                    "MUTTON MUGHLAI (FULL)",
+                    "FIRDAUSI QORMA(ROGHAN JODH) (HALF)",
+                    "FIRDAUSI QORMA(ROGHAN JODH) (FULL)",
+                    "DIL BAHAR DOPYAZA(STEW) (HALF)",
+                    "DIL BAHAR DOPYAZA(STEW) (FULL)",
+                    "NARGISI KOFTA (HALF)",
+                    "NARGISI KOFTA (FULL)",
+                    "NAYAB MUGHZ MASALA(BRAIN CURRY)",
+                    "KARAHI GOSHT (HALF)",
+                    "KARAHI GOSHT (FULL)",
+                  ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Special_Dahi_Butter_Gravy_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Bukhara'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
                 </div>
                 <div className="amount">
-                  {['₹550/-', '₹280/-', '₹190/-', '₹300/-', '₹180/-', '₹730/-', '₹400/-', '₹250/-', '₹450/-', '₹250/-', '₹50/-'].map((price, index) => (
+                  {[
+                    "₹495/-", "₹795/-", "₹375/-", "₹525/-", "₹385/-", "₹520/-", "₹385/-", "₹520/-",
+                    "₹595/-", "₹835/-", "₹550/-", "₹795/-", "₹395/-", "₹545/-", "₹395/-", "₹545/-",
+                    "₹395/-", "₹550/-", "₹395/-", "₹575/-", "₹345/-", "₹495/-", "₹795/-", "₹495/-",
+                    "₹795/-", "₹495/-", "₹795/-", "₹495/-", "₹795/-", "₹575/-", "₹495/-", "₹695/-",
+                  ].map((price, index) => (
                     <div className='text-menu' key={index}>
                       <label>{price}</label>
                     </div>
@@ -176,7 +266,7 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Bukhara'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Gulati' className='main'>
@@ -188,7 +278,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['CHICKEN SHORBA', 'CHICKEN CLEAR SOUP', 'HARYALI SHORBA', 'CREAM OF TOMATO', 'CREAM OF MUSHROOM'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Soups_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Soups_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Gulati'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -206,7 +296,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['PALAK PATTA CHAAT', 'PINEAPPLE RAITA', 'MINT RAITA', 'BOONDI RAITA', 'POTATO RAITA', 'CUCUMBER RAITA', 'MIX VEG RAITA', 'BOORANI RAITA', 'PLAIN RAITA', 'PLAIN CURD', 'KHATTI MEETHI DAHI', 'GREEN SALAD'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Salad_Dahi_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Salad_Dahi_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Gulati'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -228,7 +318,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['CHAACH', 'MANGO LASSI', 'SWEET LASSI', 'SALTED LASSI', 'GULKAND LASSI', 'PEANUT BUTTER BANANA LASSI', 'AAM KA PANNA', 'JALJEERA', 'NIMBU SHIKANJI', 'PHALSA KI SHIKANJI', 'FRESH LIME SODA', 'LEMON ICED TEA', 'PEACH ICED TEA', 'MASALA COKE', 'THUMPS UP', 'DIET COKE', 'SPRITE', 'PAAN GULKAND MOJITO', 'VIRGIN MOJITO', 'BLUE LAGOON', 'MASALA VIRGIN MOJITO', 'MASALA VIRGIN MOJITO/ TROPICAL FIZZ', 'TROPICAL FIZZ', 'CHOCOLATE OREO SHAKE', 'THANDAI'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Gulati'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -243,7 +333,7 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Gulati'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Karim' className='main'>
@@ -255,7 +345,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["QEEMA NAAN", "BAQARKHANI KULCHA", "ROGHNI NAAN", "PLAIN NAAN", "TANDOORI ROTI", "RUMALI ROTI"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -273,7 +363,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["BUTTER NAAN", "GARLIC NAAN", "PLAIN NAAN", "LACHHA PARATHA", "TANDOORI ROTI", "BUTTER ROTI"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Indian_Bread_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Indian_Bread_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -291,7 +381,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["KHEER BENAZEER", "GULAB JAMUN", "GAJAR KA HALWA", "SHAHI TUKDA"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Mithaas_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Mithaas_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -309,7 +399,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["SUBZ-E-KHAZANA(MIX VEG)", "KARAHI PANEER", "MALAI KOFTA", "PALAK PANEER", "DAL TADKA", "DAL MAKHANI", "SHAHI PANEER", "MIX RAITA", "BOONDI RAITA", "GREEN SALAD"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Bharatia_Pattal_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Bharatia_Pattal_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -327,7 +417,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["MURGH BIRYANI ANARKALI (HALF)", "MUTTON BIRYANI BAHISHTI (HALF)", "MURGH BIRYANI ANARKALI (FULL)", "MUTTON BIRYANI BAHISHTI (FULL)", "VEGETABLE PULAO", "STEAMED RICE", "JEERA RICE"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Pulao_Rice_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Pulao_Rice_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -345,7 +435,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["KARIM ROLL", "MURGH SEEKH ROLL", "FISH TIKKA ROLL(WINTER SEASON)", "MURGH TIKKA ROLL", "BOTI ROTI ROLL", "PANEER ROLL", "SHAMI KEBAB ROLL", "MURGH MALAI TIKKA ROLL", "SOYA CHAAP ROLL"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Rolls_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Rolls_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -363,7 +453,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["DIL PASAND SEEKH KEBAB(2PCS.)", "DIL PASAND SEEKH KEBAB(4PCS.)", "BEMISAL SHAMI KEBAB(2PCS.)", "BEMISAL SHAMI KEBAB(4PCS.)", "CHICKEN SEEKH KEBAB(2PCS.)", "CHICKEN SEEKH KEBAB(4PCS.)"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Kebab_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Kebab_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -381,7 +471,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["MURGH KA SHORBA(CHICKEN SOUP)", "GOSHT KA SHORBA(MUTTON SOUP)"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Shorba_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Shorba_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -443,7 +533,7 @@ function Selectionmenu() {
                     "KEEMA MATAR"
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -484,7 +574,7 @@ function Selectionmenu() {
                     "KARIM'S ASSORTED KEBAB PLATTER"
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -505,7 +595,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["SUBZI KA GARAM RAS(VEG. SOUP)", "TAMATAR KA GARAM RAS(TOMATO SOUP)"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Karim'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -520,19 +610,19 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Karim'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Rajinderdadhaba' className='main'>
         <div className="container-menu">
-        <div className='inside-container'>
+          <div className='inside-container'>
             <div className='main-main-menu'>
               <h1 className='menu-head'>TANDOORI</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER TIKKA (FULL)', 'PANEER TIKKA (HALF)'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Rajinderdadhaba'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -550,7 +640,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['WATER BOTTLE', 'KULAD KHEER'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Rajinderdadhaba'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -563,41 +653,12 @@ function Selectionmenu() {
                   ))}
                 </div>
               </div>
-            </div>
-            <div className='main-main-menu'>
-              <h1 className='menu-head'>ASLAM SPECIAL DAHI BUTTER GRAVY</h1>
-              <div className='main-menu'>
-                <div className='Breakfast_Combos'>
-                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
-                    <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Special_Dahi_Butter_Gravy_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
-                      <label>{item}</label>
-                    </div>
-                  ))}
-                </div>
-                <div className="amount">
-                  {['₹550/-', '₹280/-', '₹190/-', '₹300/-', '₹180/-', '₹730/-', '₹400/-', '₹250/-', '₹450/-', '₹250/-', '₹50/-'].map((price, index) => (
-                    <div className='text-menu' key={index}>
-                      <label>{price}</label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
-        </div>
-      </section>
-      <section id='Sagarratna' className='main'>
-        <div className="container-menu">
-          <div className='inside-container'>
-            <div className='main-main-menu'>
               <h1 className='menu-head'>BREAKFAST COMBO</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   {['8 RICE IDLI + 8 MEDU VADA', '4 RICE IDLI + 4 MEDU VADA + 2 MASALA DOSA', '4 RICE IDLI + 4 MEDU VADA', '2 RICE IDLI + 2 MEDU VADA + 1 MASALA DOSA'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Rajinderdadhaba'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -615,7 +676,100 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['MASALA DOSA COMBO', 'RAVA MASALA DOSA COMBO'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Rajinderdadhaba'} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹315/-', '₹345/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'> SPECIAL DAHI BUTTER GRAVY</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['CHICKEN (FULL)', 'CHICKEN (HALF)', 'CHICKEN (QUARTER)', 'CHICKEN KABAB (FULL)', 'CHIKEN KABAB (HALF)', 'FISH (FULL)', 'FISH (HALF)', 'FISH (QUARTER)', 'PANEER (FULL)', 'PANEER (HALF)', 'EXTRA GRAVY'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Rajinderdadhaba'} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹550/-', '₹280/-', '₹190/-', '₹300/-', '₹180/-', '₹730/-', '₹400/-', '₹250/-', '₹450/-', '₹250/-', '₹50/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>BREAD SELECTION</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {[
+                    'LEMON LEAF NAAN',
+                    'AMRITSARI KULCHA',
+                    'CAMEMBERT AND TRUFFLE NAAN',
+                    'GLUTEN FREE NAAN',
+                    'KHAMEERI ROTI',
+                    'BAJRA KI MISSI',
+                    'TANDOORI ROTI',
+                    'NARANGI SHEERMAL',
+                    'MANDUA ROTI'
+                  ].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Rajinderdadhaba'} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹300/-', '₹300/-', '₹300/-', '₹300/-', '₹270/-', '₹270/-', '₹230/-', '₹300/-', '₹250/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <button className="button_menu" disabled={window.location.hash !== '#Rajinderdadhaba'} onClick={finalitem}>Book</button>
+        </div>
+      </section>
+      <section id='Sagarratna' className='main'>
+        <div className="container-menu">
+          <div className='inside-container'>
+            <div className='main-main-menu'>
+              <h1 className='menu-head'>BREAKFAST COMBO</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['8 RICE IDLI + 8 MEDU VADA', '4 RICE IDLI + 4 MEDU VADA + 2 MASALA DOSA', '4 RICE IDLI + 4 MEDU VADA', '2 RICE IDLI + 2 MEDU VADA + 1 MASALA DOSA'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }} />
+                      <label>{item}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="amount">
+                  {['₹749/-', '₹749/-', '₹429/-', '₹429/-'].map((price, index) => (
+                    <div className='text-menu' key={index}>
+                      <label>{price}</label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <h1 className='menu-head'>MEAL COMBO</h1>
+              <div className='main-menu'>
+                <div className='Breakfast_Combos'>
+                  {['MASALA DOSA COMBO', 'RAVA MASALA DOSA COMBO'].map((item, index) => (
+                    <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -633,7 +787,7 @@ function Selectionmenu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SAGAR SPECIAL THALI" onChange={(e) => { getItem(e) }}></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="SAGAR SPECIAL THALI" disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                     <label> SAGAR SPECIAL THALI</label>
                   </div>
                 </div>
@@ -650,7 +804,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['EXECUTIVE THALI', 'DELUXE THALI'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -676,7 +830,7 @@ function Selectionmenu() {
                     'IDLI (1 PC) + VADA (2 PCS)'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index + 2}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index + 2}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -692,7 +846,7 @@ function Selectionmenu() {
                     'IDLI CHAAT - SMALL'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index + 9}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index + 9}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -719,7 +873,7 @@ function Selectionmenu() {
                     'GHEE ROAST PLAIN DOSA'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index + 13}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index + 13}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -750,7 +904,7 @@ function Selectionmenu() {
                         id={`Masala_Combo_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -792,7 +946,7 @@ function Selectionmenu() {
                         id={`Rava_Combo_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -834,7 +988,7 @@ function Selectionmenu() {
                         id={`Southern_Special_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -876,7 +1030,7 @@ function Selectionmenu() {
                         id={`Fusion_Dosa_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -915,7 +1069,7 @@ function Selectionmenu() {
                         id={`Chinese_Soup_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -952,7 +1106,7 @@ function Selectionmenu() {
                         id={`Chinese_Appetizer_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -991,7 +1145,7 @@ function Selectionmenu() {
                         id={`Chinese_MainCourse_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1029,7 +1183,7 @@ function Selectionmenu() {
                         id={`Noodles_Rice_${index + 1}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1056,9 +1210,9 @@ function Selectionmenu() {
               <h1 className='menu-head'>STARTERS</h1>
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
-                {["APLAM (SOUTH INDIAN PAPAD)", "RASAM (SMALL) + APLAM", "RASAM (FULL) + APLAM", "UPMA"].map((item, index) => (
+                  {["APLAM (SOUTH INDIAN PAPAD)", "RASAM (SMALL) + APLAM", "RASAM (FULL) + APLAM", "UPMA"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1076,6 +1230,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["PLAIN UTTAPAM", "TOMATO UTTAPAM", "ONION UTTAPAM", "COCONUT UTTAPAM", "TOMATO ONION UTTAPAM", "VEGETABLE UTTAPAM", "MIXED VEGETABLE UTTAPAM", "TOMATO COCONUT UTTAPAM"].map((item, index) => (
                     <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1093,6 +1248,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["LEMON RICE", "CURD RICE", "POORI BHAJI WITH KURMA", "VEGETABLE BIRYANI", "SAMBHAR RICE", "RASAM RICE"].map((item, index) => (
                     <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1112,6 +1268,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["TOMATO SOUP", "MIXED VEGETABLE SOUP"].map((item, index) => (
                     <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1129,6 +1286,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["VEGETABLE PAKORAS", "ASSORTED PAKORAS", "PANEER PAKORA", "VEG. SEEKH KEBAB", "HARA BHARA KEBA", "TANDOORI ALOO", "PANEER TIKKA", "ACHARI PANEER TIKKA", "TAWA CHANA KEBAB (WITH CURD DIP)", "TANDOORI PINEAPPLE", "SOYA MALAI TIKKA"].map((item, index) => (
                     <div className='text-menu' key={index}>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1145,7 +1303,7 @@ function Selectionmenu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TANDOORI PLATTER" onChange={(e) => { getItem(e) }}></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TANDOORI PLATTER" disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                     <label> TANDOORI PLATTER</label>
                   </div>
                 </div>
@@ -1162,7 +1320,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["SAGAR SPECIAL YELLOW DAL TADKA", "DAL MAKHANI", "BHINDI DO PYAZA", "MIXED VEGETABLES", "JEERA ALOO", "GOBHI MASALA", "CHANA MASALA", "DUM ALOO", "ALOO GOBHI", "NAVRATAN KORMA", "MALAI KOFTA", "MUSHROOM MASALA", "MUTTER MUSHROOM", "MUTTER MALAI METHI", "PANEER DO PYAZA", "SHAHI PANEER", "PALAK PANEER", "KADHAI PANEER", "PANEER LABABDAR", "PANEER TIKKA MASALA", "PANEER BUTTER MASALA", "PINDI CHANA", "MUSHROOM HARA PYAAZ", "KADHAI CHAAP", "BUTTER MASALA CHAAP", "PANEER HARA PYAAZ", "METHI PANEER", "Paneer Butter Masala"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Main_Course_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <input type="checkbox" id={`Main_Course_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1180,7 +1338,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["PAPAD", "CGREEN SALAD", "MIXED RAITA", "BOONDI RAITA", "PINEAPPLE RAITA"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Sangi_Saathi_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <input type="checkbox" id={`Sangi_Saathi_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1198,7 +1356,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["TANDOORI ROTI", "TANDOORI BUTTER ROTI", "PLAIN NAAN", "BUTTER NAAN", "STUFFED NAAN", "GARLIC NAAN", "PUDINA PARATHA", "LACHHA PARANTHA", "MISSI ROTI", "Onion Kulcha", "Aloo Kulcha", "PANEER KULCHA", "LEHSUNI MIRCHI PARANTHA"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Tandoor_Se_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <input type="checkbox" id={`Tandoor_Se_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1216,7 +1374,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["STEAMED RICE", "JEERA RICE", "VEGETABLE PULAO", "KASHMIRI PULAO", "PEAS PULAO"].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Rice_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <input type="checkbox" id={`Rice_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1234,7 +1392,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {["SWEET LASSI", "SALTED LASSI", "GULAB JAMUN (TWO PCS)", "RAVA KESARI - SMALL", "RAVA KESARI -  FULL", "GULAB JAMUN - SINGLE "].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }}></input>
+                      <input type="checkbox" id={`Desserts_Beverages_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sagarratna'} onChange={(e) => { getItem(e) }}></input>
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1249,7 +1407,7 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Sagarratna'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Sandoz' className='main'>
@@ -1282,7 +1440,7 @@ function Selectionmenu() {
                         id={`Breakfast_Combo_${index}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1318,7 +1476,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['DAHI KE SHALAY', 'PALAK PATTA CHAAT', 'MUSHROOM TIKKA', 'MALAI CHAAP', 'PANEER TIKKA PAPAD', 'PANEER TIKKA', 'ACHARI CHAAP'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1336,7 +1494,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['CHICKEN TIKKA ROLL', 'CHICKEN SEEKH ROLL', 'MUTTON SEEKH ROLL', 'CHICKEN MALAI TIKKA ROLL', 'ACHARI CHAAP ROLL', 'MALAI CHAAP ROLL', 'PANEER TIKKA ROLL'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1354,7 +1512,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['KEEMA MUTTON', 'ROGAN JOSH', 'MUTTON CURRY', 'HANDI MUTTON', 'KEEMA CURRY', 'KARACHI MUTTON', 'MEAT SAAGWALA'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1372,7 +1530,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['DAHI KE SHALAY', 'PALAK PATTA CHAAT', 'MUSHROOM TIKKA', 'MALAI CHAAP'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1412,7 +1570,7 @@ function Selectionmenu() {
                         id={`Breakfast_Combo_${index}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1459,7 +1617,7 @@ function Selectionmenu() {
                         id={`Breakfast_Combo_${index}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1490,7 +1648,7 @@ function Selectionmenu() {
                         id={`Breakfast_Combo_${index}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1523,7 +1681,7 @@ function Selectionmenu() {
                         id={`Breakfast_Combo_${index}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1557,7 +1715,7 @@ function Selectionmenu() {
                         id={`Breakfast_Combo_${index}`}
                         name="fav_language"
                         value={item}
-                        onChange={(e) => { getItem(e) }}
+                        disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }}
                       />
                       <label>{item}</label>
                     </div>
@@ -1591,7 +1749,7 @@ function Selectionmenu() {
                     'CHICKEN SEEKH KEBABA'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Chicken_Starter_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Chicken_Starter_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1611,7 +1769,7 @@ function Selectionmenu() {
                 <div className='Breakfast_Combos'>
                   {['LEMON FISH', 'CHILLI FISH', 'FISH TIKKA(PER PLATE)', 'FISH MALAI TIKKA(PER PLATE)', 'FISH FRY AMRITSARI(PER PLATE)'].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1670,7 +1828,7 @@ function Selectionmenu() {
                     'EGG CURRY'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Chicken_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Chicken_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1694,7 +1852,7 @@ function Selectionmenu() {
                     "LACHCHA PARANTHA", "BUTTER GARLIC NAAN", "PUDINA PARANTHA", "MIRCHI PARANTHA",
                     "STUFFED PARANTHA", "AJWAIN PARANTHA", "STUFFED NAAN", "KEEMA NAAN(WITH GRAVY)"].map((item, index) => (
                       <div className='text-menu' key={index}>
-                        <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                        <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                         <label>{item}</label>
                       </div>
                     ))}
@@ -1715,7 +1873,7 @@ function Selectionmenu() {
                     "GINGER/GARLIC NOODLES(VEG)", "GINGER/GARLIC NOODLES(NON-VEG)", "SINGAPUR STYLE NOODLES(VEG)",
                     "SINGAPUR STYLE NOODLES(NON-VEG)"].map((item, index) => (
                       <div className='text-menu' key={index}>
-                        <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                        <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                         <label>{item}</label>
                       </div>
                     ))}
@@ -1736,7 +1894,7 @@ function Selectionmenu() {
                     "EGG FRIED RICE", "GINGER/GARLIC FRIED RICE(VEG)", "GINGER/GARLIC FRIED RICE(NON-VEG)",
                     "SCHEZWAN FRIED RICE(VEG)", "SCHEZWAN FRIED RICE(NON-VEG)"].map((item, index) => (
                       <div className='text-menu' key={index}>
-                        <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                        <input type="checkbox" id={`Fish_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Sandoz'} onChange={(e) => { getItem(e) }} />
                         <label>{item}</label>
                       </div>
                     ))}
@@ -1751,7 +1909,7 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Sandoz'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <section id='Varq' className='main'>
@@ -1772,7 +1930,7 @@ function Selectionmenu() {
                     'DHUNGAR PATTHAR KE KEBAB'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1800,7 +1958,7 @@ function Selectionmenu() {
                     'CHILLED MASALA POT'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Breakfast_Combo_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1823,7 +1981,7 @@ function Selectionmenu() {
                     'KHUMB NIMBU KA RASSA'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Soup_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Soup_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1845,7 +2003,7 @@ function Selectionmenu() {
                     'BURRANI RAITA'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Raita_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Raita_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1873,7 +2031,7 @@ function Selectionmenu() {
                     'MANDUA ROTI'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Bread_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Bread_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1896,7 +2054,7 @@ function Selectionmenu() {
                     'ANASPHAL'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Tisane_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Tisane_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1917,7 +2075,7 @@ function Selectionmenu() {
                     'TAJ FILTER COFFEE 100% ARABICA'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Coffee_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Coffee_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1945,7 +2103,7 @@ function Selectionmenu() {
                     'SAFEDA LAMB BIRYANI'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`NonVeg_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`NonVeg_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1972,7 +2130,7 @@ function Selectionmenu() {
                     'GUCCHI CHOLE PULAO'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Veg_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Veg_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -1997,7 +2155,7 @@ function Selectionmenu() {
                     'PAPAD KA KHAZANA'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Accompaniment_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Accompaniment_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -2026,7 +2184,7 @@ function Selectionmenu() {
                     'TRIO OF INDIAN ICE CREAMS'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Dessert_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Dessert_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -2043,7 +2201,7 @@ function Selectionmenu() {
               <div className='main-menu'>
                 <div className='Breakfast_Combos'>
                   <div className='text-menu'>
-                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TAJ BLEND" onChange={(e) => { getItem(e) }}></input>
+                    <input type="checkbox" id="Breakfast_Combo" name="fav_language" value="TAJ BLEND" disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }}></input>
                     <label> TAJ BLEND</label>
                   </div>
                 </div>
@@ -2065,7 +2223,7 @@ function Selectionmenu() {
                     'KESAR KI KAHANI'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Desi_Chai_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Desi_Chai_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -2087,7 +2245,7 @@ function Selectionmenu() {
                     'VAN GULAB'
                   ].map((item, index) => (
                     <div className='text-menu' key={index}>
-                      <input type="checkbox" id={`Cleanser_Item_${index}`} name="fav_language" value={item} onChange={(e) => { getItem(e) }} />
+                      <input type="checkbox" id={`Cleanser_Item_${index}`} name="fav_language" value={item} disabled={window.location.hash !== '#Varq'} onChange={(e) => { getItem(e) }} />
                       <label>{item}</label>
                     </div>
                   ))}
@@ -2102,7 +2260,7 @@ function Selectionmenu() {
               </div>
             </div>
           </div>
-          <button className="button_menu" onClick={finalitem}>Book</button>
+          <button className="button_menu" disabled={window.location.hash !== '#Varq'} onClick={finalitem}>Book</button>
         </div>
       </section>
       <Footer />

@@ -112,14 +112,6 @@ function AslamChicken() {
       }
   }, [date,timeSlots]);
 
-  
-  //   if (initialSelection.current) {
-  //     initialSelection.current = false;
-  //   } else {
-  //     window.location.reload();
-  //   }
-  //   setSelectedValue(e.target.value);
-  // };
 
   // Fetch bookings whenever selectedDate or selectedTime changes
 
@@ -209,11 +201,6 @@ function AslamChicken() {
     backgroundColor: selectedSeat.includes(seatId) ? 'green' : '',
   });
   const handleChange = (e) => {
-    // if (initialSelection.current) {
-    //   initialSelection.current = false;
-    // } else {
-    //   window.location.reload();
-    // }
     setSelectedValue(e.target.value);
   };
 

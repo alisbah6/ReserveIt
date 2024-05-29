@@ -50,77 +50,91 @@ function OrderPopup() {
         }
     };
     // const submit = () => {
-    //     const restrauntname = localStorage.getItem("restraunt")
-    //     localStorage.setItem("contact", contact);
-    //     const contlen=contact.length;
-    //     if(contlen===13){
+    //     const restrauntname = localStorage.getItem("restraunt");
+    //     console.log("Restaurant Name from localStorage:", restrauntname);
+
     //     switch (restrauntname) {
     //         case 'Aslam Chicken':
+    //             console.log("Navigating to Aslam Chicken");
     //             navigate(`/Selectionmenu#Aslamchicken`);
     //             break;
     //         case 'Bukhara':
+    //             console.log("Navigating to Bukhara");
     //             navigate(`/Selectionmenu#Bukhara`);
     //             break;
     //         case 'Gulati':
+    //             console.log("Navigating to Gulati");
     //             navigate(`/Selectionmenu#Gulati`);
     //             break;
     //         case "Karim's":
+    //             console.log("Navigating to Karim's");
     //             navigate(`/Selectionmenu#Karim`);
     //             break;
-    //         case 'Rajinder Da Dhaba':
+    //         case 'Rajender Da Dhaba':
+    //             console.log("Navigating to Rajinder Da Dhaba");
     //             navigate(`/Selectionmenu#Rajinderdadhaba`);
     //             break;
     //         case 'Sagar Ratna':
+    //             console.log("Navigating to Sagar Ratna");
     //             navigate(`/Selectionmenu#Sagarratna`);
     //             break;
     //         case 'Sandoz':
+    //             console.log("Navigating to Sandoz");
     //             navigate(`/Selectionmenu#Sandoz`);
     //             break;
     //         case 'Varq':
+    //             console.log("Navigating to Varq");
     //             navigate(`/Selectionmenu#Varq`);
     //             break;
     //         default:
+    //             console.log("Navigating to default");
     //             navigate(`/Selectionmenu`);
     //             break;
     //     }
     // }
-    // else{
-    //     setMessage("Invalid Number");
-    // }
-    // }
-
     const handleVerifyCode = async () => {
         try {
             const credential = firebase.auth.PhoneAuthProvider.credential(verificationId, verificationCode);
             const restrauntname = localStorage.getItem("restraunt")
             await firebase.auth().signInWithCredential(credential);
             setMessage('Phone number verified successfully.');
+            console.log("Restaurant Name from localStorage:", restrauntname);
+
             switch (restrauntname) {
                 case 'Aslam Chicken':
+                    console.log("Navigating to Aslam Chicken");
                     navigate(`/Selectionmenu#Aslamchicken`);
                     break;
                 case 'Bukhara':
+                    console.log("Navigating to Bukhara");
                     navigate(`/Selectionmenu#Bukhara`);
                     break;
                 case 'Gulati':
+                    console.log("Navigating to Gulati");
                     navigate(`/Selectionmenu#Gulati`);
                     break;
                 case "Karim's":
+                    console.log("Navigating to Karim's");
                     navigate(`/Selectionmenu#Karim`);
                     break;
-                case 'Rajinder Da Dhaba':
+                case 'Rajender Da Dhaba':
+                    console.log("Navigating to Rajinder Da Dhaba");
                     navigate(`/Selectionmenu#Rajinderdadhaba`);
                     break;
                 case 'Sagar Ratna':
+                    console.log("Navigating to Sagar Ratna");
                     navigate(`/Selectionmenu#Sagarratna`);
                     break;
                 case 'Sandoz':
+                    console.log("Navigating to Sandoz");
                     navigate(`/Selectionmenu#Sandoz`);
                     break;
                 case 'Varq':
+                    console.log("Navigating to Varq");
                     navigate(`/Selectionmenu#Varq`);
                     break;
                 default:
+                    console.log("Navigating to default");
                     navigate(`/Selectionmenu`);
                     break;
             }
@@ -130,37 +144,38 @@ function OrderPopup() {
         }
     };
     const seat = localStorage.getItem("seats");
+
     return (
         <div>
             <div id="popup1" class="overlay" >
                 <div class="popup">
-                        <form onSubmit={(e) => e.preventDefault()}>
-                            <a className="popup-close" href="##" onClick={(e) => { e.preventDefault(); window.history.go(-1); }}>&times;</a>
-                            <p className='want'>Total No. Of Seats Selected</p>
-                            <div classname="buttonIn">
-                                <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seat} ></input>
-                            </div>
-                            <div id="recaptcha-container"></div>
-                            <div>
-                                <p className='want'>Enter Your Contact Number</p>
-                                <div className='phone-sign'>
-                                    <input className='phone-sign-input' type="tel"
-                                        placeholder="Enter phone number"
-                                        value={contact}
-                                        onChange={(e) => setContact(e.target.value)} />
-                                    <div className='send-phone-otp'>
-                                        <input type="text"
-                                            placeholder="Enter code"
-                                            value={verificationCode}
-                                            onChange={(e) => setVerificationCode(e.target.value)} />
-                                        <button className='send-phone-otp-button' onClick={handleSendCode}>Send OTP</button>
-                                    </div>
-                                    <button className='send-phone-verify-button' onClick={handleVerifyCode}>Verify OTP</button>
-                                    <p>{message}</p>
+                    <form onSubmit={(e) => e.preventDefault()}>
+                        <a className="popup-close" href="##" onClick={(e) => { e.preventDefault(); window.history.go(-1); }}>&times;</a>
+                        <p className='want'>Total No. Of Seats Selected</p>
+                        <div classname="buttonIn">
+                            <input type="number" disabled="disabled" className="seats-inbox" id='seats' value={seat} ></input>
+                        </div>
+                        <div id="recaptcha-container"></div>
+                        <div>
+                            <p className='want'>Enter Your Contact Number</p>
+                            <div className='phone-sign'>
+                                <input className='phone-sign-input' type="tel"
+                                    placeholder="Enter phone number"
+                                    value={contact}
+                                    onChange={(e) => setContact(e.target.value)} />
+                                <div className='send-phone-otp'>
+                                    <input type="text"
+                                        placeholder="Enter code"
+                                        value={verificationCode}
+                                        onChange={(e) => setVerificationCode(e.target.value)} />
+                                    <button className='send-phone-otp-button' onClick={handleSendCode}>Send OTP</button>
                                 </div>
+                                <button className='send-phone-verify-button' onClick={handleVerifyCode}>Verify OTP</button>
+                                <p className='message'>{message}</p>
                             </div>
-                            {/* <button className='send-phone-verify-button' onClick={submit}>Verify OTP</button> */}
-                        </form>
+                        </div>
+                        {/* <button className='send-phone-verify-button' onClick={submit}>Verify OTP</button> */}
+                    </form>
                 </div>
             </div >
         </div>

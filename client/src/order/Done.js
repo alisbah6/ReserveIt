@@ -23,7 +23,8 @@ function Done() {
           <i class="checkmark">✓</i>
         </div>
         <h1 className='h-done '>Success</h1>
-        <p className='p-done'>Booking Confirmation Email has been sent to {useremail} </p>
+        <p className='p-done'>Booking Confirmed</p>
+        <p className='p-done'>Email has been sent to {useremail} </p>
         <a className="popup-goes" onClick={fresh}>Thank You</a>
       </div>
     </div>

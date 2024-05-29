@@ -72,3 +72,14 @@
   }
 
 
+  .button_menu[disabled] {
+    /* Styles for the disabled state */
+    background-color: #8ecae6; /* Light gray */
+    cursor: not-allowed;
+  }
+  
+  .button_menu[disabled]:hover {
+    /* Override hover effect for disabled state */
+    background-color: #8ecae6; /* Light gray */
+}
+
