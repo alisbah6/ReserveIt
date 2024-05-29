@@ -189,6 +189,10 @@ const feedback = async (req, res) => {
             return res.status(400).json({ message: "Message is required" });
         }
 
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ message: "Invalid email format" });
+        }
+
         const newUserFeedback = await Feedback.create({
             name,
             email: email,
