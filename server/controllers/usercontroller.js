@@ -1,7 +1,7 @@
 const User = require("../model/userSchema");
 const Feedback = require("../model/feedbackSchema");
 const Submission = require("../model/datasubmission");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
 

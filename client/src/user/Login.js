@@ -21,27 +21,28 @@ function Login() {
       return; // Exit the function if either field is empty
     }
   
-    if (email === "admin" && password === "0987654321") {
-      login();
-      navigate("/AdminPage");
-    } else {
-      try {
-        const res = await axios.get("http://localhost:3500/user/login", {
-          params: {
-            email,
-            password,
-          },
-        });
-        if (res.status === 200) {
-          login();
-          navigate("/Home");
-        }
-      } catch (error) {
-        if (error.response && error.response.data && error.response.data.message) {
-          alert(error.response.data.message);
-      } else {
-          alert('An unexpected error occurred. Please try again.');
+    try {
+      const res = await axios.get("http://localhost:3500/user/login", {
+        params: {
+          email,
+          password,
+        },
+      });
+  
+      if (res.status === 200) {
+        const { token } = res.data;
+        login(token); // Pass the token to the login function
+        navigate("/Home");
       }
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        alert(err.response.data.message); // Display specific error messages from the server
+      } else if (err.response && err.response.status === 401) {
+        alert(err.response.data.message);
+      } else if (err.response && err.response.status === 500) {
+        alert("Something went wrong");
+      } else {
+        alert("An unexpected error occurred");
       }
     }
   

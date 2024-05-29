@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './order-popup.css'
 import { } from 'react-router-dom'
-import { useAuth } from '../user/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -9,7 +8,6 @@ import 'firebase/compat/auth';
 
 
 function OrderPopup() {
-    const { isLoggedIn } = useAuth();
     const [contact, setContact] = useState('+91');
     const navigate = useNavigate();
     const [verificationCode, setVerificationCode] = useState('');
@@ -32,24 +30,24 @@ function OrderPopup() {
 
 
     const handleSendCode = async () => {
-        const contlen=contact.length;
-        if(contlen===13){
-        try {
-            const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                size: 'invisible',
-            });
-            const confirmation = await firebase.auth().signInWithPhoneNumber(contact, recaptchaVerifier);
-            setVerificationId(confirmation.verificationId);
-            setMessage('Verification code sent to your phone.');
-            localStorage.setItem("contact", contact);
-        } catch (error) {
-            console.error('Error sending code:', error);
-            setMessage('Error sending code. Please check the phone number.');
+        const contlen = contact.length;
+        if (contlen === 13) {
+            try {
+                const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                    size: 'invisible',
+                });
+                const confirmation = await firebase.auth().signInWithPhoneNumber(contact, recaptchaVerifier);
+                setVerificationId(confirmation.verificationId);
+                setMessage('Verification code sent to your phone.');
+                localStorage.setItem("contact", contact);
+            } catch (error) {
+                console.error('Error sending code:', error);
+                setMessage('Error sending code. Please check the phone number.');
+            }
         }
-    }
-    else{
-        setMessage("Invalid Number.")
-    }
+        else {
+            setMessage("Invalid Number.")
+        }
     };
     // const submit = () => {
     //     const restrauntname = localStorage.getItem("restraunt")
@@ -136,7 +134,6 @@ function OrderPopup() {
         <div>
             <div id="popup1" class="overlay" >
                 <div class="popup">
-                    {isLoggedIn ? (
                         <form onSubmit={(e) => e.preventDefault()}>
                             <a className="popup-close" href="##" onClick={(e) => { e.preventDefault(); window.history.go(-1); }}>&times;</a>
                             <p className='want'>Total No. Of Seats Selected</p>
@@ -164,9 +161,6 @@ function OrderPopup() {
                             </div>
                             {/* <button className='send-phone-verify-button' onClick={submit}>Verify OTP</button> */}
                         </form>
-                    ) : (
-                        <p className='please-log'>Please login in this site for Booking.</p>
-                    )}
                 </div>
             </div >
         </div>
