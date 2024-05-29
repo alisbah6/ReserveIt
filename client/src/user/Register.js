@@ -38,8 +38,11 @@ function Register() {
                 navigate("/Popup", { state: { name: name } });
             }
         } catch (error) {
-            // Handle registration errors
-            console.error("Error registering user:", error);
+            if (error.response && error.response.data && error.response.data.message) {
+                alert(error.response.data.message);
+            } else {
+                alert("An unexpected error occurred. Please try again.");
+            }
         }
     };
     return (
@@ -74,7 +77,7 @@ function Register() {
                         }}></input>
                         <button className="button-reg" onClick={submit}>Register</button>
                         <div className="extra-reg">
-                            <Link to="/Login" className="log">Already have a account?</Link>
+                            <Link to="/Login" className="log">Already have an account?</Link>
                         </div>
                     </form>
                 </div>

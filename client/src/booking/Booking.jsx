@@ -16,7 +16,7 @@ function Booking() {
   return (
     <div>
       <Navbar />
-      <p className='heading'>Restraunts Booking</p>
+      <p className='heading'>Restaurants Booking</p>
       <div className='fix'>
       <div class="hotel-container">
         <div class="main-container">

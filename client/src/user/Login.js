@@ -36,12 +36,12 @@ function Login() {
           login();
           navigate("/Home");
         }
-      } catch (err) {
-        if (err.request.status === 401) {
-          alert(err.response.data.message);
-        } else if (err.request.status === 500) {
-          alert("Something went wrong");
-        }
+      } catch (error) {
+        if (error.response && error.response.data && error.response.data.message) {
+          alert(error.response.data.message);
+      } else {
+          alert('An unexpected error occurred. Please try again.');
+      }
       }
     }
   
@@ -49,6 +49,7 @@ function Login() {
   }
 
   function navigateToOtp() {
+    try{
     if (email) {
       const OTP = Math.floor(Math.random() * 9000 + 1000);
       console.log(OTP);
@@ -65,6 +66,14 @@ function Login() {
     }
     setIsLoading(false);
     return alert("Please enter your email");
+  }
+  catch(error){
+    if (error.response && error.response.data && error.response.data.message) {
+      alert(error.response.data.message);
+  } else {
+      alert('An unexpected error occurred. Please try again.');
+  }
+  }
   }
 
 

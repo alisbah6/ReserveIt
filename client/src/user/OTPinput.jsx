@@ -18,7 +18,7 @@ const OTPinput = () => {
           recipient_email: email,
         })
         .then(() => setDisable(true))
-        .then(() => alert("A new OTP has succesfully been sent to your email."))
+        .then(() => alert("A new OTP has successfully been sent to your email."))
         .then(() => setTimer(60))
         .catch(console.log);
     }
@@ -125,7 +125,7 @@ const OTPinput = () => {
           <button className="verify_button" onClick={() => verfiyOTP()}>Verify Account</button>
         </div>
         <div>
-          <p className='otp-p'>Didn't recieve code?</p>{" "}
+          <p className='otp-p'>Didn't receive code?</p>{" "}
           <a className='resend'
             style={{
               color: disable ? "gray" : "blue",

@@ -62,7 +62,7 @@ const FinalItem = () => {
         );
         if (response.status === 201) {
           // User registration was successful
-          console.log("Data Submitted Successfull");
+          console.log("Data Submitted Successfully");
           // Redirect or perform other actions as needed
           alert("Booking has been confirmed");
           setIsLoading(true);
@@ -140,7 +140,7 @@ const FinalItem = () => {
       <form>
         <hr />
         <div className='book_lable'>
-          <label>Please read the Terms And Conditon Below</label>
+          <label>Please read the Terms And Condition Below</label>
         </div>
         <div className='book_lable'>
           <input type='checkbox' id="myCheckbox" />
@@ -155,7 +155,7 @@ const FinalItem = () => {
           <label className='book_lable'>Service Charge 5% and GST 18% included</label>
         </div>
         <div className='book_lable'>
-          <label>click the check box to confirm Terms And Conditon.</label>
+          <label>click the checkbox to confirm Terms And Condition.</label>
         </div>
       </form>
       <button className='book_button' onClick={submit}>Book Now</button> 

@@ -4,9 +4,6 @@ const Submission = require("../model/datasubmission");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const validator = require('validator');
-const { v4: uuidv4 } = require('uuid');
-
-
 
 /*  function to login:
 
@@ -41,16 +38,6 @@ const login = async (req, res) => {
         }
         //comparing the password
         const isMatched = await bcrypt.compare(password, user.password);
-        //generating token
-        // token=jwt.sign(user,secretKey,{expiresIn:'1h'},(err,token)=>{
-        //     res.json(token)
-        // }); 
-        // token = user.generateAuthToken();
-        // console.log(token);
-        // res.cookie("jwtoken", token, {
-        //     expires: new Date(Date.now() + 25892000000),
-        //     httpOnly: true
-        // });
         if (!isMatched) {
             return res.status(401).json({ message: "Incorrect Password" });
         }
@@ -148,13 +135,14 @@ const signup = async (req, res) => {
             return res.status(400).json({ message: "Password must be exactly 8 characters long and contain at least one lowercase letter, one uppercase letter, and one number" });
         }
 
-        //   checking for any duplicate email
-        const duplicateEmail = await User.findOne({ emailID: email });
-        if (duplicateEmail) {
-            return res
-                .status(401)
-                .json({ message: "This email has been already used" });
-        }
+       // Normalize email to lowercase
+       const normalizedEmail = email.toLowerCase().trim();
+
+       // Check for duplicate email
+       const duplicateEmail = await User.findOne({ emailID: normalizedEmail });
+       if (duplicateEmail) {
+           return res.status(401).json({ message: "This email has already been used" });
+       }
 
         const encryptedPassword = await bcrypt.hash(password, 10);
 
@@ -168,17 +156,21 @@ const signup = async (req, res) => {
         const newUser = await User.create({
             name,
             username,
-            email: email,
+            email: normalizedEmail,
             password: encryptedPassword,
             confirmpassword: encryptedPassword,
         });
 
         if (newUser) {
-            return res.status(201).json(newUser);
+            return res.status(201).json({ message: "User registered successfully", user: newUser });
         }
     } catch (err) {
+        if (err.code === 11000) {
+            // Duplicate key error
+            return res.status(409).json({ message: "This email has already been used" });
+        }
         console.log(err);
-        return res.status(500);
+        return res.status(500).json({ message: "Internal server error" });
     }
 
 };
