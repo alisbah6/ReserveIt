@@ -14,7 +14,6 @@ function Register() {
 
     const submit = async (e) => {
         e.preventDefault();
-
         try {
             // Make an API request to create a new user
             const response = await axios.post("http://localhost:3500/user/signup", {

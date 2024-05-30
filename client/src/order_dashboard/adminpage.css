@@ -44,6 +44,12 @@
     box-sizing: border-box;
   }
 
+  .flex-items {
+    flex: 0 0 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    color: red;
+  }
 .order-time{
     text-align: right;
     margin: 10px 10px 0px 0px;
@@ -105,4 +111,15 @@
     cursor: pointer;
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 4px rgba(8,7,16,0.6);   
+}
+.select_rest_branch{
+    margin-left: 27%;
+    margin-top: 15%;
+    color: darkblue;
+}
+.msg{
+    font-size: large;
+    color: darkblue;
+    margin-top: 15%;
+    margin-left: 38%;
 }

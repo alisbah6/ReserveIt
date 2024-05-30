@@ -7,10 +7,11 @@ import Adminnavbar from './Adminnavbar';
 function Adminpage() {
   const [entries, setEntries] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [selectBranch, setBranchOption] = useState();
   const [selectedBranch, setSelectedBranch] = useState();
+  const [branchOptions, setBranchOptions] = useState([]);
+  const [filteredDatas, setFilteredData] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
-  const [show,setshow]=useState(false);
+  const [show,setShow]=useState();
   useEffect(() => {
     const fetchAllResponses = async () => {
       try {
@@ -40,100 +41,110 @@ function Adminpage() {
 
   const handleSelectChange = (selectedOption) => {
     setSelectedOption(selectedOption);
-    let branchOptions = [];
+    let newBranchOptions = [];
     if (selectedOption) {
-      if (selectedOption.value === "Aslam Chicken") {
-        branchOptions = [
-          { value: "ChandniChowk", label: "Chandni Chowk" },
-          { value: "BatlaHouse", label: "Batla House" }
-        ];
+      switch (selectedOption.value) {
+        case "Aslam Chicken":
+          newBranchOptions = [
+            { value: "ChandniChowk", label: "Chandni Chowk" },
+            { value: "BatlaHouse", label: "Batla House" }
+          ];
+          break;
+        case "Bukhara":
+          newBranchOptions = [
+            { value: "ITCMaurya", label: "ITC Maurya" }
+          ];
+          break;
+        case "Gulati":
+          newBranchOptions = [
+            { value: "Pandara", label: "Pandara" }
+          ];
+          break;
+        case "Karim's":
+          newBranchOptions = [
+            { value: "GreenPark", label: "Green Park" },
+            { value: "Jasola", label: "Jasola" },
+            { value: "Nizamuddin", label: "Nizamuddin" },
+            { value: "DLFAvenue", label: "DLF Avenue, Saket" },
+            { value: "JamaMasjid", label: "Jama Masjid" }
+          ];
+          break;
+        case "Rajender Da Dhaba":
+          newBranchOptions = [
+            { value: "Safdarjung", label: "Safdarjung Enclave" }
+          ];
+          break;
+        case "Sagar Ratna":
+          newBranchOptions = [
+            { value: "DefenceColony", label: "Defence Colony" },
+            { value: "PreetVihar", label: "Preet Vihar" },
+            { value: "MasjidMoth", label: "Masjid Moth" },
+            { value: "NarainaVihar", label: "Naraina Vihar" },
+            { value: "PaschimVihar", label: "Paschim Vihar" }
+          ];
+          break;
+        case "Sandoz":
+          newBranchOptions = [
+            { value: "ConnaughtPlace", label: "Connaught Place" },
+            { value: "KarolBagh", label: "Karol Bagh" },
+            { value: "LajpatNagar", label: "Lajpat Nagar" },
+            { value: "RajouriGarden", label: "Rajouri Garden" },
+            { value: "Jasola", label: "Jasola" }
+          ];
+          break;
+        case "Varq":
+          newBranchOptions = [
+            { value: "TajMahal", label: "Taj Mahal Hotel" }
+          ];
+          break;
+        default:
+          newBranchOptions = [];
       }
-      else if (selectedOption.value === "Bukhara") {
-        branchOptions = [
-          { value: "ITCMaurya", label: "ITC Maurya" },
-        ]
-      }
-      else if (selectedOption.value === "Gulati") {
-        branchOptions = [
-          { value: "Pandara", label: "Pandara" }
-        ]
-      }
-      else if (selectedOption.value === "Karim's") {
-        branchOptions = [
-          { value: "GreenPark", label: "Green Park" },
-          { value: "Jasola", label: "Jasola" },
-          { value: "Nizamuddin", label: "Nizamuddin" },
-          { value: "DLFAvenue", label: "DLF Avenue,Saket" },
-          { value: "Jama Masjid", label: "Jama Masjid" },
-        ]
-      }
-      else if (selectedOption.value === "Rajender Da Dhaba") {
-        branchOptions = [
-          { value: "SafdarjungEnclave", label: "Safdarjung Enclave" },
-        ]
-      }
-      else if (selectedOption.value === "Sagar Ratna") {
-        branchOptions = [
-          { value: "DefenceColony", label: "Defence Colony" },
-          { value: "PreetVihar", label: "Preet Vihar" },
-          { value: "MasjidMoth", label: "Masjid Moth" },
-          { value: "NarainaVihar", label: "Naraina Vihar" },
-          { value: "PaschimVihar", label: "Paschim Vihar" },
-        ]
-      }
-      else if (selectedOption.value === "Sandoz") {
-        branchOptions = [
-          { value: "ConnaughtPlace", label: "Connaught Place" },
-          { value: "KarolBagh", label: "Karol Bagh" },
-          { value: "LajpatNagar", label: "Lajpat Nagar" },
-          { value: "RajouriGarden", label: "Rajouri Garden" },
-          { value: "Jasola", label: "Jasola" },
-        ]
-      }
-      else if (selectedOption.value === "Varq") {
-        branchOptions = [
-          { value: "TajMahal", label: "Taj Mahal Hotel" },
-        ]
-      }
-      else { branchOptions = []; }
     }
-    setBranchOption(branchOptions);
+    setBranchOptions(newBranchOptions);
     setSelectedBranch(null);
   };
-  //filter by branch
+
   const handleBranchChange = (selectedBranch) => {
     setSelectedBranch(selectedBranch);
   };
+  const handleFilter = () => {
+    const filterData=filtered.filter(item=>{
+      return item.Restraunt.includes(selectedOption.value) && 
+      item.BranchName.includes(selectedBranch.value)
+    })
+    setFilteredData(filterData);
+    setShow(true);
+  };
+  const filtered = (selectedOption && selectedBranch)
+      ? entries.filter(item =>
+          item.Restraunt.includes(selectedOption.value) &&
+          item.BranchName.includes(selectedBranch.value)
+        ):filteredItems
   //filter by date
-const handleDate=()=>{  
-  const today = new Date();
-const filteredItems = (selectedOption && selectedBranch)?entries.filter(item => {
-  // Convert item date string to a Date object
-  const itemDate = new Date(item.date);
-  // Checking item's date matches today's date
-  return itemDate.toDateString() === today.toDateString()&&
-  item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase()) &&
-      item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
-}):[];
-setFilteredItems(filteredItems);
-setshow(true);
-}
-
-  const filteredData = (selectedOption && selectedBranch)
-    ? entries.filter(item =>
-      item.Restraunt.toLowerCase().includes(selectedOption.value.toLowerCase()) &&
-      item.BranchName.toLowerCase().includes(selectedBranch.value.toLowerCase())
-    )
-    : entries;
-
+  const handleDate = () => {
+    const today = new Date();
+    const filteredItemsByDate = filtered.filter(item => {
+      const itemDate = new Date(item.date);
+      return today.getFullYear() === itemDate.getFullYear() &&
+      today.getMonth() === itemDate.getMonth() &&
+      today.getDate() === itemDate.getDate();
+    });
+    setFilteredItems(filteredItemsByDate);
+    setShow(false);
+  };
+  useEffect(() => {
+    handleFilter(); // Apply restaurant and branch filter
+    handleDate();   // Apply date filter
+  }, []);
   return (
-
     <div>
       <Adminnavbar />
       <br />
       <h1 style={{ marginTop: 70, textAlign: 'center' }} >Order Details</h1>
       <div className='fliter'>
-        <Select className='search-bar'
+      <Select
+          className='search-bar'
           value={selectedOption}
           onChange={handleSelectChange}
           options={[
@@ -148,113 +159,86 @@ setshow(true);
           ]}
           placeholder="Search Restaurants..."
         />
-        <Select className='search-bar'
+        <Select
+          className='search-bar'
           value={selectedBranch}
           onChange={handleBranchChange}
-          options={selectBranch}
+          options={branchOptions}
           placeholder="Search Branch..."
         />
-        <button onClick={()=>{setshow(false)}} className='search_all'>All</button>
+                <button onClick={handleFilter} className='search_today'>Filter</button>
         <button onClick={handleDate} className='search_today'>Today</button>
       </div>
       <div>
         <ul class="order-recipt">
-          {show?
-             filteredItems.map((item, index) => (
-              <li key={index} className="flex-item">
-              <div className='order-cards'>
-                <div className='order-details' id='target'>
-                  <h2 className='restraunt-name'>{item.Restraunt}</h2>
-                  <h3 className='orderS'>Order Summary</h3>
-                  <hr />
-                  <p className='order-info'>Branch: {item.BranchName}</p>
-                  <p className='order-info'>OrderId: #{item.OrderId}</p>
-                  <p className='order-info'>Seats: {item.Seat}</p>
-                  <p className='order-info'>Items: {item.item}</p>
-                  <p className='order-info'>Time: {item.time}</p>
-                  <p className='order-info'>Reservation Date: {item.date.substring(0,16)}</p>
-                  <hr />
-                </div>
-                <div className='user-details'>
-                  <h2>Customer Details</h2>
-                  <div className='d-row'>
-                    <div>
-                      <p className='order-info'>Email:  {item.UserEmail}</p>
-                      <p className='order-info'>Contact: {item.contact}</p>
-                    </div>
+          {show?(
+            filteredDatas.slice().reverse().map(item => (
+              <li key={item.id} className="flex-item">
+                <div className="order-cards">
+                  <div className="order-details" id="target">
+                    <h2 className="restaurant-name">{item.Restraunt}</h2>
+                    <h3 className="orderS">Order Summary</h3>
+                    <hr />
+                    <p className="order-info">Branch: {item.BranchName}</p>
+                    <p className="order-info">OrderId: #{item.OrderId}</p>
+                    <p className="order-info">Seats: {item.Seat}</p>
+                    <p className="order-info">Items: {item.item}</p>
+                    <p className="order-info">Time: {item.time}</p>
+                    <p className="order-info">Reservation Date: {item.date?.substring(0, 16)}</p>
+                    <hr />
                   </div>
-                  <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
-                </div>
-              </div>
-            </li>
-          ))
-            :
-          filteredData.slice().reverse().map(item => (
-            <li key={item.id} className="flex-item">
-              <div className='order-cards'>
-                <div className='order-details' id='target'>
-                <h2 className='restraunt-name'>{item.Restraunt}</h2>
-                <h3 className='orderS'>Order Summary</h3>
-                <hr />
-                <p className='order-info'>Branch: {item.BranchName}</p>
-                <p className='order-info'>OrderId: #{item.OrderId}</p>
-                <p className='order-info'>Seats: {item.Seat}</p>
-                <p className='order-info'>Items: {item.item}</p>
-                <p className='order-info'>Time: {item.time}</p>
-                <p className='order-info'>Reservation Date: {item.date.substring(0, 16)}</p>
-                <hr />
-              </div>
-                <div className='user-details'>
-                  <h2>Customer Details</h2>
-                  <div className='d-row'>
-                    <div>
-                      <p className='order-info'>Email:  {item.UserEmail}</p>
-                      <p className='order-info'>Contact: {item.contact}</p>
+                  <div className="user-details">
+                    <h2>Customer Details</h2>
+                    <div className="d-row">
+                      <div>
+                        <p className="order-info">Email: {item.UserEmail}</p>
+                        <p className="order-info">Contact: {item.contact}</p>
+                      </div>
                     </div>
+                    <p className="order-time">{moment(item.bookedOn).fromNow()}</p>
                   </div>
-                  <p className='order-time'>{moment(item.bookedOn).fromNow()}</p>
                 </div>
+              </li>
+            )
+            )
+          ):
+         (filteredItems.slice().reverse().map(item => (
+          <li key={item.id} className="flex-item">
+            <div className="order-cards">
+              <div className="order-details" id="target">
+                <h2 className="restaurant-name">{item.Restraunt}</h2>
+                <h3 className="orderS">Order Summary</h3>
+                <hr />
+                <p className="order-info">Branch: {item.BranchName}</p>
+                <p className="order-info">OrderId: #{item.OrderId}</p>
+                <p className="order-info">Seats: {item.Seat}</p>
+                <p className="order-info">Items: {item.item}</p>
+                <p className="order-info">Time: {item.time}</p>
+                <p className="order-info">Reservation Date: {item.date?.substring(0, 16)}</p>
+                <hr />
               </div>
-            </li>
-          ))
-        }
+              <div className="user-details">
+                <h2>Customer Details</h2>
+                <div className="d-row">
+                  <div>
+                    <p className="order-info">Email: {item.UserEmail}</p>
+                    <p className="order-info">Contact: {item.contact}</p>
+                  </div>
+                </div>
+                <p className="order-time">{moment(item.bookedOn).fromNow()}</p>
+              </div>
+            </div>
+          </li>
+        )
+        )
+        )}
+       {!show && selectedOption === null &&(
+      <li key="select-option" className="msg">
+        Please select a restaurant and branch.
+      </li>
+    )}
         </ul>
       </div>
-      {/* <hr />
-      <h1 style={{ marginTop: 10, textAlign: 'center' }} >All Orders</h1>
-      <div >
-        <ul class="order-recipt">
-          {entries.slice().reverse().map(entry => (
-            <li key={entry.id} className="flex-item">
-              <div className='order-cards' id='target'>
-                <div className='order-details'>
-                  <h2 className='restraunt-name'>{entry.Restraunt}</h2>
-                  <h3 className='orderS'>Order Summary</h3>
-                  <hr />
-                  <p className='order-info'>Branch: {entry.BranchName}</p>
-                  <p className='order-info'>OrderId: #{entry.OrderId}</p>
-                  <p className='order-info'>Seats: {entry.Seat}</p>
-                  <p className='order-info'>Items: {entry.item}</p>
-                  <p className='order-info'>Time: {entry.time}</p>
-                  <p className='order-info'>Reservation Date: {entry.date.substring(0, 16)}</p>
-                  <hr />
-                </div>
-                <div className='user-details'>
-                  <h2>Customer Details</h2>
-                  <div className='d-row'>
-                    <div>
-                      <p className='order-info'>Email:  {entry.UserEmail}</p>
-                      <p className='order-info'>Contact: {entry.contact}</p>
-                    </div>
-                    <button className='order-done' onClick={hideshow}>Done</button>
-                  </div>
-                  <p className='order-time' id='hide'>{moment(entry.bookedOn).fromNow()}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div> */}
     </div>
   )
 }
